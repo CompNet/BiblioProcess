@@ -1,32 +1,40 @@
 package fr.univavignon.biblioproc.data;
 
-import fr.univavignon.biblioproc.StringTools;
-
 /*
- * Biblio Post Process
+ * Biblio Process
  * Copyright 2011-2017 Vincent Labatut 
  * 
- * This file is part of Biblio Post Process.
+ * This file is part of Biblio Process.
  * 
- * Biblio Post Process is free software: you can redistribute it and/or modify
+ * Biblio Process is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  * 
- * Biblio Post Process is distributed in the hope that it will be useful,
+ * Biblio Process is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with Biblio Post Process.  If not, see <http://www.gnu.org/licenses/>.
+ * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+import fr.univavignon.biblioproc.StringTools;
 
 /**
  * This class is used to represent an author.
  */
 public class Author implements Comparable<Author>
 {	
+	/**
+	 * Builds an author using a string representing
+	 * both its firstname and lastname, of the form
+	 * Lastname, Firstname1 Firstname2...
+	 * 
+	 * @param fullName
+	 * 		String representing the author's name.
+	 */
 	public Author(String fullName)
 	{	String[] temp = fullName.split(", "); 
 		lastname = StringTools.normalize(temp[0]);
@@ -34,6 +42,15 @@ public class Author implements Comparable<Author>
 			firstnameInitial = StringTools.normalize(temp[1].substring(0,1));
 	}
 	
+	/**
+	 * Builds an author using strings separately representing
+	 * his lastname and firstname.
+	 * 
+	 * @param lastname
+	 * 		Lastname of the author.
+	 * @param firstnameInitial
+	 * 		Initial of the author's firstname.
+	 */
 	public Author(String lastname, String firstnameInitial)
 	{	this.lastname = StringTools.normalize(lastname);
 		this.firstnameInitial = StringTools.normalize(firstnameInitial);
