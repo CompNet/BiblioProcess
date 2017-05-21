@@ -29,6 +29,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -42,28 +43,27 @@ import fr.univavignon.biblioproc.data.Author;
  * identify the references present in the ISI file but not in the JabRef
  * one.
  *  
- * @since 1
- * @version 1
  * @author Vincent Labatut
  */
 public class ParseSci2Network
 {	
 	/**
-	 * Open both input files, parse the bibliographic file to construct
-	 * the list of known references, parse the ISI file to detect new
-	 * references, display the detected new references.
+	 * Opens both input files, parses the bibliographic file to construct
+	 * the list of known references, parses the ISI file to detect new
+	 * references, displays the detected new references.
 	 * 
 	 * @param args
 	 * 		Not used.
+	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while opening the input JabRef or ISI files.
 	 */
 	public static void main(String[] args) throws FileNotFoundException
 	{	// load the JabRef file
-		HashMap<String,Article> articleMap = loadJabRefFile(JABREF_FILE, true);
+		Map<String,Article> articleMap = loadJabRefFile(JABREF_FILE, true);
 		
 //		// update the key in the article map
-//		HashMap<String, Article> map = new HashMap<String, Article>();
+//		Map<String, Article> map = new HashMap<String, Article>();
 //		for(Article article: articleMap.values())
 //			map.put(article.getCiteAs(), article);
 //		articleMap.clear();
@@ -107,7 +107,21 @@ public class ParseSci2Network
 		}
 	}
 	
-	public static HashMap<String,Article> loadJabRefFile(String path, boolean updateGroups) throws FileNotFoundException
+	/**
+	 * Loads the specified Jabref files, and builds the corresponding 
+	 * map of articles.
+	 * 
+	 * @param path
+	 * 		Jabref file.
+	 * @param updateGroups
+	 * 		Whether or not consider Jabref groups.
+	 * @return
+	 * 		A Map containing the article.
+	 * 
+	 * @throws FileNotFoundException
+	 * 		Problem while accessing the Jabref file.
+	 */
+	public static Map<String,Article> loadJabRefFile(String path, boolean updateGroups) throws FileNotFoundException
 	{	// open the JabRef file
 		System.out.println("Open the JabRef file " + path);
 		FileInputStream jrFis = new FileInputStream(path);
@@ -116,7 +130,7 @@ public class ParseSci2Network
 		
 		// retrieve the titles of the articles
 		System.out.println("Get the articles data");
-		HashMap<String,Article> result = new HashMap<String, Article>();
+		Map<String,Article> result = new HashMap<String, Article>();
 		int count = 0;
 		String line = null;
 		// pass comments
@@ -129,7 +143,7 @@ public class ParseSci2Network
 			if(!line.isEmpty() && !line.startsWith(COMMENT_PREFIX))
 			{	count++;
 				// parse the BibTex entry
-				HashMap<String,String> data = retrieveMap(line,jrScanner);
+				Map<String,String> data = retrieveMap(line,jrScanner);
 				// build the article object
 				Article article = Article.buildArticle(data);
 				// insert in the map of articles
@@ -190,10 +204,18 @@ public class ParseSci2Network
 		return result;
 	}
 	
+	/**
+	 * Parses one article from the ISI file.
+	 * 
+	 * @param scanner
+	 * 		Scanner giving access to the text.
+	 * @return
+	 * 		The corresponding article instance.
+	 */
 	private static Article processIsiArticle(Scanner scanner)
 	{	Article result = null;
 		if(scanner.hasNextLine())
-		{	HashMap<String, String> data = new HashMap<String, String>();
+		{	Map<String, String> data = new HashMap<String, String>();
 			String line = scanner.nextLine();
 			
 			// get authors
@@ -353,9 +375,9 @@ public class ParseSci2Network
 	 * @return
 	 * 		Map containing the entry data.
 	 */
-	public static HashMap<String, String> retrieveMap(String line, Scanner scanner)
+	public static Map<String, String> retrieveMap(String line, Scanner scanner)
 	{	// init map
-		HashMap<String, String> result = new HashMap<String, String>();
+		Map<String, String> result = new HashMap<String, String>();
 		
 		// bibtex key
 		int start = line.indexOf('{') + 1;
@@ -402,11 +424,11 @@ public class ParseSci2Network
 	// DATA				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Map of all JabRef articles */
-//	private static final HashMap<String,Article> articleMap = new HashMap<String, Article>();
+//	private static final Map<String,Article> articleMap = new HashMap<String, Article>();
 	/** List of all articles */
 	public static final List<Article> articleList = new ArrayList<Article>();
 	/** Map of all authors */
-	public static final HashMap<String,Author> authorMap = new HashMap<String, Author>();
+	public static final Map<String,Author> authorMap = new HashMap<String, Author>();
 	
 	/**
 	 * Retrieves an article from the article map.

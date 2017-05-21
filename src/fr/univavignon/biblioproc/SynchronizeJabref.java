@@ -22,26 +22,36 @@ package fr.univavignon.biblioproc;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import fr.univavignon.biblioproc.data.Article;
 
 /**
- * Used to synchronize bibtex keys in the two
- * JabRef files: the main one and the review.
+ * Used to synchronize BibTex keys in the two
+ * JabRef files: the main one and the one from 
+ * the review article.
  * 
- * @author Vincent
- *
+ * @author Vincent Labatut
  */
 public class SynchronizeJabref
 {	
+	/**
+	 * Synchronizes both BibTex files, and print any
+	 * detected problem.
+	 * 
+	 * @param args
+	 * 		Not used.
+	 * @throws FileNotFoundException
+	 * 		Problem while accessing the files.
+	 */
 	public static void main(String[] args) throws FileNotFoundException
 	{	// load both files
-		HashMap<String,Article> reviewMap = ParseSci2Network.loadJabRefFile(REVIEW_FILE, false);
-		HashMap<String,Article> completeMap = ParseSci2Network.loadJabRefFile(COMPLETE_FILE, false);
+		Map<String,Article> reviewMap = ParseSci2Network.loadJabRefFile(REVIEW_FILE, false);
+		Map<String,Article> completeMap = ParseSci2Network.loadJabRefFile(COMPLETE_FILE, false);
 		
 		// create inverted map
-		HashMap<String,Article> invertedMap = new HashMap<String, Article>();
+		Map<String,Article> invertedMap = new HashMap<String, Article>();
 		for(Article article: completeMap.values())
 		{	invertedMap.put(article.getCiteAs(), article);
 			System.out.println("inserting " + article.getCiteAs());

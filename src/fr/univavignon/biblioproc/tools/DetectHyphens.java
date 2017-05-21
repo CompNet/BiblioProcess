@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc;
+package fr.univavignon.biblioproc.tools;
 
 /*
  * Biblio Process
@@ -21,18 +21,28 @@ package fr.univavignon.biblioproc;
  */
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
 
+/**
+ * Old class used to clean file names.
+ * 
+ * @author Vincent Labatut
+ */
 public class DetectHyphens
 {	
+	/**
+	 * Prints the names of files containing a long hyphen.
+	 * 
+	 * @param args
+	 *		Not used. 
+	 * 
+	 * @throws FileNotFoundException
+	 * 		Problem while parsing the files.
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while parsing the files.
+	 */
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException
 	{	// retrieve all .isi files in the folder
 		System.out.println("Scanning the folder " + FOLDER);

@@ -24,16 +24,21 @@ import java.text.Normalizer;
 import java.text.Normalizer.Form;
 
 /**
- * This class is used to represent a publication,
- * with a minimum set of fields.
+ * Common methods used to process strings. 
  */
 public class StringTools
 {
 	/**
-	 * Retrieved from http://www.drillio.com/en/software-development/java/removing-accents-diacritics-in-any-language/
-	 * @author Istv�n So�s
+	 * Removes diacritics from the specified text.
+	 * <br/>
+	 * Retrieved from the <a href="http://www.drillio.com/en/software-development/java/removing-accents-diacritics-in-any-language/">Drillio<a> website.
+	 * 
+	 * @author István Soós
+	 * 
 	 * @param text
+	 * 		Original text.
 	 * @return
+	 * 		Cleaned text.
 	 */
 	public static String removeAccents(String text)
 	{	return text == null ? null
@@ -41,6 +46,15 @@ public class StringTools
 	            .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 	}
 	
+	/**
+	 * Normalizes the specified text by removing
+	 * diacritics and switching to lowercase (others?).
+	 * 
+	 * @param text
+	 * 		Original text.
+	 * @return
+	 * 		Normalized text.
+	 */
 	public static String normalize(String text)
 	{	String result = null;
 		if(text!=null)

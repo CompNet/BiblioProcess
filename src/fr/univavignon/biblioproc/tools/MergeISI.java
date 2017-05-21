@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc;
+package fr.univavignon.biblioproc.tools;
 
 /*
  * Biblio Process
@@ -35,19 +35,18 @@ import java.util.Scanner;
  * This class takes a set of ISI files, and
  * merge them (taking care of the EOF markers).
  *  
- * @since 1
- * @version 1
  * @author Vincent Labatut
  */
 public class MergeISI
 {	
 	/**
-	 * Open the specified folder, retrieve the list of ISI files,
-	 * combine them to form a single file containing all
+	 * Opens the specified folder, retrieves the list of ISI files,
+	 * combines them to form a single file containing all
 	 * references.
 	 * 
 	 * @param args
 	 * 		Not used.
+	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while opening the input ISI files or the generated output file.
 	 * @throws UnsupportedEncodingException
