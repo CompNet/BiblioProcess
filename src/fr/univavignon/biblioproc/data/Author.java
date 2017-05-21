@@ -20,7 +20,7 @@ package fr.univavignon.biblioproc.data;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import fr.univavignon.biblioproc.StringTools;
+import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
  * This class is used to represent an author.

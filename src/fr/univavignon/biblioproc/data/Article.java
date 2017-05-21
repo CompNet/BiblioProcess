@@ -27,8 +27,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.ParseSci2Network;
-import fr.univavignon.biblioproc.StringTools;
+import fr.univavignon.biblioproc.isi.ParseSci2Network;
+import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
  * This class is used to represent a publication,
