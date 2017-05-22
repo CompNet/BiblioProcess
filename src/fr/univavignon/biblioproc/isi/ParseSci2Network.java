@@ -138,7 +138,7 @@ public class ParseSci2Network
 			authors = authors.substring(0,authors.length()-5);
 			data.put("author", authors);
 			
-			// get tile
+			// get title
 			while(!line.startsWith("TI "))
 			{	line = scanner.nextLine();
 				if(line.startsWith("ER"))
