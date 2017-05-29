@@ -27,7 +27,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import fr.univavignon.biblioproc.data.Article;
-import fr.univavignon.biblioproc.isi.ParseSci2Network;
+import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.tools.FileTools;
 
 /**
@@ -37,24 +37,40 @@ import fr.univavignon.biblioproc.tools.FileTools;
  */
 public class JabrefFileHandler
 {
-
+	/** String marking the end of a BibTex field */
+	private static final String FIELD_END = "},";
+	/** String marking the end of a BibTex entry */
+	private static final String ENTRY_END = "}";
+	/** String marking the end of the actual BibTex file (and the begining of the JabRef part) */
+	public static final String COMMENT_PREFIX = "@comment";
+	/** String marking the begining of the list of ignored articles */
+	public static final String IGNORED_PREFIX = "3 ExplicitGroup:Ignored\\;2\\;";
+	/** String marking the begining of the list of pureley applicative articles */
+	public static final String APPLICATION_PREFIX = "3 ExplicitGroup:Applications Only\\;2\\;";
+	/** String marking the end of a JabRef group */
+	public static final String GROUP_END = ";;";
+	/** String separating the BibTex kes in a JabRef group */
+	public static final String KEY_SEPARATOR = "\\;";
+	
 	/**
-	 * Loads the specified Jabref files, and builds the corresponding 
+	 * Loads the specified Jabref file, and builds the corresponding 
 	 * map of articles.
 	 * 
 	 * @param path
 	 * 		Jabref file.
 	 * @param updateGroups
 	 * 		Whether or not consider Jabref groups.
+	 * @param authorsMap
+	 * 		Map containing all the loaded authors.
 	 * @return
-	 * 		A Map containing the article.
+	 * 		A Map containing the articles.
 	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while accessing the Jabref file.
 	 * @throws UnsupportedEncodingException 
 	 * 		Problem while accessing the Jabref file.
 	 */
-	public static Map<String,Article> loadJabRefFile(String path, boolean updateGroups) throws FileNotFoundException, UnsupportedEncodingException
+	public static Map<String,Article> loadJabRefFile(String path, boolean updateGroups, Map<String,Author> authorsMap) throws FileNotFoundException, UnsupportedEncodingException
 	{	// open the JabRef file
 		System.out.println("Open the JabRef file " + path);
 		Scanner jrScanner = FileTools.openTextFileRead(path,null);
@@ -71,33 +87,33 @@ public class JabrefFileHandler
 		// get the articles
 		do
 		{	line = jrScanner.nextLine();
-			if(!line.isEmpty() && !line.startsWith(ParseSci2Network.COMMENT_PREFIX))
+			if(!line.isEmpty() && !line.startsWith(COMMENT_PREFIX))
 			{	count++;
 				// parse the BibTex entry
-				Map<String,String> data = ParseSci2Network.retrieveMap(line,jrScanner);
+				Map<String,String> data = retrieveArticleMap(line,jrScanner);
 				// build the article object
-				Article article = Article.buildArticle(data);
+				Article article = Article.buildArticle(data,authorsMap);
 				// insert in the map of articles
 				result.put(article.getBibtexKey(), article);
 				// display for verification
 				System.out.println(count + ". " + article);
 			}
 		}
-		while(!line.startsWith(ParseSci2Network.COMMENT_PREFIX));
+		while(!line.startsWith(COMMENT_PREFIX));
 	
 		// update with the list of purely applicative articles
 		if(updateGroups)
 		{	do
 				line = jrScanner.nextLine();
-			while(!line.startsWith(ParseSci2Network.APPLICATION_PREFIX));
-			String listStr = line.substring(ParseSci2Network.APPLICATION_PREFIX.length());
+			while(!line.startsWith(APPLICATION_PREFIX));
+			String listStr = line.substring(APPLICATION_PREFIX.length());
 			do
 			{	line = jrScanner.nextLine();
 				listStr = listStr + line;
 			}
-			while(!line.endsWith(ParseSci2Network.GROUP_END));
+			while(!line.endsWith(GROUP_END));
 			listStr = listStr.substring(0,listStr.length()-2);
-			String keys[] = listStr.split(ParseSci2Network.KEY_SEPARATOR);
+			String keys[] = listStr.split(KEY_SEPARATOR);
 			System.out.println("\nPurely applicative articles:");
 			count = 0;
 			for(String key: keys)
@@ -110,15 +126,15 @@ public class JabrefFileHandler
 			// add the ignored articles
 			do
 				line = jrScanner.nextLine();
-			while(!line.startsWith(ParseSci2Network.IGNORED_PREFIX));
-			listStr = line.substring(ParseSci2Network.IGNORED_PREFIX.length());
+			while(!line.startsWith(IGNORED_PREFIX));
+			listStr = line.substring(IGNORED_PREFIX.length());
 			do
 			{	line = jrScanner.nextLine();
 				listStr = listStr + line;
 			}
-			while(!line.endsWith(ParseSci2Network.GROUP_END));
+			while(!line.endsWith(GROUP_END));
 			listStr = listStr.substring(0,listStr.length()-3);
-			keys = listStr.split(ParseSci2Network.KEY_SEPARATOR);
+			keys = listStr.split(KEY_SEPARATOR);
 			System.out.println("\nIgnored articles:");
 			count = 0;
 			for(String key: keys)
@@ -133,5 +149,64 @@ public class JabrefFileHandler
 		jrScanner.close();
 		
 		return result;
-	}	
+	}
+
+	/**
+	 * Receives the first line of a BibTex entry,
+	 * and a scanner pointing on the second line,
+	 * and builds the corresponding map, which can
+	 * subsequently be used to build an {@link Article}
+	 * object.
+	 * 
+	 * @param line
+	 * 		First line of the BibTex entry.
+	 * @param scanner
+	 * 		Scanner pointing on the rest of the entry.
+	 * @return
+	 * 		Map containing the entry data.
+	 */
+	private static Map<String, String> retrieveArticleMap(String line, Scanner scanner)
+	{	// init map
+		Map<String, String> result = new HashMap<String, String>();
+		
+		// bibtex key
+		int start = line.indexOf('{') + 1;
+		int end = line.length() - 1;
+		String bibtexkey = line.substring(start, end);
+		result.put("bibtexkey", bibtexkey);
+		
+		// rest of the fields
+		do
+		{	// get the first line for this field
+			line = scanner.nextLine();
+			
+			if(!line.equals(ENTRY_END))
+			{	// retrieve the name of the field
+				int pos = line.indexOf('=');
+				String fieldName = line.substring(2,pos-1);
+				// retrieve the associated value
+				String fieldValue = null;
+				if(line.endsWith(FIELD_END))
+					fieldValue = line.substring(pos+3,line.length()-2);
+				else if(line.endsWith("}"))
+					fieldValue = line.substring(pos+3,line.length()-1);
+				else
+				{	fieldValue = line.substring(pos+3);
+					do
+					{	line = scanner.nextLine();
+						if(line.endsWith(FIELD_END))
+							fieldValue = fieldValue + " " + line.substring(1,line.length()-2);
+						else
+							fieldValue = fieldValue + " " + line.substring(1);
+					}
+					while(!line.endsWith(FIELD_END));
+				}
+				// insert in the map
+				result.put(fieldName, fieldValue);
+			}
+		}
+		while(!line.equals(ENTRY_END));
+		
+		return result;
+	}
 }

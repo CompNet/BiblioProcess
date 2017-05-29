@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.isi.ParseSci2Network;
 import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
@@ -41,58 +40,55 @@ public class Article implements Comparable<Article>
 	 * {@code Map} containing at least the required
 	 * fields: {@code bibtexkey}, {@code authors}, {@code title}, {@code year}.
 	 * 
-	 * @param map
+	 * @param articleMap
 	 * 		Map containing the needed data.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
 	 * @return 
 	 * 		The new article instance.
 	 */
-	public static Article buildArticle(Map<String,String> map)
+	public static Article buildArticle(Map<String,String> articleMap, Map<String,Author> authorsMap)
 	{	Article result = new Article();
 	
 		// init BibTex key
-		result.bibtexKey = map.get("bibtexkey");
+		result.bibtexKey = articleMap.get("bibtexkey");
 		
 		// init authors
-		String temp[] = map.get("author").split(" and ");
+		String temp[] = articleMap.get("author").split(" and ");
 		for(String authorStr: temp)
 		{	Author author = new Author(authorStr);
-			String fullname = author.getFullname();
-			Author tempAuth = ParseSci2Network.authorMap.get(fullname);
-			if(tempAuth!=null)
-				author = tempAuth;
-			else
-				ParseSci2Network.authorMap.put(fullname, author);
+			author = Author.retrieveAuthor(author, authorsMap);
 			result.authors.add(author);
 		}
 		
 		// init title
-		String title = map.get("title");
+		String title = articleMap.get("title");
 		result.title = StringTools.normalize(title);
 		
 		// init source
-		String source = map.get("source");
+		String source = articleMap.get("source");
 		if(source==null)
-			source = map.get("journal");
+			source = articleMap.get("journal");
 		if(source==null)
-			source = map.get("booktitle");
+			source = articleMap.get("booktitle");
 		if(source==null)
-			source = map.get("institution");
+			source = articleMap.get("institution");
 		if(source==null)
-			source = map.get("school");
+			source = articleMap.get("school");
 		if(source==null)
-			source = map.get("publisher");
+			source = articleMap.get("publisher");
 		result.source = StringTools.normalize(source);
 		
 		// init volume
-		result.volume = map.get("volume");
+		result.volume = articleMap.get("volume");
 		result.volume = StringTools.normalize(result.volume);
 		
 		// init issue
-		String issue = map.get("number");
+		String issue = articleMap.get("number");
 		result.issue = StringTools.normalize(issue);
 		
 		// init page
-		String page = map.get("pages");
+		String page = articleMap.get("pages");
 		if(page!=null)
 		{	if(page.contains("-"))
 				page = page.split("-")[0];
@@ -100,11 +96,11 @@ public class Article implements Comparable<Article>
 		}
 		
 		// init year
-		String year = map.get("year");
+		String year = articleMap.get("year");
 		result.year = StringTools.normalize(year);
 		
 		// init doi
-		String doi = map.get("doi");
+		String doi = articleMap.get("doi");
 		if(doi!=null)
 			result.doi = doi.trim();
 		
@@ -119,10 +115,12 @@ public class Article implements Comparable<Article>
 	 * 
 	 * @param string
 	 * 		The bibtex string representing the article.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
 	 * @return
 	 * 		The corresponding {@code Article} object.
 	 */
-	public static Article buildArticle(String string)
+	public static Article buildArticle(String string, Map<String,Author> authorsMap)
 	{	Article result = new Article();
 		String temp[] = string.split(", ");
 		int index = 0;
@@ -146,12 +144,7 @@ public class Article implements Comparable<Article>
 		if(firstnameInitial!=null && firstnameInitial.length()>1)
 			firstnameInitial = temp2[1].substring(0,1);
 		Author author = new Author(lastname, firstnameInitial);
-		String fullname = author.getFullname();
-		Author tempAuth = ParseSci2Network.authorMap.get(fullname);
-		if(tempAuth!=null)
-			author = tempAuth;
-		else
-			ParseSci2Network.authorMap.put(fullname, author);
+		author = Author.retrieveAuthor(author, authorsMap);
 		result.authors.add(author);
 		index++;
 		
@@ -196,7 +189,7 @@ public class Article implements Comparable<Article>
 		}
 		
 		// correct some of the errors in ISI
-		checkErrors(result);
+		checkErrors(result, authorsMap);
 		
 //if(
 //	result.year!=null && result.year.equals("2003")
@@ -218,11 +211,13 @@ public class Article implements Comparable<Article>
 	 * 		A map used to initialize the {@code Article} object.
 	 * @param citedArticles
 	 * 		Articles cited by the newly created article.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
 	 * @return
 	 * 		The created article.
 	 */
-	public static Article buildArticle(Map<String,String> map, Set<Article> citedArticles)
-	{	Article result = buildArticle(map);
+	public static Article buildArticle(Map<String,String> map, Set<Article> citedArticles, Map<String,Author> authorsMap)
+	{	Article result = buildArticle(map, authorsMap);
 		result.present = false;
 		
 		result.citedArticles.addAll(citedArticles);
@@ -531,8 +526,10 @@ public class Article implements Comparable<Article>
 	 * 
 	 * @param article
 	 * 		Article to correct.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
 	 */
-	public static void checkErrors(Article article)
+	public static void checkErrors(Article article, Map<String,Author> authorsMap)
 	{	if(article.getAuthors().get(0).getFullname().equals("flake, g")
 			//&& article.getSource()!=null && article.getSource().equals("ieee comput")
 			&& article.getVolume()!=null && article.getVolume().equals("36")
@@ -546,8 +543,8 @@ public class Article implements Comparable<Article>
 			//&& article.getPage()!=null && article.getPage().equals("371")
 			&& article.getYear()!=null && article.getYear().equals("2000"))
 		{	Author author = article.getAuthors().get(0);
-			ParseSci2Network.authorMap.remove(author.getFullname());
-			author = ParseSci2Network.authorMap.get("van dongen, s");
+			authorsMap.remove(author.getFullname());
+			author = authorsMap.get("van dongen, s");
 			article.authors.set(0,author);
 		}
 	
@@ -557,17 +554,17 @@ public class Article implements Comparable<Article>
 			&& article.getPage()!=null && article.getPage().equals("1360")
 			&& article.getYear()!=null && article.getYear().equals("1973"))
 		{	Author author = article.getAuthors().get(0);
-			ParseSci2Network.authorMap.remove(author.getFullname());
-			author = ParseSci2Network.authorMap.get("granovetter, m");
+			authorsMap.remove(author.getFullname());
+			author = authorsMap.get("granovetter, m");
 			article.authors.set(0,author);
 		}
 	
 		else if(article.getAuthors().get(0).getFullname().equals("leydesdorff, l")
 			&& article.getSource()!=null && article.getSource().equals("j math sociol")
 			&& article.getYear()!=null && article.getYear().equals("1971"))
-		{	Author author = ParseSci2Network.authorMap.get("lorrain, f");
+		{	Author author = authorsMap.get("lorrain, f");
 			article.authors.set(0,author);
-			author = ParseSci2Network.authorMap.get("white, h");
+			author = authorsMap.get("white, h");
 			article.authors.add(author);
 			article.volume = "1";
 			article.page = "49";
@@ -580,8 +577,8 @@ public class Article implements Comparable<Article>
 			&& article.getPage()!=null && article.getPage().equals("399")
 			&& article.getYear()!=null && article.getYear().equals("2002"))
 		{	Author author = article.getAuthors().get(0);
-			ParseSci2Network.authorMap.remove(author.getFullname());
-			author = ParseSci2Network.authorMap.get("von mering, c");
+		authorsMap.remove(author.getFullname());
+			author = authorsMap.get("von mering, c");
 			article.authors.set(0,author);
 		}
 	}

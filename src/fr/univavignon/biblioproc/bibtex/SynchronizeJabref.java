@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import fr.univavignon.biblioproc.data.Article;
+import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.tools.FileTools;
 
 /**
@@ -51,8 +52,9 @@ public class SynchronizeJabref
 	 */
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException
 	{	// load both files
-		Map<String,Article> reviewMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_REVIEW, false);
-		Map<String,Article> completeMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_COMPLETE, false);
+		Map<String,Author> authorMap = new HashMap<String,Author>();
+		Map<String,Article> reviewMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_REVIEW, false, authorMap);
+		Map<String,Article> completeMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_COMPLETE, false, authorMap);
 		
 		// create inverted map
 		Map<String,Article> invertedMap = new HashMap<String, Article>();

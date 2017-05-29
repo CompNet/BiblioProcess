@@ -1,5 +1,7 @@
 package fr.univavignon.biblioproc.data;
 
+import java.util.Map;
+
 /*
  * Biblio Process
  * Copyright 2011-2017 Vincent Labatut 
@@ -26,8 +28,7 @@ import fr.univavignon.biblioproc.tools.StringTools;
  * This class is used to represent an author.
  */
 public class Author implements Comparable<Author>
-{	
-	/**
+{	/**
 	 * Builds an author using a string representing
 	 * both its firstname and lastname, of the form
 	 * Lastname, Firstname1 Firstname2...
@@ -54,6 +55,29 @@ public class Author implements Comparable<Author>
 	public Author(String lastname, String firstnameInitial)
 	{	this.lastname = StringTools.normalize(lastname);
 		this.firstnameInitial = StringTools.normalize(firstnameInitial);
+	}
+	
+	/**
+	 * Looks up the specified name and returns the corresponding
+	 * author if it already exists. Otherwise, the method creates
+	 * the author, adds it to the list and returns it.
+	 * 
+	 * @param author
+	 * 		Targeted author (containing the appropriate name).
+	 * @param authors
+	 * 		Map of previously loaded authors.
+	 * @return
+	 * 		The targeted author.
+	 */
+	public static Author retrieveAuthor(Author author, Map<String,Author> authors)
+	{	Author result = author;
+		String fullname = result.getFullname();
+		Author temp = authors.get(fullname);
+		if(temp!=null)
+			result = temp;
+		else
+			authors.put(fullname, result);
+		return result;
 	}
 	
 	/////////////////////////////////////////////////////////////////

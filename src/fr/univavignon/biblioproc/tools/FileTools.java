@@ -53,7 +53,7 @@ public class FileTools
 	/** Bash file extension */
 	public final static String EX_BIBTEX = ".bib";
 	/** Thomson ISI file extension */
-	public final static String EX_ISI = ".isi";
+	public final static String EX_ISI = ".ciw";
 	/** PDF file extension */
 	public static final String EX_PDF = ".pdf";
 
@@ -77,7 +77,7 @@ public class FileTools
 	/** JabRef complete file */
 	public static final String FI_BIBTEX_COMPLETE = FO_BIBTEX + File.separator + "network analysis" + EX_BIBTEX;;
 	/** ISI merged file */
-	public static final String FI_ISI_ALL = FO_OUTPUT + File.separator + "all" + EX_ISI;
+	public static final String FI_ISI_ALL = FO_OUTPUT + File.separator + "savedrecs" + EX_ISI;
 
 	/////////////////////////////////////////////////////////////////
 	// FILTERS			/////////////////////////////////////////////
