@@ -42,15 +42,50 @@ public class JabrefFileHandler
 	/** String marking the end of a BibTex entry */
 	private static final String ENTRY_END = "}";
 	/** String marking the end of the actual BibTex file (and the begining of the JabRef part) */
-	public static final String COMMENT_PREFIX = "@comment";
+	private static final String COMMENT_PREFIX = "@comment";
 	/** String marking the begining of the list of ignored articles */
-	public static final String IGNORED_PREFIX = "3 ExplicitGroup:Ignored\\;2\\;";
+	private static final String IGNORED_PREFIX = "3 ExplicitGroup:Ignored\\;2\\;";
 	/** String marking the begining of the list of pureley applicative articles */
-	public static final String APPLICATION_PREFIX = "3 ExplicitGroup:Applications Only\\;2\\;";
+	private static final String APPLICATION_PREFIX = "3 ExplicitGroup:Applications Only\\;2\\;";
 	/** String marking the end of a JabRef group */
-	public static final String GROUP_END = ";;";
+	private static final String GROUP_END = ";;";
 	/** String separating the BibTex kes in a JabRef group */
-	public static final String KEY_SEPARATOR = "\\;";
+	private static final String KEY_SEPARATOR = "\\;";
+	
+	/** Bibtex key for the authors */
+	public static final String PFX_AUTHOR = "author";
+	/** Bibtex key for the abstract */
+	public static final String PFX_ABSTRACT = "abstract";
+	/** Bibtex key for the chapter */
+	public static final String PFX_CHAPTER = "chapter";
+	/** Bibtex key for the DOI */
+	public static final String PFX_DOI = "doi";
+	/** Bibtex key for the file */
+	public static final String PFX_FILE = "file";
+	/** Bibtex key for the institution */
+	public static final String PFX_INSTITUTION = "institution";
+	/** Bibtex key for the issue */
+	public static final String PFX_ISSUE = "issue";
+	/** Bibtex key for the journal */
+	public static final String PFX_JOURNAL = "journal";
+	/** Bibtex key for the number */
+	public static final String PFX_NUMBER = "number";
+	/** Bibtex key for the owner */
+	public static final String PFX_OWNER = "owner";
+	/** Bibtex key for the pages */
+	public static final String PFX_PAGES = "pages";
+	/** Bibtex key for the time stamp */
+	public static final String PFX_TIMESTAMP = "timestamp";
+	/** Bibtex key for the article title */
+	public static final String PFX_TITLE_ARTICLE = "title";
+	/** Bibtex key for the book title */
+	public static final String PFX_TITLE_BOOK = "booktitle";
+	/** Bibtex key for the URL */
+	public static final String PFX_URL = "url";
+	/** Bibtex key for the volume */
+	public static final String PFX_VOLUME = "volume";
+	/** Bibtex key for the publication year */
+	public static final String PFX_YEAR = "year";
 	
 	/**
 	 * Loads the specified Jabref file, and builds the corresponding 

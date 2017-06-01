@@ -46,7 +46,16 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	
+	{	/**TODO
+		 * - finish using the new bibtex constants
+		 * - check by loading actual bibtex file that no bibtex attribute is ignored
+		 * - check the ciw stuff works by loading the file
+		 * - synchronize all ciw entries with exactly one bibtex entry
+		 * - generate the short ref for full ciw entries
+		 * - be able to synch ciw short ref with bibtex entries. maybe use manual annotations stored in the "notes" bibtex file?
+		 */
+		
+		
 		/* SIGNED NETS
 		 * 1) load the jabref file, store the authors and articles
 		 * 2) load the ISI file, match the authors and articles (including references)

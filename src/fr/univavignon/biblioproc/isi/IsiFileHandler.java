@@ -43,7 +43,35 @@ import fr.univavignon.biblioproc.tools.FileTools;
  * @author Vincent Labatut
  */
 public class IsiFileHandler
-{	
+{	/** CIW prefix for author names with long firstnames */
+	private final static String PFX_AUTHOR_LONG =  "AF ";
+	/** CIW prefix for author names with initials for firstnames */
+	private final static String PFX_AUTHOR_SHORT =  "AU ";
+	/** CIW prefix for DOI */
+	private final static String PFX_DOI =  "DI ";
+	/** CIW prefix for journal issue */
+	private final static String PFX_ISSUE =  "IS ";
+	/** CIW prefix for journal full name */
+	private final static String PFX_JOURNAL_LONG =  "SO ";
+	/** CIW prefix for journal abreviated name */
+	private final static String PFX_JOURNAL_SHORT =  "J9 ";
+	/** CIW prefix for article number */
+	private final static String PFX_PAGE =  "AR ";
+	/** CIW prefix for starting page */
+	private final static String PFX_PAGE_START =  "BP ";
+	/** CIW prefix for ending page */
+	private final static String PFX_PAGE_END =  "EP ";
+	/** CIW prefix for reference list */
+	private final static String PFX_REFERENCES =  "CR ";
+	/** CIW prefix for article title */
+	private final static String PFX_TITLE =  "TI ";
+	/** CIW prefix for journal volume */
+	private final static String PFX_VOLUME =  "VL ";
+	/** CIW prefix for publication year */
+	private final static String PFX_YEAR =  "PY ";
+	/** CIW prefix to separate articles */
+	private final static String PFX_SEPARATOR =  "ER ";
+	
 	/**
 	 * Loads the specified ISI file, and builds the corresponding 
 	 * map of articles.
@@ -113,9 +141,9 @@ public class IsiFileHandler
 			String line = scanner.nextLine();
 			
 			// get authors
-			while(!line.startsWith("AU "))
+			while(!line.startsWith(PFX_AUTHOR_SHORT))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			String authors = "";
@@ -129,9 +157,9 @@ public class IsiFileHandler
 			data.put("author", authors);
 			
 			// get title
-			while(!line.startsWith("TI "))
+			while(!line.startsWith(PFX_TITLE))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			String title = "";
@@ -147,7 +175,7 @@ public class IsiFileHandler
 			// get conference
 			while(!line.startsWith("SO ") && !line.startsWith("LA "))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			if(line.startsWith("SO "))
@@ -166,7 +194,7 @@ public class IsiFileHandler
 			Set<Article> citedArticles = new TreeSet<Article>(); 
 			while(!line.startsWith("CR ") && !line.startsWith("NR "))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			if(line.startsWith("CR "))
@@ -185,7 +213,7 @@ public class IsiFileHandler
 			// get journal
 			while(!line.startsWith("J9 ") && !line.startsWith("PY "))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			if(line.startsWith("J9 "))
@@ -197,7 +225,7 @@ public class IsiFileHandler
 			// get year
 			while(!line.startsWith("PY "))
 			{	line = scanner.nextLine();
-				if(line.startsWith("ER"))
+				if(line.startsWith(PFX_SEPARATOR))
 					throw new NullPointerException();
 			}
 			String year = line.substring(3);
@@ -207,7 +235,7 @@ public class IsiFileHandler
 			// get volume
 			while(!line.startsWith("VL ") && !line.startsWith("IS ")
 				&& !line.startsWith("BP ") && !line.startsWith("EP ")
-				&& !line.startsWith("ER"))
+				&& !line.startsWith(PFX_SEPARATOR))
 				line = scanner.nextLine();
 			if(line.startsWith("VL "))
 			{	String volume = line.substring(3);
@@ -218,7 +246,7 @@ public class IsiFileHandler
 			// get issue
 			while(!line.startsWith("IS ")
 				&& !line.startsWith("BP ") && !line.startsWith("EP ")
-				&& !line.startsWith("ER"))
+				&& !line.startsWith(PFX_SEPARATOR))
 				line = scanner.nextLine();
 			if(line.startsWith("IS "))
 			{	String issue = line.substring(3);
@@ -227,14 +255,14 @@ public class IsiFileHandler
 			}
 			
 			// get page(s)
-			while(!line.startsWith("BP ") && !line.startsWith("AR") && !line.startsWith("ER"))
+			while(!line.startsWith("BP ") && !line.startsWith("AR") && !line.startsWith(PFX_SEPARATOR))
 				line = scanner.nextLine();
 			if(line.startsWith("BP "))
 			{	String pages = line.substring(3);
 				line = scanner.nextLine();
 				data.put("pages", pages);
 			}
-			while(!line.startsWith("AR ") && !line.startsWith("ER"))
+			while(!line.startsWith("AR ") && !line.startsWith(PFX_SEPARATOR))
 				line = scanner.nextLine();
 			if(line.startsWith("AR "))
 			{	String pages = line.substring(3);
@@ -243,7 +271,7 @@ public class IsiFileHandler
 			}
 			
 			// finish reference
-			while(!line.startsWith("ER"))
+			while(!line.startsWith(PFX_SEPARATOR))
 				line = scanner.nextLine();
 			for(int i=0;i<2;i++)
 				line = scanner.nextLine();
