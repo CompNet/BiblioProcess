@@ -103,37 +103,40 @@ public class JabrefFileHandler
 	private static final String PFX_YEAR = "year";
 	
 	/////////////////////////////////////////////////////////////////
+	// DATA				/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Map containing all the loaded articles, indexed by their Bibtex id */
+	public Map<String, Article> articlesMap = new HashMap<String, Article>();
+	/** Map containing all the loaded authors, index by their normalized name */
+	public Map<String, Author> authorsMap = new HashMap<String, Author>();
+	
+	/////////////////////////////////////////////////////////////////
 	// LOADING			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
 	 * Loads the specified Jabref file, and builds the corresponding 
-	 * map of articles.
+	 * maps of articles and authors.
 	 * 
 	 * @param path
 	 * 		Jabref file.
 	 * @param updateGroups
-	 * 		Whether or not consider Jabref groups.
-	 * @param authorsMap
-	 * 		Map containing all the loaded authors.
-	 * @return
-	 * 		A Map containing the articles.
+	 * 		Whether or not to take into account Jabref groups.
 	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while accessing the Jabref file.
 	 * @throws UnsupportedEncodingException 
 	 * 		Problem while accessing the Jabref file.
 	 */
-	public static Map<String,Article> loadJabRefFile(String path, boolean updateGroups, Map<String,Author> authorsMap) throws FileNotFoundException, UnsupportedEncodingException
+	public void loadJabRefFile(String path, boolean updateGroups) throws FileNotFoundException, UnsupportedEncodingException
 	{	// open the JabRef file
 		System.out.println("Open the JabRef file " + path);
 		Scanner jrScanner = FileTools.openTextFileRead(path,null);
 		
-		// retrieve the titles of the articles
-		System.out.println("Get the articles data");
-		Map<String,Article> result = new HashMap<String, Article>();
+		// retrieve all the articles
+		System.out.println("Read and retrieve the articles");
 		int count = 0;
 		String line = null;
-		// pass comments
+		// skip jabref comments
 		do
 			line = jrScanner.nextLine();
 		while(!line.isEmpty());
@@ -143,11 +146,9 @@ public class JabrefFileHandler
 			if(!line.isEmpty() && !line.startsWith(COMMENT_PREFIX))
 			{	count++;
 				// parse the BibTex entry
-				Map<String,String> data = retrieveArticleMap(line,jrScanner);
-				// build the article object
-				Article article = buildArticle(data, authorsMap);
-				// insert in the map of articles
-				result.put(article.bibtexKey, article);
+				Map<String,String> data = retrieveArticleMap(line, jrScanner);
+				// build the article object (automatic insertion in the maps)
+				Article article = buildArticle(data);
 				// display for verification
 				System.out.println(count + ". " + article);
 			}
@@ -171,7 +172,7 @@ public class JabrefFileHandler
 			count = 0;
 			for(String key: keys)
 			{	count++;
-				Article article = result.get(key.substring(0,key.length()-1));
+				Article article = articlesMap.get(key.substring(0,key.length()-1));
 				article.ignored = true;
 				System.out.println(count + ". " + article);
 			}
@@ -192,7 +193,7 @@ public class JabrefFileHandler
 			count = 0;
 			for(String key: keys)
 			{	count++;
-				Article article = result.get(key.substring(0,key.length()-1));
+				Article article = articlesMap.get(key.substring(0,key.length()-1));
 				article.ignored = true;
 				System.out.println(count + ". " + article);
 			}
@@ -200,8 +201,6 @@ public class JabrefFileHandler
 		
 		// close JabRef file
 		jrScanner.close();
-		
-		return result;
 	}
 
 	/**
@@ -218,7 +217,7 @@ public class JabrefFileHandler
 	 * @return
 	 * 		Map containing the entry data.
 	 */
-	private static Map<String, String> retrieveArticleMap(String line, Scanner scanner)
+	private Map<String, String> retrieveArticleMap(String line, Scanner scanner)
 	{	// init map
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -267,22 +266,21 @@ public class JabrefFileHandler
 	 * Builds the Article object from a 
 	 * {@code Map} containing at least the required Bibtex
 	 * fields: {@code bibtexkey}, {@code authors}, {@code title}, {@code year}.
+	 * Both authors and articles maps are updated by this method.
 	 * 
-	 * @param articleMap
+	 * @param data
 	 * 		Map containing the needed data.
-	 * @param authorsMap
-	 * 		Map containing the known authors.
 	 * @return 
 	 * 		The new article instance.
 	 */
-	private static Article buildArticle(Map<String,String> articleMap, Map<String,Author> authorsMap)
+	private Article buildArticle(Map<String,String> data)
 	{	Article result = new Article();
 	
 		// init BibTex key
-		result.bibtexKey = articleMap.get(PFX_KEY);
+		result.bibtexKey = data.get(PFX_KEY);
 		
 		// init authors
-		String temp[] = articleMap.get(PFX_AUTHOR).split(" and ");
+		String temp[] = data.get(PFX_AUTHOR).split(" and ");
 		for(String authorStr: temp)
 		{	Author author = new Author(authorStr);
 			author = Author.retrieveAuthor(author, authorsMap);
@@ -290,78 +288,79 @@ public class JabrefFileHandler
 		}
 		
 		// init title
-		String title = articleMap.get(PFX_TITLE_ARTICLE);
+		String title = data.get(PFX_TITLE_ARTICLE);
 		result.title = StringTools.normalize(title);
 		
 		// init source
 		String source = null;
 		if(source==null)
-			source = articleMap.get(PFX_JOURNAL1);
+			source = data.get(PFX_JOURNAL1);
 		if(source==null)
-			source = articleMap.get(PFX_JOURNAL2);
+			source = data.get(PFX_JOURNAL2);
 		if(source==null)
-			source = articleMap.get(PFX_TITLE_BOOK);
+			source = data.get(PFX_TITLE_BOOK);
 		if(source==null)
-			source = articleMap.get(PFX_INSTITUTION);
+			source = data.get(PFX_INSTITUTION);
 		result.source = StringTools.normalize(source);//TODO should we normalize here ? (if we want to record later, shouldn't)
 		
 		// init volume
-		result.volume = articleMap.get(PFX_VOLUME);
+		result.volume = data.get(PFX_VOLUME);
 		result.volume = StringTools.normalize(result.volume);
 		
 		// init issue
-		String issue = articleMap.get(PFX_NUMBER);
+		String issue = data.get(PFX_NUMBER);
 		if(issue==null)
-			issue = articleMap.get(PFX_ISSUE);
+			issue = data.get(PFX_ISSUE);
 		result.issue = StringTools.normalize(issue);
 		
 		// init page
-		String page = articleMap.get(PFX_PAGES);
+		String page = data.get(PFX_PAGES);
 		if(page!=null)
 			result.page = StringTools.normalize(page);
 		
 		// init year
-		String year = articleMap.get(PFX_YEAR);
+		String year = data.get(PFX_YEAR);
 		result.year = StringTools.normalize(year);
 		
 		// init doi
-		String doi = articleMap.get(PFX_DOI);
+		String doi = data.get(PFX_DOI);
 		if(doi!=null)
 			result.doi = doi.trim();
 		
 		// abstract
-		String abstrct = articleMap.get(PFX_ABSTRACT);
+		String abstrct = data.get(PFX_ABSTRACT);
 		if(abstrct!=null)
 			result.abstrct = abstrct.trim();
 		
 		// chapter
-		String chapter = articleMap.get(PFX_CHAPTER);
+		String chapter = data.get(PFX_CHAPTER);
 		if(chapter!=null)
 			result.chapter = chapter.trim();
 		
 		// file
-		String file = articleMap.get(PFX_FILE);
+		String file = data.get(PFX_FILE);
 		if(file!=null)
 			result.file = file.trim();
 		
 		// owner
-		String owner = articleMap.get(PFX_OWNER);
+		String owner = data.get(PFX_OWNER);
 		if(owner!=null)
 			result.owner = owner.trim();
 		
 		// timestamp
-		String timestamp = articleMap.get(PFX_TIMESTAMP);
+		String timestamp = data.get(PFX_TIMESTAMP);
 		if(timestamp!=null)
 			result.timestamp = timestamp.trim();
 		
 		// url
-		String url = articleMap.get(PFX_URL);
+		String url = data.get(PFX_URL);
 		if(url!=null)
 			result.url = url.trim();
 		
 		// present
 		result.present = true;
 		
+		articlesMap.put(result.bibtexKey, result);
 		return result;
 	}
 

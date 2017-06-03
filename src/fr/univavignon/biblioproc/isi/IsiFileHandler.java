@@ -400,9 +400,9 @@ public class IsiFileHandler
 		result.checkErrors(authorsMap);
 		
 //if(
-//	result.year!=null && result.year.equals("2003")
-//	&& result.volume!=null && result.volume.equals("45")
-//	&& result.page!=null && result.page.equals("167")
+//	articlesMap.year!=null && articlesMap.year.equals("2003")
+//	&& articlesMap.volume!=null && articlesMap.volume.equals("45")
+//	&& articlesMap.page!=null && articlesMap.page.equals("167")
 //	)
 //	System.out.print("");
 

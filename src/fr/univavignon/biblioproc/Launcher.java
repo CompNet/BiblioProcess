@@ -46,7 +46,9 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	/**TODO
+	{	//TODO control the use of "normalize", since we now want to export bibtex files too.
+		
+		/**TODO
 		 * - finish using the new bibtex constants
 		 * - check by loading actual bibtex file that no bibtex attribute is ignored
 		 * - check the ciw stuff works by loading the file

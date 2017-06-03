@@ -40,7 +40,7 @@ public class StringTools
 	 * @return
 	 * 		Cleaned text.
 	 */
-	public static String removeAccents(String text)
+	public static String removeDiacritics(String text)
 	{	return text == null ? null
 	        : Normalizer.normalize(text, Form.NFD)
 	            .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
@@ -48,7 +48,8 @@ public class StringTools
 	
 	/**
 	 * Normalizes the specified text by removing
-	 * diacritics and switching to lowercase (others?).
+	 * diacritics, switching to lowercase, and replacing
+	 * all dashes variants by a simple hyphen (others?).
 	 * 
 	 * @param text
 	 * 		Original text.
@@ -58,8 +59,26 @@ public class StringTools
 	public static String normalize(String text)
 	{	String result = null;
 		if(text!=null)
-		{	result = removeAccents(text).trim().toLowerCase();	// remove accents and switch to lower case
+		{	result = removeDiacritics(text).trim().toLowerCase();	// remove accents and switch to lower case
 			result = result.replaceAll("\\p{Pd}", "-");			// replace all dashes and variants by regular hyphens
+		}
+		return result;
+	}
+	
+	/**
+	 * Cleans the text without changing it as much
+	 * as {@link #normalize(String)}: replace
+	 * dashes by hyphens.
+	 * 
+	 * @param text
+	 * 		Text to clean.
+	 * @return
+	 * 		Cleaned text.
+	 */
+	public static String clean(String text)
+	{	String result = null;
+		if(text!=null)
+		{	result = text.replaceAll("\\p{Pd}", "-");			// replace all dashes and variants by regular hyphens
 		}
 		return result;
 	}

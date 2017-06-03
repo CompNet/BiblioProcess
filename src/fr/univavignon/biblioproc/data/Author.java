@@ -22,6 +22,8 @@ import java.util.Map;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+
 import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
@@ -30,31 +32,44 @@ import fr.univavignon.biblioproc.tools.StringTools;
 public class Author implements Comparable<Author>
 {	/**
 	 * Builds an author using a string representing
-	 * both its firstname and lastname, of the form
-	 * Lastname, Firstname1 Firstname2...
+	 * both its firstname(s) and lastname, of the form:
+	 * "Lastname, Firstname1 Firstname2..."
 	 * 
 	 * @param fullName
 	 * 		String representing the author's name.
 	 */
 	public Author(String fullName)
-	{	String[] temp = fullName.split(", "); 
-		lastname = StringTools.normalize(temp[0]);
-		if(temp.length>1)
-			firstnameInitial = StringTools.normalize(temp[1].substring(0,1));
+	{	// setup last name
+		fullName = StringTools.clean(fullName);
+		String[] temp = fullName.split(", "); 
+		lastname = temp[0];
+		
+		// setup firstnames
+		if(temp.length==1)
+			throw new IllegalArgumentException("Could not find the firstname in fullname \""+fullName+"\"");
+		else if(temp.length>1)
+			firstnameInitials = StringTools.normalize(temp[1].substring(0,1));
+		
+		// setup normalized fullname
+		normname = firstnameInitials.replace(" ", "");
+		normname = normname.replace(".", "");
+		normname = normname.replace("-", "");
+		normname = lastname + ", " + normname;
+		normname = StringTools.normalize(normname);
 	}
 	
 	/**
 	 * Builds an author using strings separately representing
-	 * his lastname and firstname.
+	 * his lastname and firstname(s).
 	 * 
 	 * @param lastname
 	 * 		Lastname of the author.
-	 * @param firstnameInitial
-	 * 		Initial of the author's firstname.
+	 * @param firstnameInitials
+	 * 		Initial(s) of the author's firstname(s).
 	 */
-	public Author(String lastname, String firstnameInitial)
-	{	this.lastname = StringTools.normalize(lastname);
-		this.firstnameInitial = StringTools.normalize(firstnameInitial);
+	public Author(String lastname, String firstnameInitials)
+	{	this.lastname = StringTools.clean(lastname);
+		this.firstnameInitials = StringTools.clean(firstnameInitials);//TODO if for ISI, should check this...
 	}
 	
 	/**
@@ -81,36 +96,22 @@ public class Author implements Comparable<Author>
 	}
 	
 	/////////////////////////////////////////////////////////////////
-	// FIRSTNAME INITIAL	/////////////////////////////////////////
+	// FIRSTNAME INITIALS	/////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** First name initial  */
-	private String firstnameInitial = null;
-	
-	/**
-	 * Returns the first name initial.
-	 * 
-	 * @return
-	 * 		The first name initial of the author.
-	 */
-	public String getFirstnameInitial()
-	{	return firstnameInitial;
-	}
+	/** First name initial(s)  */
+	public String firstnameInitials = null;
 
 	/////////////////////////////////////////////////////////////////
-	// FIRSTNAME INITIAL	/////////////////////////////////////////
+	// LASTNAME				/////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Last name initial  */
-	private String lastname = null;
+	/** Lastname initial  */
+	public String lastname = null;
 	
-	/**
-	 * Returns the last name.
-	 * 
-	 * @return
-	 * 		The last name of the author.
-	 */
-	public String getLastname()
-	{	return lastname;
-	}
+	/////////////////////////////////////////////////////////////////
+	// NORMALIZED NAME		/////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Normalized fullname */
+	public String normname = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// COMPARISON		/////////////////////////////////////////////
@@ -145,22 +146,53 @@ public class Author implements Comparable<Author>
 	/////////////////////////////////////////////////////////////////
 	/**
 	 * Returns the full name of the author,
-	 * under the form "xxxxx, y", where "xxxxx" is the
-	 * last name and "y" the initial of the first name.
+	 * under the form "Xxxxx, Y. Z.", where "Xxxxx" is the
+	 * last name and "Y." and "Z." the initials of the firstnames.
 	 * 
 	 * @return
-	 * 		A string of the form "lastname, f".
+	 * 		A string of the form "Lastname, F. M.".
 	 */
 	public String getFullname()
 	{	String result = lastname;
-		if(firstnameInitial!=null)
-			result = result + ", " + firstnameInitial;
+		if(firstnameInitials!=null)
+			result = result + ", " + firstnameInitials;
 		return result;
 	}
 	
 	@Override
 	public String toString()
-	{	String result = lastname + ", " + firstnameInitial;
+	{	String result = lastname + ", " + firstnameInitials;
+		return result;
+	}
+
+	/**
+	 * Gets a text of space- or hyphen-separated words,
+	 * and returns a new string in which each one of these
+	 * words is represented by its uppercase initial followed
+	 * by a dot. This method is designed to process sequences
+	 * of firstnames and to return the corresponding sequence of
+	 * initials.
+	 *  
+	 * @param text
+	 * 		Sequence of firstnames.
+	 * @return
+	 * 		The corresponding sequence of initials.
+	 */
+	public static String keepInitials(String text)
+	{	String result = "";
+		String temp[] = text.split(" ");
+		for(int i=0;i<temp.length;i++)
+		{	if(i>0)
+				result = result + " ";
+			String tmp = temp[i];
+			String temp2[] = tmp.split("-");
+			for(int j=0;j<temp2.length;j++)
+			{	if(j>0)
+					result = result + "-";
+				String tmp2 = temp2[j];
+				result = result + tmp2.substring(0,1).toUpperCase() + ".";
+			}
+		}
 		return result;
 	}
 }

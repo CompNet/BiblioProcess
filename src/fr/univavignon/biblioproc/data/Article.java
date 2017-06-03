@@ -462,7 +462,7 @@ if(same && !result)
 	public String getCiteAs()
 	{	String result = "";
 //		for(Author author: authors)
-//			result = result + author.getFullname() + ", ";
+//			articlesMap = articlesMap + author.getFullname() + ", ";
 		result = result + getFirstAuthorFullname() + ", ";
 		
 		result = result + year;
