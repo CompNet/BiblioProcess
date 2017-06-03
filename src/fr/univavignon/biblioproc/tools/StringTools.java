@@ -58,7 +58,9 @@ public class StringTools
 	public static String normalize(String text)
 	{	String result = null;
 		if(text!=null)
-			result = removeAccents(text).trim().toLowerCase();
+		{	result = removeAccents(text).trim().toLowerCase();	// remove accents and switch to lower case
+			result = result.replaceAll("\\p{Pd}", "-");			// replace all dashes and variants by regular hyphens
+		}
 		return result;
 	}
 }

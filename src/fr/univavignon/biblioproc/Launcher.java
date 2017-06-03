@@ -53,6 +53,9 @@ public class Launcher
 		 * - synchronize all ciw entries with exactly one bibtex entry
 		 * - generate the short ref for full ciw entries
 		 * - be able to synch ciw short ref with bibtex entries. maybe use manual annotations stored in the "notes" bibtex file?
+		 * 
+		 * - generate a folder containing all the PDF file of the articles listed in the bibtex file
+		 * - generate the list of articles present as PDF files but missing from the bibtex file
 		 */
 		
 		

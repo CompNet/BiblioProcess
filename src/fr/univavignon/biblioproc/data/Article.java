@@ -27,290 +27,40 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.tools.StringTools;
-
 /**
  * This class is used to represent a publication,
- * with a minimum set of fields.
+ * with a minimum set of fields. It can be extracted
+ * from a Bibtex file, or a ISI (Endnote) file. 
+ * <br/>
+ * This class is also able to represent additional information, 
+ * such as various corpus-wise stats and cited/citing papers.  
  */
 public class Article implements Comparable<Article>
 {	
-	/**
-	 * Builds the Article object from a 
-	 * {@code Map} containing at least the required
-	 * fields: {@code bibtexkey}, {@code authors}, {@code title}, {@code year}.
-	 * 
-	 * @param articleMap
-	 * 		Map containing the needed data.
-	 * @param authorsMap
-	 * 		Map containing the known authors.
-	 * @return 
-	 * 		The new article instance.
-	 */
-	public static Article buildArticle(Map<String,String> articleMap, Map<String,Author> authorsMap)
-	{	Article result = new Article();
-	
-		// init BibTex key
-		result.bibtexKey = articleMap.get("bibtexkey");
-		
-		// init authors
-		String temp[] = articleMap.get("author").split(" and ");
-		for(String authorStr: temp)
-		{	Author author = new Author(authorStr);
-			author = Author.retrieveAuthor(author, authorsMap);
-			result.authors.add(author);
-		}
-		
-		// init title
-		String title = articleMap.get("title");
-		result.title = StringTools.normalize(title);
-		
-		// init source
-		String source = articleMap.get("source");
-		if(source==null)
-			source = articleMap.get("journal");
-		if(source==null)
-			source = articleMap.get("booktitle");
-		if(source==null)
-			source = articleMap.get("institution");
-		if(source==null)
-			source = articleMap.get("school");
-		if(source==null)
-			source = articleMap.get("publisher");
-		result.source = StringTools.normalize(source);
-		
-		// init volume
-		result.volume = articleMap.get("volume");
-		result.volume = StringTools.normalize(result.volume);
-		
-		// init issue
-		String issue = articleMap.get("number");
-		result.issue = StringTools.normalize(issue);
-		
-		// init page
-		String page = articleMap.get("pages");
-		if(page!=null)
-		{	if(page.contains("-"))
-				page = page.split("-")[0];
-			result.page = StringTools.normalize(page);
-		}
-		
-		// init year
-		String year = articleMap.get("year");
-		result.year = StringTools.normalize(year);
-		
-		// init doi
-		String doi = articleMap.get("doi");
-		if(doi!=null)
-			result.doi = doi.trim();
-		
-		// present
-		result.present = true;
-		
-		return result;
-	}
-	
-	/**
-	 * Builds an {@code Article} by parsing the specified string.
-	 * 
-	 * @param string
-	 * 		The bibtex string representing the article.
-	 * @param authorsMap
-	 * 		Map containing the known authors.
-	 * @return
-	 * 		The corresponding {@code Article} object.
-	 */
-	public static Article buildArticle(String string, Map<String,Author> authorsMap)
-	{	Article result = new Article();
-		String temp[] = string.split(", ");
-		int index = 0;
-		
-		// first author
-		String temp2[] = temp[index].split(" ");
-		if(temp2.length==1 && temp2[0].contains("."))
-			temp2 = temp2[0].split("\\.");
-		String lastname = temp2[0];
-		if(lastname.startsWith("*") || Character.isDigit(lastname.charAt(0)))
-			return null;
-		String firstnameInitial = null;
-		int idx = 1;
-		while(temp2.length>idx && firstnameInitial==null)
-		{	if(temp2[idx].length()>3 && idx<temp2.length-1)
-				lastname = lastname + temp2[idx];
-			else
-				firstnameInitial = temp2[idx];
-			idx++;
-		}
-		if(firstnameInitial!=null && firstnameInitial.length()>1)
-			firstnameInitial = temp2[1].substring(0,1);
-		Author author = new Author(lastname, firstnameInitial);
-		author = Author.retrieveAuthor(author, authorsMap);
-		result.authors.add(author);
-		index++;
-		
-		// year
-		if(temp.length>index)
-		{	String tempYear = StringTools.normalize(temp[index]);
-			try
-			{	Integer.parseInt(tempYear);
-			}
-			catch(NumberFormatException e)
-			{	tempYear = null;
-				result.year = "N/A";
-			}
-			if(tempYear!=null)
-			{	result.year = tempYear;
-				index++;
-			}
-		}
-		
-		// source
-		if(temp.length>index)
-		{	result.source = StringTools.normalize(temp[index]);
-			index++;
-		}
-		
-		// volume
-		if(temp.length>index && (temp[index].startsWith("V") || temp[index].startsWith("v")))
-		{	result.volume = StringTools.normalize(temp[index].substring(1));
-			index++;
-		}
-		
-		// page
-		if(temp.length>index && (temp[index].startsWith("P") || temp[index].startsWith("p")))
-		{	result.page = StringTools.normalize(temp[index].substring(1).trim());
-			index++;
-		}
-		
-		// doi
-		if(temp.length>index && (temp[index].startsWith("DOI") || temp[index].startsWith("Doi")))
-		{	result.doi = temp[index].substring(4).trim();
-			index++;
-		}
-		
-		// correct some of the errors in ISI
-		checkErrors(result, authorsMap);
-		
-//if(
-//	result.year!=null && result.year.equals("2003")
-//	&& result.volume!=null && result.volume.equals("45")
-//	&& result.page!=null && result.page.equals("167")
-//	)
-//	System.out.print("");
-
-		return result;
-	}
-	
-	/**
-	 * Builds an {@code Article} using the specified map and adding
-	 * the specified citations. The {@code Map} must contain at least 
-	 * the required fields: {@code bibtexkey}, {@code authors}, 
-	 * {@code title}, {@code year}.
-	 * 
-	 * @param map
-	 * 		A map used to initialize the {@code Article} object.
-	 * @param citedArticles
-	 * 		Articles cited by the newly created article.
-	 * @param authorsMap
-	 * 		Map containing the known authors.
-	 * @return
-	 * 		The created article.
-	 */
-	public static Article buildArticle(Map<String,String> map, Set<Article> citedArticles, Map<String,Author> authorsMap)
-	{	Article result = buildArticle(map, authorsMap);
-		result.present = false;
-		
-		result.citedArticles.addAll(citedArticles);
-		for(Article article: citedArticles)
-			article.addCitingArticle(article);
-		
-		return result;
-	}
-
 	/////////////////////////////////////////////////////////////////
 	// IGNORED			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Indicates if this article was ignored in the bibliographic review */
-	private boolean ignored = false;
+	public boolean ignored = false;
 	
-	/**
-	 * Returns {@code true} iff this article was
-	 * ignored in the bibliographic review.
-	 * 
-	 * @return
-	 * 		{@code true} in case of ignored article.
-	 */
-	public boolean isIgnored()
-	{	return ignored;
-	}
-	
-	/**
-	 * Set the {@code ignored} flag.
-	 * 
-	 * @param ignored
-	 * 		New value for the {@code ignored} flag.
-	 */
-	public void setIgnored(boolean ignored)
-	{	this.ignored = ignored;
-	}
-
 	/////////////////////////////////////////////////////////////////
 	// TIMES CITED		/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Number of times the article was cited in the corpus */
-	private int timesCited = 0;
-	
-	/**
-	 * Returns the number of times the article was cited.
-	 * 
-	 * @return
-	 * 		Number of times the article was cited.
-	 */
-	public int getTimesCited()
-	{	return timesCited;
-	}
-	
-	/**
-	 * Increments the number of times the article
-	 * was cited.
-	 */
-	public void incrementTimesCited()
-	{	timesCited++;
-	}
+	public int timesCited = 0;
 	
 	/////////////////////////////////////////////////////////////////
 	// PRESENT			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Indicates if this article is present in the JabRef file */
-	private boolean present = false;
+	public boolean present = false;
 	
-	/**
-	 * Returns {@code true} iff this article is
-	 * present in the JabRef file.
-	 * 
-	 * @return
-	 * 		{@code true} in case of present article.
-	 */
-	public boolean isPresent()
-	{	return present;
-	}
-
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX KEY		/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** BibTex key of this article */
-	private String bibtexKey = null;
+	public String bibtexKey = null;
 	
-	/**
-	 * Returns the BibTex key of this article
-	 * 
-	 * @return
-	 * 		BibTex key of this article.
-	 */
-	public String getBibtexKey()
-	{	return bibtexKey;
-	}
-
 	/////////////////////////////////////////////////////////////////
 	// AUTHOR LIST		/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
@@ -350,236 +100,157 @@ public class Article implements Comparable<Article>
 	{	if(!authors.contains(author))
 			authors.add(author);
 	}
-
+	
 	/////////////////////////////////////////////////////////////////
 	// TITLE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Title of this article */
-	private String title = null;
+	public String title = null;
 	
-	/**
-	 * Returns the title of this article
-	 * 
-	 * @return
-	 * 		Title of this article.
-	 */
-	public String getTitle()
-	{	return title;
-	}
-
 	/////////////////////////////////////////////////////////////////
 	// SOURCE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Source of this article (conference, journal, etc.) */
-	private String source = null;
-
-	/**
-	 * Returns the source of this article
-	 * (conference, journal, etc.)
-	 * 
-	 * @return
-	 * 		Source of this article.
-	 */
-	public String getSource()
-	{	return source;
-	}
+	public String source = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// VOLUME			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Volume number of this article */
-	private String volume = null;
-
-	/**
-	 * Returns the volume number of this article.
-	 * 
-	 * @return
-	 * 		Volume of this article.
-	 */
-	public String getVolume()
-	{	return volume;
-	}
+	public String volume = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// ISSUE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Issue number of this article */
-	private String issue = null;
-
-	/**
-	 * Returns the issue number of this article.
-	 * 
-	 * @return
-	 * 		Issue of this article.
-	 */
-	public String getIssue()
-	{	return issue;
-	}
+	public String issue = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// STARTING PAGE	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Starting page of this article */
-	private String page = null;
-
-	/**
-	 * Returns the page of this article.
-	 * 
-	 * @return
-	 * 		Starting page of this article.
-	 */
-	public String getPage()
-	{	return page;
-	}
+	public String page = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// YEAR				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Year of publication of this article */
-	private String year = null;
-
-	/**
-	 * Returns the year of publication of this article
-	 * 
-	 * @return
-	 * 		Year of publication of this article.
-	 */
-	public String getYear()
-	{	return year;
-	}
+	public String year = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// DOI				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Digital object identifier of this article */
-	private String doi = null;
-
-	/**
-	 * Returns the digital object identifier of this article.
-	 * 
-	 * @return
-	 * 		Digital object identifier of this article.
-	 */
-	public String getDoi()
-	{	return doi;
-	}
+	public String doi = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// CITED ARTICLES	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** List of cited articles */
-	private Set<Article> citedArticles = new TreeSet<Article>();
-
-	/**
-	 * Returns the list of cited articles.
-	 * 
-	 * @return
-	 * 		List of articles cited by this article.
-	 */
-	public Set<Article> getCitedArticles()
-	{	return citedArticles;
-	}
-
-//	/**
-//	 * Adds a new article in the list of articles
-//	 * cited by this article.
-//	 * 
-//	 * @param article
-//	 * 		The new cited article to be added.
-//	 */
-//	public void addCitedArticle(Article article)
-//	{	citedArticles.add(article);
-//	}
+	public Set<Article> citedArticles = new TreeSet<Article>();
 	
 	/////////////////////////////////////////////////////////////////
 	// CITING ARTICLES	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** List of citing articles */
-	private Set<Article> citingArticles = new TreeSet<Article>();
-
-	/**
-	 * Returns the list of citing articles.
-	 * 
-	 * @return
-	 * 		List of articles citing this article.
-	 */
-	public Set<Article> getCitingArticles()
-	{	return citingArticles;
-	}
+	public Set<Article> citingArticles = new TreeSet<Article>();
 	
-	/**
-	 * Adds a new article in the list of articles
-	 * citng this article.
-	 * 
-	 * @param article
-	 * 		The new citing article to be added.
-	 */
-	public void addCitingArticle(Article article)
-	{	citingArticles.add(article);
-	}
-
+	/////////////////////////////////////////////////////////////////
+	// CHAPTER			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Chapter number */
+	public String chapter;
+	
+	/////////////////////////////////////////////////////////////////
+	// FILE				/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Name of the PDF file */
+	public String file;
+	
+	/////////////////////////////////////////////////////////////////
+	// URL				/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** URL of the article */
+	public String url;
+	
+	/////////////////////////////////////////////////////////////////
+	// OWNER			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Owner in Jabref */
+	public String owner;
+	
+	/////////////////////////////////////////////////////////////////
+	// TIMESTAMP		/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Time at which the entry was created in Jabref */
+	public String timestamp;
+	
+	/////////////////////////////////////////////////////////////////
+	// ABSTRACT			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Summary of the article */
+	public String abstrct;
+	
 	/////////////////////////////////////////////////////////////////
 	// ERRORS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
 	 * Apply some manual corections to certain articles.
 	 * 
-	 * @param article
-	 * 		Article to correct.
 	 * @param authorsMap
 	 * 		Map containing the known authors.
 	 */
-	public static void checkErrors(Article article, Map<String,Author> authorsMap)
-	{	if(article.getAuthors().get(0).getFullname().equals("flake, g")
-			//&& article.getSource()!=null && article.getSource().equals("ieee comput")
-			&& article.getVolume()!=null && article.getVolume().equals("36")
-			&& article.getPage()!=null && article.getPage().equals("66")
-			&& article.getYear()!=null && article.getYear().equals("2002"))
-		{	article.volume = "35";
+	public void checkErrors(Map<String,Author> authorsMap)
+	{	if(authors.get(0).getFullname().equals("flake, g")
+			//&& article.source!=null && article.source.equals("ieee comput")
+			&& volume!=null && volume.equals("36")
+			&& page!=null && page.equals("66")
+			&& year!=null && year.equals("2002"))
+		{	volume = "35";
 		}
 	
-		else if(article.getAuthors().get(0).getFullname().equals("vandongen, s")
-			//&& article.getSource()!=null && article.getSource().equals("thesis u ultrecht ne")
-			//&& article.getPage()!=null && article.getPage().equals("371")
-			&& article.getYear()!=null && article.getYear().equals("2000"))
-		{	Author author = article.getAuthors().get(0);
+		else if(getAuthors().get(0).getFullname().equals("vandongen, s")
+			//&& article.source!=null && article.source.equals("thesis u ultrecht ne")
+			//&& article.page!=null && article.page.equals("371")
+			&& year!=null && year.equals("2000"))
+		{	Author author = getAuthors().get(0);
 			authorsMap.remove(author.getFullname());
 			author = authorsMap.get("van dongen, s");
-			article.authors.set(0,author);
+			authors.set(0,author);
 		}
 	
-		else if(article.getAuthors().get(0).getFullname().equals("granovet, m")
-			&& article.getSource()!=null && article.getSource().equals("am j sociol")
-			&& article.getVolume()!=null && article.getVolume().equals("78")
-			&& article.getPage()!=null && article.getPage().equals("1360")
-			&& article.getYear()!=null && article.getYear().equals("1973"))
-		{	Author author = article.getAuthors().get(0);
+		else if(getAuthors().get(0).getFullname().equals("granovet, m")
+			&& source!=null && source.equals("am j sociol")
+			&& volume!=null && volume.equals("78")
+			&& page!=null && page.equals("1360")
+			&& year!=null && year.equals("1973"))
+		{	Author author = getAuthors().get(0);
 			authorsMap.remove(author.getFullname());
 			author = authorsMap.get("granovetter, m");
-			article.authors.set(0,author);
+			authors.set(0,author);
 		}
 	
-		else if(article.getAuthors().get(0).getFullname().equals("leydesdorff, l")
-			&& article.getSource()!=null && article.getSource().equals("j math sociol")
-			&& article.getYear()!=null && article.getYear().equals("1971"))
+		else if(getAuthors().get(0).getFullname().equals("leydesdorff, l")
+			&& source!=null && source.equals("j math sociol")
+			&& year!=null && year.equals("1971"))
 		{	Author author = authorsMap.get("lorrain, f");
-			article.authors.set(0,author);
+			authors.set(0,author);
 			author = authorsMap.get("white, h");
-			article.authors.add(author);
-			article.volume = "1";
-			article.page = "49";
-			article.year = "1971";
+			authors.add(author);
+			volume = "1";
+			page = "49";
+			year = "1971";
 		}
 	
-		else if(article.getAuthors().get(0).getFullname().equals("vonmering, c")
-			&& article.getSource()!=null && article.getSource().equals("nature")
-			&& article.getVolume()!=null && article.getVolume().equals("417")
-			&& article.getPage()!=null && article.getPage().equals("399")
-			&& article.getYear()!=null && article.getYear().equals("2002"))
-		{	Author author = article.getAuthors().get(0);
+		else if(getAuthors().get(0).getFullname().equals("vonmering, c")
+			&& source!=null && source.equals("nature")
+			&& volume!=null && volume.equals("417")
+			&& page!=null && page.equals("399")
+			&& year!=null && year.equals("2002"))
+		{	Author author = getAuthors().get(0);
 		authorsMap.remove(author.getFullname());
 			author = authorsMap.get("von mering, c");
-			article.authors.set(0,author);
+			authors.set(0,author);
 		}
 	}
 	
@@ -663,14 +334,14 @@ if(same && !result)
 		
 		// title
 		if(result)
-		{	String title2 = article.getTitle();
+		{	String title2 = article.title;
 			if(title!=null && title2!=null)
 				result = title.equals(title2);
 		}
 if(same && !result)
 {	System.out.println(title);
 	System.out.println(">> VS <<");
-	System.out.println(article.getTitle());
+	System.out.println(article.title);
 	return(result);
 }
 		
@@ -679,53 +350,53 @@ if(same && !result)
 		
 		// volume
 		if(result)
-		{	String volume2 = article.getVolume();
+		{	String volume2 = article.volume;
 			if(volume!=null && volume2!=null)
 				result = volume.equals(volume2);
 		}
 if(same && !result)
 {	System.out.println(volume);
 	System.out.println(">> VS <<");
-	System.out.println(article.getVolume());
+	System.out.println(article.volume);
 	return(result);
 }
 		
 		// issue
 		if(result)
-		{	String issue2 = article.getIssue();
+		{	String issue2 = article.issue;
 			if(issue!=null && issue2!=null)
 				result = issue.equals(issue2);
 		}
 if(same && !result)
 {	System.out.println(issue);
 	System.out.println(">> VS <<");
-	System.out.println(article.getIssue());
+	System.out.println(article.issue);
 	return(result);
 }
 		
 		// page
 		if(result)
-		{	String page2 = article.getPage();
+		{	String page2 = article.page;
 			if(page!=null && page2!=null)
 				result = page.equals(page2);
 		}
 if(same && !result)
 {	System.out.println(page);
 	System.out.println(">> VS <<");
-	System.out.println(article.getPage());
+	System.out.println(article.page);
 	return(result);
 }
 		
 		// year
 		if(result)
-		{	String year2 = article.getYear();
+		{	String year2 = article.year;
 			if(year!=null && year2!=null)
 				result = year.equals(year2);
 		}
 if(same && !result)
 {	System.out.println(year);
 	System.out.println(">> VS <<");
-	System.out.println(article.getYear());
+	System.out.println(article.year);
 	return(result);
 }
 		
@@ -746,36 +417,36 @@ if(same && !result)
 		
 		// title
 		if(title==null)
-		{	String title2 = article.getTitle();
+		{	String title2 = article.title;
 			if(title2!=null)
 				title = title2;
 		}
 		
 		// volume
 		if(volume==null)
-		{	String volume2 = article.getVolume();
+		{	String volume2 = article.volume;
 			if(volume2!=null)
 				volume = volume2;
 		}
 		
 		// issue
 		if(issue==null)
-		{	String issue2 = article.getIssue();
+		{	String issue2 = article.issue;
 			if(issue2!=null)
 				issue = issue2;
 		}
 		
 		// page
 		if(page==null)
-		{	String page2 = article.getPage();
+		{	String page2 = article.page;
 			if(page2!=null)
 				page = page2;
 		}
 		
 		// references
-		Set<Article> citingArticles2 = article.getCitingArticles();
+		Set<Article> citingArticles2 = article.citingArticles;
 		citingArticles.addAll(citingArticles2);
-		Set<Article> citedArticles2 = article.getCitedArticles();
+		Set<Article> citedArticles2 = article.citedArticles;
 		citedArticles.addAll(citedArticles2);
 	}
 	

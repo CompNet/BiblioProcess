@@ -29,6 +29,7 @@ import java.util.Scanner;
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.tools.FileTools;
+import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
  * Class dedicated to Jabref I/Os.
@@ -37,10 +38,17 @@ import fr.univavignon.biblioproc.tools.FileTools;
  */
 public class JabrefFileHandler
 {
+	/////////////////////////////////////////////////////////////////
+	// BIBTEX MARKERS	/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 	/** String marking the end of a BibTex field */
 	private static final String FIELD_END = "},";
 	/** String marking the end of a BibTex entry */
 	private static final String ENTRY_END = "}";
+	
+	/////////////////////////////////////////////////////////////////
+	// JABREF MARKERS	/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 	/** String marking the end of the actual BibTex file (and the begining of the JabRef part) */
 	private static final String COMMENT_PREFIX = "@comment";
 	/** String marking the begining of the list of ignored articles */
@@ -52,41 +60,51 @@ public class JabrefFileHandler
 	/** String separating the BibTex kes in a JabRef group */
 	private static final String KEY_SEPARATOR = "\\;";
 	
+	/////////////////////////////////////////////////////////////////
+	// BIBTEX FIELDS	/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Bibtex key for the article key */
+	private static final String PFX_KEY = "bibtexkey";
 	/** Bibtex key for the authors */
-	public static final String PFX_AUTHOR = "author";
+	private static final String PFX_AUTHOR = "author";
 	/** Bibtex key for the abstract */
-	public static final String PFX_ABSTRACT = "abstract";
+	private static final String PFX_ABSTRACT = "abstract";
 	/** Bibtex key for the chapter */
-	public static final String PFX_CHAPTER = "chapter";
+	private static final String PFX_CHAPTER = "chapter";
 	/** Bibtex key for the DOI */
-	public static final String PFX_DOI = "doi";
+	private static final String PFX_DOI = "doi";
 	/** Bibtex key for the file */
-	public static final String PFX_FILE = "file";
+	private static final String PFX_FILE = "file";
 	/** Bibtex key for the institution */
-	public static final String PFX_INSTITUTION = "institution";
+	private static final String PFX_INSTITUTION = "institution";
 	/** Bibtex key for the issue */
-	public static final String PFX_ISSUE = "issue";
-	/** Bibtex key for the journal */
-	public static final String PFX_JOURNAL = "journal";
+	private static final String PFX_ISSUE = "issue";
+	/** Traditional Bibtex key for the journal */
+	private static final String PFX_JOURNAL1 = "journal";
+	/** Alterantive Bibtex key for the journal */
+	private static final String PFX_JOURNAL2 = "journaltitle";
 	/** Bibtex key for the number */
-	public static final String PFX_NUMBER = "number";
+	private static final String PFX_NUMBER = "number";
 	/** Bibtex key for the owner */
-	public static final String PFX_OWNER = "owner";
+	private static final String PFX_OWNER = "owner";
 	/** Bibtex key for the pages */
-	public static final String PFX_PAGES = "pages";
+	private static final String PFX_PAGES = "pages";
 	/** Bibtex key for the time stamp */
-	public static final String PFX_TIMESTAMP = "timestamp";
+	private static final String PFX_TIMESTAMP = "timestamp";
 	/** Bibtex key for the article title */
-	public static final String PFX_TITLE_ARTICLE = "title";
+	private static final String PFX_TITLE_ARTICLE = "title";
 	/** Bibtex key for the book title */
-	public static final String PFX_TITLE_BOOK = "booktitle";
+	private static final String PFX_TITLE_BOOK = "booktitle";
 	/** Bibtex key for the URL */
-	public static final String PFX_URL = "url";
+	private static final String PFX_URL = "url";
 	/** Bibtex key for the volume */
-	public static final String PFX_VOLUME = "volume";
+	private static final String PFX_VOLUME = "volume";
 	/** Bibtex key for the publication year */
-	public static final String PFX_YEAR = "year";
+	private static final String PFX_YEAR = "year";
 	
+	/////////////////////////////////////////////////////////////////
+	// LOADING			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 	/**
 	 * Loads the specified Jabref file, and builds the corresponding 
 	 * map of articles.
@@ -127,9 +145,9 @@ public class JabrefFileHandler
 				// parse the BibTex entry
 				Map<String,String> data = retrieveArticleMap(line,jrScanner);
 				// build the article object
-				Article article = Article.buildArticle(data,authorsMap);
+				Article article = buildArticle(data, authorsMap);
 				// insert in the map of articles
-				result.put(article.getBibtexKey(), article);
+				result.put(article.bibtexKey, article);
 				// display for verification
 				System.out.println(count + ". " + article);
 			}
@@ -154,7 +172,7 @@ public class JabrefFileHandler
 			for(String key: keys)
 			{	count++;
 				Article article = result.get(key.substring(0,key.length()-1));
-				article.setIgnored(true);
+				article.ignored = true;
 				System.out.println(count + ". " + article);
 			}
 	
@@ -175,7 +193,7 @@ public class JabrefFileHandler
 			for(String key: keys)
 			{	count++;
 				Article article = result.get(key.substring(0,key.length()-1));
-				article.setIgnored(true);
+				article.ignored = true;
 				System.out.println(count + ". " + article);
 			}
 		}
@@ -208,7 +226,7 @@ public class JabrefFileHandler
 		int start = line.indexOf('{') + 1;
 		int end = line.length() - 1;
 		String bibtexkey = line.substring(start, end);
-		result.put("bibtexkey", bibtexkey);
+		result.put(PFX_KEY, bibtexkey);
 		
 		// rest of the fields
 		do
@@ -244,4 +262,111 @@ public class JabrefFileHandler
 		
 		return result;
 	}
+
+	/**
+	 * Builds the Article object from a 
+	 * {@code Map} containing at least the required Bibtex
+	 * fields: {@code bibtexkey}, {@code authors}, {@code title}, {@code year}.
+	 * 
+	 * @param articleMap
+	 * 		Map containing the needed data.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
+	 * @return 
+	 * 		The new article instance.
+	 */
+	private static Article buildArticle(Map<String,String> articleMap, Map<String,Author> authorsMap)
+	{	Article result = new Article();
+	
+		// init BibTex key
+		result.bibtexKey = articleMap.get(PFX_KEY);
+		
+		// init authors
+		String temp[] = articleMap.get(PFX_AUTHOR).split(" and ");
+		for(String authorStr: temp)
+		{	Author author = new Author(authorStr);
+			author = Author.retrieveAuthor(author, authorsMap);
+			result.addAuthor(author);
+		}
+		
+		// init title
+		String title = articleMap.get(PFX_TITLE_ARTICLE);
+		result.title = StringTools.normalize(title);
+		
+		// init source
+		String source = null;
+		if(source==null)
+			source = articleMap.get(PFX_JOURNAL1);
+		if(source==null)
+			source = articleMap.get(PFX_JOURNAL2);
+		if(source==null)
+			source = articleMap.get(PFX_TITLE_BOOK);
+		if(source==null)
+			source = articleMap.get(PFX_INSTITUTION);
+		result.source = StringTools.normalize(source);//TODO should we normalize here ? (if we want to record later, shouldn't)
+		
+		// init volume
+		result.volume = articleMap.get(PFX_VOLUME);
+		result.volume = StringTools.normalize(result.volume);
+		
+		// init issue
+		String issue = articleMap.get(PFX_NUMBER);
+		if(issue==null)
+			issue = articleMap.get(PFX_ISSUE);
+		result.issue = StringTools.normalize(issue);
+		
+		// init page
+		String page = articleMap.get(PFX_PAGES);
+		if(page!=null)
+			result.page = StringTools.normalize(page);
+		
+		// init year
+		String year = articleMap.get(PFX_YEAR);
+		result.year = StringTools.normalize(year);
+		
+		// init doi
+		String doi = articleMap.get(PFX_DOI);
+		if(doi!=null)
+			result.doi = doi.trim();
+		
+		// abstract
+		String abstrct = articleMap.get(PFX_ABSTRACT);
+		if(abstrct!=null)
+			result.abstrct = abstrct.trim();
+		
+		// chapter
+		String chapter = articleMap.get(PFX_CHAPTER);
+		if(chapter!=null)
+			result.chapter = chapter.trim();
+		
+		// file
+		String file = articleMap.get(PFX_FILE);
+		if(file!=null)
+			result.file = file.trim();
+		
+		// owner
+		String owner = articleMap.get(PFX_OWNER);
+		if(owner!=null)
+			result.owner = owner.trim();
+		
+		// timestamp
+		String timestamp = articleMap.get(PFX_TIMESTAMP);
+		if(timestamp!=null)
+			result.timestamp = timestamp.trim();
+		
+		// url
+		String url = articleMap.get(PFX_URL);
+		if(url!=null)
+			result.url = url.trim();
+		
+		// present
+		result.present = true;
+		
+		return result;
+	}
+
+	/////////////////////////////////////////////////////////////////
+	// WRITING			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	// TODO
 }

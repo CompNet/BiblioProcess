@@ -36,6 +36,7 @@ import java.util.TreeSet;
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.tools.FileTools;
+import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
  * Class dedicated to reading/writing ISI files.
@@ -110,14 +111,14 @@ public class IsiFileHandler
 		count = 0;
 		Collections.sort(articles, new Comparator<Article>()
 		{	public int compare(Article o1, Article o2)
-			{	int result = o1.getTimesCited() - o2.getTimesCited();
+			{	int result = o1.timesCited - o2.timesCited;
 				return result;
 			};
 		});
 		for(Article a: articles)
-		{	if(!a.isPresent())
+		{	if(!a.present)
 			{	count++;
-				System.out.println(count + ". [" + a.getTimesCited() + "]" + a);
+				System.out.println(count + ". [" + a.timesCited + "]" + a);
 			}
 		}
 		
@@ -200,7 +201,7 @@ public class IsiFileHandler
 			if(line.startsWith("CR "))
 			{	do
 				{	String articleStr = line.substring(3);
-					Article article = Article.buildArticle(articleStr, authorsMap);
+					Article article = buildArticle(articleStr, authorsMap);
 					if(article!=null)
 					{	article = retrieveArticle(article, articles);
 						citedArticles.add(article);
@@ -276,7 +277,7 @@ public class IsiFileHandler
 			for(int i=0;i<2;i++)
 				line = scanner.nextLine();
 			
-			result = Article.buildArticle(data,citedArticles, authorsMap);
+			result = Article.buildArticle(data, citedArticles, authorsMap);
 			result = retrieveArticle(result,articles);
 		}
 		
@@ -301,7 +302,7 @@ public class IsiFileHandler
 		{	Article a = it.next();
 			if(article.isCompatible(a))
 			{	result = a;
-				result.incrementTimesCited();
+				result.timesCited++;
 			}
 		}
 		
@@ -312,6 +313,124 @@ public class IsiFileHandler
 		}
 		else
 			result.completeWith(article);
+		
+		return result;
+	}
+	
+	/**
+	 * Builds an {@code Article} by parsing the specified string,
+	 * which is a compact representation of a bibliographic reference.
+	 * 
+	 * @param string
+	 * 		The bibtex string representing the article.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
+	 * @return
+	 * 		The corresponding {@code Article} object.
+	 */
+	public static Article buildArticle(String string, Map<String,Author> authorsMap)
+	{	Article result = new Article();
+		String temp[] = string.split(", ");
+		int index = 0;
+		
+		// first author
+		String temp2[] = temp[index].split(" ");
+		if(temp2.length==1 && temp2[0].contains("."))
+			temp2 = temp2[0].split("\\.");
+		String lastname = temp2[0];
+		if(lastname.startsWith("*") || Character.isDigit(lastname.charAt(0)))
+			return null;
+		String firstnameInitial = null;
+		int idx = 1;
+		while(temp2.length>idx && firstnameInitial==null)
+		{	if(temp2[idx].length()>3 && idx<temp2.length-1)
+				lastname = lastname + temp2[idx];
+			else
+				firstnameInitial = temp2[idx];
+			idx++;
+		}
+		if(firstnameInitial!=null && firstnameInitial.length()>1)
+			firstnameInitial = temp2[1].substring(0,1);
+		Author author = new Author(lastname, firstnameInitial);
+		author = Author.retrieveAuthor(author, authorsMap);
+		result.addAuthor(author);
+		index++;
+		
+		// year
+		if(temp.length>index)
+		{	String tempYear = StringTools.normalize(temp[index]);
+			try
+			{	Integer.parseInt(tempYear);
+			}
+			catch(NumberFormatException e)
+			{	tempYear = null;
+				result. year = "N/A";
+			}
+			if(tempYear!=null)
+			{	result.year = tempYear;
+				index++;
+			}
+		}
+		
+		// source
+		if(temp.length>index)
+		{	result.source = StringTools.normalize(temp[index]);
+			index++;
+		}
+		
+		// volume
+		if(temp.length>index && (temp[index].startsWith("V") || temp[index].startsWith("v")))
+		{	result.volume = StringTools.normalize(temp[index].substring(1));
+			index++;
+		}
+		
+		// page
+		if(temp.length>index && (temp[index].startsWith("P") || temp[index].startsWith("p")))
+		{	result.page = StringTools.normalize(temp[index].substring(1).trim());
+			index++;
+		}
+		
+		// doi
+		if(temp.length>index && (temp[index].startsWith("DOI") || temp[index].startsWith("Doi")))
+		{	result.doi = temp[index].substring(4).trim();
+			index++;
+		}
+		
+		// correct some of the errors in ISI
+		result.checkErrors(authorsMap);
+		
+//if(
+//	result.year!=null && result.year.equals("2003")
+//	&& result.volume!=null && result.volume.equals("45")
+//	&& result.page!=null && result.page.equals("167")
+//	)
+//	System.out.print("");
+
+		return result;
+	}
+
+	/**
+	 * Builds an {@code Article} using the specified map and adding
+	 * the specified citations. The {@code Map} must contain at least 
+	 * the required fields: {@code bibtexkey}, {@code authors}, 
+	 * {@code title}, {@code year}.
+	 * 
+	 * @param map
+	 * 		A map used to initialize the {@code Article} object.
+	 * @param citedArticles
+	 * 		Articles cited by the newly created article.
+	 * @param authorsMap
+	 * 		Map containing the known authors.
+	 * @return
+	 * 		The created article.
+	 */
+	public static Article buildArticle(Map<String,String> map, Set<Article> citedArticles, Map<String,Author> authorsMap)
+	{	Article result = buildArticle(map, authorsMap);
+		result.present = false;
+		
+		result.citedArticles.addAll(citedArticles);
+		for(Article article: citedArticles)
+			article.citingArticles.add(article);
 		
 		return result;
 	}
