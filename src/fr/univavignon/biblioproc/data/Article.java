@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.tools.StringTools;
+import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
  * This class is used to represent a publication,

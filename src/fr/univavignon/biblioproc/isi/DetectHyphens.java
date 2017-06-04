@@ -25,7 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.UnsupportedEncodingException;
 
-import fr.univavignon.biblioproc.tools.FileTools;
+import fr.univavignon.biblioproc.tools.file.FileTools;
 
 /**
  * Old class used to clean file names.

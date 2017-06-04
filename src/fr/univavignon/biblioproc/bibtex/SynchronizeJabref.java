@@ -28,7 +28,7 @@ import java.util.Map.Entry;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
-import fr.univavignon.biblioproc.tools.FileTools;
+import fr.univavignon.biblioproc.tools.file.FileTools;
 
 /**
  * Used to synchronize BibTex keys in the two

@@ -35,8 +35,8 @@ import java.util.TreeSet;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
-import fr.univavignon.biblioproc.tools.FileTools;
-import fr.univavignon.biblioproc.tools.StringTools;
+import fr.univavignon.biblioproc.tools.file.FileTools;
+import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
  * Class dedicated to reading/writing ISI files.

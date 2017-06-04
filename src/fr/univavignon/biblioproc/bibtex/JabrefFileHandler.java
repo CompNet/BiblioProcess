@@ -29,8 +29,8 @@ import java.util.Scanner;
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.data.SourceType;
-import fr.univavignon.biblioproc.tools.FileTools;
-import fr.univavignon.biblioproc.tools.StringTools;
+import fr.univavignon.biblioproc.tools.file.FileNames;
+import fr.univavignon.biblioproc.tools.file.FileTools;
 
 /**
  * Class dedicated to Jabref I/Os.
@@ -377,22 +377,21 @@ public class JabrefFileHandler
 		
 		// init volume
 		result.volume = data.get(PFX_VOLUME);
-		result.volume = StringTools.normalize(result.volume);
 		
 		// init issue
 		String issue = data.get(PFX_NUMBER);
 		if(issue==null)
 			issue = data.get(PFX_ISSUE);
-		result.issue = StringTools.normalize(issue);
+		result.issue = issue.trim();
 		
 		// init page
 		String page = data.get(PFX_PAGES);
 		if(page!=null)
-			result.page = StringTools.normalize(page);
+			result.page = page.trim();
 		
 		// init year
 		String year = data.get(PFX_YEAR);
-		result.year = StringTools.normalize(year);
+		result.year = year.trim();
 		
 		// init doi
 		String doi = data.get(PFX_DOI);
@@ -454,8 +453,8 @@ public class JabrefFileHandler
 	 */
 	public static void main(String[] args) throws Exception
 	{	JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileTools.FI_BIBTEX_COMPLETE;
+		String path = FileNames.FI_BIBTEX_COMPLETE;
 		boolean updateGroups = false;
-		jfh.loadJabRefFile(path, updateGroups);//TODO update log
+		jfh.loadJabRefFile(path, updateGroups);//TODO update fr.univavignon.biblioproc.tools.log
 	}
 }

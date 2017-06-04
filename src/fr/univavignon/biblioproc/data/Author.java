@@ -24,7 +24,8 @@ import java.util.Map;
 
 
 
-import fr.univavignon.biblioproc.tools.StringTools;
+
+import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
  * This class is used to represent an author.

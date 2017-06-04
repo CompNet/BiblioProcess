@@ -27,7 +27,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-import fr.univavignon.biblioproc.tools.FileTools;
+import fr.univavignon.biblioproc.tools.file.FileTools;
 
 /**
  * This class takes a set of ISI files, and

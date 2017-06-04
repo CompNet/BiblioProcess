@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc.tools;
+package fr.univavignon.biblioproc.tools.file;
 
 /*
  * Biblio Process
@@ -47,38 +47,6 @@ import java.util.Scanner;
  */
 public class FileTools
 {	
-	/////////////////////////////////////////////////////////////////
-	// EXTENSIONS	/////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** Bash file extension */
-	public final static String EX_BIBTEX = ".bib";
-	/** Thomson ISI file extension */
-	public final static String EX_ISI = ".ciw";
-	/** PDF file extension */
-	public static final String EX_PDF = ".pdf";
-
-	/////////////////////////////////////////////////////////////////
-	// FOLDERS		/////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** Input folder */
-	public final static String FO_INPUT = "in";
-		/** Bibtex input folder */
-		public final static String FO_BIBTEX = FO_INPUT + File.separator + "bibtex";
-		/** Thomson ISI input folder */
-		public final static String FO_ISI = FO_INPUT + File.separator + "isi";
-	/** Output folder */
-	public final static String FO_OUTPUT = "out";
-
-	/////////////////////////////////////////////////////////////////
-	// FILES		/////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** JabRef review file */
-	public static final String FI_BIBTEX_REVIEW = FO_BIBTEX + File.separator + "review" + EX_BIBTEX;
-	/** JabRef complete file */
-	public static final String FI_BIBTEX_COMPLETE = FO_BIBTEX + File.separator + "network analysis" + EX_BIBTEX;;
-	/** ISI merged file */
-	public static final String FI_ISI_ALL = FO_OUTPUT + File.separator + "savedrecs" + EX_ISI;
-
 	/////////////////////////////////////////////////////////////////
 	// FILTERS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////

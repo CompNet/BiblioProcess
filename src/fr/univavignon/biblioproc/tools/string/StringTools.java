@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc.tools;
+package fr.univavignon.biblioproc.tools.string;
 
 /*
  * Biblio Process
