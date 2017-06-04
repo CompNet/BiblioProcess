@@ -23,9 +23,10 @@ package fr.univavignon.biblioproc.data;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+
+import fr.univavignon.biblioproc.tools.StringTools;
 
 /**
  * This class is used to represent a publication,
@@ -77,18 +78,18 @@ public class Article implements Comparable<Article>
 	{	return authors;
 	}
 	
-	/**
-	 * Returns the full name of the first author,
-	 * under the form "xxxxx, y", where "xxxxx" is the
-	 * lastname and "y" the initial of the firstname.
-	 * 
-	 * @return
-	 * 		A string of the form "lastname, f".
-	 */
-	public String getFirstAuthorFullname()
-	{	String result = authors.get(0).getFullname();
-		return result;
-	}
+//	/**
+//	 * Returns the full name of the first author,
+//	 * under the form "xxxxx, y", where "xxxxx" is the
+//	 * lastname and "y" the initial of the firstname.
+//	 * 
+//	 * @return
+//	 * 		A string of the form "lastname, f".
+//	 */
+//	public String getFirstAuthorFullname()
+//	{	String result = authors.get(0).getFullname();
+//		return result;
+//	}
 	
 	/**
 	 * Adds a new author to this article.
@@ -105,13 +106,98 @@ public class Article implements Comparable<Article>
 	// TITLE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Title of this article */
-	public String title = null;
+	private String title = null;
+	/** Normalized version of the title */
+	private String normTitle = null;
+	
+	/**
+	 * Returns the title of this article.
+	 *  
+	 * @return
+	 * 		Title of this article.
+	 */
+	public String getTitle()
+	{	return title;
+	}
+	
+	/**
+	 * Returns the normalized version of the title of this article.
+	 *  
+	 * @return
+	 * 		Normalized title of this article.
+	 */
+	public String getNormTitle()
+	{	return normTitle;
+	}
+	
+	/**
+	 * Update the title and its normalized version.
+	 * 
+	 * @param title
+	 * 		New title of this article.
+	 */
+	public void setTitle(String title)
+	{	this.title = StringTools.clean(title);
+		normTitle = StringTools.normalize(this.title);
+	}
 	
 	/////////////////////////////////////////////////////////////////
 	// SOURCE			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Source of this article (conference, journal, etc.) */
-	public String source = null;
+	/** Type of source of this article (conference, journal, etc.) */
+	private SourceType sourceType = null;
+	/** Name of the source of this article (conference, journal, etc.) */
+	private String sourceName = null;
+	/** Normalized name of the source  */
+	private String normSourceName = null;
+	
+	/**
+	 * Returns the type of source of this article 
+	 * (journal, conference, thesis, etc.).
+	 * 
+	 * @return
+	 * 		Type of source.
+	 */
+	public SourceType getSourceType()
+	{	return sourceType;
+	}
+	
+	/**
+	 * Returns the source of the article 
+	 * (journal, conference, thesis, etc.).
+	 * 
+	 * @return
+	 * 		Source name.
+	 */
+	public String getSourceName()
+	{	return sourceName;
+	}
+	
+	/**
+	 * Returns the normalized version of the article 
+	 * source (journal, conference, thesis, etc.).
+	 * 
+	 * @return
+	 * 		Normalized source name.
+	 */
+	public String getNormSourceName()
+	{	return normSourceName;
+	}
+	
+	/**
+	 * Sets up the source of this article
+	 * (journal, conference, thesis, etc.).
+	 * 
+	 * @param sourceType
+	 * 		Type of source for this article.
+	 * @param sourceName
+	 * 		Name of the article source.
+	 */
+	public void setSource(SourceType sourceType, String sourceName)
+	{	this.sourceType = sourceType;
+		this.sourceName = sourceName;
+		normSourceName = StringTools.normalize(sourceName);
+	}
 	
 	/////////////////////////////////////////////////////////////////
 	// VOLUME			/////////////////////////////////////////////
@@ -194,65 +280,65 @@ public class Article implements Comparable<Article>
 	/////////////////////////////////////////////////////////////////
 	// ERRORS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/**
-	 * Apply some manual corections to certain articles.
-	 * 
-	 * @param authorsMap
-	 * 		Map containing the known authors.
-	 */
-	public void checkErrors(Map<String,Author> authorsMap)
-	{	if(authors.get(0).getFullname().equals("flake, g")
-			//&& article.source!=null && article.source.equals("ieee comput")
-			&& volume!=null && volume.equals("36")
-			&& page!=null && page.equals("66")
-			&& year!=null && year.equals("2002"))
-		{	volume = "35";
-		}
-	
-		else if(getAuthors().get(0).getFullname().equals("vandongen, s")
-			//&& article.source!=null && article.source.equals("thesis u ultrecht ne")
-			//&& article.page!=null && article.page.equals("371")
-			&& year!=null && year.equals("2000"))
-		{	Author author = getAuthors().get(0);
-			authorsMap.remove(author.getFullname());
-			author = authorsMap.get("van dongen, s");
-			authors.set(0,author);
-		}
-	
-		else if(getAuthors().get(0).getFullname().equals("granovet, m")
-			&& source!=null && source.equals("am j sociol")
-			&& volume!=null && volume.equals("78")
-			&& page!=null && page.equals("1360")
-			&& year!=null && year.equals("1973"))
-		{	Author author = getAuthors().get(0);
-			authorsMap.remove(author.getFullname());
-			author = authorsMap.get("granovetter, m");
-			authors.set(0,author);
-		}
-	
-		else if(getAuthors().get(0).getFullname().equals("leydesdorff, l")
-			&& source!=null && source.equals("j math sociol")
-			&& year!=null && year.equals("1971"))
-		{	Author author = authorsMap.get("lorrain, f");
-			authors.set(0,author);
-			author = authorsMap.get("white, h");
-			authors.add(author);
-			volume = "1";
-			page = "49";
-			year = "1971";
-		}
-	
-		else if(getAuthors().get(0).getFullname().equals("vonmering, c")
-			&& source!=null && source.equals("nature")
-			&& volume!=null && volume.equals("417")
-			&& page!=null && page.equals("399")
-			&& year!=null && year.equals("2002"))
-		{	Author author = getAuthors().get(0);
-		authorsMap.remove(author.getFullname());
-			author = authorsMap.get("von mering, c");
-			authors.set(0,author);
-		}
-	}
+//	/**
+//	 * Apply some manual corections to certain articles.
+//	 * 
+//	 * @param authorsMap
+//	 * 		Map containing the known authors.
+//	 */
+//	public void checkErrors(Map<String,Author> authorsMap)
+//	{	if(authors.get(0).getFullname().equals("flake, g")
+//			//&& article.source!=null && article.source.equals("ieee comput")
+//			&& volume!=null && volume.equals("36")
+//			&& page!=null && page.equals("66")
+//			&& year!=null && year.equals("2002"))
+//		{	volume = "35";
+//		}
+//	
+//		else if(getAuthors().get(0).getFullname().equals("vandongen, s")
+//			//&& article.source!=null && article.source.equals("thesis u ultrecht ne")
+//			//&& article.page!=null && article.page.equals("371")
+//			&& year!=null && year.equals("2000"))
+//		{	Author author = getAuthors().get(0);
+//			authorsMap.remove(author.getFullname());
+//			author = authorsMap.get("van dongen, s");
+//			authors.set(0,author);
+//		}
+//	
+//		else if(getAuthors().get(0).getFullname().equals("granovet, m")
+//			&& source!=null && source.equals("am j sociol")
+//			&& volume!=null && volume.equals("78")
+//			&& page!=null && page.equals("1360")
+//			&& year!=null && year.equals("1973"))
+//		{	Author author = getAuthors().get(0);
+//			authorsMap.remove(author.getFullname());
+//			author = authorsMap.get("granovetter, m");
+//			authors.set(0,author);
+//		}
+//	
+//		else if(getAuthors().get(0).getFullname().equals("leydesdorff, l")
+//			&& source!=null && source.equals("j math sociol")
+//			&& year!=null && year.equals("1971"))
+//		{	Author author = authorsMap.get("lorrain, f");
+//			authors.set(0,author);
+//			author = authorsMap.get("white, h");
+//			authors.add(author);
+//			volume = "1";
+//			page = "49";
+//			year = "1971";
+//		}
+//	
+//		else if(getAuthors().get(0).getFullname().equals("vonmering, c")
+//			&& source!=null && source.equals("nature")
+//			&& volume!=null && volume.equals("417")
+//			&& page!=null && page.equals("399")
+//			&& year!=null && year.equals("2002"))
+//		{	Author author = getAuthors().get(0);
+//		authorsMap.remove(author.getFullname());
+//			author = authorsMap.get("von mering, c");
+//			authors.set(0,author);
+//		}
+//	}
 	
 	/////////////////////////////////////////////////////////////////
 	// COMPARISON		/////////////////////////////////////////////
@@ -334,14 +420,14 @@ if(same && !result)
 		
 		// title
 		if(result)
-		{	String title2 = article.title;
-			if(title!=null && title2!=null)
-				result = title.equals(title2);
+		{	String normTitle2 = article.normTitle;
+			if(normTitle!=null && normTitle2!=null)
+				result = normTitle.equals(normTitle2);
 		}
 if(same && !result)
-{	System.out.println(title);
+{	System.out.println(normTitle);
 	System.out.println(">> VS <<");
-	System.out.println(article.title);
+	System.out.println(article.normTitle);
 	return(result);
 }
 		
@@ -404,7 +490,7 @@ if(same && !result)
 	}
 
 	/**
-	 * Complete an existing Article object
+	 * Completes an existing {@code Article} object
 	 * with additional data.
 	 * 
 	 * @param article
@@ -419,7 +505,18 @@ if(same && !result)
 		if(title==null)
 		{	String title2 = article.title;
 			if(title2!=null)
-				title = title2;
+			{	title = title2;
+				normTitle = article.normTitle;
+			}
+		}
+		
+		// source
+		if(sourceName==null)
+		{	String sourceName2 = article.sourceName;
+			if(sourceName2!=null)
+			{	sourceName = sourceName2;
+				sourceType = article.sourceType;
+			}
 		}
 		
 		// volume
@@ -427,6 +524,13 @@ if(same && !result)
 		{	String volume2 = article.volume;
 			if(volume2!=null)
 				volume = volume2;
+		}
+		
+		// chapter
+		if(chapter==null)
+		{	String chapter2 = article.chapter;
+			if(chapter2!=null)
+				chapter = chapter2;
 		}
 		
 		// issue
@@ -441,6 +545,41 @@ if(same && !result)
 		{	String page2 = article.page;
 			if(page2!=null)
 				page = page2;
+		}
+		
+		// doi
+		if(doi==null)
+		{	String doi2 = article.doi;
+			if(doi2!=null)
+				doi = doi2;
+		}
+		
+		// file
+		if(file==null)
+		{	String file2 = article.file;
+			if(file2!=null)
+				file = file2;
+		}
+		
+		// owner
+		if(owner==null)
+		{	String owner2 = article.owner;
+			if(owner2!=null)
+				owner = owner2;
+		}
+		
+		// timestamp
+		if(timestamp==null)
+		{	String timestamp2 = article.timestamp;
+			if(timestamp2!=null)
+				timestamp = timestamp2;
+		}
+		
+		// year
+		if(year==null)
+		{	String year2 = article.year;
+			if(year2!=null)
+				year = year2;
 		}
 		
 		// references
@@ -461,15 +600,20 @@ if(same && !result)
 	 */
 	public String getCiteAs()
 	{	String result = "";
-//		for(Author author: authors)
-//			articlesMap = articlesMap + author.getFullname() + ", ";
-		result = result + getFirstAuthorFullname() + ", ";
 		
-		result = result + year;
+		// first author
+		result = result + authors.get(0).normname;
+		// year
+		result = result + ", " + year;
+		// volume if present
 		if(volume!=null)
-			result = result + ", v" + volume;
+			result = result + ", V" + volume;
+		// page if present
 		if(page!=null)
-			result = result + ", p" + page;
+			result = result + ", P" + page;
+		// doi if present
+		if(doi!=null)
+			result = result + ", DOI " + doi;
 		return result;
 	}
 	
@@ -487,11 +631,11 @@ if(same && !result)
 		result = result + ". ";
 		
 		// first author
-		result = result + getFirstAuthorFullname();
+		result = result + authors.get(0).normname;
 		result = result + ". ";
 		
 		// source
-		result = result + source;
+		result = result + sourceType+":"+sourceName;
 		result = result + " ";
 		
 		// volume

@@ -54,23 +54,24 @@ public class Author implements Comparable<Author>
 		normname = firstnameInitials.replace(" ", "");
 		normname = normname.replace(".", "");
 		normname = normname.replace("-", "");
-		normname = lastname + ", " + normname;
+		normname = lastname + " " + normname;
 		normname = StringTools.normalize(normname);
 	}
 	
-	/**
-	 * Builds an author using strings separately representing
-	 * his lastname and firstname(s).
-	 * 
-	 * @param lastname
-	 * 		Lastname of the author.
-	 * @param firstnameInitials
-	 * 		Initial(s) of the author's firstname(s).
-	 */
-	public Author(String lastname, String firstnameInitials)
-	{	this.lastname = StringTools.clean(lastname);
-		this.firstnameInitials = StringTools.clean(firstnameInitials);//TODO if for ISI, should check this...
-	}
+//	/**
+//	 * Builds an author using strings separately representing
+//	 * his lastname and firstname(s).
+//	 * TODO check this method
+//	 * 
+//	 * @param lastname
+//	 * 		Lastname of the author.
+//	 * @param firstnameInitials
+//	 * 		Initial(s) of the author's firstname(s).
+//	 */
+//	public Author(String lastname, String firstnameInitials)
+//	{	this.lastname = StringTools.clean(lastname);
+//		this.firstnameInitials = StringTools.clean(firstnameInitials);//TODO if for ISI, should check this...
+//	}
 	
 	/**
 	 * Looks up the specified name and returns the corresponding
@@ -86,12 +87,11 @@ public class Author implements Comparable<Author>
 	 */
 	public static Author retrieveAuthor(Author author, Map<String,Author> authors)
 	{	Author result = author;
-		String fullname = result.getFullname();
-		Author temp = authors.get(fullname);
+		Author temp = authors.get(author.normname);
 		if(temp!=null)
 			result = temp;
 		else
-			authors.put(fullname, result);
+			authors.put(author.normname, result);
 		return result;
 	}
 	
@@ -118,9 +118,7 @@ public class Author implements Comparable<Author>
 	/////////////////////////////////////////////////////////////////
 	@Override
 	public int compareTo(Author author)
-	{	String fullname1 = getFullname();
-		String fullname2 = author.getFullname();
-		int result = fullname1.compareTo(fullname2);
+	{	int result = normname.compareTo(author.normname);
 		return result;
 	}
 
@@ -178,7 +176,7 @@ public class Author implements Comparable<Author>
 	 * @return
 	 * 		The corresponding sequence of initials.
 	 */
-	public static String keepInitials(String text)
+	public static String retrieveInitials(String text)
 	{	String result = "";
 		String temp[] = text.split(" ");
 		for(int i=0;i<temp.length;i++)

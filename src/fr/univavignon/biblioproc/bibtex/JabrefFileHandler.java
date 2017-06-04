@@ -28,6 +28,7 @@ import java.util.Scanner;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
+import fr.univavignon.biblioproc.data.SourceType;
 import fr.univavignon.biblioproc.tools.FileTools;
 import fr.univavignon.biblioproc.tools.StringTools;
 
@@ -63,6 +64,8 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX FIELDS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	/** Type of Bibtex entry */
+	private static final String PFX_SOURCE = "source";
 	/** Bibtex key for the article key */
 	private static final String PFX_KEY = "bibtexkey";
 	/** Bibtex key for the authors */
@@ -101,6 +104,26 @@ public class JabrefFileHandler
 	private static final String PFX_VOLUME = "volume";
 	/** Bibtex key for the publication year */
 	private static final String PFX_YEAR = "year";
+	/** Bibtex key for the publisher of a book */
+	private static final String PFX_PUBLISHER = "publisher";	
+	
+	/////////////////////////////////////////////////////////////////
+	// BIBTEX FIELDS	/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Bibtex type of entry for a whole book */
+	private static final String TYPE_BOOK = "Book";
+	/** Bibtex type of entry for a book chapter */
+	private static final String TYPE_CHAPTER = "InCollection";
+	/** Bibtex type of entry for a conference article */
+	private static final String TYPE_CONFERENCE = "InProceedings";
+	/** Bibtex type of entry for a journal article */
+	private static final String TYPE_ARTICLE = "Article";
+	/** Bibtex type of entry for a report */
+	private static final String TYPE_REPORT = "TechReport";
+	/** Bibtex type of entry for a MSc thesis */
+	private static final String TYPE_THESIS_MSC = "MastersThesis";
+	/** Bibtex type of entry for a PhD thesis */
+	private static final String TYPE_THESIS_PHD = "PhdThesis";
 	
 	/////////////////////////////////////////////////////////////////
 	// DATA				/////////////////////////////////////////////
@@ -221,9 +244,15 @@ public class JabrefFileHandler
 	{	// init map
 		Map<String, String> result = new HashMap<String, String>();
 		
+		// entry type
+		int start = line.indexOf('@') + 1;
+		int end = line.indexOf('{');
+		String source = line.substring(start,end);
+		result.put(PFX_SOURCE, source);
+		
 		// bibtex key
-		int start = line.indexOf('{') + 1;
-		int end = line.length() - 1;
+		start = line.indexOf('{') + 1;
+		end = line.length() - 1;
 		String bibtexkey = line.substring(start, end);
 		result.put(PFX_KEY, bibtexkey);
 		
@@ -273,11 +302,66 @@ public class JabrefFileHandler
 	 * @return 
 	 * 		The new article instance.
 	 */
-	private Article buildArticle(Map<String,String> data)
+	private Article buildArticle(Map<String,String> data) //TODO check the use of normalize...
 	{	Article result = new Article();
-	
+		
 		// init BibTex key
 		result.bibtexKey = data.get(PFX_KEY);
+		
+		// init source type
+		String typeSrc = data.get(PFX_SOURCE);
+		if(typeSrc.equals(TYPE_BOOK))
+		{	String source = data.get(PFX_PUBLISHER);
+			if(source==null)
+				throw new IllegalArgumentException("Publisher name missing in "+data);
+			else
+				result.setSource(SourceType.BOOK, source);
+		}
+		else if(typeSrc.equals(TYPE_CHAPTER))
+		{	String source = data.get(PFX_TITLE_BOOK);
+			if(source==null)
+				throw new IllegalArgumentException("Book title missing in "+data);
+			else
+				result.setSource(SourceType.CHAPTER, source);
+		}
+		else if(typeSrc.equals(TYPE_CONFERENCE))
+		{	String source = data.get(PFX_TITLE_BOOK);
+			if(source==null)
+				throw new IllegalArgumentException("Conference name missing in "+data);
+			else
+				result.setSource(SourceType.CONFERENCE, source);
+		}
+		else if(typeSrc.equals(TYPE_ARTICLE))
+		{	String source = data.get(PFX_JOURNAL1);
+			if(source==null)
+				source = data.get(PFX_JOURNAL2);
+			if(source==null)
+				throw new IllegalArgumentException("Journal name missing in "+data);
+			else
+				result.setSource(SourceType.JOURNAL, source);
+			
+		}
+		else if(typeSrc.equals(TYPE_REPORT))
+		{	String source = data.get(PFX_INSTITUTION);
+			if(source==null)
+				throw new IllegalArgumentException("Institutiong name missing in "+data);
+			else
+				result.setSource(SourceType.REPORT, source);
+		}
+		else if(typeSrc.equals(TYPE_THESIS_MSC))
+		{	String source = data.get(PFX_INSTITUTION);
+			if(source==null)
+				throw new IllegalArgumentException("Institutiong name missing in "+data);
+			else
+				result.setSource(SourceType.THESIS_MSC, source);
+		}
+		else if(typeSrc.equals(TYPE_THESIS_PHD))
+		{	String source = data.get(PFX_INSTITUTION);
+			if(source==null)
+				throw new IllegalArgumentException("Institutiong name missing in "+data);
+			else
+				result.setSource(SourceType.THESIS_PHD, source);
+		}
 		
 		// init authors
 		String temp[] = data.get(PFX_AUTHOR).split(" and ");
@@ -289,19 +373,7 @@ public class JabrefFileHandler
 		
 		// init title
 		String title = data.get(PFX_TITLE_ARTICLE);
-		result.title = StringTools.normalize(title);
-		
-		// init source
-		String source = null;
-		if(source==null)
-			source = data.get(PFX_JOURNAL1);
-		if(source==null)
-			source = data.get(PFX_JOURNAL2);
-		if(source==null)
-			source = data.get(PFX_TITLE_BOOK);
-		if(source==null)
-			source = data.get(PFX_INSTITUTION);
-		result.source = StringTools.normalize(source);//TODO should we normalize here ? (if we want to record later, shouldn't)
+		result.setTitle(title);
 		
 		// init volume
 		result.volume = data.get(PFX_VOLUME);
@@ -368,4 +440,22 @@ public class JabrefFileHandler
 	// WRITING			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	// TODO
+
+	/////////////////////////////////////////////////////////////////
+	// TESTS			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/**
+	 * Method used to test this class.
+	 * 
+	 * @param args
+	 * 		None needed.
+	 * @throws Exception
+	 * 		Whatever exception.
+	 */
+	public static void main(String[] args) throws Exception
+	{	JabrefFileHandler jfh = new JabrefFileHandler();
+		String path = FileTools.FI_BIBTEX_COMPLETE;
+		boolean updateGroups = false;
+		jfh.loadJabRefFile(path, updateGroups);//TODO update log
+	}
 }

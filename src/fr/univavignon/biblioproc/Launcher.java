@@ -47,6 +47,7 @@ public class Launcher
 	 */
 	public static void main(String[] args) throws Exception
 	{	//TODO control the use of "normalize", since we now want to export bibtex files too.
+		//TODO in ISI, the initial is sometimes followed by a ".", and sometimes not. must solve this inconsistency.
 		
 		/**TODO
 		 * - finish using the new bibtex constants
