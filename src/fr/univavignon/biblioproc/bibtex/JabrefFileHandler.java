@@ -22,7 +22,9 @@ package fr.univavignon.biblioproc.bibtex;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -31,6 +33,8 @@ import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.data.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
 
 /**
  * Class dedicated to Jabref I/Os.
@@ -39,6 +43,12 @@ import fr.univavignon.biblioproc.tools.file.FileTools;
  */
 public class JabrefFileHandler
 {
+	/////////////////////////////////////////////////////////////////
+	// LOGGER		/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Common object used for logging */
+	private HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX MARKERS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
@@ -51,7 +61,7 @@ public class JabrefFileHandler
 	// JABREF MARKERS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** String marking the end of the actual BibTex file (and the begining of the JabRef part) */
-	private static final String COMMENT_PREFIX = "@comment";
+	private static final String COMMENT_PREFIX = "@Comment";
 	/** String marking the begining of the list of ignored articles */
 	private static final String IGNORED_PREFIX = "3 ExplicitGroup:Ignored\\;2\\;";
 	/** String marking the begining of the list of pureley applicative articles */
@@ -65,47 +75,79 @@ public class JabrefFileHandler
 	// BIBTEX FIELDS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Type of Bibtex entry */
-	private static final String PFX_SOURCE = "source";
+	private static final String FLD_SOURCE = "source";
 	/** Bibtex key for the article key */
-	private static final String PFX_KEY = "bibtexkey";
+	private static final String FLD_KEY = "bibtexkey";
 	/** Bibtex key for the authors */
-	private static final String PFX_AUTHOR = "author";
+	private static final String FLD_AUTHOR = "author";
 	/** Bibtex key for the abstract */
-	private static final String PFX_ABSTRACT = "abstract";
+	private static final String FLD_ABSTRACT = "abstract";
 	/** Bibtex key for the chapter */
-	private static final String PFX_CHAPTER = "chapter";
+	private static final String FLD_CHAPTER = "chapter";
 	/** Bibtex key for the DOI */
-	private static final String PFX_DOI = "doi";
+	private static final String FLD_DOI = "doi";
 	/** Bibtex key for the file */
-	private static final String PFX_FILE = "file";
+	private static final String FLD_FILE = "file";
 	/** Bibtex key for the institution */
-	private static final String PFX_INSTITUTION = "institution";
+	private static final String FLD_INSTITUTION = "institution";
+	/** Bibtex key for the school */
+	private static final String FLD_SCHOOL = "school";
 	/** Bibtex key for the issue */
-	private static final String PFX_ISSUE = "issue";
+	private static final String FLD_ISSUE = "issue";
 	/** Traditional Bibtex key for the journal */
-	private static final String PFX_JOURNAL1 = "journal";
+	private static final String FLD_JOURNAL1 = "journal";
 	/** Alterantive Bibtex key for the journal */
-	private static final String PFX_JOURNAL2 = "journaltitle";
+	private static final String FLD_JOURNAL2 = "journaltitle";
 	/** Bibtex key for the number */
-	private static final String PFX_NUMBER = "number";
+	private static final String FLD_NUMBER = "number";
 	/** Bibtex key for the owner */
-	private static final String PFX_OWNER = "owner";
+	private static final String FLD_OWNER = "owner";
 	/** Bibtex key for the pages */
-	private static final String PFX_PAGES = "pages";
+	private static final String FLD_PAGES = "pages";
 	/** Bibtex key for the time stamp */
-	private static final String PFX_TIMESTAMP = "timestamp";
+	private static final String FLD_TIMESTAMP = "timestamp";
 	/** Bibtex key for the article title */
-	private static final String PFX_TITLE_ARTICLE = "title";
+	private static final String FLD_TITLE_ARTICLE = "title";
 	/** Bibtex key for the book title */
-	private static final String PFX_TITLE_BOOK = "booktitle";
+	private static final String FLD_TITLE_BOOK = "booktitle";
 	/** Bibtex key for the URL */
-	private static final String PFX_URL = "url";
+	private static final String FLD_URL = "url";
 	/** Bibtex key for the volume */
-	private static final String PFX_VOLUME = "volume";
+	private static final String FLD_VOLUME = "volume";
 	/** Bibtex key for the publication year */
-	private static final String PFX_YEAR = "year";
+	private static final String FLD_YEAR = "year";
 	/** Bibtex key for the publisher of a book */
-	private static final String PFX_PUBLISHER = "publisher";	
+	private static final String FLD_PUBLISHER = "publisher";
+	/** Bibtex key for the series title of a book */
+	private static final String FLD_SERIES = "series";
+	/** Bibtex key for the editors of a book */
+	private static final String FLD_EDITOR = "editor";
+	/** Bibtex key for the comments associated to an article */
+	private static final String FLD_REVIEW = "review";
+	/** Bibtex key for the place of a conference/publisher */
+	private static final String FLD_ADDRESS = "address";
+	/** Bibtex key for the type of report/thesis */
+	private static final String FLD_TYPE = "type";
+	/** Bibtex key used to sort entries */
+	private static final String FLD_SORTKEY = "sortkey";
+	/** Bibtex key for book edition */
+	private static final String FLD_EDITION = "edition";
+	/** Organization associated to an electronic reference */
+	private static final String FLD_ORGANIZATION = "organization";	
+	/** Internal Jabref field */
+	private static final String FLD_MARKED = "__markedentry";	
+	/** List of all known Bibtex fields */
+	private static final List<String> ALL_FIELDS = Arrays.asList(
+			FLD_SOURCE, FLD_KEY, FLD_AUTHOR, FLD_ABSTRACT, FLD_CHAPTER,
+			FLD_DOI, FLD_FILE, FLD_INSTITUTION, FLD_ISSUE, FLD_JOURNAL1,
+			FLD_JOURNAL2, FLD_NUMBER, FLD_OWNER, FLD_PAGES, FLD_TIMESTAMP,
+			FLD_TITLE_ARTICLE, FLD_TITLE_BOOK, FLD_TITLE_BOOK, FLD_URL,
+			FLD_VOLUME, FLD_YEAR, FLD_PUBLISHER, FLD_SERIES, FLD_EDITOR, 
+			FLD_REVIEW, FLD_ADDRESS, FLD_SCHOOL, FLD_TYPE, FLD_SORTKEY,
+			FLD_EDITION, FLD_ORGANIZATION,
+			// ignored:
+			FLD_MARKED
+	);
 	
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX FIELDS	/////////////////////////////////////////////
@@ -116,6 +158,8 @@ public class JabrefFileHandler
 	private static final String TYPE_CHAPTER = "InCollection";
 	/** Bibtex type of entry for a conference article */
 	private static final String TYPE_CONFERENCE = "InProceedings";
+	/** Bibtex type of entry for an electronic resource */
+	private static final String TYPE_ELECTRONIC = "Electronic";
 	/** Bibtex type of entry for a journal article */
 	private static final String TYPE_ARTICLE = "Article";
 	/** Bibtex type of entry for a report */
@@ -151,81 +195,102 @@ public class JabrefFileHandler
 	 * 		Problem while accessing the Jabref file.
 	 */
 	public void loadJabRefFile(String path, boolean updateGroups) throws FileNotFoundException, UnsupportedEncodingException
-	{	// open the JabRef file
-		System.out.println("Open the JabRef file " + path);
+	{	logger.log("Start loading JabRef file " + path);
+		logger.increaseOffset();
+		
+		// open the JabRef file
+		logger.log("Open the JabRef file");
 		Scanner jrScanner = FileTools.openTextFileRead(path,null);
 		
-		// retrieve all the articles
-		System.out.println("Read and retrieve the articles");
-		int count = 0;
+		// retrieve the data
+		logger.log("Skip the beginning of the file");
 		String line = null;
 		// skip jabref comments
 		do
 			line = jrScanner.nextLine();
 		while(!line.isEmpty());
-		// get the articles
+
+		// retrieve the articles
+		logger.log("Retrieve the articles");
+		logger.increaseOffset();
+		int count = 0;
 		do
 		{	line = jrScanner.nextLine();
 			if(!line.isEmpty() && !line.startsWith(COMMENT_PREFIX))
 			{	count++;
+				logger.log("Process article #"+count);
 				// parse the BibTex entry
 				Map<String,String> data = retrieveArticleMap(line, jrScanner);
 				// build the article object (automatic insertion in the maps)
 				Article article = buildArticle(data);
 				// display for verification
-				System.out.println(count + ". " + article);
+				logger.log("Resulting article: " + article);
 			}
 		}
 		while(!line.startsWith(COMMENT_PREFIX));
+		logger.log("Number of article retrieved from the file: "+count);
+		logger.decreaseOffset();
 	
 		// update with the list of purely applicative articles
 		if(updateGroups)
-		{	do
-				line = jrScanner.nextLine();
-			while(!line.startsWith(APPLICATION_PREFIX));
-			String listStr = line.substring(APPLICATION_PREFIX.length());
-			do
-			{	line = jrScanner.nextLine();
-				listStr = listStr + line;
-			}
-			while(!line.endsWith(GROUP_END));
-			listStr = listStr.substring(0,listStr.length()-2);
-			String keys[] = listStr.split(KEY_SEPARATOR);
-			System.out.println("\nPurely applicative articles:");
-			count = 0;
-			for(String key: keys)
-			{	count++;
-				Article article = articlesMap.get(key.substring(0,key.length()-1));
-				article.ignored = true;
-				System.out.println(count + ". " + article);
-			}
-	
+		{	logger.log("Mark the articles belonging to the \"applications\" Jabref group");
+			logger.increaseOffset();
+				do
+					line = jrScanner.nextLine();
+				while(!line.startsWith(APPLICATION_PREFIX));
+				String listStr = line.substring(APPLICATION_PREFIX.length());
+				do
+				{	line = jrScanner.nextLine();
+					listStr = listStr + line;
+				}
+				while(!line.endsWith(GROUP_END));
+				listStr = listStr.substring(0,listStr.length()-2);
+				String keys[] = listStr.split(KEY_SEPARATOR);
+				logger.log("Purely applicative articles:");
+				logger.increaseOffset();
+					count = 0;
+					for(String key: keys)
+					{	count++;
+						Article article = articlesMap.get(key.substring(0,key.length()-1));
+						article.ignored = true;
+						logger.log(count + ". " + article);
+					}
+				logger.decreaseOffset();
+			logger.decreaseOffset();
+			
 			// add the ignored articles
-			do
-				line = jrScanner.nextLine();
-			while(!line.startsWith(IGNORED_PREFIX));
-			listStr = line.substring(IGNORED_PREFIX.length());
-			do
-			{	line = jrScanner.nextLine();
-				listStr = listStr + line;
-			}
-			while(!line.endsWith(GROUP_END));
-			listStr = listStr.substring(0,listStr.length()-3);
-			keys = listStr.split(KEY_SEPARATOR);
-			System.out.println("\nIgnored articles:");
-			count = 0;
-			for(String key: keys)
-			{	count++;
-				Article article = articlesMap.get(key.substring(0,key.length()-1));
-				article.ignored = true;
-				System.out.println(count + ". " + article);
-			}
+			logger.log("Mark the articles belonging to the \"ignored\" Jabref group");
+			logger.increaseOffset();
+				do
+					line = jrScanner.nextLine();
+				while(!line.startsWith(IGNORED_PREFIX));
+				listStr = line.substring(IGNORED_PREFIX.length());
+				do
+				{	line = jrScanner.nextLine();
+					listStr = listStr + line;
+				}
+				while(!line.endsWith(GROUP_END));
+				listStr = listStr.substring(0,listStr.length()-3);
+				keys = listStr.split(KEY_SEPARATOR);
+				logger.log("Ignored articles:");
+				logger.decreaseOffset();
+					count = 0;
+					for(String key: keys)
+					{	count++;
+						Article article = articlesMap.get(key.substring(0,key.length()-1));
+						article.ignored = true;
+						System.out.println(count + ". " + article);
+					}
+				logger.decreaseOffset();
+			logger.decreaseOffset();
 		}
 		
 		// close JabRef file
 		jrScanner.close();
+		logger.decreaseOffset();
+		logger.log("Finished loading the JabRef file");
 	}
-
+	
 	/**
 	 * Receives the first line of a BibTex entry,
 	 * and a scanner pointing on the second line,
@@ -248,13 +313,13 @@ public class JabrefFileHandler
 		int start = line.indexOf('@') + 1;
 		int end = line.indexOf('{');
 		String source = line.substring(start,end);
-		result.put(PFX_SOURCE, source);
+		result.put(FLD_SOURCE, source);
 		
 		// bibtex key
 		start = line.indexOf('{') + 1;
 		end = line.length() - 1;
 		String bibtexkey = line.substring(start, end);
-		result.put(PFX_KEY, bibtexkey);
+		result.put(FLD_KEY, bibtexkey);
 		
 		// rest of the fields
 		do
@@ -264,21 +329,23 @@ public class JabrefFileHandler
 			if(!line.equals(ENTRY_END))
 			{	// retrieve the name of the field
 				int pos = line.indexOf('=');
-				String fieldName = line.substring(2,pos-1);
+				String fieldName = line.substring(0,pos-1).trim();
+				if(!ALL_FIELDS.contains(fieldName))
+					throw new IllegalArgumentException("Unknown Bibtex field \""+fieldName+"\" in line \""+line+"\"");
 				// retrieve the associated value
 				String fieldValue = null;
 				if(line.endsWith(FIELD_END))
-					fieldValue = line.substring(pos+3,line.length()-2);
+					fieldValue = line.substring(pos+3,line.length()-FIELD_END.length()).trim();
 				else if(line.endsWith("}"))
-					fieldValue = line.substring(pos+3,line.length()-1);
+					fieldValue = line.substring(pos+3,line.length()-1).trim();
 				else
-				{	fieldValue = line.substring(pos+3);
+				{	fieldValue = line.substring(pos+3).trim();
 					do
 					{	line = scanner.nextLine();
 						if(line.endsWith(FIELD_END))
-							fieldValue = fieldValue + " " + line.substring(1,line.length()-2);
+							fieldValue = fieldValue + " " + line.substring(0,line.length()-FIELD_END.length()).trim();
 						else
-							fieldValue = fieldValue + " " + line.substring(1);
+							fieldValue = fieldValue + " " + line.trim();
 					}
 					while(!line.endsWith(FIELD_END));
 				}
@@ -302,69 +369,82 @@ public class JabrefFileHandler
 	 * @return 
 	 * 		The new article instance.
 	 */
-	private Article buildArticle(Map<String,String> data) //TODO check the use of normalize...
+	private Article buildArticle(Map<String,String> data)
 	{	Article result = new Article();
 		
 		// init BibTex key
-		result.bibtexKey = data.get(PFX_KEY);
+		result.bibtexKey = data.get(FLD_KEY);
 		
 		// init source type
-		String typeSrc = data.get(PFX_SOURCE);
+		String typeSrc = data.get(FLD_SOURCE);
 		if(typeSrc.equals(TYPE_BOOK))
-		{	String source = data.get(PFX_PUBLISHER);
+		{	String source = data.get(FLD_PUBLISHER);
 			if(source==null)
-				throw new IllegalArgumentException("Publisher name missing in "+data);
+				throw new IllegalArgumentException("Publisher name missing in ("+result.bibtexKey+") "+data);
 			else
 				result.setSource(SourceType.BOOK, source);
 		}
 		else if(typeSrc.equals(TYPE_CHAPTER))
-		{	String source = data.get(PFX_TITLE_BOOK);
+		{	String source = data.get(FLD_TITLE_BOOK);
 			if(source==null)
-				throw new IllegalArgumentException("Book title missing in "+data);
+				throw new IllegalArgumentException("Book title missing in ("+result.bibtexKey+") "+data);
 			else
 				result.setSource(SourceType.CHAPTER, source);
 		}
 		else if(typeSrc.equals(TYPE_CONFERENCE))
-		{	String source = data.get(PFX_TITLE_BOOK);
+		{	String source = data.get(FLD_TITLE_BOOK);
 			if(source==null)
 				throw new IllegalArgumentException("Conference name missing in "+data);
 			else
 				result.setSource(SourceType.CONFERENCE, source);
 		}
+		else if(typeSrc.equals(TYPE_ELECTRONIC))
+		{	String source = data.get(FLD_ORGANIZATION);
+			if(source==null)
+				throw new IllegalArgumentException("Organization name missing ("+result.bibtexKey+") in "+data);
+			else
+				result.setSource(SourceType.ELECTRONIC, source);
+		}
 		else if(typeSrc.equals(TYPE_ARTICLE))
-		{	String source = data.get(PFX_JOURNAL1);
+		{	String source = data.get(FLD_JOURNAL1);
 			if(source==null)
-				source = data.get(PFX_JOURNAL2);
+				source = data.get(FLD_JOURNAL2);
 			if(source==null)
-				throw new IllegalArgumentException("Journal name missing in "+data);
+				throw new IllegalArgumentException("Journal name missing ("+result.bibtexKey+") in "+data);
 			else
 				result.setSource(SourceType.JOURNAL, source);
 			
 		}
 		else if(typeSrc.equals(TYPE_REPORT))
-		{	String source = data.get(PFX_INSTITUTION);
+		{	String source = data.get(FLD_INSTITUTION);
 			if(source==null)
-				throw new IllegalArgumentException("Institutiong name missing in "+data);
+				throw new IllegalArgumentException("Institutiong name missing ("+result.bibtexKey+") in "+data);
 			else
 				result.setSource(SourceType.REPORT, source);
 		}
 		else if(typeSrc.equals(TYPE_THESIS_MSC))
-		{	String source = data.get(PFX_INSTITUTION);
+		{	String source = data.get(FLD_INSTITUTION);
 			if(source==null)
-				throw new IllegalArgumentException("Institutiong name missing in "+data);
+				source = data.get(FLD_SCHOOL);
+			if(source==null)
+				throw new IllegalArgumentException("Institutiong name missing ("+result.bibtexKey+") in "+data);
 			else
 				result.setSource(SourceType.THESIS_MSC, source);
 		}
 		else if(typeSrc.equals(TYPE_THESIS_PHD))
-		{	String source = data.get(PFX_INSTITUTION);
+		{	String source = data.get(FLD_INSTITUTION);
 			if(source==null)
-				throw new IllegalArgumentException("Institutiong name missing in "+data);
+				source = data.get(FLD_SCHOOL);
+			if(source==null)
+				throw new IllegalArgumentException("Institutiong name missing ("+result.bibtexKey+") in "+data);
 			else
 				result.setSource(SourceType.THESIS_PHD, source);
 		}
+		else
+			throw new IllegalArgumentException("Bibtex entry type unknown ("+result.bibtexKey+"): "+typeSrc);
 		
 		// init authors
-		String temp[] = data.get(PFX_AUTHOR).split(" and ");
+		String temp[] = data.get(FLD_AUTHOR).split(" and ");
 		for(String authorStr: temp)
 		{	Author author = new Author(authorStr);
 			author = Author.retrieveAuthor(author, authorsMap);
@@ -372,61 +452,97 @@ public class JabrefFileHandler
 		}
 		
 		// init title
-		String title = data.get(PFX_TITLE_ARTICLE);
+		String title = data.get(FLD_TITLE_ARTICLE);
 		result.setTitle(title);
 		
 		// init volume
-		result.volume = data.get(PFX_VOLUME);
+		result.volume = data.get(FLD_VOLUME);
 		
 		// init issue
-		String issue = data.get(PFX_NUMBER);
+		String issue = data.get(FLD_NUMBER);
 		if(issue==null)
-			issue = data.get(PFX_ISSUE);
-		result.issue = issue.trim();
+			issue = data.get(FLD_ISSUE);
+		if(issue!=null)
+			result.issue = issue.trim();
 		
 		// init page
-		String page = data.get(PFX_PAGES);
+		String page = data.get(FLD_PAGES);
 		if(page!=null)
 			result.page = page.trim();
 		
 		// init year
-		String year = data.get(PFX_YEAR);
+		String year = data.get(FLD_YEAR);
 		result.year = year.trim();
 		
 		// init doi
-		String doi = data.get(PFX_DOI);
+		String doi = data.get(FLD_DOI);
 		if(doi!=null)
 			result.doi = doi.trim();
 		
 		// abstract
-		String abstrct = data.get(PFX_ABSTRACT);
+		String abstrct = data.get(FLD_ABSTRACT);
 		if(abstrct!=null)
 			result.abstrct = abstrct.trim();
 		
 		// chapter
-		String chapter = data.get(PFX_CHAPTER);
+		String chapter = data.get(FLD_CHAPTER);
 		if(chapter!=null)
 			result.chapter = chapter.trim();
 		
 		// file
-		String file = data.get(PFX_FILE);
+		String file = data.get(FLD_FILE);
 		if(file!=null)
 			result.file = file.trim();
 		
 		// owner
-		String owner = data.get(PFX_OWNER);
+		String owner = data.get(FLD_OWNER);
 		if(owner!=null)
 			result.owner = owner.trim();
 		
 		// timestamp
-		String timestamp = data.get(PFX_TIMESTAMP);
+		String timestamp = data.get(FLD_TIMESTAMP);
 		if(timestamp!=null)
 			result.timestamp = timestamp.trim();
 		
 		// url
-		String url = data.get(PFX_URL);
+		String url = data.get(FLD_URL);
 		if(url!=null)
 			result.url = url.trim();
+		
+		// series
+		String series = data.get(FLD_SERIES);
+		if(series!=null)
+			result.series = series.trim();
+		
+		// series
+		String editor = data.get(FLD_EDITOR);
+		if(editor!=null)
+			result.editor = editor.trim();
+		
+		// review
+		String review = data.get(FLD_REVIEW);
+		if(review!=null)
+			result.review = review.trim();
+		
+		// address
+		String address = data.get(FLD_ADDRESS);
+		if(address!=null)
+			result.address = address.trim();
+		
+		// type
+		String type = data.get(FLD_TYPE);
+		if(type!=null)
+			result.type = type.trim();
+		
+		// sortkey
+		String sortkey = data.get(FLD_SORTKEY);
+		if(sortkey!=null)
+			result.sortkey = sortkey.trim();
+		
+		// edition
+		String edition = data.get(FLD_EDITION);
+		if(edition!=null)
+			result.edition = edition.trim();
 		
 		// present
 		result.present = true;
@@ -454,7 +570,9 @@ public class JabrefFileHandler
 	public static void main(String[] args) throws Exception
 	{	JabrefFileHandler jfh = new JabrefFileHandler();
 		String path = FileNames.FI_BIBTEX_COMPLETE;
+//		String path = FileNames.FI_BIBTEX_REVIEW;
+//		String path = FileNames.FI_BIBTEX_STRUCTBAL;
 		boolean updateGroups = false;
-		jfh.loadJabRefFile(path, updateGroups);//TODO update fr.univavignon.biblioproc.tools.log
+		jfh.loadJabRefFile(path, updateGroups);
 	}
 }

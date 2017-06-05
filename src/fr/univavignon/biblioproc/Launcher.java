@@ -46,7 +46,11 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	//TODO control the use of "normalize", since we now want to export bibtex files too.
+	{	// TODO jabref
+		// check the form of the initial dot (must be a space between letters, unless hyphen)
+		// check the names similar to only a diacritic
+		
+		//TODO control the use of "normalize", since we now want to export bibtex files too.
 		//TODO in ISI, the initial is sometimes followed by a ".", and sometimes not. must solve this inconsistency.
 		
 		/**TODO

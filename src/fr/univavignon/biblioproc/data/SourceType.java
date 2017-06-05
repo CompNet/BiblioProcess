@@ -33,6 +33,9 @@ public enum SourceType
 	/** Conference paper */
 	CONFERENCE,
 	
+	/** Electronic resource */
+	ELECTRONIC,
+	
 	/** Journal paper */
 	JOURNAL,
 	
