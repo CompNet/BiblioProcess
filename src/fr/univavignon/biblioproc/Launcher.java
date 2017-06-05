@@ -20,12 +20,6 @@ package fr.univavignon.biblioproc;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
 
 import fr.univavignon.biblioproc.tools.file.FileTools;
 
@@ -46,16 +40,11 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	// TODO jabref
-		// check the form of the initial dot (must be a space between letters, unless hyphen)
-		// check the names similar to only a diacritic
-		
-		//TODO control the use of "normalize", since we now want to export bibtex files too.
+	{	//TODO ISI: control the use of "normalize", since we now want to export bibtex files too.
 		//TODO in ISI, the initial is sometimes followed by a ".", and sometimes not. must solve this inconsistency.
 		
 		/**TODO
-		 * - finish using the new bibtex constants
-		 * - check by loading actual bibtex file that no bibtex attribute is ignored
+		 * - export Jabref/Bibtex files
 		 * - check the ciw stuff works by loading the file
 		 * - synchronize all ciw entries with exactly one bibtex entry
 		 * - generate the short ref for full ciw entries

@@ -20,13 +20,17 @@ package fr.univavignon.biblioproc.bibtex;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
@@ -54,8 +58,12 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	/** String marking the end of a BibTex field */
 	private static final String FIELD_END = "},";
+	/** String marking the beginning of a BibTex field */
+	private static final String FIELD_BEGINNING = " = {";
 	/** String marking the end of a BibTex entry */
 	private static final String ENTRY_END = "}";
+	/** String marking the beginning of a BibTex entry */
+	private static final String ENTRY_BEGINNING = "{";
 	
 	/////////////////////////////////////////////////////////////////
 	// JABREF MARKERS	/////////////////////////////////////////////
@@ -446,7 +454,11 @@ public class JabrefFileHandler
 		// init authors
 		String temp[] = data.get(FLD_AUTHOR).split(" and ");
 		for(String authorStr: temp)
-		{	Author author = new Author(authorStr);
+		{	Pattern pattern = Pattern.compile("[\\p{L}]\\.[\\p{L}]");
+			Matcher matcher = pattern.matcher(authorStr);
+			if(matcher.find())
+				throw new IllegalArgumentException("Probably a dot/space problem in "+authorStr);
+			Author author = new Author(authorStr);
 			author = Author.retrieveAuthor(author, authorsMap);
 			result.addAuthor(author);
 		}
@@ -554,8 +566,80 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	// WRITING			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	// TODO
-
+	/**
+	 * Record the current article collection to a Jabref file.
+	 * 
+	 * @param fileName
+	 * 		Name of the Jabref file.
+	 * @param pdfFolder
+	 * 		Path of the folder containing the PDF files associated to
+	 * 		the articles, or {@code null} if no such folder.
+	 * 
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while opening the output file.
+	 * @throws FileNotFoundException
+	 * 		Problem while opening the output file.
+	 */
+	public void writeJabRefFile(String fileName, String pdfFolder) throws UnsupportedEncodingException, FileNotFoundException
+	{	// init output file
+		String path = FileNames.FO_OUTPUT + File.separator + fileName;
+		PrintWriter pw = FileTools.openTextFileWrite(path, "UTF-8");
+		pw.println("% Encoding: UTF-8");
+		
+		// write each article
+		for(Article article: articlesMap.values())
+			writeArticle(article, pw);
+		
+		// add Jabref stuff
+		pw.println("\n@Comment{jabref-meta: databaseType:bibtex;}");
+		if(pdfFolder!=null)
+			pw.println("\n@Comment{jabref-meta: fileDirectory:"+pdfFolder.replace("\\","\\\\")+";}");
+		pw.println("\n@Comment{jabref-meta: groupsversion:3;}");
+		pw.println("\n@Comment{jabref-meta: saveOrderConfig:original;abstract;false;abstract;false;abstract;false;}");
+	}
+	
+	private void writeArticle(Article article, PrintWriter pw)
+	{	// print entry type and bibtex key 
+		SourceType sourceType = article.getSourceType();
+		String sourceName = article.getSourceName();
+		switch(sourceType)
+		{	case BOOK:
+				pw.println("@"+TYPE_BOOK+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_PUBLISHER+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case CHAPTER:
+				pw.println("@"+TYPE_CHAPTER+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case CONFERENCE:
+				pw.println("@"+TYPE_CONFERENCE+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case ELECTRONIC:
+				pw.println("@"+TYPE_ELECTRONIC+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_ORGANIZATION+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case JOURNAL:
+				pw.println("@"+TYPE_ARTICLE+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_JOURNAL1+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case REPORT:
+				pw.println("@"+TYPE_REPORT+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case THESIS_MSC:
+				pw.println("@"+TYPE_THESIS_MSC+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+			case THESIS_PHD:
+				pw.println("@"+TYPE_THESIS_PHD+ENTRY_BEGINNING+article.bibtexKey+",");
+				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
+				break;
+		}
+		
+		// TODO actually check the appropriate fields with some doc
+	}
+	
 	/////////////////////////////////////////////////////////////////
 	// TESTS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
@@ -569,9 +653,9 @@ public class JabrefFileHandler
 	 */
 	public static void main(String[] args) throws Exception
 	{	JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_COMPLETE;
+//		String path = FileNames.FI_BIBTEX_COMPLETE;
 //		String path = FileNames.FI_BIBTEX_REVIEW;
-//		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		String path = FileNames.FI_BIBTEX_STRUCTBAL;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 	}
