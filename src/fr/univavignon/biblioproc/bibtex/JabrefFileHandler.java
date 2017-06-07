@@ -82,7 +82,7 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX FIELDS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Type of Bibtex entry */
+	/** Source of the Bibtex entry (journal, book title, etc.) */
 	private static final String FLD_SOURCE = "source";
 	/** Bibtex key for the article key */
 	private static final String FLD_KEY = "bibtexkey";
@@ -467,6 +467,26 @@ public class JabrefFileHandler
 		String title = data.get(FLD_TITLE_ARTICLE);
 		result.setTitle(title);
 		
+		// init journal
+		result.journal = data.get(FLD_JOURNAL1);
+		if(result.journal==null)
+			result.journal = data.get(FLD_JOURNAL2);
+		
+		// init publisher
+		result.publisher = data.get(FLD_PUBLISHER);
+		
+		// init book title
+		result.booktitle = data.get(FLD_TITLE_BOOK);
+		
+		// init organization
+		result.organization = data.get(FLD_ORGANIZATION);
+		
+		// init institution
+		result.institution = data.get(FLD_INSTITUTION);
+		
+		// init school
+		result.school = data.get(FLD_SCHOOL);
+		
 		// init volume
 		result.volume = data.get(FLD_VOLUME);
 		
@@ -581,63 +601,181 @@ public class JabrefFileHandler
 	 * 		Problem while opening the output file.
 	 */
 	public void writeJabRefFile(String fileName, String pdfFolder) throws UnsupportedEncodingException, FileNotFoundException
-	{	// init output file
+	{	logger.log("Writing Jabref file "+fileName);
+		logger.increaseOffset();
+		
+		// init output file
+		logger.log("Open file");
 		String path = FileNames.FO_OUTPUT + File.separator + fileName;
 		PrintWriter pw = FileTools.openTextFileWrite(path, "UTF-8");
 		pw.println("% Encoding: UTF-8");
 		
 		// write each article
+		logger.log("Write each article");
 		for(Article article: articlesMap.values())
 			writeArticle(article, pw);
 		
 		// add Jabref stuff
+		logger.log("Add Jabref commands");
 		pw.println("\n@Comment{jabref-meta: databaseType:bibtex;}");
 		if(pdfFolder!=null)
 			pw.println("\n@Comment{jabref-meta: fileDirectory:"+pdfFolder.replace("\\","\\\\")+";}");
 		pw.println("\n@Comment{jabref-meta: groupsversion:3;}");
 		pw.println("\n@Comment{jabref-meta: saveOrderConfig:original;abstract;false;abstract;false;abstract;false;}");
+		
+		pw.close();
+		logger.increaseOffset();
+		logger.log("File written");
 	}
 	
 	private void writeArticle(Article article, PrintWriter pw)
-	{	// print entry type and bibtex key 
+	{	logger.log("Writing article "+article.toString());
+		logger.increaseOffset();
+		
+		// print entry type and bibtex key 
 		SourceType sourceType = article.getSourceType();
-		String sourceName = article.getSourceName();
 		switch(sourceType)
 		{	case BOOK:
 				pw.println("@"+TYPE_BOOK+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_PUBLISHER+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case CHAPTER:
 				pw.println("@"+TYPE_CHAPTER+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case CONFERENCE:
 				pw.println("@"+TYPE_CONFERENCE+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case ELECTRONIC:
 				pw.println("@"+TYPE_ELECTRONIC+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_ORGANIZATION+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case JOURNAL:
 				pw.println("@"+TYPE_ARTICLE+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_JOURNAL1+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case REPORT:
 				pw.println("@"+TYPE_REPORT+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case THESIS_MSC:
 				pw.println("@"+TYPE_THESIS_MSC+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 			case THESIS_PHD:
 				pw.println("@"+TYPE_THESIS_PHD+ENTRY_BEGINNING+article.bibtexKey+",");
-				pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+sourceName+FIELD_END);
 				break;
 		}
 		
-		// TODO actually check the appropriate fields with some doc
+		// authors
+		List<Author> authors = article.getAuthors();
+		String authStr = "";
+		for(Author author: authors)
+		{	if(!authStr.isEmpty())
+				authStr = authStr + " and ";
+			authStr = authStr + author.getFullname();
+		}
+		if(!authStr.isEmpty())
+			pw.println("  "+FLD_AUTHOR+FIELD_BEGINNING+authStr+FIELD_END);
+		
+		// title
+		String title = article.getTitle();
+		if(title!=null)
+			pw.println("  "+FLD_TITLE_ARTICLE+FIELD_BEGINNING+title+FIELD_END);
+		
+		// year
+		if(article.year!=null)
+			pw.println("  "+FLD_YEAR+FIELD_BEGINNING+article.year+FIELD_END);
+		
+		// journal
+		if(article.journal!=null)
+			pw.println("  "+FLD_JOURNAL1+FIELD_BEGINNING+article.journal+FIELD_END);
+
+		// volume
+		if(article.volume!=null)
+			pw.println("  "+FLD_VOLUME+FIELD_BEGINNING+article.volume+FIELD_END);
+
+		// issue
+		if(article.issue!=null)
+			pw.println("  "+FLD_NUMBER+FIELD_BEGINNING+article.issue+FIELD_END);
+
+		// pages
+		if(article.page!=null)
+			pw.println("  "+FLD_PAGES+FIELD_BEGINNING+article.page+FIELD_END);
+		
+		// editor
+		if(article.editor!=null)
+			pw.println("  "+FLD_EDITOR+FIELD_BEGINNING+article.editor+FIELD_END);
+		
+		// edition
+		if(article.edition!=null)
+			pw.println("  "+FLD_EDITION+FIELD_BEGINNING+article.edition+FIELD_END);
+		
+		// series
+		if(article.series!=null)
+			pw.println("  "+FLD_SERIES+FIELD_BEGINNING+article.series+FIELD_END);
+
+		// chapter
+		if(article.chapter!=null)
+			pw.println("  "+FLD_CHAPTER+FIELD_BEGINNING+article.chapter+FIELD_END);
+
+		// institution
+		if(article.institution!=null)
+			pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+article.institution+FIELD_END);
+
+		// school
+		if(article.school!=null)
+			pw.println("  "+FLD_SCHOOL+FIELD_BEGINNING+article.school+FIELD_END);
+
+		// booktitle
+		if(article.booktitle!=null)
+			pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+article.booktitle+FIELD_END);
+
+		// publisher
+		if(article.publisher!=null)
+			pw.println("  "+FLD_PUBLISHER+FIELD_BEGINNING+article.publisher+FIELD_END);
+
+		// address
+		if(article.address!=null)
+			pw.println("  "+FLD_ADDRESS+FIELD_BEGINNING+article.address+FIELD_END);
+
+		// type
+		if(article.type!=null)
+			pw.println("  "+FLD_TYPE+FIELD_BEGINNING+article.type+FIELD_END);
+
+		// organization
+		if(article.organization!=null)
+			pw.println("  "+FLD_ORGANIZATION+FIELD_BEGINNING+article.organization+FIELD_END);
+
+		// doi
+		if(article.doi!=null)
+			pw.println("  "+FLD_DOI+FIELD_BEGINNING+article.doi+FIELD_END);
+		
+		// file
+		if(article.file!=null)
+			pw.println("  "+FLD_FILE+FIELD_BEGINNING+article.file+FIELD_END);
+		
+		// abstract
+		if(article.abstrct!=null)
+			pw.println("  "+FLD_ABSTRACT+FIELD_BEGINNING+article.abstrct+FIELD_END);
+		
+		// owner
+		if(article.owner!=null)
+			pw.println("  "+FLD_OWNER+FIELD_BEGINNING+article.owner+FIELD_END);
+		
+		// timestamp
+		if(article.timestamp!=null)
+			pw.println("  "+FLD_TIMESTAMP+FIELD_BEGINNING+article.timestamp+FIELD_END);
+		
+		// url
+		if(article.url!=null)
+			pw.println("  "+FLD_URL+FIELD_BEGINNING+article.url+FIELD_END);
+		
+		// review
+		if(article.review!=null)
+			pw.println("  "+FLD_REVIEW+FIELD_BEGINNING+article.review+FIELD_END);
+		
+		// sortkey
+		if(article.sortkey!=null)
+			pw.println("  "+FLD_SORTKEY+FIELD_BEGINNING+article.sortkey+FIELD_END);
+		
+		pw.println(ENTRY_END);
+		pw.println();
+		logger.decreaseOffset();
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -658,5 +796,7 @@ public class JabrefFileHandler
 		String path = FileNames.FI_BIBTEX_STRUCTBAL;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
+		
+		jfh.writeJabRefFile("test.bib", "C:\\test\\test");
 	}
 }

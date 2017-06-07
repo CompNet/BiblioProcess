@@ -49,7 +49,7 @@ public class Author implements Comparable<Author>
 		if(temp.length==1)
 			throw new IllegalArgumentException("Could not find the firstname in fullname \""+fullName+"\"");
 		else if(temp.length>1)
-			firstnameInitials = StringTools.normalize(temp[1].substring(0,1));
+			firstnameInitials = retrieveInitials(temp[1]);
 		
 		// setup normalized fullname
 		normname = firstnameInitials.replace(" ", "");
@@ -177,7 +177,7 @@ public class Author implements Comparable<Author>
 	 * @return
 	 * 		The corresponding sequence of initials.
 	 */
-	public static String retrieveInitials(String text)
+	private String retrieveInitials(String text)
 	{	String result = "";
 		String temp[] = text.split(" ");
 		for(int i=0;i<temp.length;i++)
