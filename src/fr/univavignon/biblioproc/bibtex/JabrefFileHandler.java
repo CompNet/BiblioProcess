@@ -184,6 +184,8 @@ public class JabrefFileHandler
 	public Map<String, Article> articlesMap = new HashMap<String, Article>();
 	/** Map containing all the loaded authors, index by their normalized name */
 	public Map<String, Author> authorsMap = new HashMap<String, Author>();
+	/** Jabref Commands located at the end of the file */
+	public String jabrefCommands = null;
 	
 	/////////////////////////////////////////////////////////////////
 	// LOADING			/////////////////////////////////////////////
@@ -238,18 +240,22 @@ public class JabrefFileHandler
 		while(!line.startsWith(COMMENT_PREFIX));
 		logger.log("Number of article retrieved from the file: "+count);
 		logger.decreaseOffset();
-	
+		jabrefCommands = "\n" + line;
+		
 		// update with the list of purely applicative articles
 		if(updateGroups)
 		{	logger.log("Mark the articles belonging to the \"applications\" Jabref group");
 			logger.increaseOffset();
 				do
-					line = jrScanner.nextLine();
+				{	line = jrScanner.nextLine();
+					jabrefCommands = jabrefCommands + "\n" + line;
+				}
 				while(!line.startsWith(APPLICATION_PREFIX));
 				String listStr = line.substring(APPLICATION_PREFIX.length());
 				do
 				{	line = jrScanner.nextLine();
 					listStr = listStr + line;
+					jabrefCommands = jabrefCommands + "\n" + line;
 				}
 				while(!line.endsWith(GROUP_END));
 				listStr = listStr.substring(0,listStr.length()-2);
@@ -270,12 +276,15 @@ public class JabrefFileHandler
 			logger.log("Mark the articles belonging to the \"ignored\" Jabref group");
 			logger.increaseOffset();
 				do
-					line = jrScanner.nextLine();
+				{	line = jrScanner.nextLine();
+					jabrefCommands = jabrefCommands + "\n" + line;
+				}
 				while(!line.startsWith(IGNORED_PREFIX));
 				listStr = line.substring(IGNORED_PREFIX.length());
 				do
 				{	line = jrScanner.nextLine();
 					listStr = listStr + line;
+					jabrefCommands = jabrefCommands + "\n" + line;
 				}
 				while(!line.endsWith(GROUP_END));
 				listStr = listStr.substring(0,listStr.length()-3);
@@ -293,7 +302,13 @@ public class JabrefFileHandler
 			logger.decreaseOffset();
 		}
 		
-		// close JabRef file
+		// possibly finish reading the file
+		logger.log("Finish reading the file");
+		while(jrScanner.hasNextLine())
+		{	line = jrScanner.nextLine();
+			jabrefCommands = jabrefCommands + "\n" + line;
+		}
+		
 		jrScanner.close();
 		logger.decreaseOffset();
 		logger.log("Finished loading the JabRef file");
@@ -617,11 +632,15 @@ public class JabrefFileHandler
 		
 		// add Jabref stuff
 		logger.log("Add Jabref commands");
-		pw.println("\n@Comment{jabref-meta: databaseType:bibtex;}");
-		if(pdfFolder!=null)
-			pw.println("\n@Comment{jabref-meta: fileDirectory:"+pdfFolder.replace("\\","\\\\")+";}");
-		pw.println("\n@Comment{jabref-meta: groupsversion:3;}");
-		pw.println("\n@Comment{jabref-meta: saveOrderConfig:original;abstract;false;abstract;false;abstract;false;}");
+		if(jabrefCommands==null || jabrefCommands.isEmpty())
+		{	pw.println("\n@Comment{jabref-meta: databaseType:bibtex;}");
+			if(pdfFolder!=null)
+				pw.println("\n@Comment{jabref-meta: fileDirectory:"+pdfFolder.replace("\\","\\\\")+";}");
+			pw.println("\n@Comment{jabref-meta: groupsversion:3;}");
+			pw.println("\n@Comment{jabref-meta: saveOrderConfig:original;abstract;false;abstract;false;abstract;false;}");
+		}
+		else
+			pw.println(jabrefCommands);
 		
 		pw.close();
 		logger.increaseOffset();

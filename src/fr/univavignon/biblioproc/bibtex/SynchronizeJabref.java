@@ -22,13 +22,11 @@ package fr.univavignon.biblioproc.bibtex;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
 
 import fr.univavignon.biblioproc.data.Article;
-import fr.univavignon.biblioproc.data.Author;
-import fr.univavignon.biblioproc.tools.file.FileTools;
+import fr.univavignon.biblioproc.tools.file.FileNames;
 
 /**
  * Used to synchronize BibTex keys in the two
@@ -40,8 +38,54 @@ import fr.univavignon.biblioproc.tools.file.FileTools;
 public class SynchronizeJabref
 {	
 	/**
-	 * Synchronizes both BibTex files, and print any
-	 * detected problem.
+	 * Looks up the articles from the second file in the first file, and use
+	 * them to update it. This is meant to update the second file using more
+	 * up-to-date versions of the articles. The second file is supposed to
+	 * contain a subset of the articles from the first one. The updated file
+	 * is recorded in the {@link FileNames#FO_OUTPUT} folder.
+	 * 
+	 * @param originalFile
+	 * 		Larger file, also supposedly more recent.
+	 * @param selectionFile
+	 * 		Smaller file, also supposedly obsolete.
+	 * 
+	 * @throws FileNotFoundException
+	 * 		Problem while accessing one of the files.
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while accessing one of the files.
+	 */
+	private static void synchronize(String originalFile, String selectionFile) throws FileNotFoundException, UnsupportedEncodingException
+	{	// load the larger file
+		JabrefFileHandler jfhOrig = new JabrefFileHandler();
+		boolean updateGroups = false;
+		jfhOrig.loadJabRefFile(originalFile, updateGroups);
+		Map<String, Article> mapOrig = jfhOrig.articlesMap;
+		
+		// load the smaller one
+		JabrefFileHandler jfhSelect = new JabrefFileHandler();
+		updateGroups = false;
+		jfhSelect.loadJabRefFile(selectionFile, updateGroups);
+		Map<String, Article> mapSelect = jfhSelect.articlesMap;
+		
+		// get the original refs for each bibtex key in the smaller collection
+		Set<String> keys = mapSelect.keySet();
+		for(String key: keys)
+		{	Article article = mapOrig.get(key);
+			if(article==null)
+				throw new IllegalArgumentException("Article \""+key+"\" not found in the main file");
+			Article article2 = mapSelect.get(key);
+			if(!article.getNormTitle().equals(article2.getNormTitle()))
+				throw new IllegalArgumentException("Incompatible articles: \n"+article+"\n"+article2);
+			mapSelect.put(key,article);
+		}
+		
+		// record the updated collection
+		jfhSelect.writeJabRefFile("updated.bib", null);
+		
+	}
+	
+	/**
+	 * Testes one of the methods in this class.
 	 * 
 	 * @param args
 	 * 		Not used.
@@ -51,36 +95,6 @@ public class SynchronizeJabref
 	 * 		Problem while accessing the files.
 	 */
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException
-	{	// load both files
-		Map<String,Author> authorMap = new HashMap<String,Author>();
-		Map<String,Article> reviewMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_REVIEW, false, authorMap);
-		Map<String,Article> completeMap = JabrefFileHandler.loadJabRefFile(FileTools.FI_BIBTEX_COMPLETE, false, authorMap);
-		
-		// create inverted map
-		Map<String,Article> invertedMap = new HashMap<String, Article>();
-		for(Article article: completeMap.values())
-		{	invertedMap.put(article.getCiteAs(), article);
-			System.out.println("inserting " + article.getCiteAs());
-		}
-		
-		// check bibtex keys
-		System.out.print("\n\nCheck BibTex keys");
-		int count = 0;
-		for(Entry<String,Article> entry: reviewMap.entrySet())
-		{	count++;
-			System.out.println("Processing article #" + count);
-			String key = entry.getKey();
-			Article article = entry.getValue();
-			Article article2 = invertedMap.get(article.getCiteAs());
-			if(article2==null)
-				System.out.println(">> cannot find " + article);
-			else
-			{	String key2 = article2.getBibtexKey();
-				if(!key.equals(key2))
-				{	System.out.println(article);
-					System.out.println(">> key should be " + key2 + "\n");
-				}
-			}
-		}
+	{	synchronize(FileNames.FI_BIBTEX_COMPLETE, FileNames.FI_BIBTEX_REVIEW);
 	}
 }
