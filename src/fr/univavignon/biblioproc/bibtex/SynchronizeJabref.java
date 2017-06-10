@@ -27,6 +27,8 @@ import java.util.Set;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.tools.file.FileNames;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
 
 /**
  * Used to synchronize BibTex keys in the two
@@ -37,6 +39,12 @@ import fr.univavignon.biblioproc.tools.file.FileNames;
  */
 public class SynchronizeJabref
 {	
+	/////////////////////////////////////////////////////////////////
+	// LOGGER		/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Common object used for logging */
+	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	
 	/**
 	 * Looks up the articles from the second file in the first file, and use
 	 * them to update it. This is meant to update the second file using more
@@ -68,9 +76,14 @@ public class SynchronizeJabref
 		Map<String, Article> mapSelect = jfhSelect.articlesMap;
 		
 		// get the original refs for each bibtex key in the smaller collection
+		logger.log("Compare both collections");
+		logger.increaseOffset();
 		Set<String> keys = mapSelect.keySet();
+		int i = 0;
 		for(String key: keys)
-		{	Article article = mapOrig.get(key);
+		{	i++;
+			logger.log("Processing key "+i+"/"+keys.size()+": "+key);
+			Article article = mapOrig.get(key);
 			if(article==null)
 				throw new IllegalArgumentException("Article \""+key+"\" not found in the main file");
 			Article article2 = mapSelect.get(key);
@@ -78,6 +91,7 @@ public class SynchronizeJabref
 				throw new IllegalArgumentException("Incompatible articles: \n"+article+"\n"+article2);
 			mapSelect.put(key,article);
 		}
+		logger.decreaseOffset();
 		
 		// record the updated collection
 		jfhSelect.writeJabRefFile("updated.bib", null);
