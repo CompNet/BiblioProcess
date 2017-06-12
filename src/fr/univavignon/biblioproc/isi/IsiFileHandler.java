@@ -35,6 +35,7 @@ import java.util.TreeSet;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
+import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
 import fr.univavignon.biblioproc.tools.string.StringTools;
 
@@ -91,8 +92,8 @@ public class IsiFileHandler
 	 */
 	public static List<Article> loadIsiFile(String path, Map<String,Author> authorsMap) throws FileNotFoundException, UnsupportedEncodingException
 	{	// open the ISI file
-		System.out.println("\nOpen the ISI file " + FileTools.FI_ISI_ALL);
-		Scanner scanner = FileTools.openTextFileRead(FileTools.FI_ISI_ALL,null);
+		System.out.println("\nOpen the ISI file " + FileNames.FI_ISI_ALL);
+		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL,null);
 		
 		// parse the ISI file
 		Article article = null;

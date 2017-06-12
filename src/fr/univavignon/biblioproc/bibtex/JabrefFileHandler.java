@@ -623,7 +623,7 @@ public class JabrefFileHandler
 		logger.log("Open file");
 		String path = FileNames.FO_OUTPUT + File.separator + fileName;
 		PrintWriter pw = FileTools.openTextFileWrite(path, "UTF-8");
-		pw.println("% Encoding: UTF-8");
+		pw.println("% Encoding: UTF-8\n");
 		
 		// write each article
 		logger.log("Write each article");
