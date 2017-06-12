@@ -20,7 +20,6 @@ package fr.univavignon.biblioproc;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 import fr.univavignon.biblioproc.tools.file.FileTools;
 
 /**
@@ -44,7 +43,6 @@ public class Launcher
 		//TODO in ISI, the initial is sometimes followed by a ".", and sometimes not. must solve this inconsistency.
 		
 		/**TODO
-		 * - export Jabref/Bibtex files
 		 * - check the ciw stuff works by loading the file
 		 * - synchronize all ciw entries with exactly one bibtex entry
 		 * - generate the short ref for full ciw entries
@@ -56,7 +54,7 @@ public class Launcher
 		
 		
 		/* SIGNED NETS
-		 * 1) load the jabref file, store the authors and articles
+		 * x) load the jabref file, store the authors and articles
 		 * 2) load the ISI file, match the authors and articles (including references)
 		 * 
 		 * matching the full ISI entries with the jabref file is straightforward.
@@ -66,14 +64,7 @@ public class Launcher
 		 *  - use the DOI whenever available.
 		 * 
 		 * some articles have distinct references (as a proper paper and as a preprint, for
-		 * instance). 
-		 * 
-		 */
-		
-		/* COM DET
-		 * goal: complete review file using main file
-		 *  - ignore comments
-		 *  - automate? or just list, so that we can complete manually?
+		 * instance). how to deal with them?
 		 */
 	}
 }

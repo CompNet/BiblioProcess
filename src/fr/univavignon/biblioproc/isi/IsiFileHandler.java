@@ -37,15 +37,51 @@ import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
 import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
- * Class dedicated to reading/writing ISI files.
+ * Class dedicated to reading ISI files.
  *  
  * @author Vincent Labatut
  */
 public class IsiFileHandler
-{	/** CIW prefix for author names with long firstnames */
+{	
+	/**
+	 * Creates a new ISI handler based on the data previously loaded
+	 * from a Bibtex file. When loading an ISI file, we will try to
+	 * match the loaded references and authors with the ones already 
+	 * present in the maps.
+	 * 
+	 * @param articlesMap
+	 * 		Map of articles, indexed by Bibtex entry.
+	 * @param authorsMap
+	 * 		Map of authors, indexed by normalized full name.
+	 */
+	public IsiFileHandler(Map<String, Article> articlesMap, Map<String, Author> authorsMap)
+	{	this.articlesMap = articlesMap;
+		this.authorsMap = authorsMap;
+	}
+	
+	/////////////////////////////////////////////////////////////////
+	// LOGGER		/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Common object used for logging */
+	private HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	
+	/////////////////////////////////////////////////////////////////
+	// DATA			/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Map containing all the loaded articles, indexed by their Bibtex id */
+	public Map<String, Article> articlesMap = new HashMap<String, Article>();
+	/** Map containing all the loaded authors, index by their normalized name */
+	public Map<String, Author> authorsMap = new HashMap<String, Author>();
+	
+	/////////////////////////////////////////////////////////////////
+	// CIW PREFIXES	/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** CIW prefix for author names with long firstnames */
 	private final static String PFX_AUTHOR_LONG =  "AF ";
 	/** CIW prefix for author names with initials for firstnames */
 	private final static String PFX_AUTHOR_SHORT =  "AU ";
@@ -74,14 +110,15 @@ public class IsiFileHandler
 	/** CIW prefix to separate articles */
 	private final static String PFX_SEPARATOR =  "ER ";
 	
+	/////////////////////////////////////////////////////////////////
+	// LOADING			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
 	/**
 	 * Loads the specified ISI file, and builds the corresponding 
 	 * map of articles.
 	 * 
 	 * @param path
 	 * 		Jabref file.
-	 * @param authorsMap
-	 * 		Map containing all previously loaded authors.
 	 * @return
 	 * 		A list containing all the read articles.
 	 * 
@@ -90,39 +127,49 @@ public class IsiFileHandler
 	 * @throws UnsupportedEncodingException 
 	 * 		Problem while accessing the Jabref file.
 	 */
-	public static List<Article> loadIsiFile(String path, Map<String,Author> authorsMap) throws FileNotFoundException, UnsupportedEncodingException
-	{	// open the ISI file
-		System.out.println("\nOpen the ISI file " + FileNames.FI_ISI_ALL);
+	public List<Article> loadIsiFile(String path) throws FileNotFoundException, UnsupportedEncodingException
+	{	logger.log("Start loading ISI file " + path);
+		logger.increaseOffset();
+		
+		// open the ISI file
+		logger.log("Open the file " + FileNames.FI_ISI_ALL);
 		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL,null);
 		
 		// parse the ISI file
-		Article article = null;
-		List<Article> articles = new ArrayList<Article>();
-		int count = 0;
-		do
-		{	count++;
-			article = processIsiArticle(scanner, articles, authorsMap);
-			System.out.println("Processing " + count + " :"+article);
-		}
-		while(article!=null);
-		scanner.close();
+		logger.log("Processing each entry in the file");
+		logger.increaseOffset();
+			Article article = null;
+			List<Article> articles = new ArrayList<Article>();
+			int count = 0;
+			do
+			{	count++;
+				article = processIsiArticle(scanner, articles);
+				logger.log("Processing " + count + " :"+article);
+			}
+			while(article!=null);
+			scanner.close();
+		logger.log("Done reading the file");
+		logger.decreaseOffset();
 		
 		// display the unknown articles
-		System.out.println("\nList of unknown articles:");
-		count = 0;
-		Collections.sort(articles, new Comparator<Article>()
-		{	public int compare(Article o1, Article o2)
-			{	int result = o1.timesCited - o2.timesCited;
-				return result;
-			};
-		});
-		for(Article a: articles)
-		{	if(!a.present)
-			{	count++;
-				System.out.println(count + ". [" + a.timesCited + "]" + a);
+		logger.log("List of unknown articles:");
+		logger.increaseOffset();
+			count = 0;
+			Collections.sort(articles, new Comparator<Article>()
+			{	public int compare(Article o1, Article o2)
+				{	int result = o1.timesCited - o2.timesCited;
+					return result;
+				};
+			});
+			for(Article a: articles)
+			{	if(!a.present)
+				{	count++;
+					logger.log(count + ". [" + a.timesCited + "]" + a);
+				}
 			}
-		}
+		logger.decreaseOffset();
 		
+		logger.decreaseOffset();
 		return articles;
 	}
 	
@@ -131,12 +178,12 @@ public class IsiFileHandler
 	 * 
 	 * @param scanner
 	 * 		Scanner giving access to the text.
-	 * @param authorsMap
-	 * 		Map containing all previously loaded authors.
+	 * @param articles
+	 * 		List of read articles.
 	 * @return
 	 * 		The corresponding article instance.
 	 */
-	private static Article processIsiArticle(Scanner scanner, List<Article> articles, Map<String,Author> authorsMap)
+	private Article processIsiArticle(Scanner scanner, List<Article> articles)
 	{	Article result = null;
 		if(scanner.hasNextLine())
 		{	Map<String, String> data = new HashMap<String, String>();
@@ -278,7 +325,7 @@ public class IsiFileHandler
 			for(int i=0;i<2;i++)
 				line = scanner.nextLine();
 			
-			result = Article.buildArticle(data, citedArticles, authorsMap);
+			result = buildArticle(data, citedArticles);
 			result = retrieveArticle(result,articles);
 		}
 		
@@ -295,7 +342,7 @@ public class IsiFileHandler
 	 * @return
 	 * 		The article retrieved from the map (possibly the same object).
 	 */
-	private static Article retrieveArticle(Article article, List<Article> articles)
+	private Article retrieveArticle(Article article)
 	{	// lookup the article
 		Article result = null;
 		Iterator<Article> it = articles.iterator();
@@ -329,7 +376,7 @@ public class IsiFileHandler
 	 * @return
 	 * 		The corresponding {@code Article} object.
 	 */
-	public static Article buildArticle(String string, Map<String,Author> authorsMap)
+	public Article buildArticle(String string)
 	{	Article result = new Article();
 		String temp[] = string.split(", ");
 		int index = 0;
@@ -397,16 +444,6 @@ public class IsiFileHandler
 			index++;
 		}
 		
-		// correct some of the errors in ISI
-		result.checkErrors(authorsMap);
-		
-//if(
-//	articlesMap.year!=null && articlesMap.year.equals("2003")
-//	&& articlesMap.volume!=null && articlesMap.volume.equals("45")
-//	&& articlesMap.page!=null && articlesMap.page.equals("167")
-//	)
-//	System.out.print("");
-
 		return result;
 	}
 
@@ -420,13 +457,11 @@ public class IsiFileHandler
 	 * 		A map used to initialize the {@code Article} object.
 	 * @param citedArticles
 	 * 		Articles cited by the newly created article.
-	 * @param authorsMap
-	 * 		Map containing the known authors.
 	 * @return
 	 * 		The created article.
 	 */
-	public static Article buildArticle(Map<String,String> map, Set<Article> citedArticles, Map<String,Author> authorsMap)
-	{	Article result = buildArticle(map, authorsMap);
+	public Article buildArticle(Map<String,String> map, Set<Article> citedArticles)
+	{	Article result = buildArticle(map);
 		result.present = false;
 		
 		result.citedArticles.addAll(citedArticles);
@@ -434,5 +469,21 @@ public class IsiFileHandler
 			article.citingArticles.add(article);
 		
 		return result;
+	}
+
+	/////////////////////////////////////////////////////////////////
+	// TESTS			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/**
+	 * Method used to test this class.
+	 * 
+	 * @param args
+	 * 		None needed.
+	 * @throws Exception
+	 * 		Whatever exception.
+	 */
+	public static void main(String[] args) throws Exception
+	{
+		// TODO
 	}
 }
