@@ -35,6 +35,7 @@ import java.util.TreeSet;
 
 import fr.univavignon.biblioproc.data.Article;
 import fr.univavignon.biblioproc.data.Author;
+import fr.univavignon.biblioproc.data.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
@@ -81,8 +82,10 @@ public class IsiFileHandler
 	/////////////////////////////////////////////////////////////////
 	// CIW PREFIXES	/////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** CIW prefix for author names with long firstnames */
-	private final static String PFX_AUTHOR_LONG =  "AF ";
+	/** CIW prefix for abstracts */
+	private final static String PFX_ABSTRACT =  "AB ";
+//	/** CIW prefix for author names with long firstnames */
+//	private final static String PFX_AUTHOR_LONG =  "AF ";
 	/** CIW prefix for author names with initials for firstnames */
 	private final static String PFX_AUTHOR_SHORT =  "AU ";
 	/** CIW prefix for DOI */
@@ -103,6 +106,8 @@ public class IsiFileHandler
 	private final static String PFX_REFERENCES =  "CR ";
 	/** CIW prefix for article title */
 	private final static String PFX_TITLE =  "TI ";
+	/** CIW prefix for article type */
+	private final static String PFX_TYPE =  "JT ";
 	/** CIW prefix for journal volume */
 	private final static String PFX_VOLUME =  "VL ";
 	/** CIW prefix for publication year */
@@ -143,7 +148,7 @@ public class IsiFileHandler
 			int count = 0;
 			do
 			{	count++;
-				article = processIsiArticle(scanner, articles);
+				article = processIsiArticle(scanner);
 				logger.log("Processing " + count + " :"+article);
 			}
 			while(article!=null);
@@ -183,151 +188,197 @@ public class IsiFileHandler
 	 * @return
 	 * 		The corresponding article instance.
 	 */
-	private Article processIsiArticle(Scanner scanner, List<Article> articles)
-	{	Article result = null;
-		if(scanner.hasNextLine())
-		{	Map<String, String> data = new HashMap<String, String>();
-			String line = scanner.nextLine();
-			
-			// get authors
-			while(!line.startsWith(PFX_AUTHOR_SHORT))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			String authors = "";
-			do
-			{	String author = line.substring(3);
-				authors = authors + author + " and ";
-				line = scanner.nextLine();
-			}
-			while(line.startsWith(" "));
-			authors = authors.substring(0,authors.length()-5);
-			data.put("author", authors);
-			
-			// get title
-			while(!line.startsWith(PFX_TITLE))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			String title = "";
-			do
-			{	String temp = line.substring(3);
-				title = title + temp + " ";
-				line = scanner.nextLine();
-			}
-			while(line.startsWith(" "));
-			title = title.substring(0,title.length()-1);
-			data.put("title", title);
-			
-			// get conference
-			while(!line.startsWith("SO ") && !line.startsWith("LA "))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			if(line.startsWith("SO "))
-			{	String booktitle = "";
-				do
-				{	String temp = line.substring(3);
-					booktitle = booktitle + temp + " ";
-					line = scanner.nextLine();
-				}
-				while(line.startsWith(" "));
-				booktitle = booktitle.substring(0,booktitle.length()-1);
-				data.put("booktitle", booktitle);
-			}
-			
-			// get references
-			Set<Article> citedArticles = new TreeSet<Article>(); 
-			while(!line.startsWith("CR ") && !line.startsWith("NR "))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			if(line.startsWith("CR "))
-			{	do
-				{	String articleStr = line.substring(3);
-					Article article = buildArticle(articleStr, authorsMap);
-					if(article!=null)
-					{	article = retrieveArticle(article, articles);
-						citedArticles.add(article);
-					}
-					line = scanner.nextLine();
-				}
-				while(line.startsWith(" "));
-			}
-			
-			// get journal
-			while(!line.startsWith("J9 ") && !line.startsWith("PY "))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			if(line.startsWith("J9 "))
-			{	String journal = line.substring(3);
-				data.put("journal", journal);
-				line = scanner.nextLine();
-			}
-						
-			// get year
-			while(!line.startsWith("PY "))
-			{	line = scanner.nextLine();
-				if(line.startsWith(PFX_SEPARATOR))
-					throw new NullPointerException();
-			}
-			String year = line.substring(3);
-			data.put("year", year);
-			line = scanner.nextLine();
-						
-			// get volume
-			while(!line.startsWith("VL ") && !line.startsWith("IS ")
-				&& !line.startsWith("BP ") && !line.startsWith("EP ")
-				&& !line.startsWith(PFX_SEPARATOR))
-				line = scanner.nextLine();
-			if(line.startsWith("VL "))
-			{	String volume = line.substring(3);
-				data.put("volume", volume);
-				line = scanner.nextLine();
-			}
-			
-			// get issue
-			while(!line.startsWith("IS ")
-				&& !line.startsWith("BP ") && !line.startsWith("EP ")
-				&& !line.startsWith(PFX_SEPARATOR))
-				line = scanner.nextLine();
-			if(line.startsWith("IS "))
-			{	String issue = line.substring(3);
-				data.put("number", issue);
-				line = scanner.nextLine();
-			}
-			
-			// get page(s)
-			while(!line.startsWith("BP ") && !line.startsWith("AR") && !line.startsWith(PFX_SEPARATOR))
-				line = scanner.nextLine();
-			if(line.startsWith("BP "))
-			{	String pages = line.substring(3);
-				line = scanner.nextLine();
-				data.put("pages", pages);
-			}
-			while(!line.startsWith("AR ") && !line.startsWith(PFX_SEPARATOR))
-				line = scanner.nextLine();
-			if(line.startsWith("AR "))
-			{	String pages = line.substring(3);
-				line = scanner.nextLine();
-				data.put("pages", pages);
-			}
-			
-			// finish reference
-			while(!line.startsWith(PFX_SEPARATOR))
-				line = scanner.nextLine();
-			for(int i=0;i<2;i++)
-				line = scanner.nextLine();
-			
-			result = buildArticle(data, citedArticles);
-			result = retrieveArticle(result,articles);
+	private Article processIsiArticle(Scanner scanner)
+	{	Article result = new Article();
+		
+		if(!scanner.hasNextLine())
+			throw new IllegalArgumentException("Empty scanner when reading next ISI article");
+		String line = scanner.nextLine();
+		
+		// get type
+		while(!line.startsWith(PFX_TYPE))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article type (last read line: "+line+")");
 		}
+		String typeStr = line.substring(3).trim();
+		SourceType sourceType = null;
+		switch(typeStr)
+		{	case "J":
+				sourceType = SourceType.JOURNAL;
+				break;
+			case "S":
+				sourceType = SourceType.CONFERENCE;
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown ISI article type: "+typeStr);
+		}
+				
+		// get authors
+		while(!line.startsWith(PFX_AUTHOR_SHORT))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article authors (last read line: "+line+")");
+		}
+		do
+		{	String authorStr = line.substring(3);
+			String tmp[] = authorStr.split(",");
+			String lastname = tmp[0].trim();
+			String firstnameInitials = tmp[1].replace("(?<=\\p{L})(?=\\p{L})", ". ").trim(); // adding spaces and dots between letters
+			firstnameInitials = firstnameInitials.replace("(?<=\\p{L})(?=-)", ".-").trim(); // adding dots before hyphens
+			Author author = new Author(lastname, firstnameInitials);
+			result.addAuthor(author);
+			line = scanner.nextLine();
+		}
+		while(line.startsWith(" "));
+		
+		// get title
+		while(!line.startsWith(PFX_TITLE))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article title (last read line: "+line+")");
+		}
+		String title = "";
+		do
+		{	String temp = line.substring(3);
+			title = title + temp + " ";
+			line = scanner.nextLine();
+		}
+		while(line.startsWith(" "));
+		title = title.trim();
+		result.setTitle(title);
+		
+		// get source
+		String prefix = null;
+		switch(sourceType)
+		{	case BOOK:
+				//TODO to complete
+				break;
+			case CHAPTER:
+				//TODO to complete
+				break;
+			case CONFERENCE:
+				prefix = PFX_JOURNAL_LONG;
+				break;
+			case ELECTRONIC:
+				//TODO to complete
+				break;
+			case JOURNAL:
+				prefix = PFX_JOURNAL_LONG;
+				break;
+			case REPORT:
+				//TODO to complete
+				break;
+			case THESIS_MSC:
+				//TODO to complete
+				break;
+			case THESIS_PHD:
+				//TODO to complete
+				break;
+		}
+		if(prefix==null)
+			throw new IllegalArgumentException("Unknown article type for "+sourceType+" (source code must be completed accordingly)");
+		while(!line.startsWith(prefix))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article prefix \""+prefix+"\" (last read line: "+line+")");
+		}
+		String sourceName = "";
+		do
+		{	String temp = line.substring(3);
+			sourceName = sourceName + temp + " "; //TODO if all uppercase >> switch to lowercase with initials
+			line = scanner.nextLine();
+		}
+		while(line.startsWith(" "));
+		sourceName = sourceName.trim();
+		result.setSource(sourceType, sourceName);
+		
+		// get abstract
+		while(!line.startsWith(PFX_ABSTRACT))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article abstract (last read line: "+line+")");
+		}
+		String abstrct = "";
+		do
+		{	String temp = line.substring(3);
+			abstrct = abstrct + temp + " ";
+			line = scanner.nextLine();
+		}
+		while(line.startsWith(" "));
+		result.abstrct = abstrct.trim();
+		
+		// get references
+		while(!line.startsWith(PFX_REFERENCES))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article references (last read line: "+line+")");
+		}
+		Set<Article> citedArticles = new TreeSet<Article>(); 
+		do
+		{	String articleCitation = line.substring(3);
+			Article article = retrieveArticle(articleCitation);
+			citedArticles.add(article);
+			line = scanner.nextLine();
+		}
+		while(line.startsWith(" "));
+		
+		// get year
+		while(!line.startsWith(PFX_YEAR))
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article year (last read line: "+line+")");
+		}
+		result.year = line.substring(3);
+		
+		// get volume
+		while(!line.startsWith(PFX_VOLUME)) // TODO not compulsory
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article volume (last read line: "+line+")");
+		}
+		result.volume = line.substring(3);
+		
+		// get issue
+		while(!line.startsWith(PFX_ISSUE)) // TODO not compulsory
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article issue (last read line: "+line+")");
+		}
+		result.issue = line.substring(3);
+		
+		// get pages
+		while(!line.startsWith(PFX_PAGE_START)) // TODO not compulsory
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article starting page (last read line: "+line+")");
+		}
+		String startPage = line.substring(3);
+		line = scanner.nextLine();
+		String endPage = line.substring(3);
+		result.page = startPage+"-"+endPage; //TODO deal with the alternative: PFX_PAGE 
+		
+		// get doi
+		while(!line.startsWith(PFX_DOI)) // TODO not compulsory
+		{	line = scanner.nextLine();
+			if(line.startsWith(PFX_SEPARATOR))
+				throw new IllegalArgumentException("Could not find the article doi (last read line: "+line+")");
+		}
+		result.doi = line.substring(3);
+		
+		// finish reference
+		while(!line.startsWith(PFX_SEPARATOR))
+			line = scanner.nextLine();
+		for(int i=0;i<2;i++)
+			line = scanner.nextLine();
+		
+		// TODO look for article in existing ones
+		// if already exists, merge them
+		// maybe do that in the calling function?
+		
+		// TODO what about a first pass without the references 
+		// then merge with existing articles
+		// and second pass to resolve references (references can be temporarily stored in a map as strings)
 		
 		return result;
 	}

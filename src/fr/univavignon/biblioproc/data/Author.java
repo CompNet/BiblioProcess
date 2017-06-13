@@ -52,27 +52,29 @@ public class Author implements Comparable<Author>
 			firstnameInitials = retrieveInitials(temp[1]);
 		
 		// setup normalized fullname
-		normname = firstnameInitials.replace(" ", "");
-		normname = normname.replace(".", "");
-		normname = normname.replace("-", "");
-		normname = lastname + " " + normname;
-		normname = StringTools.normalize(normname);
+		initNormName();
 	}
 	
-//	/**
-//	 * Builds an author using strings separately representing
-//	 * his lastname and firstname(s).
-//	 * TODO check this method
-//	 * 
-//	 * @param lastname
-//	 * 		Lastname of the author.
-//	 * @param firstnameInitials
-//	 * 		Initial(s) of the author's firstname(s).
-//	 */
-//	public Author(String lastname, String firstnameInitials)
-//	{	this.lastname = StringTools.clean(lastname);
-//		this.firstnameInitials = StringTools.clean(firstnameInitials);//TODO if for ISI, should check this...
-//	}
+	/**
+	 * Builds an author using strings separately representing
+	 * his lastname and firstname(s). The firstname is supposed to
+	 * be under the form of uppercase initials separated by spaces
+	 * or hyphens, and ended with dots. For instance: "X.", "J.-P."
+	 * or "X. Y. Z.".
+	 * 
+	 * @param lastname
+	 * 		Lastname of the author.
+	 * @param firstnameInitials
+	 * 		Initial(s) of the author's firstname(s).
+	 */
+	public Author(String lastname, String firstnameInitials)
+	{	// setup last name
+		this.lastname = lastname;
+		// setup firstnames
+		this.firstnameInitials = firstnameInitials;
+		// setup normalized fullname
+		initNormName();
+	}
 	
 	/**
 	 * Looks up the specified name and returns the corresponding
@@ -113,6 +115,18 @@ public class Author implements Comparable<Author>
 	/////////////////////////////////////////////////////////////////
 	/** Normalized fullname */
 	public String normname = null;
+	
+	/**
+	 * Initializes the normalized form of the name, based
+	 * on the existing lastname and firstnames.
+	 */
+	private void initNormName()
+	{	normname = firstnameInitials.replace(" ", "");
+		normname = normname.replace(".", "");
+		normname = normname.replace("-", "");
+		normname = lastname + " " + normname;
+		normname = StringTools.normalize(normname);
+	}
 	
 	/////////////////////////////////////////////////////////////////
 	// COMPARISON		/////////////////////////////////////////////
