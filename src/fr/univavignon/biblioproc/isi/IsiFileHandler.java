@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -138,10 +139,10 @@ public class IsiFileHandler
 		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL,null);
 		
 		// parse the ISI file
+		Map<Article,List<String>> tempRef = new HashMap<Article, List<String>>();
 		logger.log("Processing each entry in the file");
 		logger.increaseOffset();
-			Map<Article,List<String>> tempRef = new HashMap<Article, List<String>>();
-			Article article = null;
+		{	Article article = null;
 			int count = 0;
 			do
 			{	count++;
@@ -150,11 +151,23 @@ public class IsiFileHandler
 			}
 			while(article!=null);
 			scanner.close();
+		}
 		logger.log("Done reading the file");
 		logger.decreaseOffset();
 		
 		// resolving the (short) references
-		// TODO iterate over the map, process each string-reference
+		for(Entry<Article,List<String>> entry: tempRef.entrySet())
+		{	Article article = entry.getKey();
+			List<String> refs = entry.getValue();
+			for(String ref: refs)
+			{	Article r = retrieveArticle(ref);
+				if(r!=null)
+				{	article.citedArticles.add(r);
+					r.citingArticles.add(article);
+				}
+			}
+		}
+		//TODO list the unresolved refs? 
 		
 //		// display the unknown articles
 //		// TODO check the necessity of the stuff below
@@ -393,26 +406,21 @@ public class IsiFileHandler
 	}
 	
 	/**
-	 * Retrieves an article from the article map.
-	 * If it already exists, it might be completed.
-	 * Otherwise, it is added to the map.
+	 * Parses the specified string and tries to identify a
+	 * matching article in the current article map. If none
+	 * can be found, a new incomplete article is created
+	 * and returned.
 	 *  
-	 * @param article
-	 * 		The article to retrieve from the map.
+	 * @param string
+	 * 		The string representing the targeted article.
 	 * @return
-	 * 		The article retrieved from the map (possibly the same object).
+	 * 		The retrieved (possibly newly created) article.
 	 */
-	private Article retrieveArticle(Article article)
-	{	// lookup the article
-		Article result = null;
-		Iterator<Article> it = articles.iterator();
-		while(it.hasNext() && result==null)
-		{	Article a = it.next();
-			if(article.isCompatible(a))
-			{	result = a;
-				result.timesCited++;
-			}
-		}
+	private Article retrieveArticle(String string)
+	{	Article result = null;
+		//TODO we possibly need to store the short version of the ISI complete articles to look them up here
+		//for the jabref ones, we must infer their short version.
+		
 		
 		// update the article or list
 		if(result==null)

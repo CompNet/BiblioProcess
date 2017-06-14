@@ -574,10 +574,166 @@ public class Article implements Comparable<Article>
 	 * @param article
 	 * 		The additional data.
 	 */
-	public void completeWith(Article article) //TODO
-	{	// authors
+	public void completeWith(Article article)
+	{	// abstract
+		if(abstrct==null)
+		{	String abstrct2 = article.abstrct;
+			if(abstrct2!=null)
+				abstrct = abstrct2;
+		}
+		
+		// address
+		if(address==null)
+		{	String address2 = article.address;
+			if(address2!=null)
+				address = address2;
+		}
+		
+		// authors
 		for(Author author: article.getAuthors())
 			addAuthor(author);
+		
+		// booktitle
+		if(booktitle==null)
+		{	String booktitle2 = article.booktitle;
+			if(booktitle2!=null)
+				booktitle = booktitle2;
+		}
+		
+		// chapter
+		if(chapter==null)
+		{	String chapter2 = article.chapter;
+			if(chapter2!=null)
+				chapter = chapter2;
+		}
+		
+		// cited/citing articles
+		Set<Article> citingArticles2 = article.citingArticles;
+		citingArticles.addAll(citingArticles2);
+		Set<Article> citedArticles2 = article.citedArticles;
+		citedArticles.addAll(citedArticles2);
+		
+		// doi
+		if(doi==null)
+		{	String doi2 = article.doi;
+			if(doi2!=null)
+				doi = doi2;
+		}
+		
+		// edition
+		if(edition==null)
+		{	String edition2 = article.edition;
+			if(edition2!=null)
+				edition = edition2;
+		}
+		
+		// editor
+		if(editor==null)
+		{	String editor2 = article.editor;
+			if(editor2!=null)
+				editor = editor2;
+		}
+		
+		// file
+		if(file==null)
+		{	String file2 = article.file;
+			if(file2!=null)
+				file = file2;
+		}
+		
+		// institution
+		if(institution==null)
+		{	String institution2 = article.institution;
+			if(institution2!=null)
+				institution = institution2;
+		}
+		
+		// issue
+		if(issue==null)
+		{	String issue2 = article.issue;
+			if(issue2!=null)
+				issue = issue2;
+		}
+		
+		// journal
+		if(journal==null)
+		{	String journal2 = article.journal;
+			if(journal2!=null)
+				journal = journal2;
+		}
+		
+		// organization
+		if(organization==null)
+		{	String organization2 = article.organization;
+			if(organization2!=null)
+				organization = organization2;
+		}
+		
+		// owner
+		if(owner==null)
+		{	String owner2 = article.owner;
+			if(owner2!=null)
+				owner = owner2;
+		}
+		
+		// page
+		if(page==null)
+		{	String page2 = article.page;
+			if(page2!=null)
+				page = page2;
+		}
+		
+		// publisher
+		if(publisher==null)
+		{	String publisher2 = article.publisher;
+			if(publisher2!=null)
+				publisher = publisher2;
+		}
+		
+		// review
+		if(review==null)
+		{	String review2 = article.review;
+			if(review2!=null)
+				review = review2;
+		}
+		
+		// school
+		if(school==null)
+		{	String school2 = article.school;
+			if(school2!=null)
+				school = school2;
+		}
+		
+		// series
+		if(series==null)
+		{	String series2 = article.series;
+			if(series2!=null)
+				series = series2;
+		}
+		
+		// sortkey
+		if(sortkey==null)
+		{	String sortkey2 = article.sortkey;
+			if(sortkey2!=null)
+				sortkey = sortkey2;
+		}
+		
+		// source
+		if(sourceName==null)
+		{	String sourceName2 = article.sourceName;
+			if(sourceName2!=null)
+			{	sourceName = sourceName2;
+				normSourceName = article.normSourceName;
+				sourceType = article.sourceType;
+			}
+		}
+		
+		// timestamp
+		if(timestamp==null)
+		{	String timestamp2 = article.timestamp;
+			if(timestamp2!=null)
+				timestamp = timestamp2;
+		}
 		
 		// title
 		if(title==null)
@@ -588,13 +744,18 @@ public class Article implements Comparable<Article>
 			}
 		}
 		
-		// source
-		if(sourceName==null)
-		{	String sourceName2 = article.sourceName;
-			if(sourceName2!=null)
-			{	sourceName = sourceName2;
-				sourceType = article.sourceType;
-			}
+		// type
+		if(type==null)
+		{	String type2 = article.type;
+			if(type2!=null)
+				type = type2;
+		}
+		
+		// url
+		if(url==null)
+		{	String url2 = article.url;
+			if(url2!=null)
+				url = url2;
 		}
 		
 		// volume
@@ -604,74 +765,12 @@ public class Article implements Comparable<Article>
 				volume = volume2;
 		}
 		
-		// chapter
-		if(chapter==null)
-		{	String chapter2 = article.chapter;
-			if(chapter2!=null)
-				chapter = chapter2;
-		}
-		
-		// issue
-		if(issue==null)
-		{	String issue2 = article.issue;
-			if(issue2!=null)
-				issue = issue2;
-		}
-		
-		// page
-		if(page==null)
-		{	String page2 = article.page;
-			if(page2!=null)
-				page = page2;
-		}
-		
-		// doi
-		if(doi==null)
-		{	String doi2 = article.doi;
-			if(doi2!=null)
-				doi = doi2;
-		}
-		
-		// file
-		if(file==null)
-		{	String file2 = article.file;
-			if(file2!=null)
-				file = file2;
-		}
-		
-		// owner
-		if(owner==null)
-		{	String owner2 = article.owner;
-			if(owner2!=null)
-				owner = owner2;
-		}
-		
-		// timestamp
-		if(timestamp==null)
-		{	String timestamp2 = article.timestamp;
-			if(timestamp2!=null)
-				timestamp = timestamp2;
-		}
-		
 		// year
 		if(year==null)
 		{	String year2 = article.year;
 			if(year2!=null)
 				year = year2;
 		}
-		
-		// series
-		if(series==null)
-		{	String series2 = article.series;
-			if(series2!=null)
-				series = series2;
-		}
-		
-		// references
-		Set<Article> citingArticles2 = article.citingArticles;
-		citingArticles.addAll(citingArticles2);
-		Set<Article> citedArticles2 = article.citedArticles;
-		citedArticles.addAll(citedArticles2);
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -683,7 +782,7 @@ public class Article implements Comparable<Article>
 	 * @return
 	 * 		String representing a citation of this article.
 	 */
-	public String getCiteAs() //TODO
+	public String getCiteAs()
 	{	String result = "";
 		
 		// first author
