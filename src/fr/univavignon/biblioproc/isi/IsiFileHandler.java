@@ -21,6 +21,7 @@ package fr.univavignon.biblioproc.isi;
  */
 
 import java.io.FileNotFoundException;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,8 +101,6 @@ public class IsiFileHandler
 	private final static String PFX_PAGE =  "AR ";
 	/** CIW prefix for starting page */
 	private final static String PFX_PAGE_START =  "BP ";
-	/** CIW prefix for ending page */
-	private final static String PFX_PAGE_END =  "EP ";
 	/** CIW prefix for reference list */
 	private final static String PFX_REFERENCES =  "CR ";
 	/** CIW prefix for article title */
@@ -119,20 +118,18 @@ public class IsiFileHandler
 	// LOADING			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
-	 * Loads the specified ISI file, and builds the corresponding 
-	 * map of articles.
+	 * Loads the specified ISI file, and complete the current maps of 
+	 * articles and authors.
 	 * 
 	 * @param path
 	 * 		Jabref file.
-	 * @return
-	 * 		A list containing all the read articles.
 	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while accessing the Jabref file.
 	 * @throws UnsupportedEncodingException 
 	 * 		Problem while accessing the Jabref file.
 	 */
-	public List<Article> loadIsiFile(String path) throws FileNotFoundException, UnsupportedEncodingException
+	public void loadIsiFile(String path) throws FileNotFoundException, UnsupportedEncodingException
 	{	logger.log("Start loading ISI file " + path);
 		logger.increaseOffset();
 		
@@ -143,12 +140,12 @@ public class IsiFileHandler
 		// parse the ISI file
 		logger.log("Processing each entry in the file");
 		logger.increaseOffset();
+			Map<Article,List<String>> tempRef = new HashMap<Article, List<String>>();
 			Article article = null;
-			List<Article> articles = new ArrayList<Article>();
 			int count = 0;
 			do
 			{	count++;
-				article = processIsiArticle(scanner);
+				article = processIsiArticle(scanner, tempRef);
 				logger.log("Processing " + count + " :"+article);
 			}
 			while(article!=null);
@@ -156,39 +153,44 @@ public class IsiFileHandler
 		logger.log("Done reading the file");
 		logger.decreaseOffset();
 		
-		// display the unknown articles
-		logger.log("List of unknown articles:");
-		logger.increaseOffset();
-			count = 0;
-			Collections.sort(articles, new Comparator<Article>()
-			{	public int compare(Article o1, Article o2)
-				{	int result = o1.timesCited - o2.timesCited;
-					return result;
-				};
-			});
-			for(Article a: articles)
-			{	if(!a.present)
-				{	count++;
-					logger.log(count + ". [" + a.timesCited + "]" + a);
-				}
-			}
-		logger.decreaseOffset();
+		// resolving the (short) references
+		// TODO iterate over the map, process each string-reference
+		
+//		// display the unknown articles
+//		// TODO check the necessity of the stuff below
+//		logger.log("List of unknown articles:");
+//		logger.increaseOffset();
+//			count = 0;
+//			Collections.sort(articles, new Comparator<Article>()
+//			{	public int compare(Article o1, Article o2)
+//				{	int result = o1.timesCited - o2.timesCited;
+//					return result;
+//				};
+//			});
+//			for(Article a: articles)
+//			{	if(!a.present)
+//				{	count++;
+//					logger.log(count + ". [" + a.timesCited + "]" + a);
+//				}
+//			}
+//		logger.decreaseOffset();
 		
 		logger.decreaseOffset();
-		return articles;
 	}
 	
 	/**
-	 * Parses one article from the ISI file.
+	 * Parses one article from the ISI file, matches it with
+	 * one of the previously loaded Jabref articles, and merge
+	 * them.
 	 * 
 	 * @param scanner
 	 * 		Scanner giving access to the text.
-	 * @param articles
-	 * 		List of read articles.
+	 * @param references
+	 * 		Temporary map containing the references associated to each retrieved article.
 	 * @return
 	 * 		The corresponding article instance.
 	 */
-	private Article processIsiArticle(Scanner scanner)
+	private Article processIsiArticle(Scanner scanner, Map<Article,List<String>> references)
 	{	Article result = new Article();
 		
 		if(!scanner.hasNextLine())
@@ -199,7 +201,7 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_TYPE))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article type (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article type (current state: "+result+")");
 		}
 		String typeStr = line.substring(3).trim();
 		SourceType sourceType = null;
@@ -218,10 +220,10 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_AUTHOR_SHORT))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article authors (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article authors (current state: "+result+")");
 		}
 		do
-		{	String authorStr = line.substring(3);
+		{	String authorStr = line.substring(3).trim();
 			String tmp[] = authorStr.split(",");
 			String lastname = tmp[0].trim();
 			String firstnameInitials = tmp[1].replace("(?<=\\p{L})(?=\\p{L})", ". ").trim(); // adding spaces and dots between letters
@@ -236,11 +238,11 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_TITLE))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article title (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article title (current state: "+result+")");
 		}
 		String title = "";
 		do
-		{	String temp = line.substring(3);
+		{	String temp = line.substring(3).trim();
 			title = title + temp + " ";
 			line = scanner.nextLine();
 		}
@@ -281,11 +283,11 @@ public class IsiFileHandler
 		while(!line.startsWith(prefix))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article prefix \""+prefix+"\" (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article prefix \""+prefix+"\" (current state: "+result+")");
 		}
 		String sourceName = "";
 		do
-		{	String temp = line.substring(3);
+		{	String temp = line.substring(3).trim();
 			sourceName = sourceName + temp + " "; //TODO if all uppercase >> switch to lowercase with initials
 			line = scanner.nextLine();
 		}
@@ -297,11 +299,11 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_ABSTRACT))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article abstract (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article abstract (current state: "+result+")");
 		}
 		String abstrct = "";
 		do
-		{	String temp = line.substring(3);
+		{	String temp = line.substring(3).trim();
 			abstrct = abstrct + temp + " ";
 			line = scanner.nextLine();
 		}
@@ -312,13 +314,12 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_REFERENCES))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article references (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article references (current state: "+result+")");
 		}
-		Set<Article> citedArticles = new TreeSet<Article>(); 
+		List<String> citedArticles = new ArrayList<String>(); 
 		do
-		{	String articleCitation = line.substring(3);
-			Article article = retrieveArticle(articleCitation);
-			citedArticles.add(article);
+		{	String articleCitation = line.substring(3).trim();
+			citedArticles.add(articleCitation);
 			line = scanner.nextLine();
 		}
 		while(line.startsWith(" "));
@@ -327,44 +328,45 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_YEAR))
 		{	line = scanner.nextLine();
 			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article year (last read line: "+line+")");
+				throw new IllegalArgumentException("Could not find the article year (current state: "+result+")");
 		}
-		result.year = line.substring(3);
+		result.year = line.substring(3).trim();
 		
 		// get volume
-		while(!line.startsWith(PFX_VOLUME)) // TODO not compulsory
-		{	line = scanner.nextLine();
-			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article volume (last read line: "+line+")");
-		}
-		result.volume = line.substring(3);
+		while(!line.startsWith(PFX_VOLUME)
+				&& !line.startsWith(PFX_ISSUE) 
+				&& !line.startsWith(PFX_PAGE_START)  && !line.startsWith(PFX_PAGE) 
+				&& !line.startsWith(PFX_DOI) && !line.startsWith(PFX_SEPARATOR))
+			line = scanner.nextLine();
+		if(line.startsWith(PFX_VOLUME))
+			result.volume = line.substring(3).trim();
 		
 		// get issue
-		while(!line.startsWith(PFX_ISSUE)) // TODO not compulsory
-		{	line = scanner.nextLine();
-			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article issue (last read line: "+line+")");
-		}
-		result.issue = line.substring(3);
+		while(!line.startsWith(PFX_ISSUE) 
+				&& !line.startsWith(PFX_PAGE_START)  && !line.startsWith(PFX_PAGE) 
+				&& !line.startsWith(PFX_DOI) && !line.startsWith(PFX_SEPARATOR))
+			line = scanner.nextLine();
+		if(line.startsWith(PFX_ISSUE))
+			result.issue = line.substring(3).trim();
 		
 		// get pages
-		while(!line.startsWith(PFX_PAGE_START)) // TODO not compulsory
-		{	line = scanner.nextLine();
-			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article starting page (last read line: "+line+")");
+		while(!line.startsWith(PFX_PAGE_START)  && !line.startsWith(PFX_PAGE) 
+				&& !line.startsWith(PFX_DOI) && !line.startsWith(PFX_SEPARATOR))
+			line = scanner.nextLine();
+		if(line.startsWith(PFX_PAGE_START))
+		{	String startPage = line.substring(3).trim();
+			line = scanner.nextLine();
+			String endPage = line.substring(3).trim();
+			result.page = startPage+"-"+endPage;
 		}
-		String startPage = line.substring(3);
-		line = scanner.nextLine();
-		String endPage = line.substring(3);
-		result.page = startPage+"-"+endPage; //TODO deal with the alternative: PFX_PAGE 
+		else if(line.startsWith(PFX_PAGE))
+			result.page = line.substring(3).trim();
 		
 		// get doi
-		while(!line.startsWith(PFX_DOI)) // TODO not compulsory
-		{	line = scanner.nextLine();
-			if(line.startsWith(PFX_SEPARATOR))
-				throw new IllegalArgumentException("Could not find the article doi (last read line: "+line+")");
-		}
-		result.doi = line.substring(3);
+		while(!line.startsWith(PFX_DOI) && !line.startsWith(PFX_SEPARATOR))
+			line = scanner.nextLine();
+		if(line.startsWith(PFX_DOI))
+			result.doi = line.substring(3).trim();
 		
 		// finish reference
 		while(!line.startsWith(PFX_SEPARATOR))
@@ -372,14 +374,21 @@ public class IsiFileHandler
 		for(int i=0;i<2;i++)
 			line = scanner.nextLine();
 		
-		// TODO look for article in existing ones
-		// if already exists, merge them
-		// maybe do that in the calling function?
+		// match with the existing articles
+		Iterator<Article> it = articlesMap.values().iterator();
+		boolean found = false;
+		while(it.hasNext() && !found)
+		{	Article article = it.next();
+			if(result.isCompatible(article))
+			{	article.completeWith(result);
+				result = article;
+				found = true;
+			}
+		}
+		if(!found)
+			throw new IllegalArgumentException("Could not find article: "+result);
 		
-		// TODO what about a first pass without the references 
-		// then merge with existing articles
-		// and second pass to resolve references (references can be temporarily stored in a map as strings)
-		
+		references.put(result,citedArticles);
 		return result;
 	}
 	
@@ -498,29 +507,29 @@ public class IsiFileHandler
 		return result;
 	}
 
-	/**
-	 * Builds an {@code Article} using the specified map and adding
-	 * the specified citations. The {@code Map} must contain at least 
-	 * the required fields: {@code bibtexkey}, {@code authors}, 
-	 * {@code title}, {@code year}.
-	 * 
-	 * @param map
-	 * 		A map used to initialize the {@code Article} object.
-	 * @param citedArticles
-	 * 		Articles cited by the newly created article.
-	 * @return
-	 * 		The created article.
-	 */
-	public Article buildArticle(Map<String,String> map, Set<Article> citedArticles)
-	{	Article result = buildArticle(map);
-		result.present = false;
-		
-		result.citedArticles.addAll(citedArticles);
-		for(Article article: citedArticles)
-			article.citingArticles.add(article);
-		
-		return result;
-	}
+//	/**
+//	 * Builds an {@code Article} using the specified map and adding
+//	 * the specified citations. The {@code Map} must contain at least 
+//	 * the required fields: {@code bibtexkey}, {@code authors}, 
+//	 * {@code title}, {@code year}.
+//	 * 
+//	 * @param map
+//	 * 		A map used to initialize the {@code Article} object.
+//	 * @param citedArticles
+//	 * 		Articles cited by the newly created article.
+//	 * @return
+//	 * 		The created article.
+//	 */
+//	public Article buildArticle(Map<String,String> map, Set<Article> citedArticles)
+//	{	Article result = buildArticle(map);
+//		result.present = false;
+//		
+//		result.citedArticles.addAll(citedArticles);
+//		for(Article article: citedArticles)
+//			article.citingArticles.add(article);
+//		
+//		return result;
+//	}
 
 	/////////////////////////////////////////////////////////////////
 	// TESTS			/////////////////////////////////////////////

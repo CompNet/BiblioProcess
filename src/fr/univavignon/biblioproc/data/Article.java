@@ -457,9 +457,9 @@ public class Article implements Comparable<Article>
 	 * 		{@code true} iff the two articles are compatible.
 	 */
 	public boolean isCompatible(Article article)
-	{	boolean result = true; //TODO
+	{	boolean result = true;
 	
-boolean same = false;
+//boolean same = false;
 //if(article.getTitle()!=null && article.getTitle().equals(title))
 //{	System.out.println(title);
 //	same = true;
@@ -487,14 +487,14 @@ boolean same = false;
 			Author author2 = authors2.get(0);
 			result = author1.equals(author2);
 		}
-if(same && !result)
-{	for(Author a: authors)
-		System.out.println(a);
-	System.out.println(">> VS <<");
-	for(Author a: article.getAuthors())
-		System.out.println(a);
-	return(result);
-}
+//if(same && !result)
+//{	for(Author a: authors)
+//		System.out.println(a);
+//	System.out.println(">> VS <<");
+//	for(Author a: article.getAuthors())
+//		System.out.println(a);
+//	return(result);
+//}
 		
 		// title
 		if(result)
@@ -502,12 +502,12 @@ if(same && !result)
 			if(normTitle!=null && normTitle2!=null)
 				result = normTitle.equals(normTitle2);
 		}
-if(same && !result)
-{	System.out.println(normTitle);
-	System.out.println(">> VS <<");
-	System.out.println(article.normTitle);
-	return(result);
-}
+//if(same && !result)
+//{	System.out.println(normTitle);
+//	System.out.println(">> VS <<");
+//	System.out.println(article.normTitle);
+//	return(result);
+//}
 		
 		// source
 		// not considered because the spelling varies a lot
@@ -518,12 +518,12 @@ if(same && !result)
 			if(volume!=null && volume2!=null)
 				result = volume.equals(volume2);
 		}
-if(same && !result)
-{	System.out.println(volume);
-	System.out.println(">> VS <<");
-	System.out.println(article.volume);
-	return(result);
-}
+//if(same && !result)
+//{	System.out.println(volume);
+//	System.out.println(">> VS <<");
+//	System.out.println(article.volume);
+//	return(result);
+//}
 		
 		// issue
 		if(result)
@@ -531,12 +531,12 @@ if(same && !result)
 			if(issue!=null && issue2!=null)
 				result = issue.equals(issue2);
 		}
-if(same && !result)
-{	System.out.println(issue);
-	System.out.println(">> VS <<");
-	System.out.println(article.issue);
-	return(result);
-}
+//if(same && !result)
+//{	System.out.println(issue);
+//	System.out.println(">> VS <<");
+//	System.out.println(article.issue);
+//	return(result);
+//}
 		
 		// page
 		if(result)
@@ -544,12 +544,12 @@ if(same && !result)
 			if(page!=null && page2!=null)
 				result = page.equals(page2);
 		}
-if(same && !result)
-{	System.out.println(page);
-	System.out.println(">> VS <<");
-	System.out.println(article.page);
-	return(result);
-}
+//if(same && !result)
+//{	System.out.println(page);
+//	System.out.println(">> VS <<");
+//	System.out.println(article.page);
+//	return(result);
+//}
 		
 		// year
 		if(result)
@@ -557,12 +557,12 @@ if(same && !result)
 			if(year!=null && year2!=null)
 				result = year.equals(year2);
 		}
-if(same && !result)
-{	System.out.println(year);
-	System.out.println(">> VS <<");
-	System.out.println(article.year);
-	return(result);
-}
+//if(same && !result)
+//{	System.out.println(year);
+//	System.out.println(">> VS <<");
+//	System.out.println(article.year);
+//	return(result);
+//}
 		
 		return result;
 	}
