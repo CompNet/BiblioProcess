@@ -122,7 +122,8 @@ public class Author implements Comparable<Author>
 	 */
 	private void initNormName()
 	{	normname = firstnameInitials.replace(" ", "");
-		normname = normname.replace(".", "");
+		normname = normname.replace("\\.", "");
+if(normname.contains("-"))		
 		normname = normname.replace("-", "");
 		normname = lastname + " " + normname;
 		normname = StringTools.normalize(normname);

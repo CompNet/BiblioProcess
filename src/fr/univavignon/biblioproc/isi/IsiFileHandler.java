@@ -29,6 +29,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
@@ -418,8 +419,58 @@ public class IsiFileHandler
 	 */
 	private Article retrieveArticle(String string)
 	{	Article result = null;
-		//TODO we possibly need to store the short version of the ISI complete articles to look them up here
-		//for the jabref ones, we must infer their short version.
+		String tmp[] = string.split(",");
+	
+		// normalize the name of the first author
+		String fullname = tmp[0].trim();
+		fullname = fullname.replace("-", "");							// remove hyphens
+		fullname = fullname.replace("\\.", "");							// remove dots
+		fullname = fullname.replace("(?<=\\p{Lu}) (?=\\p{Lu})", "");	// remove spaces remaining between initials
+		String tmp2[] = fullname.split(" ");							// possible shorten if full firstname
+		String last = tmp2[tmp2.length-1];
+		if(!last.toUpperCase().equals(last))
+		{	last = last.substring(1,2);
+			fullname = "";
+			for(int i=0;i<tmp2.length-1;i++)
+				fullname = fullname+ tmp2[i] + " ";
+			fullname = fullname + last;
+		}
+		fullname = StringTools.removeDiacritics(fullname);				// remove diacritics
+		fullname = fullname.toLowerCase(Locale.ENGLISH);				// switch to lower case
+		
+		// get the papers whose first author is similar
+		List<Article> articles = new ArrayList<Article>();
+		for(Article article: articlesMap.values())
+		{	List<Author> authors = article.getAuthors();
+			Author first = authors.get(0);
+			if(fullname.equals(first.normname))
+					articles.add(article);
+		}
+		
+		// get the year
+		String year = tmp[1].trim();
+		Iterator<Article> it = articles.iterator();
+		while(it.hasNext())
+		{	Article article = it.next();
+			if(!year.equals(article.year))
+				it.remove();
+		}
+		
+		// get the source
+		String source = tmp[2].trim();
+		source = StringTools.normalize(source);
+		it = articles.iterator();
+		while(it.hasNext())
+		{	Article article = it.next();
+			String normSourceName = article.getNormSourceName();
+			if(!source.equals(normSourceName)) //TODO must handle the short names... put them in the jabref file as a custom field?
+				it.remove();
+		}
+		
+		
+		
+		
+		
 		
 		
 		// update the article or list
