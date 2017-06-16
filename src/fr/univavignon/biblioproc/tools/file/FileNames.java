@@ -38,6 +38,8 @@ public class FileNames
 	public final static String EX_ISI = ".ciw";
 	/** PDF file extension */
 	public static final String EX_PDF = ".pdf";
+	/** Text file extension */
+	public static final String EX_TXT = ".txt";
 
 	/////////////////////////////////////////////////////////////////
 	// FOLDERS		/////////////////////////////////////////////////
@@ -64,4 +66,6 @@ public class FileNames
 	public static final String FI_BIBTEX_STRUCTBAL = FO_BIBTEX + File.separator + "biblio" + EX_BIBTEX;
 	/** ISI merged file */
 	public static final String FI_ISI_ALL = FO_OUTPUT + File.separator + "savedrecs" + EX_ISI;
+	/** Journal/conference short names */
+	public static final String FI_ISI_NAMES = FO_OUTPUT + File.separator + "short_names" + EX_TXT;
 }

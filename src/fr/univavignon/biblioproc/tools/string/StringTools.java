@@ -22,6 +22,7 @@ package fr.univavignon.biblioproc.tools.string;
 
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
+import java.util.Locale;
 
 /**
  * Common methods used to process strings. 
@@ -59,7 +60,7 @@ public class StringTools
 	public static String normalize(String text)
 	{	String result = null;
 		if(text!=null)
-		{	result = removeDiacritics(text).trim().toLowerCase();	// remove accents and switch to lower case
+		{	result = removeDiacritics(text).trim().toLowerCase(Locale.ENGLISH);	// remove accents and switch to lower case
 			result = result.replaceAll("\\p{Pd}", "-");			// replace all dashes and variants by regular hyphens
 		}
 		return result;
