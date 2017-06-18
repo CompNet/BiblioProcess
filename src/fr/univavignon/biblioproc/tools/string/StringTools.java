@@ -42,9 +42,15 @@ public class StringTools
 	 * 		Cleaned text.
 	 */
 	public static String removeDiacritics(String text)
-	{	return text == null ? null
-	        : Normalizer.normalize(text, Form.NFD)
+	{	String result = 
+//	        Normalizer.normalize(text, Form.NFD)
+	        Normalizer.normalize(text, Form.NFKD)	// supposedly catch more diacritics
 	            .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+	
+		// for some reason, certain characters are missed by the above instruction
+		result = result.replace('ł','l');		
+		result = result.replace('Ł','L');		
+		return result;
 	}
 	
 	/**
@@ -60,8 +66,9 @@ public class StringTools
 	public static String normalize(String text)
 	{	String result = null;
 		if(text!=null)
-		{	result = removeDiacritics(text).trim().toLowerCase(Locale.ENGLISH);	// remove accents and switch to lower case
-			result = result.replaceAll("\\p{Pd}", "-");			// replace all dashes and variants by regular hyphens
+		{	result = removeDiacritics(text).trim();			// remove accents and other diacritics
+			result = result.toLowerCase(Locale.ENGLISH);	// switch to lower case
+			result = result.replaceAll("\\p{Pd}", "-");		// replace all dashes and variants by regular hyphens
 		}
 		return result;
 	}

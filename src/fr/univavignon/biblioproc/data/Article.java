@@ -196,7 +196,19 @@ public class Article implements Comparable<Article>
 	public void setSource(SourceType sourceType, String sourceName)
 	{	this.sourceType = sourceType;
 		this.sourceName = sourceName;
+		
 		normSourceName = StringTools.normalize(sourceName);
+		normSourceName = normSourceName.replaceAll("[^a-zA-Z0-9]", "");
+		if(sourceType==SourceType.CONFERENCE)
+		{	// remove a possible ending string between parenthesis (typically for conferences)
+			int pos = normSourceName.indexOf('(');
+			if(pos!=-1)
+				normSourceName = normSourceName.substring(0,pos);
+			// remove a possible year at the end 
+			while(Character.isDigit(sourceName.charAt(sourceName.length()-1)))
+				sourceName = sourceName.substring(0,sourceName.length()-1);
+			sourceName = sourceName.trim();
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -472,7 +484,9 @@ public class Article implements Comparable<Article>
 
 		// authors
 		List<Author> authors2 = article.getAuthors();
-		if(authors.size()>1 && authors2.size()>1)
+		if(authors.isEmpty() || authors2.isEmpty())
+			result = false;
+		else if(authors.size()>1 && authors2.size()>1)
 		{	Iterator<Author> it1 = authors.iterator();
 			Iterator<Author> it2 = authors2.iterator();
 			while(result && it1.hasNext() && it2.hasNext())
@@ -480,7 +494,7 @@ public class Article implements Comparable<Article>
 				Author a2 = it2.next();
 				result = a1.equals(a2);
 			}
-			result = result && (it1.hasNext() && it2.hasNext() || !it1.hasNext() && !it2.hasNext());
+//			result = result && (it1.hasNext() && it2.hasNext() || !it1.hasNext() && !it2.hasNext());
 		}
 		else
 		{	Author author1 = authors.get(0);
@@ -538,11 +552,17 @@ public class Article implements Comparable<Article>
 //	return(result);
 //}
 		
-		// page
+		// page (only the first page)
 		if(result)
-		{	String page2 = article.page;
-			if(page!=null && page2!=null)
-				result = page.equals(page2);
+		{	String page1 = page;
+			String page2 = article.page;
+			if(page1!=null && page2!=null)
+			{	if(page1.contains("-"))
+					page1 = page1.split("-")[0];
+				if(page2.contains("-"))
+					page2 = page2.split("-")[0];
+				result = page1.equals(page2);
+			}
 		}
 //if(same && !result)
 //{	System.out.println(page);
@@ -807,15 +827,14 @@ public class Article implements Comparable<Article>
 
 		// bibkey
 		if(bibtexKey!=null)
-			result = result + bibtexKey;
-		result = result + "\t";
+			result = result + "[" + bibtexKey + "] ";
 		
 		// title
 		result = result + title;
 		result = result + ". ";
 		
 		// first author
-		result = result + authors.get(0).normname;
+		result = result + authors.get(0).getFullname();
 		result = result + ". ";
 		
 		// source
@@ -824,25 +843,30 @@ public class Article implements Comparable<Article>
 		
 		// volume
 		if(volume!=null)
-			result = result + volume;
-		result = result + "(";
+		{	result = result + volume;
+			if(issue==null && page!=null)
+				result = result + ":";
+		}
 		
 		// issue
 		if(issue!=null)
-			result = result + issue;
-		result = result + "):";
+		{	result = result + "(" + issue + ")";
+			if(page!=null)
+				result = result + ":";
+		}
 		
 		// starting page
 		if(page!=null)
 			result = result + page;
-		result = result + ", ";
 		
 		// year
-		result = result + year + ".";
+		if(year!=null)
+			result = result + ", "  + year;
+		result = result + ". ";
 		
 		// doi
 		if(doi!=null)
-			result = result + " DOI: " + doi;
+			result = result + "DOI: " + doi;
 		
 		return result;
 	}

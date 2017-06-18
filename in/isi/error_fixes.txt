@@ -1,0 +1,4 @@
+Community Mining in Signed Social Networks -An Automated Approach	AR=152-157
+Bounds for the least Laplacian eigenvalue of a signed graph	SO=Acta Mathematica Sinica
+Figueiredo R., 2012, MAXIMUM BALANC UNPUB	DI=10.1016/j.ejor.2013.12.036
+Figueiredo R., 2012, MIXED INTEGER UNPUB	DI=10.1016/j.socnet.2013.09.002

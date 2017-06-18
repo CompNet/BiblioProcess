@@ -121,12 +121,12 @@ public class Author implements Comparable<Author>
 	 * on the existing lastname and firstnames.
 	 */
 	private void initNormName()
-	{	normname = firstnameInitials.replace(" ", "");
-		normname = normname.replace("\\.", "");
+	{	normname = firstnameInitials.replace(" ", "");	// remove spaces between initials
+		normname = normname.replace(".", "");			// remove dots after initials
 if(normname.contains("-"))		
-		normname = normname.replace("-", "");
-		normname = lastname + " " + normname;
-		normname = StringTools.normalize(normname);
+		normname = normname.replace("-", "");			// remove hyphens between initials
+		normname = lastname.replace("-"," ") + " " + normname;	// replace hyphens by spaces in the lastname
+		normname = StringTools.normalize(normname);		// normalize the resulting string
 	}
 	
 	/////////////////////////////////////////////////////////////////

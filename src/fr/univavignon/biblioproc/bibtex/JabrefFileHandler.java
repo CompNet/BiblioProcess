@@ -182,7 +182,7 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	/** Map containing all the loaded articles, indexed by their Bibtex id */
 	public Map<String, Article> articlesMap = new HashMap<String, Article>();
-	/** Map containing all the loaded authors, index by their normalized name */
+	/** Map containing all the loaded authors, indexed by their normalized name */
 	public Map<String, Author> authorsMap = new HashMap<String, Author>();
 	/** Jabref Commands located at the end of the file */
 	public String jabrefCommands = null;
@@ -647,6 +647,15 @@ public class JabrefFileHandler
 		logger.log("File written");
 	}
 	
+	/**
+	 * Writes the specificed article in the previously opened file
+	 * represented by the specific print writer.
+	 *  
+	 * @param article
+	 * 		Article to write.
+	 * @param pw
+	 * 		Stream in which to write.
+	 */
 	private void writeArticle(Article article, PrintWriter pw)
 	{	logger.log("Writing article "+article.toString());
 		logger.increaseOffset();

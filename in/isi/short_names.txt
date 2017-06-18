@@ -1,1 +1,55 @@
-LINEAR ALGEBRA APPL	LINEAR ALGEBRA AND ITS APPLICATIONS
+acta math sin	Acta Mathematica Sinica	acta mathematica sinica-english series
+acta phys pol b	Acta Physica Polonica B
+am sociol rev	American Sociological Review
+appl intell	Applied Intelligence
+chaos	Chaos
+conf rec asilomar c	Asilomar Conference on Signals, Systems, and Computers
+data min knowl disc	Data Mining and Knowledge Discovery
+ieee c evol computat	IEEE Congress on Evolutionary Computation
+ieee t cybernetics	IEEE Transactions on Cybernetics
+ieee t evolut comput	IEEE Transactions on Evolutionary Computation
+ieee t knowl data en	IEEE Transactions on Knowledge and Data Engineering
+iet syst biol	IET Systems Biology
+inform process manag	Information Processing \& Management
+int j artif intell t	International Journal on Artificial Intelligence Tools
+int j pattern recogn	International Journal of Pattern Recognition and Artificial Intelligence
+int sym comput intel	International Symposium on Computational Intelligence and Design
+j comput sci technol	Journal of Computer Science and Technology
+j mach learn res	Journal of Machine Learning Research
+j math sociol	Journal of Mathematical Sociology
+j stat mech-theory e	Journal of Statistical Mechanics	journal of statistical mechanics-theory and experiment
+knowl inf syst	Knowledge and Information Systems
+lect notes artif int	Lecture Notes in Artificial Intelligence
+lect notes comput sc	Lecture Notes in Computer Science
+linear algebra appl	Linear Algebra and its Applications
+math probl eng	Mathematical Problems in Engineering
+neural networks	Neural Networks
+neuroimage	Neuroimage
+p natl acad sci usa	Proceedings of the National Academy of Sciences of the USA	proceedings of the national academy of sciences of the united states of america
+phys rev a	Physical Review A
+phys rev e	Physical Review E
+physica a	Physica A	physica a-statistical mechanics and its applications
+psychol methods	Psychological Methods
+sci rep-uk	Scientific Reports
+science	Science
+soc networks	Social Networks
+sociol method res	Sociological Methods \& Research
+soft comput	Soft Computing
+theor comput sci	Theoretical Computer Science
+parallel comput	Parallel Computing
+ann ieee symp found	Annual IEEE Symposium on Foundations of Computer Science
+brit j math stat psy	British Journal of Mathematical and Statistical Psychology
+psychol rev	Psychological Review
+biosystems	Biosystems
+ilp 09 p worksh int	Workshop on Integer Linear Programming for Natural Language Processing
+discrete appl math	Discrete Applied Mathematics
+j psychol	Journal of Psychology	the journal of psychology
+j comb optim	Journal of Combinatorial Optimization
+appl math comput	Applied Mathematics and Computation
+www	International Conference on World Wide Web	
+chi2010: proceedings of the 28th annual chi conference on human factors in computing systems	Annual CHI Conference on Human Factors in Computing Systems
+oper res lett	Operations Research Letters
+computers operations	Computers Operations
+comput oper res	Computers \& Operations Research
+search methodologies	Search Methodologies
+operations res compu	???

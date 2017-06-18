@@ -65,7 +65,9 @@ public class FileNames
 	/** JabRef structural balance file */
 	public static final String FI_BIBTEX_STRUCTBAL = FO_BIBTEX + File.separator + "biblio" + EX_BIBTEX;
 	/** ISI merged file */
-	public static final String FI_ISI_ALL = FO_OUTPUT + File.separator + "savedrecs" + EX_ISI;
+	public static final String FI_ISI_ALL = FO_ISI + File.separator + "savedrecs" + EX_ISI;
 	/** Journal/conference short names */
-	public static final String FI_ISI_NAMES = FO_OUTPUT + File.separator + "short_names" + EX_TXT;
+	public static final String FI_ISI_NAMES = FO_ISI + File.separator + "short_names" + EX_TXT;
+	/** Error fixes */
+	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TXT;
 }
