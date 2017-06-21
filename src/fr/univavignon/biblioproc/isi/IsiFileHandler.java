@@ -704,179 +704,202 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 	{	Article tmpArticle = new Article();
 		String tmp[] = string.split(",");
 		
-		// see if the ref is an exception, already fixed manually
-		String normStr = StringTools.normalize(string).replace(".", "");
-		List<String> fix = ERROR_FIXES.get(normStr);
-		if(fix!=null)
-		{	logger.log("Retrieving fields from the external short names file");
-			logger.increaseOffset();
-			String sourceName = null;
-			SourceType sourceType = null;
-			for(String str: fix)
-			{	if(str.startsWith(PFX_TITLE+"="))
-				{	String title = str.substring(PFX_TITLE.length()+1);
-					logger.log("Title: "+title);
-					tmpArticle.setTitle(title);
-				}
-				else if(str.startsWith(PFX_AUTHOR_SHORT+"="))
-				{	String fullname = str.substring(PFX_AUTHOR_SHORT.length()+1);
-					logger.log("Author: "+fullname);
-					Author author = new Author(fullname);
-					tmpArticle.addAuthor(author);
-				}
-				else if(str.startsWith(PFX_DOI+"="))
-				{	tmpArticle.doi = str.substring(PFX_DOI.length()+1);
-					logger.log("DOI: "+tmpArticle.doi);
-				}
-				else if(str.startsWith(PFX_ISSUE+"="))
-				{	tmpArticle.issue = str.substring(PFX_ISSUE.length()+1);
-					logger.log("Issue: "+tmpArticle.issue);
-				}
-				else if(str.startsWith(PFX_VOLUME+"="))
-				{	tmpArticle.volume = str.substring(PFX_VOLUME.length()+1);
-					logger.log("Volume: "+tmpArticle.volume);
-				}
-				else if(str.startsWith(PFX_YEAR+"="))
-				{	tmpArticle.year = str.substring(PFX_YEAR.length()+1);
-					logger.log("Year: "+tmpArticle.year);
-				}
-				else if(str.startsWith(PFX_PAGE+"="))
-				{	tmpArticle.page = str.substring(PFX_PAGE.length()+1);
-					logger.log("Pages: "+tmpArticle.page);
-				}
-				else if(str.startsWith(PFX_JOURNAL_LONG+"="))
-				{	sourceName = str.substring(PFX_JOURNAL_LONG.length()+1);
-					logger.log("Source name: "+sourceName);
-					if(sourceType!=null)
-						tmpArticle.setSource(sourceType, sourceName);
-				}
-				else if(str.startsWith(PFX_TYPE+"="))
-				{	String sourceTypeStr = str.substring(PFX_TYPE.length()+1).toUpperCase(Locale.ENGLISH);
-					sourceType = SourceType.valueOf(sourceTypeStr);
-					logger.log("Source name: "+sourceType);
-					if(sourceType!=null)
-						tmpArticle.setSource(sourceType, sourceName);
-				}
-			}
-			logger.decreaseOffset();
+		// check the presence of a DOI: if there is, we don't need the rest
+		String last = tmp[tmp.length-1].trim();
+		if(last.startsWith("DOI "))
+		{	tmpArticle.doi = tmp[tmp.length-1].substring(4);
+			logger.log("Found a DOI (not processing the rest): "+tmpArticle.doi);
 		}
 		
-		// no exception: use the string
+		// no DOI: using the other fields
 		else
-		{
-			// get the name of the first author
-			String fullname = tmp[0].trim();
-			logger.log("Author: "+fullname);
-	
-			// get the year
-			tmpArticle.year = tmp[1].trim();
-			logger.log("Year: "+tmpArticle.year);
-			
-			// determine the type, and possibly volume/pages/doi
-			SourceType sourceType = null;
-			if(tmp.length>3)
-			{	for(int i=3;i<tmp.length;i++)
-				{	String tmp3 = tmp[i].trim();
-					if(tmp3.startsWith("V"))
-					{	tmpArticle.volume = tmp3.substring(1);
-						logger.log("Volume: "+tmpArticle.volume);
-						if(sourceType==null)
-						{	sourceType = SourceType.JOURNAL;
-							logger.log("Source type: "+sourceType);
-						}
+		{ logger.log("Did not find a DOI: need to processing the rest");
+			// see if the ref is an exception, already fixed manually
+			String normStr = StringTools.normalize(string).replace(".", "");
+			List<String> fix = ERROR_FIXES.get(normStr);
+			if(fix!=null)
+			{	logger.log("Retrieving fields from the external short names file");
+				logger.increaseOffset();
+				String sourceName = null;
+				SourceType sourceType = null;
+				for(String str: fix)
+				{	if(str.startsWith(PFX_TITLE+"="))
+					{	String title = str.substring(PFX_TITLE.length()+1);
+						logger.log("Title: "+title);
+						tmpArticle.setTitle(title);
 					}
-					else if(tmp3.startsWith("P"))
-					{	tmpArticle.page = tmp3.substring(1);
-						logger.log("Pages: "+tmpArticle.page);
-						if(sourceType==null)
-						{	sourceType = SourceType.CONFERENCE;
-							logger.log("Source type: "+sourceType);
-						}
+					else if(str.startsWith(PFX_AUTHOR_SHORT+"="))
+					{	String fullname = str.substring(PFX_AUTHOR_SHORT.length()+1);
+						logger.log("Author: "+fullname);
+						Author author = new Author(fullname);
+						tmpArticle.addAuthor(author);
 					}
-					else if(tmp3.startsWith("DOI "))
-					{	tmpArticle.doi = tmp3.substring(4);
+					else if(str.startsWith(PFX_DOI+"="))
+					{	tmpArticle.doi = str.substring(PFX_DOI.length()+1);
 						logger.log("DOI: "+tmpArticle.doi);
 					}
+					else if(str.startsWith(PFX_ISSUE+"="))
+					{	tmpArticle.issue = str.substring(PFX_ISSUE.length()+1);
+						logger.log("Issue: "+tmpArticle.issue);
+					}
+					else if(str.startsWith(PFX_VOLUME+"="))
+					{	tmpArticle.volume = str.substring(PFX_VOLUME.length()+1);
+						logger.log("Volume: "+tmpArticle.volume);
+					}
+					else if(str.startsWith(PFX_YEAR+"="))
+					{	tmpArticle.year = str.substring(PFX_YEAR.length()+1);
+						logger.log("Year: "+tmpArticle.year);
+					}
+					else if(str.startsWith(PFX_PAGE+"="))
+					{	tmpArticle.page = str.substring(PFX_PAGE.length()+1);
+						logger.log("Pages: "+tmpArticle.page);
+					}
+					else if(str.startsWith(PFX_JOURNAL_LONG+"="))
+					{	sourceName = str.substring(PFX_JOURNAL_LONG.length()+1);
+						logger.log("Source name: "+sourceName);
+						if(sourceType!=null)
+							tmpArticle.setSource(sourceType, sourceName);
+					}
+					else if(str.startsWith(PFX_TYPE+"="))
+					{	String sourceTypeStr = str.substring(PFX_TYPE.length()+1).toUpperCase(Locale.ENGLISH);
+						sourceType = SourceType.valueOf(sourceTypeStr);
+						logger.log("Source name: "+sourceType);
+						if(sourceType!=null)
+							tmpArticle.setSource(sourceType, sourceName);
+					}
 				}
+				logger.decreaseOffset();
 			}
-			else
-				sourceType = SourceType.BOOK;
 			
-			// get the source
-			String sourceName = tmp[2].trim();
-			sourceName = StringTools.normalize(sourceName).replace(".","");
-			// additional cleaning for conference names
-			if(sourceType==SourceType.CONFERENCE)
-			{	// remove a possible ending string between parenthesis (typically for conferences)
-				int pos = sourceName.indexOf('(');
-				if(pos!=-1)
-					sourceName = sourceName.substring(0,pos);
-				// remove a possible year at the end 
-				while(Character.isDigit(sourceName.charAt(sourceName.length()-1)))
-					sourceName = sourceName.substring(0,sourceName.length()-1);
-				sourceName = sourceName.trim();
-			}
-			List<String> longSrcs = SHORT_NAMES.get(sourceName);
-			if(longSrcs==null)
-				throw new IllegalArgumentException("Could not find \""+sourceName+"\" among the short names");
-			String longSrc = longSrcs.get(0);
-			tmpArticle.setSource(sourceType, longSrc);
+			// no exception: use the string
+			else
+			{	// get the name of the first author
+				String fullname = tmp[0].trim();
+				logger.log("Author: "+fullname);
 		
-			// setup the first author
-			logger.log("Trying to match the (first) author");
-			logger.increaseOffset();
-			String firstname, lastname;
-			fullname = fullname.replace(".", "");							// remove possible dots
-			String tmp2[] = fullname.split(" ");
-			// if the last word is a firstname, we shorten it
-			firstname = tmp2[tmp2.length-1];
-			if(!firstname.toUpperCase().equals(firstname))
-			{	firstname = firstname.substring(1,2);
-				lastname = "";
-				for(int i=0;i<tmp2.length-1;i++)
-					lastname = lastname+ tmp2[i] + " ";
-				lastname = lastname.substring(0,lastname.length()-1);
-			}
-			// otherwise, if the last word contains several uppercase letters, we separate them
-			else if(firstname.length()>1)
-			{	firstname = firstname.replace("-", "");			// remove possible hyphens
-				firstname = firstname.replace("", " ").trim();	// insert space between letters
-				firstname = firstname.replace(" ",".");			// add dot after each letter
-				firstname = firstname + ".";
-				lastname = "";
-				for(int i=0;i<tmp2.length-1;i++)
-					lastname = lastname+ tmp2[i] + " ";
-				lastname = lastname.substring(0,lastname.length()-1);
-			}
-			// otherwise, (last word is a single letter) we look for separate single letters
-			else
-			{	lastname = tmp2[0];
-				int i = 1;
-				while(tmp2[i].length()>1)
-				{	lastname = lastname + " " + tmp2[i];
-					i++;
+				// get the year
+				tmpArticle.year = tmp[1].trim();
+				logger.log("Year: "+tmpArticle.year);
+				
+				// determine the type, and possibly volume/pages/doi
+				SourceType sourceType = null;
+				if(tmp.length>3)
+				{	for(int i=3;i<tmp.length;i++)
+					{	String tmp3 = tmp[i].trim();
+						if(tmp3.startsWith("V"))
+						{	tmpArticle.volume = tmp3.substring(1);
+							logger.log("Volume: "+tmpArticle.volume);
+							if(sourceType==null)
+							{	sourceType = SourceType.JOURNAL;
+								logger.log("Source type: "+sourceType);
+							}
+						}
+						else if(tmp3.startsWith("P"))
+						{	tmpArticle.page = tmp3.substring(1);
+							logger.log("Pages: "+tmpArticle.page);
+							if(sourceType==null)
+							{	sourceType = SourceType.CONFERENCE;
+								logger.log("Source type: "+sourceType);
+							}
+						}
+						//else if(tmp3.startsWith("DOI "))
+						//{	tmpArticle.doi = tmp3.substring(4);
+						//	logger.log("DOI: "+tmpArticle.doi);
+						//}
+					}
 				}
-				firstname = tmp[i];
-				while(i<tmp2.length)
-				{	firstname = firstname + " " + tmp2[i];
-					i++;
+				else
+					sourceType = SourceType.BOOK;
+				
+				// get the source
+				String sourceName = tmp[2].trim();
+				sourceName = StringTools.normalize(sourceName).replace(".","");
+if(sourceName.equals("p 22 ieee int c tool"))
+	System.out.print("");
+				//remove a possible "P xx" start, where xx is a number
+				if(sourceName.startsWith("p ") && Character.isDigit(sourceName.charAt(2)))
+				{	int pos = sourceName.indexOf(' ', 2);
+					sourceName = sourceName.substring(pos+1);
 				}
+				else if(Character.isDigit(sourceName.charAt(0)))
+				{	int pos = sourceName.indexOf(' ');
+					sourceName = sourceName.substring(pos+1);
+				}
+				// additional cleaning for conference names
+				if(sourceType==SourceType.CONFERENCE)
+				{	// remove a possible ending string between parenthesis (typically for conferences)
+					int pos = sourceName.indexOf('(');
+					if(pos!=-1)
+						sourceName = sourceName.substring(0,pos);
+					// remove a possible year at the end 
+					while(Character.isDigit(sourceName.charAt(sourceName.length()-1)))
+						sourceName = sourceName.substring(0,sourceName.length()-1);
+					sourceName = sourceName.trim();
+				}
+				if(sourceType!=SourceType.BOOK)
+				{	List<String> longSrcs = SHORT_NAMES.get(sourceName);
+					if(longSrcs==null)
+						throw new IllegalArgumentException("Could not find \""+sourceName+"\" among the short names");
+					String longSrc = longSrcs.get(0);
+					tmpArticle.setSource(sourceType, longSrc);
+				}
+			
+				// setup the first author
+				logger.log("Trying to match the (first) author");
+				logger.increaseOffset();
+				String firstname, lastname;
+				fullname = fullname.replace(".", "");							// remove possible dots
+				String tmp2[] = fullname.split(" ");
+				// if the last word is a firstname, we shorten it
+				firstname = tmp2[tmp2.length-1];
+				if(!firstname.toUpperCase().equals(firstname))
+				{	firstname = firstname.substring(1,2);
+					lastname = "";
+					for(int i=0;i<tmp2.length-1;i++)
+						lastname = lastname+ tmp2[i] + " ";
+					lastname = lastname.substring(0,lastname.length()-1);
+				}
+				// otherwise, if the last word contains several uppercase letters, we separate them
+				else if(firstname.length()>1)
+				{	firstname = firstname.replace("-", "");			// remove possible hyphens
+					firstname = firstname.replace("", " ").trim();	// insert space between letters
+					firstname = firstname.replace(" ",".");			// add dot after each letter
+					firstname = firstname + ".";
+					lastname = "";
+					for(int i=0;i<tmp2.length-1;i++)
+						lastname = lastname+ tmp2[i] + " ";
+					lastname = lastname.substring(0,lastname.length()-1);
+				}
+				// otherwise, (last word is a single letter) we look for separate single letters
+				else
+				{	lastname = tmp2[0];
+					int i = 1;
+					while(tmp2[i].length()>1)
+					{	lastname = lastname + " " + tmp2[i];
+						i++;
+					}
+					firstname = tmp[i];
+					while(i<tmp2.length)
+					{	firstname = firstname + " " + tmp2[i];
+						i++;
+					}
+				}
+				logger.log("Normalized lastname: "+lastname);
+				logger.log("Normalized firstname: "+firstname);
+				Author tmpAuthor = new Author(lastname, firstname);
+				String normname = tmpAuthor.normname;
+				Author author = authorsMap.get(normname);
+				if(author==null)
+				{	logger.log("Could not find a matching existing author, so creating a new one");
+					author = tmpAuthor;
+				}
+				else
+				{	logger.log("Could find a matching author: "+author);
+					authorsMap.put(normname, author);	// adding to the existing map for later use
+				}
+				tmpArticle.addAuthor(author);
+				logger.decreaseOffset();
 			}
-			logger.log("Normalized lastname: "+lastname);
-			logger.log("Normalized firstname: "+firstname);
-			Author tmpAuthor = new Author(lastname, firstname);
-			String normname = tmpAuthor.normname;
-			Author author = authorsMap.get(normname);
-			if(author==null)
-			{	logger.log("Could not find a matching existing author, so creating a new one");
-				author = tmpAuthor;
-			}
-			else
-			{	logger.log("Could find a matching author: "+author);
-				authorsMap.put(normname, author);	// adding to the existing map for later use
-			}
-			tmpArticle.addAuthor(author);
-			logger.decreaseOffset();
 		}
 		
 		// look for the paper in the current map

@@ -1,55 +1,115 @@
+acta automatica sini	Acta Automatica Sinica
 acta math sin	Acta Mathematica Sinica	acta mathematica sinica-english series
 acta phys pol b	Acta Physica Polonica B
+adv phys	Advances in Physics
+am j sociol	American Journal of Sociology
 am sociol rev	American Sociological Review
+ann c gen ev comp	Annual Conference on Genetic and Evolutionary Computation
+ann ieee symp found	Annual IEEE Symposium on Foundations of Computer Science
 appl intell	Applied Intelligence
+appl linguist	Applied Linguistics
+appl math comput	Applied Mathematics and Computation
+bell system technical journal	Bell System Technical Journal	the bell system technical journal
+berk s math stat	Berkeley Symposium on Mathematical Statistics and Probability
+biosystems	Biosystems
+brit j math stat psy	British Journal of Mathematical and Statistical Psychology
 chaos	Chaos
+chaos soliton fract	Chaos, Solitons \& Fractals
+chi2010: proceedings of the 28th annual chi conference on human factors in computing systems	Annual CHI Conference on Human Factors in Computing Systems
+complexity	Complexity
+comput intell-us	Computational Intelligence
+comput oper res	Computers \& Operations Research
+computers operations	Computers Operations
 conf rec asilomar c	Asilomar Conference on Signals, Systems, and Computers
 data min knowl disc	Data Mining and Knowledge Discovery
+dev stat methodology	Developments in Statistics and Methodology
+discrete appl math	Discrete Applied Mathematics
+eur phys j b	European Physical Journal B	the european physical journal b
+hum relat	Human Relations
 ieee c evol computat	IEEE Congress on Evolutionary Computation
+ieee int c tool	IEEE International Conference on Tools With Artificial Intelligence
 ieee t cybernetics	IEEE Transactions on Cybernetics
 ieee t evolut comput	IEEE Transactions on Evolutionary Computation
+ieee t ind inform	IEEE Transactions on Industrial Informatics
 ieee t knowl data en	IEEE Transactions on Knowledge and Data Engineering
+ieee t syst man cy a	IEEE Transactions on Systems, Man, and Cybernetics - Part A
+ieee t syst man cy b	IEEE Transactions on Systems, Man, and Cybernetics - Part B
+ieee t syst man cy c	IEEE Transactions on Systems, Man, and Cybernetics - Part C
 iet syst biol	IET Systems Biology
+ilp 09 p worksh int	Workshop on Integer Linear Programming for Natural Language Processing
 inform process manag	Information Processing \& Management
 int j artif intell t	International Journal on Artificial Intelligence Tools
+int j intell syst	International Journal of Intelligent Systems
 int j pattern recogn	International Journal of Pattern Recognition and Artificial Intelligence
+int ser oper res man	International Series in Operations Research \& Management Science
 int sym comput intel	International Symposium on Computational Intelligence and Design
+j am soc inf sci tec	Journal of the American Society for Information Science and Technology
+j am soc inform sci	Journal of the Association for Information Science and Technology
+j comb optim	Journal of Combinatorial Optimization
 j comput sci technol	Journal of Computer Science and Technology
 j mach learn res	Journal of Machine Learning Research
 j math sociol	Journal of Mathematical Sociology
+j psychol	Journal of Psychology	the journal of psychology
 j stat mech-theory e	Journal of Statistical Mechanics	journal of statistical mechanics-theory and experiment
+journal of cybernetics	Journal of Cybernetics
 knowl inf syst	Knowledge and Information Systems
+knowl-based syst	Knowledge-Based Systems
 lect notes artif int	Lecture Notes in Artificial Intelligence
 lect notes comput sc	Lecture Notes in Computer Science
 linear algebra appl	Linear Algebra and its Applications
+mach learn	Machine Learning
 math probl eng	Mathematical Problems in Engineering
+memet comput	Memetic Computing
+metodoloski zvezki	Metodološki Zvezki / Advances in Methodology and Statistics	metodoloski zvezki
+mich math j	Michigan Mathematical Journal
 neural networks	Neural Networks
 neuroimage	Neuroimage
+nonlinear anal-real	Nonlinear Analysis	nonlinear analysis: real world applications
+oper res lett	Operations Research Letters
+operations res compu	Operations Research/Computer Science Interfaces Series
 p natl acad sci usa	Proceedings of the National Academy of Sciences of the USA	proceedings of the national academy of sciences of the united states of america
+parallel comput	Parallel Computing
+phys lett a	Physics Letters A
+phys rep	Physics Reports
 phys rev a	Physical Review A
 phys rev e	Physical Review E
+phys rev lett	Physical Review Letters
 physica a	Physica A	physica a-statistical mechanics and its applications
+plos one	PLoS ONE
 psychol methods	Psychological Methods
+psychol rev	Psychological Review
+rev mod phys	Reviews of Modern Physics
 sci rep-uk	Scientific Reports
 science	Science
+scientometrics	Scientometrics
+search methodologies	Search Methodologies
+siam j algebra discr	SIAM Journal on Algebraic Discrete Methods
 soc networks	Social Networks
 sociol method res	Sociological Methods \& Research
 soft comput	Soft Computing
+solidarity identity	Solidarity and Identity
+southwest j anthrop	Southwestern Journal of Anthropology
 theor comput sci	Theoretical Computer Science
-parallel comput	Parallel Computing
-ann ieee symp found	Annual IEEE Symposium on Foundations of Computer Science
-brit j math stat psy	British Journal of Mathematical and Statistical Psychology
-psychol rev	Psychological Review
-biosystems	Biosystems
-ilp 09 p worksh int	Workshop on Integer Linear Programming for Natural Language Processing
-discrete appl math	Discrete Applied Mathematics
-j psychol	Journal of Psychology	the journal of psychology
-j comb optim	Journal of Combinatorial Optimization
-appl math comput	Applied Mathematics and Computation
-www	International Conference on World Wide Web	
-chi2010: proceedings of the 28th annual chi conference on human factors in computing systems	Annual CHI Conference on Human Factors in Computing Systems
-oper res lett	Operations Research Letters
-computers operations	Computers Operations
-comput oper res	Computers \& Operations Research
-search methodologies	Search Methodologies
-operations res compu	???
+www	International Conference on World Wide Web
+cikm	Conference on Information and Knowledge Management
+asonam	IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining
+nature	Nature
+eur c ev comp c	European Conference on Evolutionary Computation in Combinatorial Optimisation
+p ieee c ev comp	IEEE Congress on Evolutionary Computation
+int j hybrid intell	International Journal of Hybrid Intelligent Systems
+int j digital conten	International Journal of Digital Content Technology and its Applications
+fourth international conference on computer and information technology	International Conference on Computer and Information Technology
+evol multiobjective	Evolutionary Multiobjective Optimization
+j anthropol res	Journal of Anthropological Research
+c ev comp cec	IEEE Congress on Evolutionary Computation
+p ev meth des opt co	Evolutionary Methods for Design Optimization and Control with Applications to Industrial Problems
+ann acm s theor	Annual ACM Symposium on Theory of Computing
+ann ieee s fdn	IEEE Symposium on Foundations of Computer Science
+int worksh appr	International Workshop on Approximation Algorithms for Combinatorial Optimization Problems
+ann eur s alg	European Symposium on Algorithms
+worksh graph th	Workshop on Graph Theory
+soda	ACM-SIAM Symposium on Discrete Algorithms
+j stat mech theory e	Journal of Statistical Mechanics	journal of statistical mechanics: theory and experiment
+adv complex syst	Advances in Complex Systems
+int j soc netw min	International Journal of Social Network Mining
+dev stat methodol	Developments in Statistics and Methodology

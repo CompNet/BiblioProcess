@@ -806,6 +806,7 @@ public class Article implements Comparable<Article>
 	{	String result = "";
 		
 		// first author
+		if(!authors.isEmpty())
 		result = result + authors.get(0).normname;
 		// year
 		result = result + ", " + year;
@@ -834,7 +835,8 @@ public class Article implements Comparable<Article>
 		result = result + ". ";
 		
 		// first author
-		result = result + authors.get(0).getFullname();
+		if(!authors.isEmpty())
+			result = result + authors.get(0).getFullname();
 		result = result + ". ";
 		
 		// source
