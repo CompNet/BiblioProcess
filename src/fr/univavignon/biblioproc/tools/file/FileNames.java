@@ -70,4 +70,6 @@ public class FileNames
 	public static final String FI_ISI_NAMES = FO_ISI + File.separator + "short_names" + EX_TXT;
 	/** Error fixes */
 	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TXT;
+	/** Ignored references */
+	public static final String FI_ISI_IGNORED = FO_ISI + File.separator + "ignored_refs" + EX_TXT;
 }

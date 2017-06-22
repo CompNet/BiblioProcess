@@ -113,3 +113,42 @@ j stat mech theory e	Journal of Statistical Mechanics	journal of statistical mec
 adv complex syst	Advances in Complex Systems
 int j soc netw min	International Journal of Social Network Mining
 dev stat methodol	Developments in Statistics and Methodology
+j anthr	Journal of Anthropology
+aaai c art int	AAAI Conference on Artificial Intelligence
+ann int c mob co	Annual International Conference on Mobile Computing and Networking
+ki j	KI-Journal
+int c mach lear	International Conference on Machine Learning
+clustering problems	Conference on Uncertainty in Artificial Intelligence
+comput j	Computer Journal
+el c comp compl eccc	Electronic Colloquium on Computational Complexity
+us news world r	US News and World Report
+ann acm siam s	ACM-SIAM Symposium on Discrete Algorithms
+int coll aut la	International Colloquium on Automata, Languages and Programming
+connections	Connections
+hdb metaheuristics	Handbook of metaheuristics
+electron j comb	Electronic Journal of Combinatorics	the electronic journal of combinatorics
+ieee 55 c dec c	IEEE Conference on Decision and Control
+spectral graph theor	Spectral Graph Theory
+weakly connected neu	Weakly Connected Neural Networks
+p amer contr conf	American Control Conference
+ieee t automat contr	IEEE Transactions on Automatic Control
+ieee t control netw	Transactions on Control of Network Systems
+int c gen alg th	International Conference on Genetic Algorithms
+proc dev data anal	Metodološki Zvezki / Advances in Methodology and Statistics
+int c world wid	International Conference on World Wide Web
+freedom control mode	Freedom and Control in Modern Society
+inform sci	Information Sciences
+acm j expt algorithm	ACM Journal of Experimental Algorithmics
+acm int c inf k	ACM International Conference on Information and Knowledge Management
+inf p ev comp	Information Processing with Evolutionary Algorithms
+commun ccf	Communication of China Computer Federation
+ieee comp soc	IEEE Conference on Computer Vision and Pattern Recognition
+j roy stat soc b met	Journal of the Royal Statistical Society: Series B
+nat phys	Nature Physics
+elect notes discrete	Electronic Notes in Discrete Mathematics
+inform processing le	Information Processing Letters
+psychometrik	Psychometrika
+ima j manag math	IMA Journal of Management Mathematics
+rec res psy	Recent Research in Psychology 
+dimacs impl cha	DIMACS Implementation Challenge Graph Partitioning and Graph Clustering
+ency parallel comput	Encyclopedia of Parallel Computing

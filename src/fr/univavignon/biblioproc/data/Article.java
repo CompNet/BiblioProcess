@@ -196,6 +196,28 @@ public class Article implements Comparable<Article>
 	public void setSource(SourceType sourceType, String sourceName)
 	{	this.sourceType = sourceType;
 		this.sourceName = sourceName;
+		switch(sourceType)
+		{	case BOOK:
+				publisher = sourceName;
+				break;
+			case CHAPTER:
+			case CONFERENCE:
+				booktitle = sourceName;
+				break;
+			case ELECTRONIC:
+				organization = sourceName;
+				break;
+			case JOURNAL:
+				journal = sourceName;
+				break;
+			case REPORT:
+				institution = sourceName;
+				break;
+			case THESIS_MSC:
+			case THESIS_PHD:
+				school = sourceName;
+				break;
+		}
 		
 		normSourceName = StringTools.normalize(sourceName);
 		normSourceName = normSourceName.replaceAll("[^a-zA-Z0-9]", "");
