@@ -245,7 +245,7 @@ public class IsiFileHandler
 	/** CIW prefix to separate articles */
 	private final static String PFX_SEPARATOR = "ER";
 	/** Internal prefix for organization */
-	private final static String INT_ORGANIZATION = "OG";
+	private final static String INT_BIBKEY = "BK";
 	
 	/////////////////////////////////////////////////////////////////
 	// LOADING			/////////////////////////////////////////////
@@ -683,9 +683,9 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 					result.setSource(sourceType, sourceName);
 					logger.log("Source name: "+sourceType);
 				}
-				else if(str.startsWith(INT_ORGANIZATION+"="))
-				{	result.organization = str.substring(INT_ORGANIZATION.length()+1);
-					logger.log("Organization: "+result.organization);
+				else if(str.startsWith(INT_BIBKEY+"="))
+				{	result.bibtexKey = str.substring(INT_BIBKEY.length()+1);
+					logger.log("Bibtex key: "+result.bibtexKey);
 				}
 			}
 			logger.decreaseOffset();
@@ -699,7 +699,8 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		for(Article article: articlesMap.values())
 		{	if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in Signed Social Networks -An Automated Approach")) //for debug
 				System.out.print("");
-			if(result.isCompatible(article))
+			if((result.bibtexKey!=null && result.bibtexKey.equals(article.bibtexKey))
+				|| result.isCompatible(article))
 			{	articles.add(article);
 				logger.log("Found "+article);
 			}
@@ -808,6 +809,10 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 							logger.log("Source name: "+sourceType);
 							if(sourceType!=null)
 								tmpArticle.setSource(sourceType, sourceName);
+						}
+						else if(str.startsWith(INT_BIBKEY+"="))
+						{	tmpArticle.bibtexKey = str.substring(INT_BIBKEY.length()+1);
+							logger.log("Bibtex key: "+tmpArticle.bibtexKey);
 						}
 					}
 					logger.decreaseOffset();
@@ -954,6 +959,7 @@ if(tmpArticle.getTitle()==null)
 if(article.bibtexKey.equals("NewKey227"))
 	System.out.print("");
 				if((tmpArticle.doi!=null && article.doi!=null && tmpArticle.doi.equals(article.doi))
+					|| (tmpArticle.bibtexKey!=null && article.bibtexKey!=null && tmpArticle.bibtexKey.equals(article.bibtexKey))
 					|| tmpArticle.isCompatible(article))
 					articles.add(article);
 			}
@@ -971,6 +977,8 @@ if(article.bibtexKey.equals("NewKey227"))
 				while(articlesMap.containsKey(NEW_KEY+i))
 					i++;
 				String bibtexKey = NEW_KEY+i;
+if(bibtexKey.equals("NewKey214"))				
+	System.out.print("");
 				tmpArticle.bibtexKey = bibtexKey;
 				logger.log("Creating a new one and adding to the map, using the new bibtexkey "+bibtexKey);
 				articlesMap.put(bibtexKey, tmpArticle);	// adding to the existing map for later use

@@ -152,3 +152,35 @@ ima j manag math	IMA Journal of Management Mathematics
 rec res psy	Recent Research in Psychology 
 dimacs impl cha	DIMACS Implementation Challenge Graph Partitioning and Graph Clustering
 ency parallel comput	Encyclopedia of Parallel Computing
+acm sigkdd int c	ACM SIGKDD International Conference on Knowledge Discovery and Data Mining
+comp comm r	Computer Communication Review
+czech math j	Czechoslovak Mathematical Journal
+ieee comput	IEEE Computer
+ann acm siam s d	ACM-SIAM Symposium on Discrete Algorithms
+acm sigkdd int c kno	ACM SIGMOD International Conference on Knowledge Discovery and Data Mining
+int c int syst d	International Conference on Intelligent Systems Design and Applications
+iccea09 man	International Conference on Computer Engineering and Applications
+communities and technologies	Communities and Technologies
+ann eugenic	Annals of Human Genetics
+asa siam ser stat ap	ASA-SIAM Series on Statistics and Applied Probability
+inform systems front	Information Systems Frontiers
+intelligence securit	IEEE Intelligence and Security Informatics
+p siam int c dat min	SIAM International Conference on Data Mining
+ann c gen alg	Annual Conference on Genetic Algorithms
+comp comm worksh	Computer communications workshops
+wi	Web intelligence
+sdm	SIAM International Conference on Data Mining
+ecml pkdd	European Conference on Machine Learning and Principles and Practice of Knowledge Discovery
+ann int comp comb	Annual International Computing and Combinatorics Conference
+acm c inf knowl man	ACM Conference on Information and Knowledge Management
+psychometrika	Psychometrika
+ieee globecom	IEEE Global Communications Conference
+ieee data mining	IEEE International Conference on Data Mining
+pac as c knowl di	Pacific-Asia Conference on Knowledge Discovery and Data
+p ecai worksh rec sy	ECAI Workshop on Recommender Systems
+iam j optim	SIAM Journal on Optimization
+behav sci	Behavioral Science
+int world wid web	International World Wide Web Conference
+commun phys	Communications on Physics
+acm sigmod in	ACM SIGMOD International Conference on Management of Data
+int joint c aut ag m	International Joint Conference on Autonomous Agents \& Multiagent Systems
