@@ -184,3 +184,73 @@ int world wid web	International World Wide Web Conference
 commun phys	Communications on Physics
 acm sigmod in	ACM SIGMOD International Conference on Management of Data
 int joint c aut ag m	International Joint Conference on Autonomous Agents \& Multiagent Systems
+p int c comp eng app	International Conference on Computer Engineering and Applications
+am j math sociology	Journal of Mathematical Sociology
+theories cognitive c	Theories of Cognitive Consistency: A Source Book
+sociol methodol	Sociological Methodology
+univ kansas sci bull	University of Kansas Scientific Bulletin
+am math mon	American Mathematical Monthly
+int s mod opt mo	International Symposium on Modeling and Optimization in Mobile, Ad Hoc and Wireless Networks
+j polit	Journal of Politics
+conflict management	Conflict Management and Peace Science
+front neurosci	Frontiers in Neurosciences
+at&t tech j	Bell Labs Technical Journal
+surveys combinatoric	Surveys in Combinatorics
+acm int c inf kno	International Conference on Information and Knowledge Management
+mmwr-morbid mortal w	Morbidity and Mortality Weekly Report
+acm int c web sear	ACM International Conference on Web Search and Data Mining
+ieee acm int	IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining
+sw j anthr	Southwestern Journal of Anthropology
+dnis02 p 2 int works	International Workshop on Databases in Networked Information Systems
+as pac s int ev	Asia-Pacific Symposium on Intelligent and Evolutionary Systems
+appl optim	Applied Optimization
+p siam c dat min	SIAM Conference on Data Mining
+afcs res reports	AfCS Research Reports
+cscw: 2008 acm conference on computer supported cooperative work	ACM Conference on Computer Supported Cooperative Work
+int world wid web c	International World Wide Web Conference
+int c world wid web	International World Wide Web Conference
+nat c art int aaai	AAAI Conference on Artificial Intelligence
+sociometry	Sociometry
+dac	International Design Automation Conference
+acm int c web se	ACM International Conference on Web Search and Data Mining
+adv neur inf proc sy	Annual Conference on Neural Information Processing Systems
+ieee t inform theory	IEEE Transaction of Information Theory
+fdn computational ma	Foundations of Computational Mathematics
+ann c learn theor	Annual Conference on Learning Theory
+internet math	Internet Mathematics
+acm sigkdd int	ACM SIGKDD International Conference on Knowledge Discovery and Data Mining
+adv neural inform pr	Advances in Neural Information Processing Systems
+p eur c mach learn k	European Conference on Machine Learning and Knowledge Discovery in Databases
+elem math	Elemente der Mathematik
+jacm	Journal of the ACM
+int c comm techn	International Conference on Communities and Technologies
+colt	Conference of Learning Theory
+world wide web	International World Wide Web Conference
+regional c series ma	Regional Conference Series in Mathematics
+graduate texts math	Graduate Texts in Mathematics
+adv cognitive neurod	Advances in Cognitive Neurodynamics
+j comp med comm	Journal of Computer-Mediated Communication
+fundamentals stat si	Fundamentals of Statistical Signal Processing
+front neuroinformati	Frontiers in Neuroinformatics
+nato asi ser c-math	Nato Science Series C	nato science series c: mathematical and physical sciences
+hbk diff equat ordin	Handbook of Differential Equations, Ordinary Differential Equations
+ann phys chem	Annalen der Physik
+afcs reports	AfCS Research Reports
+mol syst biol	Molecular Systems Biology
+siam j discrete math	SIAM Journal on Discrete Mathematics
+int s comp inf	International Symposium on Computer and Information Sciences
+j graph theor	Journal of Graph Theory
+aip conf proc	AIP Conference Proceedings
+linkkdd	International Workshop on Link Discovery
+ptcomputer	Computer
+int j bio-inspir com	International Journal of Bio-Inspired Computation
+gecco-2011: proceedings of the 13th annual genetic and evolutionary computation conference	Annual Genetic and Evolutionary Computation Conference
+j stat softw	Journal of Statistical Software
+real data anal	Real Data Analysis
+int organ	International Organization
+stat sci	Statistical Science
+balance power theory	alance of Power: Theory and Practice in the 21st Century
+social networks dev	Social Networks
+j ind manag optim	Journal of Industrial and Management Optimization
+psychol today	Psychology Today
+brit j polit sci	British Journal of Political Science

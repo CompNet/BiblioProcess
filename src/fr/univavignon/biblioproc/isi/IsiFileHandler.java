@@ -841,7 +841,7 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 									logger.log("Source type: "+sourceType);
 								}
 							}
-							else if(tmp3.startsWith("P"))
+							else if(tmp3.toUpperCase(Locale.ENGLISH).startsWith("P"))
 							{	tmpArticle.page = tmp3.substring(1);
 								logger.log("Pages: "+tmpArticle.page);
 								if(sourceType==null)
