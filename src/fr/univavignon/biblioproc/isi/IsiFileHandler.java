@@ -331,6 +331,22 @@ public class IsiFileHandler
 		}
 		logger.decreaseOffset();
 		
+		// display the DOIs of missing articles
+		logger.log("List of missing DOIs:");
+		logger.increaseOffset();
+		{	int count = 0;
+			for(Entry<String,Article> entry: articlesMap.entrySet())
+			{	String key = entry.getKey();
+				Article article = entry.getValue();
+				if(key.startsWith(NEW_KEY))
+				{	count++;
+					if(article.doi!=null)
+					logger.log(count + ". " + article.doi);
+				}
+			}
+		}
+		logger.decreaseOffset();
+		
 		logger.decreaseOffset();
 	}
 	
