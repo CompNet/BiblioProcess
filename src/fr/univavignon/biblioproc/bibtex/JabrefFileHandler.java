@@ -140,6 +140,8 @@ public class JabrefFileHandler
 	private static final String FLD_SORTKEY = "sortkey";
 	/** Bibtex key for book edition */
 	private static final String FLD_EDITION = "edition";
+	/** Bibtex key for article groups */
+	private static final String FLD_GROUPS = "groups";
 	/** Organization associated to an electronic reference */
 	private static final String FLD_ORGANIZATION = "organization";	
 	/** Internal Jabref field */
@@ -152,7 +154,7 @@ public class JabrefFileHandler
 			FLD_TITLE_ARTICLE, FLD_TITLE_BOOK, FLD_TITLE_BOOK, FLD_URL,
 			FLD_VOLUME, FLD_YEAR, FLD_PUBLISHER, FLD_SERIES, FLD_EDITOR, 
 			FLD_REVIEW, FLD_ADDRESS, FLD_SCHOOL, FLD_TYPE, FLD_SORTKEY,
-			FLD_EDITION, FLD_ORGANIZATION,
+			FLD_EDITION, FLD_ORGANIZATION, FLD_GROUPS,
 			// ignored:
 			FLD_MARKED
 	);
@@ -591,6 +593,11 @@ public class JabrefFileHandler
 		if(edition!=null)
 			result.edition = edition.trim();
 		
+		// groups
+		String groups = data.get(FLD_GROUPS);
+		if(groups!=null)
+			result.groups = groups.trim();
+		
 		// present
 		result.present = true;
 		
@@ -796,6 +803,10 @@ public class JabrefFileHandler
 		// review
 		if(article.review!=null)
 			pw.println("  "+FLD_REVIEW+FIELD_BEGINNING+article.review+FIELD_END);
+		
+		// groups
+		if(article.groups!=null)
+			pw.println("  "+FLD_GROUPS+FIELD_BEGINNING+article.groups+FIELD_END);
 		
 		// sortkey
 		if(article.sortkey!=null)

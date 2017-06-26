@@ -316,20 +316,20 @@ public class IsiFileHandler
 		}
 		logger.decreaseOffset();
 		
-		// display the un-matched articles
-		logger.log("List of unknown articles:");
-		logger.increaseOffset();
-		{	int count = 0;
-			for(Entry<String,Article> entry: articlesMap.entrySet())
-			{	String key = entry.getKey();
-				Article article = entry.getValue();
-				if(key.startsWith(NEW_KEY))
-				{	count++;
-					logger.log(count + ". " + article);
-				}
-			}
-		}
-		logger.decreaseOffset();
+//		// display the un-matched articles
+//		logger.log("List of unknown articles:");
+//		logger.increaseOffset();
+//		{	int count = 0;
+//			for(Entry<String,Article> entry: articlesMap.entrySet())
+//			{	String key = entry.getKey();
+//				Article article = entry.getValue();
+//				if(key.startsWith(NEW_KEY))
+//				{	count++;
+//					logger.log(count + ". " + article);
+//				}
+//			}
+//		}
+//		logger.decreaseOffset();
 		
 		// display the DOIs of missing articles
 		logger.log("List of missing DOIs:");
@@ -766,7 +766,7 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		{	// check the presence of a DOI: if there is, we don't need the rest
 			String last = tmp[tmp.length-1].trim();
 			if(last.startsWith("DOI "))
-			{	tmpArticle.doi = tmp[tmp.length-1].substring(4);
+			{	tmpArticle.doi = tmp[tmp.length-1].substring(4).trim();
 				logger.log("Found a DOI (not processing the rest): "+tmpArticle.doi);
 			}
 			
@@ -969,10 +969,14 @@ if(sourceName.equals("p 22 ieee int c tool"))
 			// look for the paper in the current map
 if(tmpArticle.getTitle()==null)
 	System.out.print("");
+if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1103/PhysRevE.74.016107"))
+	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: articlesMap.values())
 			{	
 if(article.bibtexKey.equals("NewKey227"))
+	System.out.print("");
+if(article.doi!=null && article.doi.equals("10.1103/PhysRevE.74.016107"))
 	System.out.print("");
 				if((tmpArticle.doi!=null && article.doi!=null && tmpArticle.doi.equals(article.doi))
 					|| (tmpArticle.bibtexKey!=null && article.bibtexKey!=null && tmpArticle.bibtexKey.equals(article.bibtexKey))
