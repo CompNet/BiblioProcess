@@ -339,9 +339,10 @@ public class IsiFileHandler
 			{	String key = entry.getKey();
 				Article article = entry.getValue();
 				if(key.startsWith(NEW_KEY))
-				{	count++;
-					if(article.doi!=null)
-					logger.log(count + ". " + article.doi);
+				{	if(article.doi!=null)
+					{	count++;
+						logger.log(count + ". " + article.doi);
+					}
 				}
 			}
 		}
@@ -713,9 +714,11 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		logger.increaseOffset();
 		List<Article> articles = new ArrayList<Article>(); 
 		for(Article article: articlesMap.values())
-		{	if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in Signed Social Networks -An Automated Approach")) //for debug
-				System.out.print("");
+		{	
+if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in Signed Social Networks -An Automated Approach")) //for debug
+	System.out.print("");
 			if((result.bibtexKey!=null && result.bibtexKey.equals(article.bibtexKey))
+				|| (result.doi!=null && result.doi.equalsIgnoreCase(article.doi))
 				|| result.isCompatible(article))
 			{	articles.add(article);
 				logger.log("Found "+article);
@@ -978,7 +981,7 @@ if(article.bibtexKey.equals("NewKey227"))
 	System.out.print("");
 if(article.doi!=null && article.doi.equals("10.1103/PhysRevE.74.016107"))
 	System.out.print("");
-				if((tmpArticle.doi!=null && article.doi!=null && tmpArticle.doi.equals(article.doi))
+				if((tmpArticle.doi!=null && article.doi!=null && tmpArticle.doi.equalsIgnoreCase(article.doi))
 					|| (tmpArticle.bibtexKey!=null && article.bibtexKey!=null && tmpArticle.bibtexKey.equals(article.bibtexKey))
 					|| tmpArticle.isCompatible(article))
 					articles.add(article);
