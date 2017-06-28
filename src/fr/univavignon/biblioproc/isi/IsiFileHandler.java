@@ -655,7 +655,8 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		for(int i=0;i<2;i++)
 			line = scanner.nextLine();
 		
-		List<String> fixes = ERROR_FIXES.get(StringTools.normalize(title));
+		String normStr = StringTools.normalize(title).replace(".", "");
+		List<String> fixes = ERROR_FIXES.get(normStr);
 		if(fixes!=null)
 		{	logger.log("Retrieving fields from the external fix file");
 			logger.increaseOffset();
@@ -770,7 +771,22 @@ if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in S
 			String last = tmp[tmp.length-1].trim();
 			if(last.startsWith("DOI "))
 			{	tmpArticle.doi = tmp[tmp.length-1].substring(4).trim();
+				if(tmpArticle.doi.startsWith("DOI ")) // sometimes DOI appears twice...
+					tmpArticle.doi = tmpArticle.doi.substring(4).trim();
 				logger.log("Found a DOI (not processing the rest): "+tmpArticle.doi);
+				// see if the ref is an exception, already fixed manually
+				String normStr = StringTools.normalize(string).replace(".", "");
+				List<String> fix = ERROR_FIXES.get(normStr);
+				if(fix!=null)
+				{	logger.log("Retrieving a correct DOI from the external short names file");
+					logger.increaseOffset();
+					String str = fix.get(0);
+					if(str.startsWith(PFX_DOI+"="))
+					{	tmpArticle.doi = str.substring(PFX_DOI.length()+1);
+						logger.log("DOI: "+tmpArticle.doi);
+					}
+					logger.decreaseOffset();
+				}
 			}
 			
 			// no DOI: using the other fields
@@ -981,9 +997,15 @@ if(article.bibtexKey.equals("NewKey227"))
 	System.out.print("");
 if(article.doi!=null && article.doi.equals("10.1103/PhysRevE.74.016107"))
 	System.out.print("");
-				if((tmpArticle.doi!=null && article.doi!=null && tmpArticle.doi.equalsIgnoreCase(article.doi))
-					|| (tmpArticle.bibtexKey!=null && article.bibtexKey!=null && tmpArticle.bibtexKey.equals(article.bibtexKey))
-					|| tmpArticle.isCompatible(article))
+				if(tmpArticle.doi!=null && article.doi!=null)
+				{	if(tmpArticle.doi.equalsIgnoreCase(article.doi))
+						articles.add(article);
+				}
+				else if(tmpArticle.bibtexKey!=null && article.bibtexKey!=null)
+				{	if(tmpArticle.bibtexKey.equals(article.bibtexKey))
+						articles.add(article);
+				}
+				else if(tmpArticle.isCompatible(article))
 					articles.add(article);
 			}
 			logger.log("Compatible articles found: "+articles.size());
