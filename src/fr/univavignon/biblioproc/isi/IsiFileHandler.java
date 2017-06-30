@@ -643,6 +643,8 @@ public class IsiFileHandler
 			line = scanner.nextLine();
 		if(line.startsWith(PFX_DOI+" "))
 		{	result.doi = line.substring(3).trim();
+if(result.doi.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
+	System.out.print("");
 			logger.log("DOI: "+result.doi);
 		}
 		
@@ -988,14 +990,14 @@ if(sourceName.equals("p 22 ieee int c tool"))
 			// look for the paper in the current map
 if(tmpArticle.getTitle()==null)
 	System.out.print("");
-if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1103/PhysRevE.74.016107"))
+if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1016/j.cpc.2010.06.016"))
 	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: articlesMap.values())
 			{	
 if(article.bibtexKey.equals("NewKey227"))
 	System.out.print("");
-if(article.doi!=null && article.doi.equals("10.1103/PhysRevE.74.016107"))
+if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
 	System.out.print("");
 				if(tmpArticle.doi!=null && article.doi!=null)
 				{	if(tmpArticle.doi.equalsIgnoreCase(article.doi))

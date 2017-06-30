@@ -345,6 +345,8 @@ public class JabrefFileHandler
 		end = line.length() - 1;
 		String bibtexkey = line.substring(start, end);
 		result.put(FLD_KEY, bibtexkey);
+if(bibtexkey.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
+	System.out.print("");
 		
 		// rest of the fields
 		do
