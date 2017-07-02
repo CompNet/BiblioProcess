@@ -642,7 +642,9 @@ public class IsiFileHandler
 		while(!line.startsWith(PFX_DOI+" ") && !line.startsWith(PFX_SEPARATOR))
 			line = scanner.nextLine();
 		if(line.startsWith(PFX_DOI+" "))
-		{	result.doi = line.substring(3).trim();
+		{	String doi = line.substring(3).trim();
+			doi = doi.replaceAll("//+", "/");
+			result.doi = doi;
 if(result.doi.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
 	System.out.print("");
 			logger.log("DOI: "+result.doi);
@@ -673,7 +675,9 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 //					logger.log("Author: "+author);
 //				}
 				else if(str.startsWith(PFX_DOI+"="))
-				{	result.doi = str.substring(PFX_DOI.length()+1);
+				{	String doi = str.substring(PFX_DOI.length()+1);
+					doi = doi.replaceAll("//+", "/");
+					result.doi = doi;
 					logger.log("DOI: "+result.doi);
 				}
 				else if(str.startsWith(PFX_ISSUE+"="))
@@ -772,7 +776,9 @@ if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in S
 		{	// check the presence of a DOI: if there is, we don't need the rest
 			String last = tmp[tmp.length-1].trim();
 			if(last.startsWith("DOI "))
-			{	tmpArticle.doi = tmp[tmp.length-1].substring(4).trim();
+			{	String doi = tmp[tmp.length-1].substring(4).trim();
+				doi = doi.replaceAll("//+", "/");
+				tmpArticle.doi = doi;
 				if(tmpArticle.doi.startsWith("DOI ")) // sometimes DOI appears twice...
 					tmpArticle.doi = tmpArticle.doi.substring(4).trim();
 				logger.log("Found a DOI (not processing the rest): "+tmpArticle.doi);
@@ -815,7 +821,9 @@ if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in S
 							tmpArticle.addAuthor(author);
 						}
 						else if(str.startsWith(PFX_DOI+"="))
-						{	tmpArticle.doi = str.substring(PFX_DOI.length()+1);
+						{	String doi = str.substring(PFX_DOI.length()+1);
+							doi = doi.replaceAll("//+", "/");
+							tmpArticle.doi = doi;
 							logger.log("DOI: "+tmpArticle.doi);
 						}
 						else if(str.startsWith(PFX_ISSUE+"="))
@@ -990,12 +998,12 @@ if(sourceName.equals("p 22 ieee int c tool"))
 			// look for the paper in the current map
 if(tmpArticle.getTitle()==null)
 	System.out.print("");
-if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1016/j.cpc.2010.06.016"))
+if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1145/167088.167261"))
 	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: articlesMap.values())
 			{	
-if(article.bibtexKey.equals("NewKey227"))
+if(article.bibtexKey.equals("Klein1993"))
 	System.out.print("");
 if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
 	System.out.print("");

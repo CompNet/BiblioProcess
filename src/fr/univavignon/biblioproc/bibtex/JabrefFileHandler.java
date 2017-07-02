@@ -401,6 +401,8 @@ if(bibtexkey.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
 		
 		// init BibTex key
 		result.bibtexKey = data.get(FLD_KEY);
+if(result.bibtexKey.equals("Klein1993"))
+	System.out.print("");		
 		
 		// init source type
 		String typeSrc = data.get(FLD_SOURCE);
