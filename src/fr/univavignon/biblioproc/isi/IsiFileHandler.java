@@ -1,5 +1,7 @@
 package fr.univavignon.biblioproc.isi;
 
+import java.io.File;
+
 /*
  * Biblio Process
  * Copyright 2011-2017 Vincent Labatut 
@@ -288,6 +290,7 @@ public class IsiFileHandler
 		logger.decreaseOffset();
 		
 		// resolve the (short) references
+		PrintWriter pw = FileTools.openTextFileWrite(FileNames.FO_OUTPUT+File.separator+"missing.txt", "UTF-8");
 		logger.log("Resolve the short references");
 		logger.increaseOffset();
 		{	int i = 1;
@@ -295,7 +298,8 @@ public class IsiFileHandler
 			{	Article article = entry.getKey();
 				logger.log("Processing article ("+i+"/"+tempRef.size()+") "+article);
 				logger.increaseOffset();
-				{	int j = 1;
+				{	pw.println("\n"+article.bibtexKey);
+					int j = 1;
 					List<String> refs = entry.getValue();
 					for(String ref: refs)
 					{	logger.log("Processing reference ("+j+"/"+refs.size()+") "+ref);
@@ -304,6 +308,8 @@ public class IsiFileHandler
 							if(r!=null)
 							{	article.citedArticles.add(r);
 								r.citingArticles.add(article);
+								if(r.bibtexKey.startsWith(NEW_KEY))
+									pw.println(ref);
 							}
 						}
 						logger.decreaseOffset();
@@ -315,8 +321,9 @@ public class IsiFileHandler
 			}
 		}
 		logger.decreaseOffset();
+		pw.close();
 		
-//		// display the un-matched articles
+		// display the un-matched articles
 //		logger.log("List of unknown articles:");
 //		logger.increaseOffset();
 //		{	int count = 0;
@@ -332,21 +339,21 @@ public class IsiFileHandler
 //		logger.decreaseOffset();
 		
 		// display the DOIs of missing articles
-		logger.log("List of missing DOIs:");
-		logger.increaseOffset();
-		{	int count = 0;
-			for(Entry<String,Article> entry: articlesMap.entrySet())
-			{	String key = entry.getKey();
-				Article article = entry.getValue();
-				if(key.startsWith(NEW_KEY))
-				{	if(article.doi!=null)
-					{	count++;
-						logger.log(count + ". " + article.doi);
-					}
-				}
-			}
-		}
-		logger.decreaseOffset();
+//		logger.log("List of missing DOIs:");
+//		logger.increaseOffset();
+//		{	int count = 0;
+//			for(Entry<String,Article> entry: articlesMap.entrySet())
+//			{	String key = entry.getKey();
+//				Article article = entry.getValue();
+//				if(key.startsWith(NEW_KEY))
+//				{	if(article.doi!=null)
+//					{	count++;
+//						logger.log(count + ". " + article.doi);
+//					}
+//				}
+//			}
+//		}
+//		logger.decreaseOffset();
 		
 		logger.decreaseOffset();
 	}
