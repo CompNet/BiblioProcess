@@ -298,7 +298,7 @@ public class IsiFileHandler
 			{	Article article = entry.getKey();
 				logger.log("Processing article ("+i+"/"+tempRef.size()+") "+article);
 				logger.increaseOffset();
-				{	pw.println("\n"+article.bibtexKey);
+				{	pw.println("\n"+i+". "+article.bibtexKey);
 					int j = 1;
 					List<String> refs = entry.getValue();
 					for(String ref: refs)
@@ -306,7 +306,9 @@ public class IsiFileHandler
 						logger.increaseOffset();
 						{	Article r = retrieveArticle(ref);
 							if(r!=null)
-							{	article.citedArticles.add(r);
+							{	if(article.citedArticles.contains(r))
+									throw new IllegalArgumentException("Trying to insert twice the same reference for this article");
+								article.citedArticles.add(r);
 								r.citingArticles.add(article);
 								if(r.bibtexKey.startsWith(NEW_KEY))
 									pw.println(ref);
