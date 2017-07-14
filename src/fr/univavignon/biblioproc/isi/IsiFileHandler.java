@@ -1009,10 +1009,12 @@ if(tmpArticle.getTitle()==null)
 	System.out.print("");
 if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1145/167088.167261"))
 	System.out.print("");
+if(tmpArticle.bibtexKey!=null && tmpArticle.bibtexKey.equals("Yang2007a"))
+	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: articlesMap.values())
 			{	
-if(article.bibtexKey.equals("Klein1993"))
+if(article.bibtexKey.equals("Yang2007a"))
 	System.out.print("");
 if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
 	System.out.print("");
