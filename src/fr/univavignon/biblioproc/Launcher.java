@@ -40,7 +40,8 @@ public class Launcher
 	 */
 	public static void main(String[] args) throws Exception
 	{	/**TODO
-		 * - USE THE DOI for matching short refs
+		 * - Use the source when matching papers: otherwise, there's certainly a large number of false matches
+		 *   - alternatively: alert when not enough data to match a reference (year, volume, pages, etc.)
 		 * 
 		 * 
 		 * - generate a folder containing all the PDF file of the articles listed in the bibtex file
