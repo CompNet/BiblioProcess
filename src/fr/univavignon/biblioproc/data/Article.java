@@ -553,6 +553,11 @@ public class Article implements Comparable<Article>
 		
 		// source
 		// not considered because the spelling varies a lot
+		if(result)
+		{	String normSourceName2 = article.normSourceName;
+			if(normSourceName!=null && normSourceName2!=null)
+				result = normSourceName.equals(normSourceName2);
+		}
 		
 		// volume
 		if(result)

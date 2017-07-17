@@ -471,6 +471,8 @@ public class IsiFileHandler
 		}
 		
 		// get type
+if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Application to Structural Balance"))
+	System.out.print("");
 		logger.log("Determining source type");
 		logger.increaseOffset();
 		while(!line.startsWith(PFX_TYPE+" "))
@@ -524,6 +526,7 @@ public class IsiFileHandler
 					sourceName = initial + rest;
 				}
 				logger.log("Clean conference name: "+sourceName);
+//TODO look it up in short names
 				logger.decreaseOffset();
 				break;
 				
@@ -731,7 +734,7 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		List<Article> articles = new ArrayList<Article>(); 
 		for(Article article: articlesMap.values())
 		{	
-if(article.bibtexKey.equals("Sharma2009") && title.equals("Community Mining in Signed Social Networks -An Automated Approach")) //for debug
+if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution of the Correlation Clustering Problem: An Application to Structural Balance")) //for debug
 	System.out.print("");
 			if((result.bibtexKey!=null && result.bibtexKey.equals(article.bibtexKey))
 				|| (result.doi!=null && result.doi.equalsIgnoreCase(article.doi))

@@ -254,3 +254,4 @@ social networks dev	Social Networks
 j ind manag optim	Journal of Industrial and Management Optimization
 psychol today	Psychology Today
 brit j polit sci	British Journal of Political Science
+on the move	OTM Confederated International Conferences - On the Move to Meaningful Internet Systems
