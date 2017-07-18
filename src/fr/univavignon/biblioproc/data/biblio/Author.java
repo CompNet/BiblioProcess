@@ -20,8 +20,6 @@ package fr.univavignon.biblioproc.data.biblio;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.util.Map;
-
 import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
@@ -71,28 +69,6 @@ public class Author implements Comparable<Author>
 		this.firstnameInitials = firstnameInitials;
 		// setup normalized fullname
 		initNormName();
-	}
-	
-	/**
-	 * Looks up the specified name and returns the corresponding
-	 * author if it already exists. Otherwise, the method creates
-	 * the author, adds it to the list and returns it.
-	 * 
-	 * @param author
-	 * 		Targeted author (containing the appropriate name).
-	 * @param authors
-	 * 		Map of previously loaded authors.
-	 * @return
-	 * 		The targeted author.
-	 */
-	public static Author retrieveAuthor(Author author, Map<String,Author> authors)
-	{	Author result = author;
-		Author temp = authors.get(author.normname);
-		if(temp!=null)
-			result = temp;
-		else
-			authors.put(author.normname, result);
-		return result;
 	}
 	
 	/////////////////////////////////////////////////////////////////

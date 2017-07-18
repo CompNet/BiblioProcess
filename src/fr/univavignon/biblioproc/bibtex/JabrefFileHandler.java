@@ -34,6 +34,7 @@ import java.util.regex.Pattern;
 
 import fr.univavignon.biblioproc.data.biblio.Article;
 import fr.univavignon.biblioproc.data.biblio.Author;
+import fr.univavignon.biblioproc.data.biblio.Corpus;
 import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
@@ -87,13 +88,13 @@ public class JabrefFileHandler
 	/** Bibtex key for the article key */
 	private static final String FLD_KEY = "bibtexkey";
 	/** Bibtex key for the authors */
-	private static final String FLD_AUTHOR = "author";
+	public static final String FLD_AUTHOR = "author";
 	/** Bibtex key for the abstract */
 	private static final String FLD_ABSTRACT = "abstract";
 	/** Bibtex key for the chapter */
-	private static final String FLD_CHAPTER = "chapter";
+	public static final String FLD_CHAPTER = "chapter";
 	/** Bibtex key for the DOI */
-	private static final String FLD_DOI = "doi";
+	public static final String FLD_DOI = "doi";
 	/** Bibtex key for the file */
 	private static final String FLD_FILE = "file";
 	/** Bibtex key for the institution */
@@ -103,27 +104,27 @@ public class JabrefFileHandler
 	/** Bibtex key for the issue */
 	private static final String FLD_ISSUE = "issue";
 	/** Traditional Bibtex key for the journal */
-	private static final String FLD_JOURNAL1 = "journal";
+	public static final String FLD_JOURNAL1 = "journal";
 	/** Alterantive Bibtex key for the journal */
 	private static final String FLD_JOURNAL2 = "journaltitle";
 	/** Bibtex key for the number */
-	private static final String FLD_NUMBER = "number";
+	public static final String FLD_NUMBER = "number";
 	/** Bibtex key for the owner */
 	private static final String FLD_OWNER = "owner";
 	/** Bibtex key for the pages */
-	private static final String FLD_PAGES = "pages";
+	public static final String FLD_PAGES = "pages";
 	/** Bibtex key for the time stamp */
 	private static final String FLD_TIMESTAMP = "timestamp";
 	/** Bibtex key for the article title */
-	private static final String FLD_TITLE_ARTICLE = "title";
+	public static final String FLD_TITLE_ARTICLE = "title";
 	/** Bibtex key for the book title */
-	private static final String FLD_TITLE_BOOK = "booktitle";
+	public static final String FLD_TITLE_BOOK = "booktitle";
 	/** Bibtex key for the URL */
-	private static final String FLD_URL = "url";
+	public static final String FLD_URL = "url";
 	/** Bibtex key for the volume */
-	private static final String FLD_VOLUME = "volume";
+	public static final String FLD_VOLUME = "volume";
 	/** Bibtex key for the publication year */
-	private static final String FLD_YEAR = "year";
+	public static final String FLD_YEAR = "year";
 	/** Bibtex key for the publisher of a book */
 	private static final String FLD_PUBLISHER = "publisher";
 	/** Bibtex key for the series title of a book */
@@ -182,10 +183,8 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	// DATA				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Map containing all the loaded articles, indexed by their Bibtex id */
-	public Map<String, Article> articlesMap = new HashMap<String, Article>();
-	/** Map containing all the loaded authors, indexed by their normalized name */
-	public Map<String, Author> authorsMap = new HashMap<String, Author>();
+	/** Collection of articles */
+	public Corpus corpus = new Corpus();
 	/** Jabref Commands located at the end of the file */
 	public String jabrefCommands = null;
 	
@@ -267,7 +266,8 @@ public class JabrefFileHandler
 					count = 0;
 					for(String key: keys)
 					{	count++;
-						Article article = articlesMap.get(key.substring(0,key.length()-1));
+						String nkey = key.substring(0,key.length()-1);
+						Article article = corpus.getArticle(nkey);
 						article.ignored = true;
 						logger.log(count + ". " + article);
 					}
@@ -296,7 +296,8 @@ public class JabrefFileHandler
 					count = 0;
 					for(String key: keys)
 					{	count++;
-						Article article = articlesMap.get(key.substring(0,key.length()-1));
+						String nkey = key.substring(0,key.length()-1);
+						Article article = corpus.getArticle(nkey);
 						article.ignored = true;
 						System.out.println(count + ". " + article);
 					}
@@ -480,7 +481,7 @@ if(result.bibtexKey.equals("Klein1993"))
 			if(matcher.find())
 				throw new IllegalArgumentException("Probably a dot/space problem in "+authorStr);
 			Author author = new Author(authorStr);
-			author = Author.retrieveAuthor(author, authorsMap);
+			author = corpus.retrieveAuthor(author);
 			result.addAuthor(author);
 		}
 		
@@ -605,7 +606,7 @@ if(result.bibtexKey.equals("Klein1993"))
 		// present
 		result.present = true;
 		
-		articlesMap.put(result.bibtexKey, result);
+		corpus.addArticle(result);
 		return result;
 	}
 
@@ -638,7 +639,7 @@ if(result.bibtexKey.equals("Klein1993"))
 		
 		// write each article
 		logger.log("Write each article");
-		for(Article article: articlesMap.values())
+		for(Article article: corpus.getArticles())
 			writeArticle(article, pw);
 		
 		// add Jabref stuff

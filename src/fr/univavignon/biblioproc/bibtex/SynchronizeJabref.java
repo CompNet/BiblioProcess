@@ -22,10 +22,10 @@ package fr.univavignon.biblioproc.bibtex;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.Map;
-import java.util.Set;
+import java.util.Collection;
 
 import fr.univavignon.biblioproc.data.biblio.Article;
+import fr.univavignon.biblioproc.data.biblio.Corpus;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
@@ -67,29 +67,29 @@ public class SynchronizeJabref
 		JabrefFileHandler jfhOrig = new JabrefFileHandler();
 		boolean updateGroups = false;
 		jfhOrig.loadJabRefFile(originalFile, updateGroups);
-		Map<String, Article> mapOrig = jfhOrig.articlesMap;
+		Corpus corpusOrig = jfhOrig.corpus;
 		
 		// load the smaller one
 		JabrefFileHandler jfhSelect = new JabrefFileHandler();
 		updateGroups = false;
 		jfhSelect.loadJabRefFile(selectionFile, updateGroups);
-		Map<String, Article> mapSelect = jfhSelect.articlesMap;
+		Corpus corpusSelect = jfhSelect.corpus;
 		
 		// get the original refs for each bibtex key in the smaller collection
 		logger.log("Compare both collections");
 		logger.increaseOffset();
-		Set<String> keys = mapSelect.keySet();
+		Collection<String> keys = corpusSelect.getKeys();
 		int i = 0;
 		for(String key: keys)
 		{	i++;
 			logger.log("Processing key "+i+"/"+keys.size()+": "+key);
-			Article article = mapOrig.get(key);
+			Article article = corpusOrig.getArticle(key);
 			if(article==null)
 				throw new IllegalArgumentException("Article \""+key+"\" not found in the main file");
-			Article article2 = mapSelect.get(key);
+			Article article2 = corpusSelect.getArticle(key);
 			if(!article.getNormTitle().equals(article2.getNormTitle()))
 				throw new IllegalArgumentException("Incompatible articles: \n"+article+"\n"+article2);
-			mapSelect.put(key,article);
+			corpusSelect.addArticle(article);
 		}
 		logger.decreaseOffset();
 		

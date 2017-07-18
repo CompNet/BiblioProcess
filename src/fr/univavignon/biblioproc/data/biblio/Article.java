@@ -26,6 +26,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
+import fr.univavignon.biblioproc.data.graph.Graph;
+import fr.univavignon.biblioproc.data.graph.Node;
 import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**
@@ -910,6 +913,66 @@ public class Article implements Comparable<Article>
 		if(doi!=null)
 			result = result + "DOI: " + doi;
 		
+		return result;
+	}
+	
+	/////////////////////////////////////////////////////////////////
+	// GRAPH			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/**
+	 * Builds a node representing this article, using the specified graph.
+	 * 
+	 * @param graph
+	 * 		The graph which will contain the node.
+	 * @return
+	 * 		The created node.
+	 */
+	public Node buildNode(Graph graph)
+	{	Node result = graph.retrieveNode(bibtexKey);
+		
+		if(!authors.isEmpty())
+		{	String authorsStr = "";
+			for(int i=0;i<authors.size();i++)
+			{	Author author = authors.get(i);
+				authorsStr = authorsStr + author.lastname + " " + author.firstnameInitials;
+				if(i<authors.size()-2)
+					authorsStr = authorsStr + ", ";
+				else if(i==authors.size()-2)
+					authorsStr = authorsStr + " & ";
+			}
+			result.setProperty(JabrefFileHandler.FLD_AUTHOR, authorsStr);
+		}
+		
+		if(chapter!=null)
+			result.setProperty(JabrefFileHandler.FLD_CHAPTER, chapter);
+		
+		if(doi!=null)
+			result.setProperty(JabrefFileHandler.FLD_DOI, doi);
+		
+		if(journal!=null)
+			result.setProperty(JabrefFileHandler.FLD_JOURNAL1, journal);
+		
+		if(issue!=null)
+			result.setProperty(JabrefFileHandler.FLD_NUMBER, issue);
+		
+		if(page!=null)
+			result.setProperty(JabrefFileHandler.FLD_PAGES, page);
+		
+		if(title!=null)
+			result.setProperty(JabrefFileHandler.FLD_TITLE_ARTICLE, title);
+		
+		if(booktitle!=null)
+			result.setProperty(JabrefFileHandler.FLD_TITLE_BOOK, booktitle);
+		
+		if(url!=null)
+			result.setProperty(JabrefFileHandler.FLD_URL, url);
+		
+		if(volume!=null)
+			result.setProperty(JabrefFileHandler.FLD_VOLUME, volume);
+		
+		if(year!=null)
+			result.setProperty(JabrefFileHandler.FLD_YEAR, year);
+
 		return result;
 	}
 }

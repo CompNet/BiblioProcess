@@ -40,6 +40,7 @@ import java.util.TreeSet;
 import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.biblio.Article;
 import fr.univavignon.biblioproc.data.biblio.Author;
+import fr.univavignon.biblioproc.data.biblio.Corpus;
 import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
@@ -60,14 +61,11 @@ public class IsiFileHandler
 	 * match the loaded references and authors with the ones already 
 	 * present in the maps.
 	 * 
-	 * @param articlesMap
-	 * 		Map of articles, indexed by Bibtex entry.
-	 * @param authorsMap
-	 * 		Map of authors, indexed by normalized full name.
+	 * @param corpus
+	 * 		Collection of articles and authors.
 	 */
-	public IsiFileHandler(Map<String, Article> articlesMap, Map<String, Author> authorsMap)
-	{	this.articlesMap = articlesMap;
-		this.authorsMap = authorsMap;
+	public IsiFileHandler(Corpus corpus)
+	{	this.corpus = corpus;
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -79,10 +77,8 @@ public class IsiFileHandler
 	/////////////////////////////////////////////////////////////////
 	// DATA			/////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Map containing all the loaded articles, indexed by their Bibtex id */
-	public Map<String, Article> articlesMap = new HashMap<String, Article>();
-	/** Map containing all the loaded authors, index by their normalized name */
-	public Map<String, Author> authorsMap = new HashMap<String, Author>();
+	/** Collection of articles */
+	public Corpus corpus = new Corpus();
 	/** String used to create new BibTex keys */
 	private final static String NEW_KEY = "NewKey";
 	/** List of series of proceedings ignored during certain processing steps */
@@ -735,7 +731,7 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		logger.log("Looking for compatible articles in the list of previously retrieved articles");
 		logger.increaseOffset();
 		List<Article> articles = new ArrayList<Article>(); 
-		for(Article article: articlesMap.values())
+		for(Article article: corpus.getArticles())
 		{	
 if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution of the Correlation Clustering Problem: An Application to Structural Balance")) //for debug
 	System.out.print("");
@@ -996,17 +992,8 @@ if(sourceName.equals("p 22 ieee int c tool"))
 					}
 					logger.log("Normalized lastname: "+lastname);
 					logger.log("Normalized firstname: "+firstname);
-					Author tmpAuthor = new Author(lastname, firstname);
-					String normname = tmpAuthor.normname;
-					Author author = authorsMap.get(normname);
-					if(author==null)
-					{	logger.log("Could not find a matching existing author, so creating a new one");
-						author = tmpAuthor;
-					}
-					else
-					{	logger.log("Could find a matching author: "+author);
-						authorsMap.put(normname, author);	// adding to the existing map for later use
-					}
+					Author author = new Author(lastname, firstname);
+					author = corpus.retrieveAuthor(author);
 					tmpArticle.addAuthor(author);
 					logger.decreaseOffset();
 				}
@@ -1020,7 +1007,7 @@ if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1145/167088.167261"))
 if(tmpArticle.bibtexKey!=null && tmpArticle.bibtexKey.equals("Yang2007a"))
 	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
-			for(Article article: articlesMap.values())
+			for(Article article: corpus.getArticles())
 			{	
 if(article.bibtexKey.equals("Yang2007a"))
 	System.out.print("");
@@ -1048,14 +1035,14 @@ if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
 			if(articles.isEmpty())
 			{	logger.log("Could not find any existing paper for "+tmpArticle);
 				int i = 0;
-				while(articlesMap.containsKey(NEW_KEY+i))
+				while(corpus.containsKey(NEW_KEY+i))
 					i++;
 				String bibtexKey = NEW_KEY+i;
 if(bibtexKey.equals("NewKey214"))				
 	System.out.print("");
 				tmpArticle.bibtexKey = bibtexKey;
 				logger.log("Creating a new one and adding to the map, using the new bibtexkey "+bibtexKey);
-				articlesMap.put(bibtexKey, tmpArticle);	// adding to the existing map for later use
+				corpus.addArticle(tmpArticle);	// adding to the existing map for later use
 				result = tmpArticle;
 			}
 			else if(articles.size()==1)
@@ -1201,7 +1188,7 @@ if(bibtexKey.equals("NewKey214"))
 		jfh.loadJabRefFile(path, updateGroups);
 		
 		// then the ISI file
-		IsiFileHandler ifh = new IsiFileHandler(jfh.articlesMap, jfh.authorsMap);
+		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
 		path = FileNames.FI_ISI_ALL;
 		ifh.loadIsiFile(path);
 	}

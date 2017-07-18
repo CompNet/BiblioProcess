@@ -40,8 +40,7 @@ public class Launcher
 	 */
 	public static void main(String[] args) throws Exception
 	{	/**TODO
-		 * - Use the source when matching papers: otherwise, there's certainly a large number of false matches
-		 *   - alternatively: alert when not enough data to match a reference (year, volume, pages, etc.)
+		 * - use a specific class to represent an article collection >> add graphml export to this corpus class
 		 * 
 		 * 
 		 * - generate a folder containing all the PDF file of the articles listed in the bibtex file
