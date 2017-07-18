@@ -38,9 +38,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
-import fr.univavignon.biblioproc.data.Article;
-import fr.univavignon.biblioproc.data.Author;
-import fr.univavignon.biblioproc.data.SourceType;
+import fr.univavignon.biblioproc.data.biblio.Article;
+import fr.univavignon.biblioproc.data.biblio.Author;
+import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
@@ -526,7 +526,10 @@ if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Ap
 					sourceName = initial + rest;
 				}
 				logger.log("Clean conference name: "+sourceName);
-//TODO look it up in short names
+				String normName = StringTools.normalize(sourceName).replace(".", "");
+				List<String> longNames = SHORT_NAMES.get(normName);
+				if(longNames!=null)
+					sourceName = longNames.get(0);
 				logger.decreaseOffset();
 				break;
 				
@@ -778,6 +781,8 @@ if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution 
 		Article tmpArticle = new Article();
 		String tmp[] = string.split(",");
 		
+if(string.equalsIgnoreCase("Liu J, 2010, IEEE T SYST MAN CY B, V40, P229, DOI 10.1109/TSMCB.2009.2025775"))
+	System.out.print("");
 		// check if the reference should be ignored
 		if(IGNORED_REFS.contains(string))
 		{	logger.log("The reference is in the black list >> it is ignored");

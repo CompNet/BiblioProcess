@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc.data;
+package fr.univavignon.biblioproc.data.biblio;
 
 /*
  * Biblio Process

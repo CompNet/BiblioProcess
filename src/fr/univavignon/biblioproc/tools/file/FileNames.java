@@ -40,6 +40,8 @@ public class FileNames
 	public static final String EX_PDF = ".pdf";
 	/** Text file extension */
 	public static final String EX_TXT = ".txt";
+	/** XML Schema file extension */
+	public final static String EX_SCHEMA = ".xsd";
 
 	/////////////////////////////////////////////////////////////////
 	// FOLDERS		/////////////////////////////////////////////////
@@ -54,6 +56,10 @@ public class FileNames
 	public final static String FO_OUTPUT = "out";
 	/** Log folder */
 	public final static String FO_LOG = "log";
+	/** Resources folder */
+	public final static String FO_RESOURCES = "res";
+		/** Folder containing the XML schemas */
+		public final static String FO_SCHEMA = FO_RESOURCES + File.separator + "schemas";
 
 	/////////////////////////////////////////////////////////////////
 	// FILES		/////////////////////////////////////////////////
@@ -72,4 +78,6 @@ public class FileNames
 	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TXT;
 	/** Ignored references */
 	public static final String FI_ISI_IGNORED = FO_ISI + File.separator + "ignored_refs" + EX_TXT;
+	/** XML schema file used for graphml  */
+	public final static String FI_GRAPHML_SCHEMA = "graphml" + FileNames.EX_SCHEMA;
 }

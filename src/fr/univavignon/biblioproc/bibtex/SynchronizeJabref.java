@@ -25,7 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 import java.util.Set;
 
-import fr.univavignon.biblioproc.data.Article;
+import fr.univavignon.biblioproc.data.biblio.Article;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;

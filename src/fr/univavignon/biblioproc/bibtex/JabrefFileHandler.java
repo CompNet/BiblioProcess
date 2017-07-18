@@ -32,9 +32,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.univavignon.biblioproc.data.Article;
-import fr.univavignon.biblioproc.data.Author;
-import fr.univavignon.biblioproc.data.SourceType;
+import fr.univavignon.biblioproc.data.biblio.Article;
+import fr.univavignon.biblioproc.data.biblio.Author;
+import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.file.FileTools;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;

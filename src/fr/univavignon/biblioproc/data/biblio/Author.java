@@ -1,6 +1,4 @@
-package fr.univavignon.biblioproc.data;
-
-import java.util.Map;
+package fr.univavignon.biblioproc.data.biblio;
 
 /*
  * Biblio Process
@@ -22,8 +20,7 @@ import java.util.Map;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
+import java.util.Map;
 
 import fr.univavignon.biblioproc.tools.string.StringTools;
 

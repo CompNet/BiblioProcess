@@ -136,7 +136,7 @@ public class HierarchicalLogger
 				
 				// file handler
 				String filename = FileNames.FO_LOG + File.separator 
-					+ TimeFormatting.formatCurrentTime() + "."
+					+ TimeFormatting.formatCurrentXmlTime() + "."
 					+  loggerName + "." 
 					+ "%g"								// replaced by the file number during runtime
 					+ LOG_EXTENSION;
