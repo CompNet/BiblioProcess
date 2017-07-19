@@ -13,7 +13,16 @@ BiblioProcess is free software: you can redistribute it and/or modify it under t
 -----------------------------------------------------------------------
 
 ## Description
-This software is currently in development. Don't use it (yet)!
+This software aims at extracting networks from bibliographic corpora. It can open Bibtex files, to get the details of a collection of articles,
+as well as Thomson ISI files, in order to get the bibliographic references contained in these articles. It matches both files and exports several
+networks:
+* Article citation networks: nodes are articles, links are directed from the cited to the citing articles.
+* Author citation networks: nodes are authors, links are directed from the cited to the citing authors, weights are the numbers of citations.
+* Co-authoring networks: nodes are authors, undirected links connect co-authors, weights are the numbers of co-authored papers.
+* Article co-citing networks: nodes are articles, undirected links connect articles citing the same reference, weights are the numbers of co-citations.
+* Article co-cited networks: nodes are articles, undirected links connect articles cited by the same reference, weights are the numbers of co-citations.
+
+*This software is currently in development. Don't use it (yet)!*
 
 ## Organization
 
@@ -24,11 +33,11 @@ This software is currently in development. Don't use it (yet)!
 ## Extension
 
 ## Dependencies
-Here are the dependencies for TranspoloSearch:
+Here are the dependencies for BiblioProcess:
 * ...
 
 ## Todo
-* ...
+* Other types of networks could be extracted, see [Sci²](http://wiki.cns.iu.edu/pages/viewpage.action?pageId=1245863#id-4.9NetworkAnalysis(WithWhom?)-4.9.1NetworkExtraction).
 
 ## References
 [xxx'YY] xxxxx.
