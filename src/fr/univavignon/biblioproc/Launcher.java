@@ -20,7 +20,12 @@ package fr.univavignon.biblioproc;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import fr.univavignon.biblioproc.tools.file.FileTools;
+import java.io.File;
+
+import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
+import fr.univavignon.biblioproc.data.graph.Graph;
+import fr.univavignon.biblioproc.isi.IsiFileHandler;
+import fr.univavignon.biblioproc.tools.file.FileNames;
 
 /**
  * Main class, allowing to launch the whole process.
@@ -39,11 +44,33 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	/**TODO
-		 * - use a specific class to represent an article collection >> add graphml export to this corpus class
+	{	
+		// first load the jabref file
+		JabrefFileHandler jfh = new JabrefFileHandler();
+		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		boolean updateGroups = false;
+		jfh.loadJabRefFile(path, updateGroups);
+		
+		// then the ISI file
+		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
+		path = FileNames.FI_ISI_ALL;
+		ifh.loadIsiFile(path);
+		
+		// extract and record the networks
+		Graph articleCitationGraph = ifh.corpus.buildArticleCitationGraph();
+		File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
+		articleCitationGraph.writeToXml(articleCitationFile);
+		Graph authorCitationGraph = ifh.corpus.buildAuthorCitationGraph();
+		File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
+		authorCitationGraph.writeToXml(authorCitationFile);
+		
+		
+		
+		/**TODO
+		 * - add a node attribute to distinguish original (core) articles from others
 		 * 
 		 * 
-		 * - generate a folder containing all the PDF file of the articles listed in the bibtex file
+		 * - generate a folder containing all the PDF files of the articles listed in the bibtex file
 		 * - generate the list of articles present as PDF files but missing from the bibtex file
 		 */
 		

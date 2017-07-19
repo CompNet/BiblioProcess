@@ -1,21 +1,23 @@
 package fr.univavignon.biblioproc.tools.log;
 
 /*
- * TranspoloSearch
- * Copyright 2015-17 Vincent Labatut
+ * Biblio Process
+ * Copyright 2011-2017 Vincent Labatut 
  * 
- * This file is part of TranspoloSearch.
+ * This file is part of Biblio Process.
  * 
- * TranspoloSearch is free software: you can redistribute it and/or modify it under 
- * the terms of the GNU General Public License as published by the Free Software 
- * Foundation, either version 2 of the License, or (at your option) any later version.
+ * Biblio Process is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
  * 
- * TranspoloSearch is distributed in the hope that it will be useful, but WITHOUT ANY 
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
- * PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * Biblio Process is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with TranspoloSearch. If not, see <http://www.gnu.org/licenses/>.
+ * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 import java.io.File;
@@ -136,7 +138,7 @@ public class HierarchicalLogger
 				
 				// file handler
 				String filename = FileNames.FO_LOG + File.separator 
-					+ TimeFormatting.formatCurrentXmlTime() + "."
+					+ TimeFormatting.formatCurrentFileTime() + "."
 					+  loggerName + "." 
 					+ "%g"								// replaced by the file number during runtime
 					+ LOG_EXTENSION;
@@ -265,8 +267,8 @@ public class HierarchicalLogger
     public void log(Collection<String> msg)
     {	if(enabled)
     	{	if(msg==null || msg.isEmpty())
-    			msg = Arrays.asList("");
-    		Logger logger = getLogger();
+				msg = Arrays.asList("");
+			Logger logger = getLogger();
     		Object params[] = {msg,getOffset()};
     		logger.log(Level.INFO,msg.iterator().next(),params);
     	}

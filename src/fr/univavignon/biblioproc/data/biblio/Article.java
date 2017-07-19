@@ -972,7 +972,9 @@ public class Article implements Comparable<Article>
 		
 		if(year!=null)
 			result.setProperty(JabrefFileHandler.FLD_YEAR, year);
-
+		
+		//TODO add stat-related fields?
+		
 		return result;
 	}
 }
