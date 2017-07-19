@@ -1,5 +1,7 @@
 package fr.univavignon.biblioproc.data.biblio;
 
+import java.util.ArrayList;
+
 /*
  * Biblio Process
  * Copyright 2011-2017 Vincent Labatut 
@@ -22,7 +24,15 @@ package fr.univavignon.biblioproc.data.biblio;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
+import fr.univavignon.biblioproc.data.graph.Graph;
+import fr.univavignon.biblioproc.data.graph.Link;
+import fr.univavignon.biblioproc.data.graph.Node;
 
 /**
  * This class is used to represent a collection of publications.  
@@ -141,7 +151,210 @@ public class Corpus
 //		return result;
 //	}
 	
+	/**
+	 * Return a collection containing all the authors from this
+	 * corpus.
+	 * 
+	 * @return
+	 * 		The authors of this corpus.
+	 */
+	public Collection<Author> getAuthors()
+	{	Collection<Author> result = authorsMap.values();
+		return result;
+	}
+	
 	/////////////////////////////////////////////////////////////////
 	// GRAPH			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	/** Name of the link weight property */
+	private final static String PROP_WEIGHT = "weight";
+	/** Name of the alt link weight property */
+	private final static String PROP_COUNT = "count";
+	
+	/**
+	 * Builds a citation network of articles. Each node is an article, 
+	 * each link is directed from the cited to the citing article, and 
+	 * is unweighted.
+	 * 
+	 * @return
+	 * 		An article citation graph. 
+	 */
+	public Graph buildArticleCitationGraph()
+	{	Graph result;
+		
+		// create the graph
+		String title = "Article citation network";
+		result = new Graph(title, true);
+		result.addNodeProperty(JabrefFileHandler.FLD_AUTHOR, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_CHAPTER, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_DOI, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_JOURNAL1, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_NUMBER, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_AUTHOR, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_PAGES, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_TITLE_ARTICLE, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_TITLE_BOOK, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addLinkProperty(PROP_WEIGHT, "int");
+
+		// add the nodes
+		for(Article article: getArticles())
+			article.buildNode(result);
+		
+		// add the links
+		for(Article artSrc: getArticles())
+		{	String sourceName = artSrc.bibtexKey;
+			for(Article artTarg: artSrc.citedArticles)
+			{	String targetName = artTarg.bibtexKey;
+				Link link = result.retrieveLink(sourceName, targetName);
+				link.incrementIntProperty(PROP_WEIGHT);
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * Builds a citation network of authors. Each node is an author, 
+	 * each link is directed from the cited to the citing author,
+	 * and its weight represents the number of citations (i.e. distinct articles).
+	 * 
+	 * @return
+	 * 		An author citation graph. 
+	 */
+	public Graph buildAuthorCitationGraph()
+	{	Graph result;
+		
+		// create the graph
+		String title = "Author citation network";
+		result = new Graph(title, true);
+		result.addNodeProperty(Author.PROP_FULLNAME, "string");
+		result.addLinkProperty(PROP_WEIGHT, "int");
+
+		// add the nodes
+		Map<Author,Node> nodeMap = new HashMap<Author,Node>();
+		for(Author author: getAuthors())
+		{	Node node = author.buildNode(result);
+			nodeMap.put(author, node);
+		}
+		
+		// add the links
+		for(Article artSrc: getArticles())
+		{	for(Article artTarg: artSrc.citedArticles)
+			{	for(Author authorSrc: artSrc.getAuthors())
+				{	Node nodeSrc = nodeMap.get(authorSrc);
+					for(Author authorTarg: artTarg.getAuthors())
+					{	Node nodeTarg = nodeMap.get(authorTarg);
+						Link link = result.retrieveLink(nodeSrc, nodeTarg);
+						link.incrementIntProperty(PROP_WEIGHT);
+					}
+				}
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * Builds a coauthoring network of articles. Each node is an article, 
+	 * each link is undirected and connects two articles having at least
+	 * one author in common, and its weight represents Jaccard's coefficient 
+	 * processed over the two concerned groups of authors. An additional
+	 * integer link attribute corresponds to the number of common authors.
+	 * 
+	 * @return
+	 * 		An article coauthorship graph. 
+	 */
+	public Graph buildArticleCoauthorshipGraph()
+	{	Graph result;
+		
+		// create the graph
+		String title = "Article coauthorship network";
+		result = new Graph(title, false);
+		result.addNodeProperty(JabrefFileHandler.FLD_AUTHOR, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_CHAPTER, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_DOI, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_JOURNAL1, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_NUMBER, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_AUTHOR, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_PAGES, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_TITLE_ARTICLE, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_TITLE_BOOK, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
+		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addLinkProperty(PROP_WEIGHT, "float");
+		result.addLinkProperty(PROP_COUNT, "int");
+
+		// add the nodes
+		for(Article article: getArticles())
+			article.buildNode(result);
+		
+		// add the links
+		for(Article article1: getArticles())
+		{	String name1 = article1.bibtexKey;
+			List<Author> authors1 = article1.getAuthors();
+			for(Article article2: article1.citedArticles)
+			{	String name2 = article2.bibtexKey;
+				List<Author> authors2 = article2.getAuthors();
+				Set<Author> intersection = new TreeSet<Author>(authors1);
+				intersection.retainAll(authors2);
+				if(!intersection.isEmpty())
+				{	Set<Author> union = new TreeSet<Author>(authors1);
+					union.addAll(authors2);
+					float weight = union.size() / (float)intersection.size();
+					Link link = result.retrieveLink(name1, name2);
+					link.incrementFloatProperty(PROP_WEIGHT,weight);
+					link.incrementIntProperty(PROP_COUNT,intersection.size());
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * Builds a coauthoring network of authors. Each node is an author, 
+	 * each link is undirected and connects two authors having published
+	 * an article together, and its weight represents the number of 
+	 * co-authored articles.
+	 * 
+	 * @return
+	 * 		An author coauthorship graph. 
+	 */
+	public Graph buildAuthorCoauthorshipGraph()
+	{	Graph result;
+	
+		// create the graph
+		String title = "Author coauthorship network";
+		result = new Graph(title, false);
+		result.addNodeProperty(Author.PROP_FULLNAME, "string");
+		result.addLinkProperty(PROP_WEIGHT, "int");
+	
+		// add the nodes
+		Map<Author,Node> nodeMap = new HashMap<Author,Node>();
+		for(Author author: getAuthors())
+		{	Node node = author.buildNode(result);
+			nodeMap.put(author, node);
+		}
+		
+		// add the links
+		for(Article article: getArticles())
+		{	List<Author> authors = article.getAuthors();
+			for(int i=0;i<authors.size()-1;i++)
+			{	Author author1 = authors.get(i);
+				Node node1 = nodeMap.get(author1);
+				for(int j=i+1;j<authors.size();j++)
+				{	Author author2 = authors.get(j);
+					Node node2 = nodeMap.get(author2);
+					Link link = result.retrieveLink(node1, node2);
+					link.incrementIntProperty(PROP_WEIGHT);
+				}
+			}
+		}
+		
+		return result;
+	}
 }

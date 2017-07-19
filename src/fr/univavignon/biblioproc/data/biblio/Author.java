@@ -124,12 +124,12 @@ if(normname.contains("-"))
 		return result;
 	}
 
-	@Override
-	public int hashCode()
-	{	String fullname = getFullname();
-		int result = fullname.hashCode();
-		return result;
-	}
+//	@Override
+//	public int hashCode()
+//	{	String fullname = getFullname();
+//		int result = fullname.hashCode();
+//		return result;
+//	}
 	
 	/////////////////////////////////////////////////////////////////
 	// STRINGS			/////////////////////////////////////////////
@@ -191,10 +191,10 @@ if(normname.contains("-"))
 	/////////////////////////////////////////////////////////////////
 	/** Variable used to number nodes */
 	private static int nodeNumber = 0;
-	/** Strign used to name nodes */
+	/** String used to name nodes */
 	private final static String NODE_PREFIX = "node";
-	/** Name of the author name field */
-	private final static String FLD_FULLNAME = "fullname";
+	/** Name of the author name property */
+	public final static String PROP_FULLNAME = "fullname";
 	
 	/**
 	 * Builds a node representing this author, using the specified graph.
@@ -210,7 +210,7 @@ if(normname.contains("-"))
 		Node result = graph.retrieveNode(name);
 		
 		String fullname = firstnameInitials + " " + lastname;
-		result.setProperty(FLD_FULLNAME, fullname);
+		result.setProperty(PROP_FULLNAME, fullname);
 		
 		//TODO add stat-related fields?
 		
