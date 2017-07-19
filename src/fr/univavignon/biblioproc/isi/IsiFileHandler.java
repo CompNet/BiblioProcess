@@ -755,6 +755,7 @@ if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution 
 		Article selectedArticle = articles.get(0);
 //		selectedArticle.completeWith(result);
 		result = selectedArticle;
+		result.core = true;
 		logger.decreaseOffset();
 		
 		references.put(result,citedArticles);

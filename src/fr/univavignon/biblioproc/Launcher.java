@@ -57,17 +57,45 @@ public class Launcher
 		ifh.loadIsiFile(path);
 		
 		// extract and record the networks
-		Graph articleCitationGraph = ifh.corpus.buildArticleCitationGraph();
-		File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
-		articleCitationGraph.writeToXml(articleCitationFile);
-		Graph authorCitationGraph = ifh.corpus.buildAuthorCitationGraph();
-		File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
-		authorCitationGraph.writeToXml(authorCitationFile);
-		
-		
+		{	// authorship graph
+			Graph authorshipGraph = ifh.corpus.buildAuthorshipGraph();
+			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
+			authorshipGraph.writeToXml(authorshipFile);
+		}
+		{	// article citation graph
+			Graph articleCitationGraph = ifh.corpus.buildArticleCitationGraph();
+			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
+			articleCitationGraph.writeToXml(articleCitationFile);
+		}
+		{	// author citation graph
+			Graph authorCitationGraph = ifh.corpus.buildAuthorCitationGraph();
+			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
+			authorCitationGraph.writeToXml(authorCitationFile);
+		}
+		{	// article coauthorship graph
+			Graph articleCoauthorshipGraph = ifh.corpus.buildArticleCoauthorshipGraph();
+			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
+			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
+		}
+		{	// author coauthorship graph
+			Graph authorCoauthorshipGraph = ifh.corpus.buildAuthorCoauthorshipGraph();
+			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
+			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
+		}
+		{	// article cociting graph
+			Graph articleCocitingGraph = ifh.corpus.buildArticleCocitingGraph();
+			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
+			articleCocitingGraph.writeToXml(articleCocitingFile);
+		}
+		{	// article cocited graph
+			Graph articleCocitedGraph = ifh.corpus.buildArticleCocitedGraph();
+			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
+			articleCocitedGraph.writeToXml(articleCocitedFile);
+		}
 		
 		/**TODO
-		 * - add a node attribute to distinguish original (core) articles from others
+		 * - check graph extraction methods on a simple (programmatic) example
+		 * - extract the full authorship bipartite network
 		 * 
 		 * 
 		 * - generate a folder containing all the PDF files of the articles listed in the bibtex file

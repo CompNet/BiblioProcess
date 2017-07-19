@@ -4,3 +4,8 @@
 /missing.txt
 /article_citation.graphml
 /author_citation.graphml
+/article_coauthorship.graphml
+/article_cocited.graphml
+/article_cociting.graphml
+/author_coauthorship.graphml
+/authorship.graphml
