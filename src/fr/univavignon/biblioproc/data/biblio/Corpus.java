@@ -185,7 +185,7 @@ public class Corpus
 		
 		// create the graph
 		String title = "Authorship network";
-		result = new Graph(title, true);
+		result = new Graph(title, false);
 		result.addNodeProperty(PROP_TYPE, "string");
 		result.addNodeProperty(Author.PROP_FULLNAME, "string");
 		result.addNodeProperty(Article.PROP_CORE, "string");
