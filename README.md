@@ -1,6 +1,6 @@
 BiblioProcess
 =======
-*Program processing bibtex files*
+*Processing of bibliographic files*
 
 * Copyright 2011-17 Vincent Labatut
 
@@ -22,7 +22,7 @@ networks:
 * Article co-citing networks: nodes are articles, undirected links connect articles citing the same reference, weights are the numbers of co-citations.
 * Article co-cited networks: nodes are articles, undirected links connect articles cited by the same reference, weights are the numbers of co-citations.
 
-*This software is currently in development. Don't use it (yet)!*
+**This software is currently in development. Don't use it (yet)!**
 
 ## Organization
 
