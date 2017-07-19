@@ -1,5 +1,8 @@
 package fr.univavignon.biblioproc.data.biblio;
 
+import fr.univavignon.biblioproc.data.graph.Graph;
+import fr.univavignon.biblioproc.data.graph.Node;
+
 /*
  * Biblio Process
  * Copyright 2011-2017 Vincent Labatut 
@@ -180,6 +183,37 @@ if(normname.contains("-"))
 				result = result + tmp2.substring(0,1).toUpperCase() + ".";
 			}
 		}
+		return result;
+	}
+	
+	/////////////////////////////////////////////////////////////////
+	// GRAPH			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Variable used to number nodes */
+	private static int nodeNumber = 0;
+	/** Strign used to name nodes */
+	private final static String NODE_PREFIX = "node";
+	/** Name of the author name field */
+	private final static String FLD_FULLNAME = "fullname";
+	
+	/**
+	 * Builds a node representing this author, using the specified graph.
+	 * 
+	 * @param graph
+	 * 		The graph which will contain the node.
+	 * @return
+	 * 		The created node.
+	 */
+	public Node buildNode(Graph graph)
+	{	String name = NODE_PREFIX + nodeNumber;
+		nodeNumber++;
+		Node result = graph.retrieveNode(name);
+		
+		String fullname = firstnameInitials + " " + lastname;
+		result.setProperty(FLD_FULLNAME, fullname);
+		
+		//TODO add stat-related fields?
+		
 		return result;
 	}
 }
