@@ -54,6 +54,3 @@ public class Launcher
 		 */
 	}
 }
-
-//TODO pour les bouquins, la source citée en court est le nom de la série...
-//faut donc un traitement spécifique
