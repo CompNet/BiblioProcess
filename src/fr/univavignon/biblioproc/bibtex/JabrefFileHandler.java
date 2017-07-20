@@ -267,7 +267,7 @@ public class JabrefFileHandler
 					for(String key: keys)
 					{	count++;
 						String nkey = key.substring(0,key.length()-1);
-						Article article = corpus.getArticle(nkey);
+						Article article = corpus.getArticleByBibkey(nkey);
 						article.ignored = true;
 						logger.log(count + ". " + article);
 					}
@@ -297,7 +297,7 @@ public class JabrefFileHandler
 					for(String key: keys)
 					{	count++;
 						String nkey = key.substring(0,key.length()-1);
-						Article article = corpus.getArticle(nkey);
+						Article article = corpus.getArticleByBibkey(nkey);
 						article.ignored = true;
 						System.out.println(count + ". " + article);
 					}

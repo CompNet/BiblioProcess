@@ -23,6 +23,7 @@ package fr.univavignon.biblioproc.data.biblio;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -53,8 +54,28 @@ public class Corpus
 	 * @return
 	 * 		The article possessing the specified Bibtex key.
 	 */
-	public Article getArticle(String bibkey)
+	public Article getArticleByBibkey(String bibkey)
 	{	Article result = articlesMap.get(bibkey);
+		return result;
+	}
+	
+	/**
+	 * Returns the article corresponding to the specified DOI,
+	 * or {@code null} if no such article currently exists.
+	 * 
+	 * @param doi
+	 * 		DOI of the article.
+	 * @return
+	 * 		The article possessing the specified DOI.
+	 */
+	public Article getArticleByDoi(String doi)
+	{	Article result = null;
+		Iterator<Article> it = getArticles().iterator();
+		while(it.hasNext() && result==null)
+		{	Article article = it.next();
+			if(article.doi!=null && article.doi.equalsIgnoreCase(doi))
+				result = article;
+		}
 		return result;
 	}
 	

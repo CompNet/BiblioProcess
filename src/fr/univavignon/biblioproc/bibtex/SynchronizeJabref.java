@@ -83,10 +83,10 @@ public class SynchronizeJabref
 		for(String key: keys)
 		{	i++;
 			logger.log("Processing key "+i+"/"+keys.size()+": "+key);
-			Article article = corpusOrig.getArticle(key);
+			Article article = corpusOrig.getArticleByBibkey(key);
 			if(article==null)
 				throw new IllegalArgumentException("Article \""+key+"\" not found in the main file");
-			Article article2 = corpusSelect.getArticle(key);
+			Article article2 = corpusSelect.getArticleByBibkey(key);
 			if(!article.getNormTitle().equals(article2.getNormTitle()))
 				throw new IllegalArgumentException("Incompatible articles: \n"+article+"\n"+article2);
 			corpusSelect.addArticle(article);

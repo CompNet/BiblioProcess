@@ -78,6 +78,8 @@ public class FileNames
 	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TXT;
 	/** Ignored references */
 	public static final String FI_ISI_IGNORED = FO_ISI + File.separator + "ignored_refs" + EX_TXT;
+	/** Manually completed references */
+	public static final String FI_ISI_COMPLETED = FO_ISI + File.separator + "additional_refs" + EX_TXT;
 	/** XML schema file used for graphml  */
 	public final static String FI_GRAPHML_SCHEMA = "graphml" + FileNames.EX_SCHEMA;
 }

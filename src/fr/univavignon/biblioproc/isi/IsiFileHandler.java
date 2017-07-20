@@ -353,6 +353,9 @@ public class IsiFileHandler
 //		}
 //		logger.decreaseOffset();
 		
+		// complete with the manually annotated references
+		completeReferences();
+		
 		logger.decreaseOffset();
 	}
 	
@@ -1064,112 +1067,69 @@ if(bibtexKey.equals("NewKey214"))
 		return result;
 	}
 	
-//	/**
-//	 * Builds an {@code Article} by parsing the specified string,
-//	 * which is a compact representation of a bibliographic reference.
-//	 * 
-//	 * @param string
-//	 * 		The bibtex string representing the article.
-//	 * @param authorsMap
-//	 * 		Map containing the known authors.
-//	 * @return
-//	 * 		The corresponding {@code Article} object.
-//	 */
-//	public Article buildArticle(String string)
-//	{	Article result = new Article();
-//		String temp[] = string.split(", ");
-//		int index = 0;
-//		
-//		// first author
-//		String temp2[] = temp[index].split(" ");
-//		if(temp2.length==1 && temp2[0].contains("."))
-//			temp2 = temp2[0].split(".");
-//		String lastname = temp2[0];
-//		if(lastname.startsWith("*") || Character.isDigit(lastname.charAt(0)))
-//			return null;
-//		String firstnameInitial = null;
-//		int idx = 1;
-//		while(temp2.length>idx && firstnameInitial==null)
-//		{	if(temp2[idx].length()>3 && idx<temp2.length-1)
-//				lastname = lastname + temp2[idx];
-//			else
-//				firstnameInitial = temp2[idx];
-//			idx++;
-//		}
-//		if(firstnameInitial!=null && firstnameInitial.length()>1)
-//			firstnameInitial = temp2[1].substring(0,1);
-//		Author author = new Author(lastname, firstnameInitial);
-//		author = Author.retrieveAuthor(author, authorsMap);
-//		result.addAuthor(author);
-//		index++;
-//		
-//		// year
-//		if(temp.length>index)
-//		{	String tempYear = StringTools.normalize(temp[index]);
-//			try
-//			{	Integer.parseInt(tempYear);
-//			}
-//			catch(NumberFormatException e)
-//			{	tempYear = null;
-//				result. year = "N/A";
-//			}
-//			if(tempYear!=null)
-//			{	result.year = tempYear;
-//				index++;
-//			}
-//		}
-//		
-//		// source
-//		if(temp.length>index)
-//		{	result.source = StringTools.normalize(temp[index]);
-//			index++;
-//		}
-//		
-//		// volume
-//		if(temp.length>index && (temp[index].startsWith("V") || temp[index].startsWith("v")))
-//		{	result.volume = StringTools.normalize(temp[index].substring(1));
-//			index++;
-//		}
-//		
-//		// page
-//		if(temp.length>index && (temp[index].startsWith("P") || temp[index].startsWith("p")))
-//		{	result.page = StringTools.normalize(temp[index].substring(1).trim());
-//			index++;
-//		}
-//		
-//		// doi
-//		if(temp.length>index && (temp[index].startsWith("DOI") || temp[index].startsWith("Doi")))
-//		{	result.doi = temp[index].substring(4).trim();
-//			index++;
-//		}
-//		
-//		return result;
-//	}
-
-//	/**
-//	 * Builds an {@code Article} using the specified map and adding
-//	 * the specified citations. The {@code Map} must contain at least 
-//	 * the required fields: {@code bibtexkey}, {@code authors}, 
-//	 * {@code title}, {@code year}.
-//	 * 
-//	 * @param map
-//	 * 		A map used to initialize the {@code Article} object.
-//	 * @param citedArticles
-//	 * 		Articles cited by the newly created article.
-//	 * @return
-//	 * 		The created article.
-//	 */
-//	public Article buildArticle(Map<String,String> map, Set<Article> citedArticles)
-//	{	Article result = buildArticle(map);
-//		result.present = false;
-//		
-//		result.citedArticles.addAll(citedArticles);
-//		for(Article article: citedArticles)
-//			article.citingArticles.add(article);
-//		
-//		return result;
-//	}
-
+	/**
+	 * Uses the manual annotations contained in a text file to complete
+	 * the information previously extracted from the ISI file.
+	 * 
+	 * @throws FileNotFoundException
+	 * 		Problem while accessing the text file.
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while accessing the text file.
+	 */
+	private void completeReferences() throws FileNotFoundException, UnsupportedEncodingException
+	{	File file = new File(FileNames.FI_ISI_COMPLETED);
+		if(file.exists())
+		{	logger.log("Found a file containing manual annotations: adding them to the corpus");
+			logger.increaseOffset();
+			Scanner scanner = FileTools.openTextFileRead(file, "UTF-8");
+			while(scanner.hasNextLine())
+			{	Article article = null;
+				String line = scanner.nextLine();
+				while(scanner.hasNextLine() && !line.isEmpty())
+				{	if(line.startsWith(PFX_DOI))
+					{	String prefix = PFX_DOI + "=";
+						String doi = line.substring(prefix.length(), line.length()).trim();
+						if(article==null)
+						{	article = corpus.getArticleByDoi(doi);
+							logger.log("Completing article "+article);
+							logger.increaseOffset();
+						}
+						else
+						{	Article ref = corpus.getArticleByDoi(doi);
+							logger.log("Adding article "+ref);
+							article.citedArticles.add(ref);
+							ref.citingArticles.add(article);
+						}
+					}
+					else if(line.startsWith(INT_BIBKEY))
+					{	String prefix = INT_BIBKEY + "=";
+						String bibkey = line.substring(prefix.length(), line.length()).trim();
+						if(article==null)
+						{	article = corpus.getArticleByBibkey(bibkey);
+							logger.log("Completing article "+article);
+							logger.increaseOffset();
+						}
+						else
+						{	Article ref = corpus.getArticleByBibkey(bibkey);
+							logger.log("Adding article "+ref);
+							article.citedArticles.add(ref);
+							ref.citingArticles.add(article);
+						}
+					}
+					else
+						throw new IllegalArgumentException("Unknown key \""+line+"\" in file "+file);
+					line = scanner.nextLine();
+				}
+				logger.decreaseOffset();
+			}
+			logger.decreaseOffset();
+		}
+		
+		// no available file 
+		else
+			logger.log("No manual annotation available");
+	}
+	
 	/////////////////////////////////////////////////////////////////
 	// TESTS			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
