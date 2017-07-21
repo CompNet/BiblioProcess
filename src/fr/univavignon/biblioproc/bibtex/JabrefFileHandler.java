@@ -402,6 +402,8 @@ if(bibtexkey.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
 		
 		// init BibTex key
 		result.bibtexKey = data.get(FLD_KEY);
+		if(corpus.containsKey(result.bibtexKey))
+			throw new IllegalArgumentException("The corpus already contains the Bibtex key "+result.bibtexKey+" ("+data+")");
 if(result.bibtexKey.equals("Klein1993"))
 	System.out.print("");		
 		
@@ -841,6 +843,6 @@ if(result.bibtexKey.equals("Klein1993"))
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 		
-		jfh.writeJabRefFile("test.bib", "C:\\test\\test");
+		jfh.writeJabRefFile("test.bib", FileNames.FO_OUTPUT);
 	}
 }
