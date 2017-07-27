@@ -1084,7 +1084,7 @@ if(bibtexKey.equals("NewKey214"))
 			Scanner scanner = FileTools.openTextFileRead(file, "UTF-8");
 			while(scanner.hasNextLine())
 			{	Article article = null;
-				String line = scanner.nextLine();
+				String line = scanner.nextLine().trim();
 				while(scanner.hasNextLine() && !line.isEmpty())
 				{	if(line.startsWith(PFX_DOI))
 					{	String prefix = PFX_DOI + "=";
@@ -1118,7 +1118,7 @@ if(bibtexKey.equals("NewKey214"))
 					}
 					else
 						throw new IllegalArgumentException("Unknown key \""+line+"\" in file "+file);
-					line = scanner.nextLine();
+					line = scanner.nextLine().trim();
 				}
 				logger.decreaseOffset();
 			}
