@@ -193,6 +193,7 @@ public class IsiFileHandler
 		{	Scanner sc = FileTools.openTextFileRead(FileNames.FI_ISI_IGNORED, "UTF-8");
 			while(sc.hasNextLine())
 			{	String line = sc.nextLine().trim();
+				line = StringTools.normalize(line).replace(".", "");
 				IGNORED_REFS.add(line);
 			}
 			sc.close();
@@ -322,36 +323,38 @@ public class IsiFileHandler
 		pw.close();
 		
 		// display the un-matched articles
-//		logger.log("List of unknown articles:");
-//		logger.increaseOffset();
-//		{	int count = 0;
-//			for(Entry<String,Article> entry: articlesMap.entrySet())
-//			{	String key = entry.getKey();
-//				Article article = entry.getValue();
-//				if(key.startsWith(NEW_KEY))
-//				{	count++;
-//					logger.log(count + ". " + article);
-//				}
-//			}
-//		}
-//		logger.decreaseOffset();
+		logger.log("List of unknown articles:");
+		logger.increaseOffset();
+		{	int count = 0;
+			for(Article article: corpus.getArticles())
+			{	String key = article.bibtexKey;
+				if(key.startsWith(NEW_KEY))
+				{	count++;
+					logger.log(count + ". " + article);
+				}
+			}
+			if(count>0)
+				throw new IllegalArgumentException("Some short references could not be matched to existing full references");
+		}
+		logger.decreaseOffset();
 		
 		// display the DOIs of missing articles
-//		logger.log("List of missing DOIs:");
-//		logger.increaseOffset();
-//		{	int count = 0;
-//			for(Entry<String,Article> entry: articlesMap.entrySet())
-//			{	String key = entry.getKey();
-//				Article article = entry.getValue();
-//				if(key.startsWith(NEW_KEY))
-//				{	if(article.doi!=null)
-//					{	count++;
-//						logger.log(count + ". " + article.doi);
-//					}
-//				}
-//			}
-//		}
-//		logger.decreaseOffset();
+		logger.log("List of missing DOIs:");
+		logger.increaseOffset();
+		{	int count = 0;
+			for(Article article: corpus.getArticles())
+			{	String key = article.bibtexKey;
+				if(key.startsWith(NEW_KEY))
+				{	if(article.doi!=null)
+					{	count++;
+						logger.log(count + ". " + article.doi);
+					}
+				}
+			}
+			if(count>0)
+				throw new IllegalArgumentException("Some articles whose DOI is known are missing from the corpus");
+		}
+		logger.decreaseOffset();
 		
 		// complete with the manually annotated references
 		completeReferences();
@@ -781,10 +784,11 @@ if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution 
 		Article tmpArticle = new Article();
 		String tmp[] = string.split(",");
 		
-if(string.equalsIgnoreCase("Liu J, 2010, IEEE T SYST MAN CY B, V40, P229, DOI 10.1109/TSMCB.2009.2025775"))
+if(string.equalsIgnoreCase("DeParle Jason, 2005, NY TIMES        0627, pA1"))
 	System.out.print("");
 		// check if the reference should be ignored
-		if(IGNORED_REFS.contains(string))
+		String normStr = StringTools.normalize(string).replace(".", "");
+		if(IGNORED_REFS.contains(normStr))
 		{	logger.log("The reference is in the black list >> it is ignored");
 		}
 		
@@ -800,7 +804,6 @@ if(string.equalsIgnoreCase("Liu J, 2010, IEEE T SYST MAN CY B, V40, P229, DOI 10
 					tmpArticle.doi = tmpArticle.doi.substring(4).trim();
 				logger.log("Found a DOI (not processing the rest): "+tmpArticle.doi);
 				// see if the ref is an exception, already fixed manually
-				String normStr = StringTools.normalize(string).replace(".", "");
 				List<String> fix = ERROR_FIXES.get(normStr);
 				if(fix!=null)
 				{	logger.log("Retrieving a correct DOI from the external short names file");
@@ -818,7 +821,6 @@ if(string.equalsIgnoreCase("Liu J, 2010, IEEE T SYST MAN CY B, V40, P229, DOI 10
 			else
 			{	logger.log("Did not find a DOI: need to process the rest");
 				// see if the ref is an exception, already fixed manually
-				String normStr = StringTools.normalize(string).replace(".", "");
 				List<String> fix = ERROR_FIXES.get(normStr);
 				if(fix!=null)
 				{	logger.log("Retrieving fields from the external short names file");
@@ -1048,6 +1050,7 @@ if(bibtexKey.equals("NewKey214"))
 				logger.log("Creating a new one and adding to the map, using the new bibtexkey "+bibtexKey);
 				corpus.addArticle(tmpArticle);	// adding to the existing map for later use
 				result = tmpArticle;
+				throw new IllegalArgumentException("Could not find the article for "+tmpArticle);
 			}
 			else if(articles.size()==1)
 			{	Article article = articles.get(0);
