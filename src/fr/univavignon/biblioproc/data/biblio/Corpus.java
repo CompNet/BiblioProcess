@@ -29,10 +29,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.graph.Graph;
 import fr.univavignon.biblioproc.data.graph.Link;
 import fr.univavignon.biblioproc.data.graph.Node;
+import fr.univavignon.biblioproc.inout.JabrefFileHandler;
 
 /**
  * This class is used to represent a collection of publications.  

@@ -26,9 +26,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.graph.Graph;
 import fr.univavignon.biblioproc.data.graph.Node;
+import fr.univavignon.biblioproc.inout.JabrefFileHandler;
 import fr.univavignon.biblioproc.tools.string.StringTools;
 
 /**

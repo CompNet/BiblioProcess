@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc.bibtex;
+package fr.univavignon.biblioproc.inout;
 
 /*
  * Biblio Process

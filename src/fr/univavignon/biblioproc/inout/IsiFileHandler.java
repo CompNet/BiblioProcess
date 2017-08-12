@@ -1,4 +1,4 @@
-package fr.univavignon.biblioproc.isi;
+package fr.univavignon.biblioproc.inout;
 
 import java.io.File;
 
@@ -37,7 +37,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.biblio.Article;
 import fr.univavignon.biblioproc.data.biblio.Author;
 import fr.univavignon.biblioproc.data.biblio.Corpus;

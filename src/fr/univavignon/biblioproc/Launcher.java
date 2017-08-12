@@ -24,9 +24,9 @@ import java.io.File;
 
 import com.sun.media.jfxmedia.logging.Logger;
 
-import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.graph.Graph;
-import fr.univavignon.biblioproc.isi.IsiFileHandler;
+import fr.univavignon.biblioproc.inout.IsiFileHandler;
+import fr.univavignon.biblioproc.inout.JabrefFileHandler;
 import fr.univavignon.biblioproc.tools.file.FileNames;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
 import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
