@@ -322,22 +322,6 @@ public class IsiFileHandler
 		logger.decreaseOffset();
 		pw.close();
 		
-		// display the un-matched articles
-		logger.log("List of unknown articles:");
-		logger.increaseOffset();
-		{	int count = 0;
-			for(Article article: corpus.getArticles())
-			{	String key = article.bibtexKey;
-				if(key.startsWith(NEW_KEY))
-				{	count++;
-					logger.log(count + ". " + article);
-				}
-			}
-			if(count>0)
-				throw new IllegalArgumentException("Some short references could not be matched to existing full references");
-		}
-		logger.decreaseOffset();
-		
 		// display the DOIs of missing articles
 		logger.log("List of missing DOIs:");
 		logger.increaseOffset();
@@ -353,6 +337,22 @@ public class IsiFileHandler
 			}
 			if(count>0)
 				throw new IllegalArgumentException("Some articles whose DOI is known are missing from the corpus");
+		}
+		logger.decreaseOffset();
+		
+		// display the un-matched articles
+		logger.log("List of unknown articles:");
+		logger.increaseOffset();
+		{	int count = 0;
+			for(Article article: corpus.getArticles())
+			{	String key = article.bibtexKey;
+				if(key.startsWith(NEW_KEY))
+				{	count++;
+					logger.log(count + ". " + article);
+				}
+			}
+			if(count>0)
+				throw new IllegalArgumentException("Some short references could not be matched to existing full references");
 		}
 		logger.decreaseOffset();
 		
