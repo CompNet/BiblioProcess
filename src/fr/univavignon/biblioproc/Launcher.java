@@ -22,10 +22,14 @@ package fr.univavignon.biblioproc;
 
 import java.io.File;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 import fr.univavignon.biblioproc.bibtex.JabrefFileHandler;
 import fr.univavignon.biblioproc.data.graph.Graph;
 import fr.univavignon.biblioproc.isi.IsiFileHandler;
 import fr.univavignon.biblioproc.tools.file.FileNames;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
+import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
 
 /**
  * Main class, allowing to launch the whole process.
@@ -34,6 +38,12 @@ import fr.univavignon.biblioproc.tools.file.FileNames;
  */
 public class Launcher
 {	
+	/////////////////////////////////////////////////////////////////
+	// LOGGER		/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Common object used for logging */
+	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	
 	/**
 	 * xxx
 	 * 
@@ -44,7 +54,9 @@ public class Launcher
 	 * 		Whatever exception occured.
 	 */
 	public static void main(String[] args) throws Exception
-	{	
+	{	logger.log("Starting the process");
+		logger.increaseOffset();
+		
 		// first load the jabref file
 		JabrefFileHandler jfh = new JabrefFileHandler();
 		String path = FileNames.FI_BIBTEX_STRUCTBAL;
@@ -58,40 +70,50 @@ public class Launcher
 		
 		// extract and record the networks
 		{	// authorship graph
+			logger.log("Extracting authorship graph");
 			Graph authorshipGraph = ifh.corpus.buildAuthorshipGraph();
 			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
 			authorshipGraph.writeToXml(authorshipFile);
 		}
 		{	// article citation graph
+			logger.log("Extracting article citation graph");
 			Graph articleCitationGraph = ifh.corpus.buildArticleCitationGraph();
 			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
 			articleCitationGraph.writeToXml(articleCitationFile);
 		}
 		{	// author citation graph
+			logger.log("Extracting author citation graph");
 			Graph authorCitationGraph = ifh.corpus.buildAuthorCitationGraph();
 			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
 			authorCitationGraph.writeToXml(authorCitationFile);
 		}
 		{	// article coauthorship graph
+			logger.log("Extracting article coauthorship graph");
 			Graph articleCoauthorshipGraph = ifh.corpus.buildArticleCoauthorshipGraph();
 			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
 			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
 		}
 		{	// author coauthorship graph
+			logger.log("Extracting author coauthorship graph");
 			Graph authorCoauthorshipGraph = ifh.corpus.buildAuthorCoauthorshipGraph();
 			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
 			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
 		}
 		{	// article cociting graph
+			logger.log("Extracting article cociting graph");
 			Graph articleCocitingGraph = ifh.corpus.buildArticleCocitingGraph();
 			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
 			articleCocitingGraph.writeToXml(articleCocitingFile);
 		}
 		{	// article cocited graph
+			logger.log("Extracting article cocited graph");
 			Graph articleCocitedGraph = ifh.corpus.buildArticleCocitedGraph();
 			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
 			articleCocitedGraph.writeToXml(articleCocitedFile);
 		}
+		
+		logger.decreaseOffset();
+		logger.log("All done");
 		
 		/**TODO
 		 * - check graph extraction methods on a simple (programmatic) example
@@ -100,12 +122,6 @@ public class Launcher
 		 * 
 		 * - generate a folder containing all the PDF files of the articles listed in the bibtex file
 		 * - generate the list of articles present as PDF files but missing from the bibtex file
-		 */
-		
-		
-		/* SIGNED NETS
-		 * x) load the jabref file, store the authors and articles
-		 * 2) load the ISI file, match the authors and articles (including references)
 		 */
 	}
 }

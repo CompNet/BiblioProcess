@@ -287,7 +287,7 @@ public class IsiFileHandler
 		logger.decreaseOffset();
 		
 		// resolve the (short) references
-		PrintWriter pw = FileTools.openTextFileWrite(FileNames.FO_OUTPUT+File.separator+"missing.txt", "UTF-8");
+		PrintWriter pw = FileTools.openTextFileWrite(FileNames.FO_OUTPUT+File.separator+"missing_refs.txt", "UTF-8");
 		logger.log("Resolve the short references");
 		logger.increaseOffset();
 		{	int i = 1;
@@ -1088,12 +1088,18 @@ if(bibtexKey.equals("NewKey214"))
 			while(scanner.hasNextLine())
 			{	Article article = null;
 				String line = scanner.nextLine().trim();
+				boolean first = true;
+				boolean current = false;
 				while(scanner.hasNextLine() && !line.isEmpty())
 				{	if(line.startsWith(PFX_DOI))
 					{	String prefix = PFX_DOI + "=";
 						String doi = line.substring(prefix.length(), line.length()).trim();
 						if(article==null)
 						{	article = corpus.getArticleByDoi(doi);
+							if(article==null)
+								throw new IllegalArgumentException("Could not find the article for DOI "+doi);
+							if(!first && current)
+								logger.decreaseOffset();
 							logger.log("Completing article "+article);
 							logger.increaseOffset();
 						}
@@ -1109,6 +1115,10 @@ if(bibtexKey.equals("NewKey214"))
 						String bibkey = line.substring(prefix.length(), line.length()).trim();
 						if(article==null)
 						{	article = corpus.getArticleByBibkey(bibkey);
+							if(article==null)
+								throw new IllegalArgumentException("Could not find the article for bibtex key "+bibkey);
+							if(!first && current)
+								logger.decreaseOffset();
 							logger.log("Completing article "+article);
 							logger.increaseOffset();
 						}
