@@ -22,8 +22,10 @@ package fr.univavignon.biblioproc;
 
 import java.io.File;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
+import fr.univavignon.biblioproc.data.biblio.Article;
+import fr.univavignon.biblioproc.data.biblio.Author;
+import fr.univavignon.biblioproc.data.biblio.Corpus;
+import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.data.graph.Graph;
 import fr.univavignon.biblioproc.inout.IsiFileHandler;
 import fr.univavignon.biblioproc.inout.JabrefFileHandler;
@@ -44,6 +46,65 @@ public class Launcher
 	/** Common object used for logging */
 	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
 	
+	public static Corpus buildFakeCorpus()
+	{	Corpus result = new Corpus();
+		
+		// build a few fake authors
+		Author author1 = new Author("Lastname1","A. B.");
+		author1 = result.retrieveAuthor(author1);
+		Author author2 = new Author("Lastname2","A. B.");
+		author2 = result.retrieveAuthor(author1);
+		Author author3 = new Author("Lastname3","A. B.");
+		author3 = result.retrieveAuthor(author1);
+		Author author4 = new Author("Lastname4","A. B.");
+		author4 = result.retrieveAuthor(author1);
+		Author author5 = new Author("Lastname5","A. B.");
+		author5 = result.retrieveAuthor(author1);
+		
+		// build a few fake articles
+		Article article1 = new Article();
+		article1.bibtexKey = "Art1";
+		article1.setSource(SourceType.JOURNAL, "Journal1");
+		article1.setTitle("Article 1");
+		article1.addAuthor(author1);
+		article1.addAuthor(author2);
+		Article article2 = new Article();
+		article2.bibtexKey = "Art2";
+		article2.setSource(SourceType.JOURNAL, "Journal1");
+		article2.setTitle("Article 2");
+		article2.addAuthor(author1);
+		Article article3 = new Article();
+		article3.bibtexKey = "Art3";
+		article3.setSource(SourceType.JOURNAL, "Journal2");
+		article3.setTitle("Article 3");
+		article3.addAuthor(author2);
+		article3.addAuthor(author3);
+		article3.addAuthor(author4);
+		Article article4 = new Article();
+		article4.bibtexKey = "Art4";
+		article4.setSource(SourceType.JOURNAL, "Journal3");
+		article4.setTitle("Article 4");
+		article4.addAuthor(author1);
+		article4.addAuthor(author2);
+		article4.addAuthor(author4);
+		article4.addAuthor(author5);
+		
+		// connect the articles
+		{	article2.citedArticles.add(article1);
+			article1.citingArticles.add(article2);
+		}
+		{	article3.citedArticles.add(article1);
+			article1.citingArticles.add(article3);
+		}
+		{	article4.citedArticles.add(article1);
+			article1.citingArticles.add(article4);
+			article4.citedArticles.add(article2);
+			article2.citingArticles.add(article4);
+		}
+		
+		return result;
+	}
+	
 	/**
 	 * xxx
 	 * 
@@ -57,57 +118,60 @@ public class Launcher
 	{	logger.log("Starting the process");
 		logger.increaseOffset();
 		
-		// first load the jabref file
-		JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_STRUCTBAL;
-		boolean updateGroups = false;
-		jfh.loadJabRefFile(path, updateGroups);
+//		// first load the jabref file
+//		JabrefFileHandler jfh = new JabrefFileHandler();
+//		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+//		boolean updateGroups = false;
+//		jfh.loadJabRefFile(path, updateGroups);
+//		
+//		// then the ISI file
+//		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
+//		path = FileNames.FI_ISI_ALL;
+//		ifh.loadIsiFile(path);
+//		Corpus corpus = ifh.corpus;
 		
-		// then the ISI file
-		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-		path = FileNames.FI_ISI_ALL;
-		ifh.loadIsiFile(path);
+		Corpus corpus = buildFakeCorpus();
 		
 		// extract and record the networks
 		{	// authorship graph
 			logger.log("Extracting authorship graph");
-			Graph authorshipGraph = ifh.corpus.buildAuthorshipGraph();
+			Graph authorshipGraph = corpus.buildAuthorshipGraph();
 			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
 			authorshipGraph.writeToXml(authorshipFile);
 		}
 		{	// article citation graph
 			logger.log("Extracting article citation graph");
-			Graph articleCitationGraph = ifh.corpus.buildArticleCitationGraph();
+			Graph articleCitationGraph = corpus.buildArticleCitationGraph();
 			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
 			articleCitationGraph.writeToXml(articleCitationFile);
 		}
 		{	// author citation graph
 			logger.log("Extracting author citation graph");
-			Graph authorCitationGraph = ifh.corpus.buildAuthorCitationGraph();
+			Graph authorCitationGraph = corpus.buildAuthorCitationGraph();
 			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
 			authorCitationGraph.writeToXml(authorCitationFile);
 		}
 		{	// article coauthorship graph
 			logger.log("Extracting article coauthorship graph");
-			Graph articleCoauthorshipGraph = ifh.corpus.buildArticleCoauthorshipGraph();
+			Graph articleCoauthorshipGraph = corpus.buildArticleCoauthorshipGraph();
 			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
 			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
 		}
 		{	// author coauthorship graph
 			logger.log("Extracting author coauthorship graph");
-			Graph authorCoauthorshipGraph = ifh.corpus.buildAuthorCoauthorshipGraph();
+			Graph authorCoauthorshipGraph = corpus.buildAuthorCoauthorshipGraph();
 			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
 			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
 		}
 		{	// article cociting graph
 			logger.log("Extracting article cociting graph");
-			Graph articleCocitingGraph = ifh.corpus.buildArticleCocitingGraph();
+			Graph articleCocitingGraph = corpus.buildArticleCocitingGraph();
 			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
 			articleCocitingGraph.writeToXml(articleCocitingFile);
 		}
 		{	// article cocited graph
 			logger.log("Extracting article cocited graph");
-			Graph articleCocitedGraph = ifh.corpus.buildArticleCocitedGraph();
+			Graph articleCocitedGraph = corpus.buildArticleCocitedGraph();
 			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
 			articleCocitedGraph.writeToXml(articleCocitedFile);
 		}
