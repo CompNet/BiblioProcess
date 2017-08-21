@@ -46,6 +46,12 @@ public class Launcher
 	/** Common object used for logging */
 	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
 	
+	/**
+	 * Builds a fake corpus, for testing purposes.
+	 * 
+	 * @return
+	 * 		A fake corpus.
+	 */
 	public static Corpus buildFakeCorpus()
 	{	Corpus result = new Corpus();
 		
@@ -118,63 +124,63 @@ public class Launcher
 	{	logger.log("Starting the process");
 		logger.increaseOffset();
 		
-//		// first load the jabref file
-//		JabrefFileHandler jfh = new JabrefFileHandler();
-//		String path = FileNames.FI_BIBTEX_STRUCTBAL;
-//		boolean updateGroups = false;
-//		jfh.loadJabRefFile(path, updateGroups);
+		// first load the jabref file
+		JabrefFileHandler jfh = new JabrefFileHandler();
+		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		boolean updateGroups = false;
+		jfh.loadJabRefFile(path, updateGroups);
+		
+		// then the ISI file
+		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
+		path = FileNames.FI_ISI_ALL;
+		ifh.loadIsiFile(path);
+		Corpus corpus = ifh.corpus;
+		
+//		Corpus corpus = buildFakeCorpus();
 //		
-//		// then the ISI file
-//		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-//		path = FileNames.FI_ISI_ALL;
-//		ifh.loadIsiFile(path);
-//		Corpus corpus = ifh.corpus;
-		
-		Corpus corpus = buildFakeCorpus();
-		
-		// extract and record the networks
-		{	// authorship graph
-			logger.log("Extracting authorship graph");
-			Graph authorshipGraph = corpus.buildAuthorshipGraph();
-			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
-			authorshipGraph.writeToXml(authorshipFile);
-		}
-		{	// article citation graph
-			logger.log("Extracting article citation graph");
-			Graph articleCitationGraph = corpus.buildArticleCitationGraph();
-			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
-			articleCitationGraph.writeToXml(articleCitationFile);
-		}
-		{	// author citation graph
-			logger.log("Extracting author citation graph");
-			Graph authorCitationGraph = corpus.buildAuthorCitationGraph();
-			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
-			authorCitationGraph.writeToXml(authorCitationFile);
-		}
-		{	// article coauthorship graph
-			logger.log("Extracting article coauthorship graph");
-			Graph articleCoauthorshipGraph = corpus.buildArticleCoauthorshipGraph();
-			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
-			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
-		}
-		{	// author coauthorship graph
-			logger.log("Extracting author coauthorship graph");
-			Graph authorCoauthorshipGraph = corpus.buildAuthorCoauthorshipGraph();
-			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
-			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
-		}
-		{	// article cociting graph
-			logger.log("Extracting article cociting graph");
-			Graph articleCocitingGraph = corpus.buildArticleCocitingGraph();
-			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
-			articleCocitingGraph.writeToXml(articleCocitingFile);
-		}
-		{	// article cocited graph
-			logger.log("Extracting article cocited graph");
-			Graph articleCocitedGraph = corpus.buildArticleCocitedGraph();
-			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
-			articleCocitedGraph.writeToXml(articleCocitedFile);
-		}
+//		// extract and record the networks
+//		{	// authorship graph
+//			logger.log("Extracting authorship graph");
+//			Graph authorshipGraph = corpus.buildAuthorshipGraph();
+//			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
+//			authorshipGraph.writeToXml(authorshipFile);
+//		}
+//		{	// article citation graph
+//			logger.log("Extracting article citation graph");
+//			Graph articleCitationGraph = corpus.buildArticleCitationGraph();
+//			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
+//			articleCitationGraph.writeToXml(articleCitationFile);
+//		}
+//		{	// author citation graph
+//			logger.log("Extracting author citation graph");
+//			Graph authorCitationGraph = corpus.buildAuthorCitationGraph();
+//			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
+//			authorCitationGraph.writeToXml(authorCitationFile);
+//		}
+//		{	// article coauthorship graph
+//			logger.log("Extracting article coauthorship graph");
+//			Graph articleCoauthorshipGraph = corpus.buildArticleCoauthorshipGraph();
+//			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
+//			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
+//		}
+//		{	// author coauthorship graph
+//			logger.log("Extracting author coauthorship graph");
+//			Graph authorCoauthorshipGraph = corpus.buildAuthorCoauthorshipGraph();
+//			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
+//			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
+//		}
+//		{	// article cociting graph
+//			logger.log("Extracting article cociting graph");
+//			Graph articleCocitingGraph = corpus.buildArticleCocitingGraph();
+//			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
+//			articleCocitingGraph.writeToXml(articleCocitingFile);
+//		}
+//		{	// article cocited graph
+//			logger.log("Extracting article cocited graph");
+//			Graph articleCocitedGraph = corpus.buildArticleCocitedGraph();
+//			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
+//			articleCocitedGraph.writeToXml(articleCocitedFile);
+//		}
 		
 		logger.decreaseOffset();
 		logger.log("All done");
