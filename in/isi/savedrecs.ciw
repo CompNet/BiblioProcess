@@ -6001,4 +6001,112 @@ OA No
 DA 2017-08-11
 ER
 
+PT J
+AU Ma, LJ
+   Gong, MG
+   Yan, JA
+   Yuan, FY
+   Du, HF
+AF Ma, Lijia
+   Gong, Maoguo
+   Yan, Jianan
+   Yuan, Fuyan
+   Du, Haifeng
+TI A decomposition-based multi-objective optimization for simultaneous
+   balance computation and transformation in signed networks
+SO INFORMATION SCIENCES
+LA English
+DT Article
+DE Structural balance computation; Balance transformation; Multi-objective
+   optimization; Decomposition; Signed networks
+ID SOCIAL NETWORKS; COMMUNITY DETECTION; EVOLUTIONARY ALGORITHM; STRUCTURAL
+   BALANCE; COMPLEX NETWORKS; ORGANIZATION; MOEA/D
+AB Many social systems have a set of opposite interactions such as friend/enemy, cooperation/competition and support/opposition. In these signed systems, there exist functional imbalances from the system-level view because of the existence of unbalanced interactions. However, it is difficult to compute the unbalance degree and transform unbalanced factors to balanced ones in real signed systems. Earlier studies tackled these two issues separately and gave a unique solution, and thus cannot be well applied to real applications with constraints. In this paper, we devise a decomposition-based and network-specific multi-objective optimization algorithm to solve the balance computation and transformation of signed networks simultaneously. The devised algorithm aims at finding a set of optimal balance transformation solutions, and each of which is the trade-off between the twin objectives (i.e., the minimization of inter-cluster positive links and the minimization of intra-cluster negative links). Of these solutions, the one with the fewest unbalanced links corresponds to the solution to the balance computation. And each trade-off solution corresponds to an optimal balance transformation way under a certain transformation cost. Extensive experiments on four social networks demonstrate the effectiveness of the devised algorithm on both the computation and the transformation of structural balance. They also show that the devised algorithm can provide multiple optimal solutions at the same transformation cost. (C) 2016 Elsevier Inc. All rights reserved.
+C1 [Ma, Lijia; Gong, Maoguo; Yan, Jianan; Yuan, Fuyan] Xidian Univ, Int Res Ctr Intelligent Percept & Computat, Minist Educ, Key Lab Intelligent Percept & Image Understanding, Xian 710071, Shaanxi Provinc, Peoples R China.
+   [Du, Haifeng] Xi An Jiao Tong Univ, Ctr Adm & Complex Sci, Xian 710049, Shaanxi Provinc, Peoples R China.
+RP Gong, MG (reprint author), Xidian Univ, Int Res Ctr Intelligent Percept & Computat, Minist Educ, Key Lab Intelligent Percept & Image Understanding, Xian 710071, Shaanxi Provinc, Peoples R China.
+EM gong@ieee.org
+FU National Natural Science Foundation of China [61273317, 61422209,
+   61473215]; National Science Foundation of China [12AZD110]; National Top
+   Youth Talents Program of China; Specialized Research Found for the
+   Doctoral Program of Higher Education [20130203110011]; Fundamental
+   Research Fund for the Central Universities
+FX This work was supported by the National Natural Science Foundation of
+   China (Grant Nos. 61273317, 61422209 and 61473215), Key Project from the
+   National Science Foundation of China (Grant No. 12AZD110), National Top
+   Youth Talents Program of China, the Specialized Research Found for the
+   Doctoral Program of Higher Education (Grant No. 20130203110011) and the
+   Fundamental Research Fund for the Central Universities.
+CR Asafuddoula M, 2015, EVOL COMPUT IEEE T, V19, P445
+   CARTWRIGHT D, 1956, PSYCHOL REV, V63, P277, DOI 10.1037/h0046049
+   Chen SH, 2015, INFORM SCIENCES, V318, P123, DOI 10.1016/j.ins.2014.09.058
+   Deb K, 2014, IEEE T EVOLUT COMPUT, V18, P577, DOI 10.1109/TEVC.2013.2281535
+   Doreian P, 2009, SOC NETWORKS, V31, P1, DOI 10.1016/j.socnet.2008.08.001
+   Easley D., 2010, NETWORKS CROWDS MARK
+   Esmailian P, 2014, PHYS REV E, V90, DOI 10.1103/PhysRevE.90.042817
+   Facchetti G, 2011, P NATL ACAD SCI USA, V108, P20953, DOI 10.1073/pnas.1109521108
+   Ferreira LN, 2016, INFORM SCIENCES, V326, P227, DOI 10.1016/j.ins.2015.07.046
+   Ghosn F, 2004, CONFLICT MANAG PEACE, V21, P133, DOI 10.1080/07388940490463861
+   Girvan M, 2002, P NATL ACAD SCI USA, V99, P7821, DOI 10.1073/pnas.122653799
+   Gong MG, 2014, IEEE T EVOLUT COMPUT, V18, P82, DOI 10.1109/TEVC.2013.2260862
+   Gong MG, 2012, PHYSICA A, V391, P4050, DOI 10.1016/j.physa.2012.03.021
+   Gu F.-Q, 2010, INT C COMP INT SEC, P137
+   Heider F, 1946, J PSYCHOL, V21, P107, DOI 10.1080/00223980.1946.9917275
+   Honda K, 2009, 2009 IEEE INTERNATIONAL CONFERENCE ON FUZZY SYSTEMS, VOLS 1-3, P1540, DOI 10.1109/FUZZY.2009.5277251
+   James A. D., 1967, HUM RELAT, V20, P181
+   Krackhardt D, 1999, J PERS SOC PSYCHOL, V76, P770, DOI 10.1037/0022-3514.76.5.770
+   Leskovec J, 2010, CHI2010: PROCEEDINGS OF THE 28TH ANNUAL CHI CONFERENCE ON HUMAN FACTORS IN COMPUTING SYSTEMS, VOLS 1-4, P1361
+   Lin CC, 2015, INFORM SCIENCES, V299, P296, DOI 10.1016/j.ins.2014.12.009
+   Liu CL, 2014, IEEE T CYBERNETICS, V44, P2274, DOI 10.1109/TCYB.2014.2305974
+   Ma LJ, 2015, KNOWL-BASED SYST, V85, P196, DOI 10.1016/j.knosys.2015.05.006
+   Mei Y, 2011, IEEE T EVOLUT COMPUT, V15, P151, DOI 10.1109/TEVC.2010.2051446
+   Mucha PJ, 2010, SCIENCE, V328, P876, DOI 10.1126/science.1184819
+   Muchnik L, 2013, SCIENCE, V341, P647, DOI 10.1126/science.1240466
+   Newman M., 2011, ARXIV11121440
+   Pizzuti C, 2012, IEEE T EVOLUT COMPUT, V16, P418, DOI 10.1109/TEVC.2011.2161090
+   Qi YT, 2014, EVOL COMPUT, V22, P231, DOI 10.1162/EVCO_a_00109
+   Qian Y, 2013, ANN CONF PRIV SECUR, P283, DOI 10.1109/PST.2013.6596064
+   Read KE, 1954, SOUTHWEST J ANTHROP, V10, P1
+   Shafiq O, 2015, INFORM SCIENCES, V314, P55, DOI 10.1016/j.ins.2015.02.029
+   Shang RH, 2014, INFORM SCIENCES, V277, P609, DOI 10.1016/j.ins.2014.03.008
+   Shelokar P, 2013, INFORM SCIENCES, V237, P118, DOI 10.1016/j.ins.2013.02.014
+   Shi C, 2012, APPL SOFT COMPUT, V12, P850, DOI 10.1016/j.asoc.2011.10.005
+   Srinivasan A, 2011, P NATL ACAD SCI USA, V108, P1751, DOI 10.1073/pnas.1018901108
+   Szell M, 2010, P NATL ACAD SCI USA, V107, P13636, DOI 10.1073/pnas.1004008107
+   Valente TW, 2012, SCIENCE, V337, P49, DOI 10.1126/science.1217330
+   Wang ZK, 2016, IEEE T CYBERNETICS, V46, P474, DOI 10.1109/TCYB.2015.2403849
+   Wasserman S., 1990, SOCIAL NETWORK ANAL
+   Yan SR, 2015, INFORM SCIENCES, V318, P51, DOI 10.1016/j.ins.2014.09.036
+   Yang B, 2007, IEEE T KNOWL DATA EN, V19, P1333, DOI 10.1109/TKDE.2007.1061.
+   Yu Z, 2015, INFORM SCIENCES, V309, P102, DOI 10.1016/j.ins.2015.03.012
+   Zhang QF, 2007, IEEE T EVOLUT COMPUT, V11, P712, DOI 10.1109/TEVC.2007.892759
+   Zheng X., 2014, INFORM SYST FRONT, V10, P1
+   Zitzler E, 1999, IEEE T EVOLUT COMPUT, V3, P257, DOI 10.1109/4235.797969
+NR 45
+TC 0
+Z9 1
+U1 8
+U2 12
+PU ELSEVIER SCIENCE INC
+PI NEW YORK
+PA 360 PARK AVE SOUTH, NEW YORK, NY 10010-1710 USA
+SN 0020-0255
+EI 1872-6291
+J9 INFORM SCIENCES
+JI Inf. Sci.
+PD FEB 1
+PY 2017
+VL 378
+BP 144
+EP 160
+DI 10.1016/j.ins.2016.10.035
+PG 17
+WC Computer Science, Information Systems
+SC Computer Science
+GA ED8AW
+UT WOS:000389095200009
+OA No
+DA 2017-08-23
+ER
+
 EF

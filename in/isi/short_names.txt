@@ -131,6 +131,7 @@ inf p ev comp	Information Processing with Evolutionary Algorithms
 inform process manag	Information Processing \& Management
 inform processing le	Information Processing Letters
 inform sci	Information Sciences
+inform sciences	information sciences
 inform systems front	Information Systems Frontiers
 int c adv soc netw a	International Conference on Advances in Social Networks Analysis and Mining
 int c comm techn	International Conference on Communities and Technologies
@@ -142,6 +143,7 @@ int c world wid web	International World Wide Web Conference
 int coll aut la	International Colloquium on Automata, Languages and Programming
 int j artif intell t	International Journal on Artificial Intelligence Tools
 int j bio-inspir com	International Journal of Bio-Inspired Computation
+int j commun-us	International Journal of Communication
 int j digital conten	International Journal of Digital Content Technology and its Applications
 int j hybrid intell	International Journal of Hybrid Intelligent Systems
 int j intell syst	International Journal of Intelligent Systems
@@ -164,6 +166,7 @@ j anthr	Journal of Anthropology
 j anthropol res	Journal of Anthropological Research
 j comb optim	Journal of Combinatorial Optimization
 j comp med comm	Journal of Computer-Mediated Communication
+j complex networks	Journal of Complex Networks
 j comput sci technol	Journal of Computer Science and Technology
 j graph theor	Journal of Graph Theory
 j ind manag optim	Journal of Industrial and Management Optimization
@@ -171,6 +174,7 @@ j mach learn res	Journal of Machine Learning Research
 j math sociol	Journal of Mathematical Sociology
 j polit	Journal of Politics
 j psychol	Journal of Psychology	the journal of psychology
+j risk	Journal of Risk
 j roy stat soc b met	Journal of the Royal Statistical Society: Series B
 j stat mech theory e	Journal of Statistical Mechanics	journal of statistical mechanics: theory and experiment
 j stat mech-theory e	Journal of Statistical Mechanics	journal of statistical mechanics-theory and experiment
@@ -186,6 +190,7 @@ linear algebra appl	Linear Algebra and its Applications
 linkkdd	International Workshop on Link Discovery
 mach learn	Machine Learning
 math probl eng	Mathematical Problems in Engineering
+math program	Mathematical Programming Computation
 memet comput	Memetic Computing
 metodoloski zvezki	Metodološki Zvezki / Advances in Methodology and Statistics	metodoloski zvezki
 mich math j	Michigan Mathematical Journal
@@ -263,7 +268,5 @@ worksh graph th	Workshop on Graph Theory
 worksh int lin progr	Workshop on Integer Linear Programming for Natural Language Processing
 world wide web	International World Wide Web Conference
 www	International Conference on World Wide Web
-j complex networks	Journal of Complex Networks
-int j commun-us	International Journal of Communication
-j risk	Journal of Risk
-math program	Mathematical Programming Computation
+evol comput ieee t	IEEE Transactions on Evolutionary Computation
+int c comp int sec	International Conference on Computational Intelligence and Security
