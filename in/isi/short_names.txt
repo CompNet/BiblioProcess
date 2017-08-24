@@ -90,6 +90,7 @@ ency parallel comput	Encyclopedia of Parallel Computing
 eur c ev comp c	European Conference on Evolutionary Computation in Combinatorial Optimisation
 eur j oper res	european journal of operational research
 eur phys j b	European Physical Journal B	the european physical journal b
+evol comput ieee t	IEEE Transactions on Evolutionary Computation
 evol multiobjective	Evolutionary Multiobjective Optimization
 fdn computational ma	Foundations of Computational Mathematics
 fourth international conference on computer and information technology	International Conference on Computer and Information Technology
@@ -135,6 +136,7 @@ inform sciences	information sciences
 inform systems front	Information Systems Frontiers
 int c adv soc netw a	International Conference on Advances in Social Networks Analysis and Mining
 int c comm techn	International Conference on Communities and Technologies
+int c comp int sec	International Conference on Computational Intelligence and Security
 int c gen alg th	International Conference on Genetic Algorithms
 int c int syst d	International Conference on Intelligent Systems Design and Applications
 int c mach lear	International Conference on Machine Learning
@@ -255,6 +257,7 @@ soft comput	Soft Computing
 solidarity identity	Solidarity and Identity
 southwest j anthrop	Southwestern Journal of Anthropology
 spectral graph theor	Spectral Graph Theory
+springer pr complex	conference on complex networks
 stat sci	Statistical Science
 surveys combinatoric	Surveys in Combinatorics
 sw j anthr	Southwestern Journal of Anthropology
@@ -268,5 +271,3 @@ worksh graph th	Workshop on Graph Theory
 worksh int lin progr	Workshop on Integer Linear Programming for Natural Language Processing
 world wide web	International World Wide Web Conference
 www	International Conference on World Wide Web
-evol comput ieee t	IEEE Transactions on Evolutionary Computation
-int c comp int sec	International Conference on Computational Intelligence and Security

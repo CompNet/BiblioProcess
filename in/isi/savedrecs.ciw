@@ -6109,4 +6109,63 @@ OA No
 DA 2017-08-23
 ER
 
+PT B
+AU Murata, T
+   Sugihara, T
+   Abdessalem, T
+AF Murata, Tsuyoshi
+   Sugihara, Takahiko
+   Abdessalem, Talel
+BE Goncalves, B
+   Menezes, R
+   Sinatra, R
+   Zlatic, V
+TI Community Detection in Signed Networks Based on Extended Signed
+   Modularity
+SO COMPLEX NETWORKS VIII
+SE Springer Proceedings in Complexity
+LA English
+DT Proceedings Paper
+CT 8th Conference on Complex Networks (CompleNet)
+CY MAR 21-24, 2017
+CL Inter Univ Ctr, Dubrovnik, CROATIA
+HO Inter Univ Ctr
+DE Signed networks; Community detection; Signed modularity
+AB Community detection is important for analyzing and visualizing given networks. In real world, many complex systems can be modeled as signed networks composed of positive and negative edges. Although community detection in signed networks has been attempted by many researchers, studies for detecting detailed structures remain to be done. In this paper, we extend modularity for signed networks, and propose a method for optimizing our modularity, which is an efficient hierarchical agglomeration algorithm for detecting communities in signed networks. Based on the experiments with large-scale real world signed networks such as Wikipedia, Slashdot and Epinions, our method enables us to detect communities and inner factions inside the communities.
+C1 [Murata, Tsuyoshi; Sugihara, Takahiko] Tokyo Inst Technol, Dept Comp Sci, Sch Comp, Meguro Ku, W8-59 2-12-1 Ookayama, Tokyo 1528552, Japan.
+   [Abdessalem, Talel] Telecom ParisTech, Comp Sci & Networks Dept, 46 Rue Barrrault, F-75013 Paris, France.
+RP Murata, T (reprint author), Tokyo Inst Technol, Dept Comp Sci, Sch Comp, Meguro Ku, W8-59 2-12-1 Ookayama, Tokyo 1528552, Japan.
+EM murata@c.titech.ac.jp; talel.abdessalem@telecom-paristech.fr
+CR Clauset A, 2004, PHYS REV E, V70, DOI 10.1103/PhysRevE.70.066111
+   Danon L, 2005, J STAT MECH-THEORY E, DOI 10.1088/1742-5468/2005/09/P09008
+   Esmailian P, 2015, SCI REP-UK, V5, DOI 10.1038/srep14339
+   Fortunato S, 2010, PHYS REP, V486, P75, DOI 10.1016/j.physrep.2009.11.002
+   Gomez S, 2009, PHYS REV E, V80, DOI 10.1103/PhysRevE.80.016114
+   Leskovec J, 2010, P 19 INT C WORLD WID, P641, DOI DOI 10.1145/1772690.1772756
+   Li D., 2014, PLOS ONE, V9, P1
+   Maniu S., 2011, P 1 ACM SIGMOD WORKS, P19
+   Song D., 2015, P 29 AAAI C ART INT, P290
+   Szell M, 2010, P NATL ACAD SCI USA, V107, P13636, DOI 10.1073/pnas.1004008107
+   Traag VA, 2009, PHYS REV E, V80, DOI 10.1103/PhysRevE.80.036115
+NR 11
+TC 0
+Z9 0
+U1 0
+U2 0
+PU SPRINGER INTERNATIONAL PUBLISHING AG
+PI CHAM
+PA GEWERBESTRASSE 11, CHAM, CH-6330, SWITZERLAND
+BN 978-3-319-54241-6; 978-3-319-54240-9
+J9 SPRINGER PR COMPLEX
+PY 2017
+BP 67
+EP 80
+DI 10.1007/978-3-319-54241-6_6
+PG 14
+GA BI1WF
+UT WOS:000406971400006
+OA No
+DA 2017-08-24
+ER
+
 EF
