@@ -271,3 +271,4 @@ worksh graph th	Workshop on Graph Theory
 worksh int lin progr	Workshop on Integer Linear Programming for Natural Language Processing
 world wide web	International World Wide Web Conference
 www	International Conference on World Wide Web
+bioresources	BioResources
