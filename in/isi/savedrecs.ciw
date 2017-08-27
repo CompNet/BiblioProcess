@@ -6284,4 +6284,68 @@ OA No
 DA 2017-08-25
 ER
 
+PT B
+AU Honda, K
+   Notsu, A
+   Ichihashi, H
+AF Honda, Katsuhiro
+   Notsu, Akira
+   Ichihashi, Hidetomo
+GP IEEE
+TI Collaborative Filtering by Sequential Extraction of User-Item Clusters
+   Based on Structural Balancing Approach
+SO 2009 IEEE INTERNATIONAL CONFERENCE ON FUZZY SYSTEMS, VOLS 1-3
+LA English
+DT Proceedings Paper
+CT 18th IEEE International Conference on Fuzzy Systems
+CY AUG 20-24, 2009
+CL Jeju Isl, SOUTH KOREA
+SP IEEE
+AB This paper considers a new approach to user-item clustering for collaborative filtering problems that achieves personalized recommendation. When user-item relations are given by an alternative process, personalized recommendation is performed by finding user-item neighborhoods (co-clusters) from a rectangular relational data matrix, in which users and items have mutually positive relations. In the proposed approach, user-item clusters are extracted one by one in a sequential manner via a structural balancing technique, used in conjunction with the sequential fuzzy cluster extraction method.
+C1 [Honda, Katsuhiro; Notsu, Akira; Ichihashi, Hidetomo] Osaka Prefecture Univ, Dept Comp Sci & Intelligent Syst, Naka Ku, Osaka 5998531, Japan.
+RP Honda, K (reprint author), Osaka Prefecture Univ, Dept Comp Sci & Intelligent Syst, Naka Ku, 1-1 Gakuen Cho, Osaka 5998531, Japan.
+EM honda@cs.osakafu-u.ac.jp; notsu@cs.osakafu-u.ac.jp;
+   ichi@cs.osakafu-u.ac.jp
+CR Bezdek JC, 2007, IEEE T FUZZY SYST, V15, P890, DOI 10.1109/TFUZZ.2006.889956
+   CARTWRIGHT D, 1956, PSYCHOL REV, V63, P167
+   DAVIS JA, 1967, HUM RELAT, V20, P181, DOI 10.1177/001872676702000206
+   Harary Frank, 1961, J CONFLICT RESOLUT, V5, P167, DOI 10.1177/002200276100500204
+   Heider F., 1958, PSYCHOL INTERPERSONA
+   Herlocker J. L., 1999, P C RES DEV INF RETR
+   Honda K, 2005, IEEE T FUZZY SYST, V13, P508, DOI 10.1109/TFUZZ.2004.840104
+   Honda K, 2004, INT J APPROX REASON, V37, P127, DOI 10.1016/j.ijar.2004.02.001
+   Honda K., 2008, INT J COMPUTER SCI N, V8, P190
+   Honda K., 2001, LECT NOTES ARTIF INT, V2198, P394
+   Inoue K, 1999, PATTERN RECOGN LETT, V20, P699, DOI 10.1016/S0167-8655(99)00034-3
+   KATAI O, 1978, IEEE T SYST MAN CYB, V8, P337, DOI 10.1109/TSMC.1978.4309974
+   KATAI O, 1978, J MATH PSYCHOL, V18, P141
+   Konstan JA, 1997, COMMUN ACM, V40, P77, DOI 10.1145/245108.245126
+   Luxburg U. V., 2006, STAT COMPUT, V17, P395, DOI DOI 10.1007/S11222-007-9033-Z
+   NEWCOMB TM, 1953, PSYCHOL REV, V60, P393, DOI 10.1037/h0063098
+   Notsu A., 2006, INT J COMPUTER SCI N, V6, P50
+   Tsuda K, 1996, PATTERN RECOGN LETT, V17, P643, DOI 10.1016/0167-8655(96)00029-3
+   WASSERMAN Stanley, 1994, SOCIAL NETWORK ANAL
+NR 19
+TC 4
+Z9 4
+U1 0
+U2 0
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+BN 978-1-4244-3596-8
+PY 2009
+BP 1540
+EP 1545
+DI 10.1109/FUZZY.2009.5277251
+PG 6
+WC Computer Science, Artificial Intelligence; Computer Science, Theory &
+   Methods; Mathematics, Applied
+SC Computer Science; Mathematics
+GA BND85
+UT WOS:000274242600268
+OA No
+DA 2017-08-27
+ER
+
 EF

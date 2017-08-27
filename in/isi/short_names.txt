@@ -272,3 +272,5 @@ worksh int lin progr	Workshop on Integer Linear Programming for Natural Language
 world wide web	International World Wide Web Conference
 www	International Conference on World Wide Web
 bioresources	BioResources
+j math psychol	Journal of Mathematical Psychology
+int j computer sci n	International Journal of Computer Science and Network Security
