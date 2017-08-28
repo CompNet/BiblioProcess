@@ -136,6 +136,8 @@ public class Corpus
 	/////////////////////////////////////////////////////////////////
 	/** Map containing all the loaded authors, indexed by their normalized name */
 	private Map<String, Author> authorsMap = new HashMap<String, Author>();
+	/** Counter used to number the authors */
+	private int authorCounter = 0;
 	
 	/**
 	 * Looks up the specified name and returns the corresponding
@@ -153,7 +155,10 @@ public class Corpus
 		if(temp!=null)
 			result = temp;
 		else
-			authorsMap.put(author.normname, result);
+		{	authorsMap.put(author.normname, result);
+			author.authorId = authorCounter;
+			authorCounter++;
+		}
 		return result;
 	}
 	
@@ -284,7 +289,7 @@ public class Corpus
 		// add the links
 		for(Article artSrc: getArticles())
 		{	String sourceName = artSrc.bibtexKey;
-			for(Article artTarg: artSrc.citedArticles)
+			for(Article artTarg: artSrc.citingArticles)
 			{	String targetName = artTarg.bibtexKey;
 				Link link = result.retrieveLink(sourceName, targetName);
 				link.incrementIntProperty(PROP_WEIGHT);
@@ -321,7 +326,7 @@ public class Corpus
 		// add the links
 		for(Article artSrc: getArticles())
 		{	List<Author> authorsSrc = artSrc.getAuthors();
-			for(Article artTarg: artSrc.citedArticles)
+			for(Article artTarg: artSrc.citingArticles)
 			{	List<Author> authorsTarg = artTarg.getAuthors();
 				for(Author authorSrc: authorsSrc)
 				{	Node nodeSrc = nodeMap.get(authorSrc);
@@ -379,7 +384,7 @@ public class Corpus
 		{	Article article1 = articles.get(i);
 			String name1 = article1.bibtexKey;
 			List<Author> authors1 = article1.getAuthors();
-			for(int j=i;j<articles.size();j++)
+			for(int j=i+1;j<articles.size();j++)
 			{	Article article2 = articles.get(j);
 				String name2 = article2.bibtexKey;
 				List<Author> authors2 = article2.getAuthors();
@@ -388,7 +393,7 @@ public class Corpus
 				if(!intersection.isEmpty())
 				{	Set<Author> union = new TreeSet<Author>(authors1);
 					union.addAll(authors2);
-					float weight = union.size() / (float)intersection.size();
+					float weight = intersection.size() / (float)union.size();
 					Link link = result.retrieveLink(name1, name2);
 					link.incrementFloatProperty(PROP_WEIGHT,weight);
 					link.incrementIntProperty(PROP_COUNT,intersection.size());
@@ -484,7 +489,7 @@ public class Corpus
 		{	Article article1 = articles.get(i);
 			String name1 = article1.bibtexKey;
 			Set<Article> cited1 = article1.citedArticles;
-			for(int j=i;j<articles.size();j++)
+			for(int j=i+1;j<articles.size();j++)
 			{	Article article2 = articles.get(j);
 				String name2 = article2.bibtexKey;
 				Set<Article> cited2 = article2.citedArticles;
@@ -493,7 +498,7 @@ public class Corpus
 				if(!intersection.isEmpty())
 				{	Set<Article> union = new TreeSet<Article>(cited1);
 					union.addAll(cited2);
-					float weight = union.size() / (float)intersection.size();
+					float weight = intersection.size() / (float)union.size();
 					Link link = result.retrieveLink(name1, name2);
 					link.incrementFloatProperty(PROP_WEIGHT,weight);
 					link.incrementIntProperty(PROP_COUNT,intersection.size());
@@ -546,7 +551,7 @@ public class Corpus
 		{	Article article1 = articles.get(i);
 			String name1 = article1.bibtexKey;
 			Set<Article> citing1 = article1.citingArticles;
-			for(int j=i;j<articles.size();j++)
+			for(int j=i+1;j<articles.size();j++)
 			{	Article article2 = articles.get(j);
 				String name2 = article2.bibtexKey;
 				Set<Article> citing2 = article2.citingArticles;
@@ -555,7 +560,7 @@ public class Corpus
 				if(!intersection.isEmpty())
 				{	Set<Article> union = new TreeSet<Article>(citing1);
 					union.addAll(citing2);
-					float weight = union.size() / (float)intersection.size();
+					float weight = intersection.size() / (float)union.size();
 					Link link = result.retrieveLink(name1, name2);
 					link.incrementFloatProperty(PROP_WEIGHT,weight);
 					link.incrementIntProperty(PROP_COUNT,intersection.size());

@@ -472,9 +472,12 @@ public class Article implements Comparable<Article>
 	/////////////////////////////////////////////////////////////////
 	@Override
 	public int compareTo(Article article)
-	{	String citeAs1 = getCiteAs();
-		String citeAs2 = article.getCiteAs();
-		int result = citeAs1.compareTo(citeAs2);
+	{	
+//		String citeAs1 = getCiteAs();
+//		String citeAs2 = article.getCiteAs();
+//		int result = citeAs1.compareTo(citeAs2);
+		String bibtexKey2 = article.bibtexKey;
+		int result = bibtexKey.compareTo(bibtexKey2);
 		return result;
 	}
 

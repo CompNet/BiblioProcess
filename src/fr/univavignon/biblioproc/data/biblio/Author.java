@@ -75,6 +75,12 @@ public class Author implements Comparable<Author>
 	}
 	
 	/////////////////////////////////////////////////////////////////
+	// UNIQUE ID			/////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Integer used as a unique ID for this author */
+	public int authorId = -1;
+	
+	/////////////////////////////////////////////////////////////////
 	// FIRSTNAME INITIALS	/////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** First name initial(s)  */
@@ -189,10 +195,8 @@ if(normname.contains("-"))
 	/////////////////////////////////////////////////////////////////
 	// GRAPH			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Variable used to number nodes */
-	private static int nodeNumber = 0;
 	/** String used to name nodes */
-	private final static String NODE_PREFIX = "node";
+	private final static String NODE_PREFIX = "author";
 	/** Name of the author name property */
 	public final static String PROP_FULLNAME = "fullname";
 	
@@ -205,8 +209,7 @@ if(normname.contains("-"))
 	 * 		The created node.
 	 */
 	public Node buildNode(Graph graph)
-	{	String name = NODE_PREFIX + nodeNumber;
-		nodeNumber++;
+	{	String name = NODE_PREFIX + authorId;
 		Node result = graph.retrieveNode(name);
 		
 		String fullname = firstnameInitials + " " + lastname;

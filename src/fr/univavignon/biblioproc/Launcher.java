@@ -59,13 +59,13 @@ public class Launcher
 		Author author1 = new Author("Lastname1","A. B.");
 		author1 = result.retrieveAuthor(author1);
 		Author author2 = new Author("Lastname2","A. B.");
-		author2 = result.retrieveAuthor(author1);
+		author2 = result.retrieveAuthor(author2);
 		Author author3 = new Author("Lastname3","A. B.");
-		author3 = result.retrieveAuthor(author1);
+		author3 = result.retrieveAuthor(author3);
 		Author author4 = new Author("Lastname4","A. B.");
-		author4 = result.retrieveAuthor(author1);
+		author4 = result.retrieveAuthor(author4);
 		Author author5 = new Author("Lastname5","A. B.");
-		author5 = result.retrieveAuthor(author1);
+		author5 = result.retrieveAuthor(author5);
 		
 		// build a few fake articles
 		Article article1 = new Article();
@@ -74,11 +74,13 @@ public class Launcher
 		article1.setTitle("Article 1");
 		article1.addAuthor(author1);
 		article1.addAuthor(author2);
+		result.addArticle(article1);
 		Article article2 = new Article();
 		article2.bibtexKey = "Art2";
 		article2.setSource(SourceType.JOURNAL, "Journal1");
 		article2.setTitle("Article 2");
 		article2.addAuthor(author1);
+		result.addArticle(article2);
 		Article article3 = new Article();
 		article3.bibtexKey = "Art3";
 		article3.setSource(SourceType.JOURNAL, "Journal2");
@@ -86,6 +88,7 @@ public class Launcher
 		article3.addAuthor(author2);
 		article3.addAuthor(author3);
 		article3.addAuthor(author4);
+		result.addArticle(article3);
 		Article article4 = new Article();
 		article4.bibtexKey = "Art4";
 		article4.setSource(SourceType.JOURNAL, "Journal3");
@@ -94,6 +97,7 @@ public class Launcher
 		article4.addAuthor(author2);
 		article4.addAuthor(author4);
 		article4.addAuthor(author5);
+		result.addArticle(article4);
 		
 		// connect the articles
 		{	article2.citedArticles.add(article1);
@@ -118,69 +122,69 @@ public class Launcher
 	 * 		Not used.
 	 * 
 	 * @throws Exception
-	 * 		Whatever exception occured.
+	 * 		Whatever exception occurred.
 	 */
 	public static void main(String[] args) throws Exception
 	{	logger.log("Starting the process");
 		logger.increaseOffset();
 		
-		// first load the jabref file
-		JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_STRUCTBAL;
-		boolean updateGroups = false;
-		jfh.loadJabRefFile(path, updateGroups);
-		
-		// then the ISI file
-		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-		path = FileNames.FI_ISI_ALL;
-		ifh.loadIsiFile(path);
-		Corpus corpus = ifh.corpus;
-		
-//		Corpus corpus = buildFakeCorpus();
+//		// first load the jabref file
+//		JabrefFileHandler jfh = new JabrefFileHandler();
+//		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+//		boolean updateGroups = false;
+//		jfh.loadJabRefFile(path, updateGroups);
 //		
-//		// extract and record the networks
-//		{	// authorship graph
-//			logger.log("Extracting authorship graph");
-//			Graph authorshipGraph = corpus.buildAuthorshipGraph();
-//			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
-//			authorshipGraph.writeToXml(authorshipFile);
-//		}
-//		{	// article citation graph
-//			logger.log("Extracting article citation graph");
-//			Graph articleCitationGraph = corpus.buildArticleCitationGraph();
-//			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
-//			articleCitationGraph.writeToXml(articleCitationFile);
-//		}
-//		{	// author citation graph
-//			logger.log("Extracting author citation graph");
-//			Graph authorCitationGraph = corpus.buildAuthorCitationGraph();
-//			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
-//			authorCitationGraph.writeToXml(authorCitationFile);
-//		}
-//		{	// article coauthorship graph
-//			logger.log("Extracting article coauthorship graph");
-//			Graph articleCoauthorshipGraph = corpus.buildArticleCoauthorshipGraph();
-//			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
-//			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
-//		}
-//		{	// author coauthorship graph
-//			logger.log("Extracting author coauthorship graph");
-//			Graph authorCoauthorshipGraph = corpus.buildAuthorCoauthorshipGraph();
-//			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
-//			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
-//		}
-//		{	// article cociting graph
-//			logger.log("Extracting article cociting graph");
-//			Graph articleCocitingGraph = corpus.buildArticleCocitingGraph();
-//			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
-//			articleCocitingGraph.writeToXml(articleCocitingFile);
-//		}
-//		{	// article cocited graph
-//			logger.log("Extracting article cocited graph");
-//			Graph articleCocitedGraph = corpus.buildArticleCocitedGraph();
-//			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
-//			articleCocitedGraph.writeToXml(articleCocitedFile);
-//		}
+//		// then the ISI file
+//		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
+//		path = FileNames.FI_ISI_ALL;
+//		ifh.loadIsiFile(path);
+//		Corpus corpus = ifh.corpus;
+		
+		Corpus corpus = buildFakeCorpus();
+		
+		// extract and record the networks
+		{	// authorship graph
+			logger.log("Extracting authorship graph");
+			Graph authorshipGraph = corpus.buildAuthorshipGraph();
+			File authorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"authorship.graphml");
+			authorshipGraph.writeToXml(authorshipFile);
+		}
+		{	// article citation graph
+			logger.log("Extracting article citation graph");
+			Graph articleCitationGraph = corpus.buildArticleCitationGraph();
+			File articleCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"article_citation.graphml");
+			articleCitationGraph.writeToXml(articleCitationFile);
+		}
+		{	// author citation graph
+			logger.log("Extracting author citation graph");
+			Graph authorCitationGraph = corpus.buildAuthorCitationGraph();
+			File authorCitationFile = new File(FileNames.FO_OUTPUT+File.separator+"author_citation.graphml");
+			authorCitationGraph.writeToXml(authorCitationFile);
+		}
+		{	// article coauthorship graph
+			logger.log("Extracting article coauthorship graph");
+			Graph articleCoauthorshipGraph = corpus.buildArticleCoauthorshipGraph();
+			File articleCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"article_coauthorship.graphml");
+			articleCoauthorshipGraph.writeToXml(articleCoauthorshipFile);
+		}
+		{	// author coauthorship graph
+			logger.log("Extracting author coauthorship graph");
+			Graph authorCoauthorshipGraph = corpus.buildAuthorCoauthorshipGraph();
+			File authorCoauthorshipFile = new File(FileNames.FO_OUTPUT+File.separator+"author_coauthorship.graphml");
+			authorCoauthorshipGraph.writeToXml(authorCoauthorshipFile);
+		}
+		{	// article cociting graph
+			logger.log("Extracting article cociting graph");
+			Graph articleCocitingGraph = corpus.buildArticleCocitingGraph();
+			File articleCocitingFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cociting.graphml");
+			articleCocitingGraph.writeToXml(articleCocitingFile);
+		}
+		{	// article cocited graph
+			logger.log("Extracting article cocited graph");
+			Graph articleCocitedGraph = corpus.buildArticleCocitedGraph();
+			File articleCocitedFile = new File(FileNames.FO_OUTPUT+File.separator+"article_cocited.graphml");
+			articleCocitedGraph.writeToXml(articleCocitedFile);
+		}
 		
 		logger.decreaseOffset();
 		logger.log("All done");
