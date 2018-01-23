@@ -64,7 +64,7 @@ public class FileTools
 	 * with the same name than the specified parameter.
 	 * 
 	 * @param fileName
-	 * 		Targetted filename.
+	 * 		Targeted filename.
 	 * @return
 	 * 		Filter dedicated to this name.
 	 */
@@ -84,7 +84,7 @@ public class FileTools
 	 * with the same name than the specified parameter.
 	 * 
 	 * @param extension
-	 * 		Targetted extension.
+	 * 		Targeted extension.
 	 * @return
 	 * 		Filter dedicated to this name.
 	 */
