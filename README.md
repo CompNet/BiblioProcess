@@ -2,11 +2,11 @@ BiblioProcess
 =======
 *Processing of bibliographic files*
 
-* Copyright 2011-17 Vincent Labatut
+* Copyright 2011-19 Vincent Labatut
 
 BiblioProcess is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation. For source availability and license information see `licence.txt`
 
-* Lab site: http://lia.univ-avignon.fr/
+* Lab website: http://lia.univ-avignon.fr/
 * GitHub repo: https://github.com/CompNet/BiblioProcess
 * Contact: vincent.labatut@univ-avignon.fr
 

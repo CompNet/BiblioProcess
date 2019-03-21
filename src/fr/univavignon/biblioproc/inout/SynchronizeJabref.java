@@ -2,7 +2,7 @@ package fr.univavignon.biblioproc.inout;
 
 /*
  * Biblio Process
- * Copyright 2011-2017 Vincent Labatut 
+ * Copyright 2011-19 Vincent Labatut 
  * 
  * This file is part of Biblio Process.
  * 
@@ -99,7 +99,7 @@ public class SynchronizeJabref
 	}
 	
 	/**
-	 * Testes one of the methods in this class.
+	 * Tests one of the methods in this class.
 	 * 
 	 * @param args
 	 * 		Not used.

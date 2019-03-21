@@ -1,6 +1,6 @@
 #
 # Biblio Process
-# Copyright 2011-2017 Vincent Labatut 
+# Copyright 2011-19 Vincent Labatut 
 # 
 # This file is part of Biblio Process.
 # 
