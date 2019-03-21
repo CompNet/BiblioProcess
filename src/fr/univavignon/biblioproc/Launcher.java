@@ -130,13 +130,14 @@ public class Launcher
 		
 		// first load the jabref file
 		JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_STRUCT_BAL;
+//		String path = FileNames.FI_BIBTEX_STRUCT_BAL;
+		String path = FileNames.FI_BIBTEX_CHARNETS;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 		
 		// then the ISI file
 		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-		path = FileNames.FI_ISI_ALL;
+		path = FileNames.FI_ISI_ALL_SIGNETS;
 		ifh.loadIsiFile(path);
 		Corpus corpus = ifh.corpus;
 		
@@ -188,14 +189,27 @@ public class Launcher
 		
 		logger.decreaseOffset();
 		logger.log("All done");
-		
-		/**TODO
-		 * - check graph extraction methods on a simple (programmatic) example
-		 * - extract the full authorship bipartite network
-		 * 
-		 * 
-		 * - generate a folder containing all the PDF files of the articles listed in the bibtex file
-		 * - generate the list of articles present as PDF files but missing from the bibtex file
-		 */
 	}
 }
+
+/**TODO
+ * - check graph extraction methods on a simple (programmatic) example
+ * - extract the full authorship bipartite network
+ * 
+ * 
+ * - generate a folder containing all the PDF files of the articles listed in the bibtex file
+ * - generate the list of articles present as PDF files but missing from the bibtex file
+ */
+
+/**
+ * Update procedure when adding a field:
+ * 
+ * - JabrefFileHandler
+ *   - Field
+ *   - ALL_FIELDS
+ *   - buildArticle
+ *   - writeArticle
+ * - Article
+ *   - Field
+ *   - completeWith
+ */

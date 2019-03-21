@@ -371,10 +371,22 @@ public class Article implements Comparable<Article>
 	public String institution;
 	
 	/////////////////////////////////////////////////////////////////
-	// INSTITUTION		/////////////////////////////////////////////
+	// SCHOOL			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/** Name of the school publishing this thesis */
 	public String school;
+	
+	/////////////////////////////////////////////////////////////////
+	// MONTH			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Month of publication of the Web page */
+	public String month;
+
+	/////////////////////////////////////////////////////////////////
+	// MONTH			/////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** How the Web page was published */
+	public String howpublished;
 	
 	/////////////////////////////////////////////////////////////////
 	// ORGANIZATION		/////////////////////////////////////////////
@@ -580,17 +592,17 @@ public class Article implements Comparable<Article>
 	 */
 	public void completeWith(Article article)
 	{	// abstract
-		if(abstrct==null)
-		{	String abstrct2 = article.abstrct;
-			if(abstrct2!=null)
-				abstrct = abstrct2;
+		if(this.abstrct==null)
+		{	String abstrct = article.abstrct;
+			if(abstrct!=null)
+				this.abstrct = abstrct;
 		}
 		
 		// address
-		if(address==null)
-		{	String address2 = article.address;
-			if(address2!=null)
-				address = address2;
+		if(this.address==null)
+		{	String address = article.address;
+			if(address!=null)
+				this.address = address;
 		}
 		
 		// authors
@@ -598,189 +610,203 @@ public class Article implements Comparable<Article>
 			addAuthor(author);
 		
 		// booktitle
-		if(booktitle==null)
-		{	String booktitle2 = article.booktitle;
-			if(booktitle2!=null)
-				booktitle = booktitle2;
+		if(this.booktitle==null)
+		{	String booktitle = article.booktitle;
+			if(booktitle!=null)
+				this.booktitle = booktitle;
 		}
 		
 		// chapter
-		if(chapter==null)
-		{	String chapter2 = article.chapter;
-			if(chapter2!=null)
-				chapter = chapter2;
+		if(this.chapter==null)
+		{	String chapter = article.chapter;
+			if(chapter!=null)
+				this.chapter = chapter;
 		}
 		
 		// cited/citing articles
-		Set<Article> citingArticles2 = article.citingArticles;
-		citingArticles.addAll(citingArticles2);
-		Set<Article> citedArticles2 = article.citedArticles;
-		citedArticles.addAll(citedArticles2);
+		Set<Article> citingArticles = article.citingArticles;
+		this.citingArticles.addAll(citingArticles);
+		Set<Article> citedArticles = article.citedArticles;
+		this.citedArticles.addAll(citedArticles);
 		
 		// doi
-		if(doi==null)
-		{	String doi2 = article.doi;
-			if(doi2!=null)
-				doi = doi2;
+		if(this.doi==null)
+		{	String doi = article.doi;
+			if(doi!=null)
+				this.doi = doi;
 		}
 		
 		// edition
-		if(edition==null)
-		{	String edition2 = article.edition;
-			if(edition2!=null)
-				edition = edition2;
+		if(this.edition==null)
+		{	String edition = article.edition;
+			if(edition!=null)
+				this.edition = edition;
 		}
 		
 		// editor
-		if(editor==null)
-		{	String editor2 = article.editor;
-			if(editor2!=null)
-				editor = editor2;
+		if(this.editor==null)
+		{	String editor = article.editor;
+			if(editor!=null)
+				this.editor = editor;
 		}
 		
 		// file
-		if(file==null)
-		{	String file2 = article.file;
-			if(file2!=null)
-				file = file2;
+		if(this.file==null)
+		{	String file = article.file;
+			if(file!=null)
+				this.file = file;
 		}
 		
 		// institution
-		if(institution==null)
-		{	String institution2 = article.institution;
-			if(institution2!=null)
-				institution = institution2;
+		if(this.institution==null)
+		{	String institution = article.institution;
+			if(institution!=null)
+				this.institution = institution;
 		}
 		
 		// issue
-		if(issue==null)
-		{	String issue2 = article.issue;
-			if(issue2!=null)
-				issue = issue2;
+		if(this.issue==null)
+		{	String issue = article.issue;
+			if(issue!=null)
+				this.issue = issue;
 		}
 		
 		// journal
-		if(journal==null)
-		{	String journal2 = article.journal;
-			if(journal2!=null)
-				journal = journal2;
+		if(this.journal==null)
+		{	String journal = article.journal;
+			if(journal!=null)
+				this.journal = journal;
+		}
+		
+		// month
+		if(this.month==null)
+		{	String month = article.month;
+			if(month!=null)
+				this.month = month;
 		}
 		
 		// organization
-		if(organization==null)
-		{	String organization2 = article.organization;
-			if(organization2!=null)
-				organization = organization2;
+		if(this.organization==null)
+		{	String organization = article.organization;
+			if(organization!=null)
+				this.organization = organization;
+		}
+		
+		// howpublished
+		if(this.howpublished==null)
+		{	String howpublished = article.howpublished;
+			if(howpublished!=null)
+				this.howpublished = howpublished;
 		}
 		
 		// owner
-		if(owner==null)
-		{	String owner2 = article.owner;
-			if(owner2!=null)
-				owner = owner2;
+		if(this.owner==null)
+		{	String owner = article.owner;
+			if(owner!=null)
+				this.owner = owner;
 		}
 		
 		// page
-		if(page==null)
-		{	String page2 = article.page;
-			if(page2!=null)
-				page = page2;
+		if(this.page==null)
+		{	String page = article.page;
+			if(page!=null)
+				this.page = page;
 		}
 		
 		// publisher
-		if(publisher==null)
-		{	String publisher2 = article.publisher;
-			if(publisher2!=null)
-				publisher = publisher2;
+		if(this.publisher==null)
+		{	String publisher = article.publisher;
+			if(publisher!=null)
+				this.publisher = publisher;
 		}
 		
 		// review
-		if(review==null)
-		{	String review2 = article.review;
-			if(review2!=null)
-				review = review2;
+		if(this.review==null)
+		{	String review = article.review;
+			if(review!=null)
+				this.review = review;
 		}
 		
 		// school
-		if(school==null)
-		{	String school2 = article.school;
-			if(school2!=null)
-				school = school2;
+		if(this.school==null)
+		{	String school = article.school;
+			if(school!=null)
+				this.school = school;
 		}
 		
 		// series
-		if(series==null)
-		{	String series2 = article.series;
-			if(series2!=null)
-				series = series2;
+		if(this.series==null)
+		{	String series = article.series;
+			if(series!=null)
+				this.series = series;
 		}
 		
 		// sortkey
-		if(sortkey==null)
-		{	String sortkey2 = article.sortkey;
-			if(sortkey2!=null)
-				sortkey = sortkey2;
+		if(this.sortkey==null)
+		{	String sortkey = article.sortkey;
+			if(sortkey!=null)
+				this.sortkey = sortkey;
 		}
 		
 		// source
-		if(sourceName==null)
-		{	String sourceName2 = article.sourceName;
-			if(sourceName2!=null)
-			{	sourceName = sourceName2;
-				normSourceName = article.normSourceName;
-				sourceType = article.sourceType;
+		if(this.sourceName==null)
+		{	String sourceName = article.sourceName;
+			if(sourceName!=null)
+			{	this.sourceName = sourceName;
+				this.normSourceName = article.normSourceName;
+				this.sourceType = article.sourceType;
 			}
 		}
 		
 		// timestamp
 		if(timestamp==null)
-		{	String timestamp2 = article.timestamp;
-			if(timestamp2!=null)
-				timestamp = timestamp2;
+		{	String timestamp = article.timestamp;
+			if(timestamp!=null)
+				this.timestamp = timestamp;
 		}
 		
 		// title
-		if(title==null)
-		{	String title2 = article.title;
-			if(title2!=null)
-			{	title = title2;
-				normTitle = article.normTitle;
+		if(this.title==null)
+		{	String title = article.title;
+			if(title!=null)
+			{	this.title = title;
+				this.normTitle = article.normTitle;
 			}
 		}
 		
 		// type
-		if(type==null)
-		{	String type2 = article.type;
-			if(type2!=null)
-				type = type2;
+		if(this.type==null)
+		{	String type = article.type;
+			if(type!=null)
+				this.type = type;
 		}
 		
 		// url
-		if(url==null)
-		{	String url2 = article.url;
-			if(url2!=null)
-				url = url2;
+		if(this.url==null)
+		{	String url = article.url;
+			if(url!=null)
+				this.url = url;
 		}
 		
 		// volume
-		if(volume==null)
-		{	String volume2 = article.volume;
-			if(volume2!=null)
-				volume = volume2;
+		if(this.volume==null)
+		{	String volume = article.volume;
+			if(volume!=null)
+				this.volume = volume;
 		}
 		
 		// year
-		if(year==null)
-		{	String year2 = article.year;
-			if(year2!=null)
-				year = year2;
+		if(this.year==null)
+		{	String year = article.year;
+			if(year!=null)
+				this.year = year;
 		}
 		
 		// groups
-		if(groups==null)
-		{	String groups2 = article.groups;
-			if(groups2!=null)
-				groups = groups2;
+		if(this.groups==null)
+		{	String groups = article.groups;
+			if(groups!=null)
+				this.groups = groups;
 		}
 	}
 	

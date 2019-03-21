@@ -109,6 +109,8 @@ public class JabrefFileHandler
 	private static final String FLD_JOURNAL2 = "journaltitle";
 	/** Bibtex key for the number */
 	public static final String FLD_NUMBER = "number";
+	/** Bibtex key for the month */
+	public static final String FLD_MONTH = "month";
 	/** Bibtex key for the owner */
 	private static final String FLD_OWNER = "owner";
 	/** Bibtex key for the pages */
@@ -145,6 +147,8 @@ public class JabrefFileHandler
 	private static final String FLD_GROUPS = "groups";
 	/** Organization associated to an electronic reference */
 	private static final String FLD_ORGANIZATION = "organization";	
+	/** How the Web page was published */
+	private static final String FLD_HOWPUB = "howpublished";	
 	/** Internal Jabref field */
 	private static final String FLD_MARKED = "__markedentry";	
 	/** List of all known Bibtex fields */
@@ -155,7 +159,7 @@ public class JabrefFileHandler
 			FLD_TITLE_ARTICLE, FLD_TITLE_BOOK, FLD_TITLE_BOOK, FLD_URL,
 			FLD_VOLUME, FLD_YEAR, FLD_PUBLISHER, FLD_SERIES, FLD_EDITOR, 
 			FLD_REVIEW, FLD_ADDRESS, FLD_SCHOOL, FLD_TYPE, FLD_SORTKEY,
-			FLD_EDITION, FLD_ORGANIZATION, FLD_GROUPS,
+			FLD_EDITION, FLD_ORGANIZATION, FLD_GROUPS, FLD_MONTH, FLD_HOWPUB,
 			// ignored:
 			FLD_MARKED
 	);
@@ -360,6 +364,8 @@ public class JabrefFileHandler
 			{	// retrieve the name of the field
 				int pos = line.indexOf('=');
 				String fieldName = line.substring(0,pos-1).trim();
+				if(fieldName.startsWith("_") && !fieldName.startsWith("__"))
+					fieldName = fieldName.substring(1);
 				if(!ALL_FIELDS.contains(fieldName))
 					throw new IllegalArgumentException("Unknown Bibtex field \""+fieldName+"\" in line \""+line+"\"");
 				// retrieve the associated value
@@ -515,6 +521,12 @@ public class JabrefFileHandler
 		
 		// init book title
 		result.booktitle = data.get(FLD_TITLE_BOOK);
+		
+		// init month
+		result.month = data.get(FLD_MONTH);
+		
+		// init howpublished
+		result.howpublished = data.get(FLD_HOWPUB);
 		
 		// init organization
 		result.organization = data.get(FLD_ORGANIZATION);
@@ -746,15 +758,15 @@ public class JabrefFileHandler
 		// journal
 		if(article.journal!=null)
 			pw.println("  "+FLD_JOURNAL1+FIELD_BEGINNING+article.journal+FIELD_END);
-
+		
 		// volume
 		if(article.volume!=null)
 			pw.println("  "+FLD_VOLUME+FIELD_BEGINNING+article.volume+FIELD_END);
-
+		
 		// issue
 		if(article.issue!=null)
 			pw.println("  "+FLD_NUMBER+FIELD_BEGINNING+article.issue+FIELD_END);
-
+		
 		// pages
 		if(article.page!=null)
 			pw.println("  "+FLD_PAGES+FIELD_BEGINNING+article.page+FIELD_END);
@@ -770,39 +782,47 @@ public class JabrefFileHandler
 		// series
 		if(article.series!=null)
 			pw.println("  "+FLD_SERIES+FIELD_BEGINNING+article.series+FIELD_END);
-
+		
 		// chapter
 		if(article.chapter!=null)
 			pw.println("  "+FLD_CHAPTER+FIELD_BEGINNING+article.chapter+FIELD_END);
-
+		
 		// institution
 		if(article.institution!=null)
 			pw.println("  "+FLD_INSTITUTION+FIELD_BEGINNING+article.institution+FIELD_END);
-
+		
 		// school
 		if(article.school!=null)
 			pw.println("  "+FLD_SCHOOL+FIELD_BEGINNING+article.school+FIELD_END);
-
+		
 		// booktitle
 		if(article.booktitle!=null)
 			pw.println("  "+FLD_TITLE_BOOK+FIELD_BEGINNING+article.booktitle+FIELD_END);
-
+		
 		// publisher
 		if(article.publisher!=null)
 			pw.println("  "+FLD_PUBLISHER+FIELD_BEGINNING+article.publisher+FIELD_END);
-
+		
 		// address
 		if(article.address!=null)
 			pw.println("  "+FLD_ADDRESS+FIELD_BEGINNING+article.address+FIELD_END);
-
+		
 		// type
 		if(article.type!=null)
 			pw.println("  "+FLD_TYPE+FIELD_BEGINNING+article.type+FIELD_END);
-
+		
+		// month
+		if(article.month!=null)
+			pw.println("  "+FLD_MONTH+FIELD_BEGINNING+article.month+FIELD_END);
+		
 		// organization
 		if(article.organization!=null)
 			pw.println("  "+FLD_ORGANIZATION+FIELD_BEGINNING+article.organization+FIELD_END);
-
+		
+		// howpublished
+		if(article.howpublished!=null)
+			pw.println("  "+FLD_HOWPUB+FIELD_BEGINNING+article.howpublished+FIELD_END);
+		
 		// doi
 		if(article.doi!=null)
 			pw.println("  "+FLD_DOI+FIELD_BEGINNING+article.doi+FIELD_END);

@@ -38,19 +38,29 @@ public class Author implements Comparable<Author>
 	 * 		String representing the author's name.
 	 */
 	public Author(String fullName)
-	{	// setup last name
-		fullName = StringTools.clean(fullName);
-		String[] temp = fullName.split(", "); 
-		lastname = temp[0];
+	{	// nickname, organization, etc.
+		if(fullName.startsWith("{"))
+		{	lastname = fullName;
+			firstnameInitials = "";
+			normname = fullName.substring(1,fullName.length()-1);
+		}
 		
-		// setup firstnames
-		if(temp.length==1)
-			throw new IllegalArgumentException("Could not find the firstname in fullname \""+fullName+"\"");
-		else if(temp.length>1)
-			firstnameInitials = retrieveInitials(temp[1]);
-		
-		// setup normalized fullname
-		initNormName();
+		// regular person name
+		else
+		{	// setup last name
+			fullName = StringTools.clean(fullName);
+			String[] temp = fullName.split(", "); 
+			lastname = temp[0];
+			
+			// setup firstnames
+			if(temp.length==1)
+				throw new IllegalArgumentException("Could not find the firstname in fullname \""+fullName+"\"");
+			else if(temp.length>1)
+				firstnameInitials = retrieveInitials(temp[1]);
+			
+			// setup normalized fullname
+			initNormName();
+		}
 	}
 	
 	/**
@@ -105,7 +115,7 @@ public class Author implements Comparable<Author>
 	private void initNormName()
 	{	normname = firstnameInitials.replace(" ", "");	// remove spaces between initials
 		normname = normname.replace(".", "");			// remove dots after initials
-if(normname.contains("-"))		
+if(normname.contains("-"))	
 		normname = normname.replace("-", "");			// remove hyphens between initials
 		normname = lastname.replace("-"," ") + " " + normname;	// replace hyphens by spaces in the lastname
 		normname = StringTools.normalize(normname);		// normalize the resulting string

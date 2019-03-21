@@ -265,8 +265,8 @@ public class IsiFileHandler
 		logger.increaseOffset();
 		
 		// open the ISI file
-		logger.log("Open the file " + FileNames.FI_ISI_ALL);
-		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL,null);
+		logger.log("Open the file " + FileNames.FI_ISI_ALL_SIGNETS);
+		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL_SIGNETS,null);
 		
 		// parse the ISI file
 		Map<Article,List<String>> tempRef = new HashMap<Article, List<String>>();
@@ -1136,7 +1136,7 @@ public class IsiFileHandler
 		
 		// then the ISI file
 		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-		path = FileNames.FI_ISI_ALL;
+		path = FileNames.FI_ISI_ALL_SIGNETS;
 		ifh.loadIsiFile(path);
 	}
 }
