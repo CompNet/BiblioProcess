@@ -24,23 +24,29 @@ package fr.univavignon.biblioproc.data.biblio;
  * This type represents the various types of publications.  
  */
 public enum SourceType
-{	/** Full book */
+{	/** Journal paper */
+	ARTICLE,
+	
+	/** Full book */
 	BOOK,
 	
 	/** Book chapter */
 	CHAPTER,
 	
+	/** Full collection */
+	COLLECTION,
+	
+	/** Collection chapter */
+	IN_COLLECTION,
+	
 	/** Conference paper */
-	CONFERENCE,
+	IN_PROCEEDINGS,
 	
 	/** Electronic resource */
 	ELECTRONIC,
 	
-	/** Journal paper */
-	JOURNAL,
-	
 	/** Technical report */
-	REPORT,
+	TECH_REPORT,
 
 	/** MSc thesis */
 	THESIS_MSC,

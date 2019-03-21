@@ -207,19 +207,21 @@ public class Article implements Comparable<Article>
 		this.sourceName = sourceName;
 		switch(sourceType)
 		{	case BOOK:
+			case COLLECTION:
 				publisher = sourceName;
 				break;
 			case CHAPTER:
-			case CONFERENCE:
+			case IN_COLLECTION:
+			case IN_PROCEEDINGS:
 				booktitle = sourceName;
 				break;
 			case ELECTRONIC:
 				organization = sourceName;
 				break;
-			case JOURNAL:
+			case ARTICLE:
 				journal = sourceName;
 				break;
-			case REPORT:
+			case TECH_REPORT:
 				institution = sourceName;
 				break;
 			case THESIS_MSC:
@@ -230,7 +232,7 @@ public class Article implements Comparable<Article>
 		
 		normSourceName = StringTools.normalize(sourceName);
 		normSourceName = normSourceName.replaceAll("[^a-zA-Z0-9]", "");
-		if(sourceType==SourceType.CONFERENCE)
+		if(sourceType==SourceType.IN_PROCEEDINGS)
 		{	// remove a possible ending string between parenthesis (typically for conferences)
 			int pos = normSourceName.indexOf('(');
 			if(pos!=-1)
@@ -403,69 +405,6 @@ public class Article implements Comparable<Article>
 	/////////////////////////////////////////////////////////////////
 	/** Groups to which the paper belongs in Jabref */
 	public String groups;
-	
-	/////////////////////////////////////////////////////////////////
-	// ERRORS			/////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-//	/**
-//	 * Apply some manual corections to certain articles.
-//	 * 
-//	 * @param authorsMap
-//	 * 		Map containing the known authors.
-//	 */
-//	public void checkErrors(Map<String,Author> authorsMap)
-//	{	if(authors.get(0).getFullname().equals("flake, g")
-//			//&& article.source!=null && article.source.equals("ieee comput")
-//			&& volume!=null && volume.equals("36")
-//			&& page!=null && page.equals("66")
-//			&& year!=null && year.equals("2002"))
-//		{	volume = "35";
-//		}
-//	
-//		else if(getAuthors().get(0).getFullname().equals("vandongen, s")
-//			//&& article.source!=null && article.source.equals("thesis u ultrecht ne")
-//			//&& article.page!=null && article.page.equals("371")
-//			&& year!=null && year.equals("2000"))
-//		{	Author author = getAuthors().get(0);
-//			authorsMap.remove(author.getFullname());
-//			author = authorsMap.get("van dongen, s");
-//			authors.set(0,author);
-//		}
-//	
-//		else if(getAuthors().get(0).getFullname().equals("granovet, m")
-//			&& source!=null && source.equals("am j sociol")
-//			&& volume!=null && volume.equals("78")
-//			&& page!=null && page.equals("1360")
-//			&& year!=null && year.equals("1973"))
-//		{	Author author = getAuthors().get(0);
-//			authorsMap.remove(author.getFullname());
-//			author = authorsMap.get("granovetter, m");
-//			authors.set(0,author);
-//		}
-//	
-//		else if(getAuthors().get(0).getFullname().equals("leydesdorff, l")
-//			&& source!=null && source.equals("j math sociol")
-//			&& year!=null && year.equals("1971"))
-//		{	Author author = authorsMap.get("lorrain, f");
-//			authors.set(0,author);
-//			author = authorsMap.get("white, h");
-//			authors.add(author);
-//			volume = "1";
-//			page = "49";
-//			year = "1971";
-//		}
-//	
-//		else if(getAuthors().get(0).getFullname().equals("vonmering, c")
-//			&& source!=null && source.equals("nature")
-//			&& volume!=null && volume.equals("417")
-//			&& page!=null && page.equals("399")
-//			&& year!=null && year.equals("2002"))
-//		{	Author author = getAuthors().get(0);
-//		authorsMap.remove(author.getFullname());
-//			author = authorsMap.get("von mering, c");
-//			authors.set(0,author);
-//		}
-//	}
 	
 	/////////////////////////////////////////////////////////////////
 	// COMPARISON		/////////////////////////////////////////////

@@ -69,7 +69,7 @@ public class FileNames
 	/** JabRef complete file */
 	public static final String FI_BIBTEX_COMPLETE = FO_BIBTEX + File.separator + "network analysis" + EX_BIBTEX;
 	/** JabRef structural balance file */
-	public static final String FI_BIBTEX_STRUCTBAL = FO_BIBTEX + File.separator + "biblio" + EX_BIBTEX;
+	public static final String FI_BIBTEX_STRUCT_BAL = FO_BIBTEX + File.separator + "biblio" + EX_BIBTEX;
 	/** ISI merged file */
 	public static final String FI_ISI_ALL = FO_ISI + File.separator + "savedrecs" + EX_ISI;
 	/** Journal/conference short names */

@@ -70,20 +70,20 @@ public class Launcher
 		// build a few fake articles
 		Article article1 = new Article();
 		article1.bibtexKey = "Art1";
-		article1.setSource(SourceType.JOURNAL, "Journal1");
+		article1.setSource(SourceType.ARTICLE, "Journal1");
 		article1.setTitle("Article 1");
 		article1.addAuthor(author1);
 		article1.addAuthor(author2);
 		result.addArticle(article1);
 		Article article2 = new Article();
 		article2.bibtexKey = "Art2";
-		article2.setSource(SourceType.JOURNAL, "Journal1");
+		article2.setSource(SourceType.ARTICLE, "Journal1");
 		article2.setTitle("Article 2");
 		article2.addAuthor(author1);
 		result.addArticle(article2);
 		Article article3 = new Article();
 		article3.bibtexKey = "Art3";
-		article3.setSource(SourceType.JOURNAL, "Journal2");
+		article3.setSource(SourceType.ARTICLE, "Journal2");
 		article3.setTitle("Article 3");
 		article3.addAuthor(author2);
 		article3.addAuthor(author3);
@@ -91,7 +91,7 @@ public class Launcher
 		result.addArticle(article3);
 		Article article4 = new Article();
 		article4.bibtexKey = "Art4";
-		article4.setSource(SourceType.JOURNAL, "Journal3");
+		article4.setSource(SourceType.ARTICLE, "Journal3");
 		article4.setTitle("Article 4");
 		article4.addAuthor(author1);
 		article4.addAuthor(author2);
@@ -130,7 +130,7 @@ public class Launcher
 		
 		// first load the jabref file
 		JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		String path = FileNames.FI_BIBTEX_STRUCT_BAL;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 		

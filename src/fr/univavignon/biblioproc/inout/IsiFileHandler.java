@@ -472,8 +472,6 @@ public class IsiFileHandler
 		}
 		
 		// get type
-if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Application to Structural Balance"))
-	System.out.print("");
 		logger.log("Determining source type");
 		logger.increaseOffset();
 		while(!line.startsWith(PFX_TYPE+" "))
@@ -487,13 +485,13 @@ if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Ap
 		switch(typeStr)
 		{	case "Article":
 			case "Editorial Material":
-				sourceType = SourceType.JOURNAL;
+				sourceType = SourceType.ARTICLE;
 				break;
 				
 			case "Proceedings Paper":
 			case "Article; Proceedings Paper":
 				logger.increaseOffset();
-				sourceType = SourceType.CONFERENCE;
+				sourceType = SourceType.IN_PROCEEDINGS;
 				while(!line.startsWith(PFX_CONFERENCE+" "))
 				{	line = scanner.nextLine();
 					if(line.startsWith(PFX_SEPARATOR))
@@ -583,7 +581,7 @@ if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Ap
 			if(!IGNORED_SERIES.contains(series))
 			{	String normSourceName = StringTools.normalize(sourceName).replace(".","");
 				// remove a possible initial year or conference number
-				if(sourceType==SourceType.CONFERENCE && Character.isDigit(normSourceName.charAt(0)))
+				if(sourceType==SourceType.IN_PROCEEDINGS && Character.isDigit(normSourceName.charAt(0)))
 				{	int pos = normSourceName.indexOf(" ");
 					normSourceName = normSourceName.substring(pos).trim();
 				}
@@ -661,14 +659,10 @@ if(title.equals("Efficient Solution of the Correlation Clustering Problem: An Ap
 		{	String doi = line.substring(3).trim();
 			doi = doi.replaceAll("//+", "/");
 			result.doi = doi;
-if(result.doi.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
-	System.out.print("");
 			logger.log("DOI: "+result.doi);
 		}
 		
 		// finish reference
-if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
-	System.out.print("");
 		logger.log("Article read: "+result);
 		while(!line.startsWith(PFX_SEPARATOR))
 			line = scanner.nextLine();
@@ -737,10 +731,7 @@ if(title.equalsIgnoreCase("A partitioning approach to structural balance"))
 		logger.increaseOffset();
 		List<Article> articles = new ArrayList<Article>(); 
 		for(Article article: corpus.getArticles())
-		{	
-if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution of the Correlation Clustering Problem: An Application to Structural Balance")) //for debug
-	System.out.print("");
-			if((result.bibtexKey!=null && result.bibtexKey.equals(article.bibtexKey))
+		{	if((result.bibtexKey!=null && result.bibtexKey.equals(article.bibtexKey))
 				|| (result.doi!=null && result.doi.equalsIgnoreCase(article.doi))
 				|| result.isCompatible(article))
 			{	articles.add(article);
@@ -783,8 +774,6 @@ if(article.bibtexKey.equals("Drummond2013") && title.equals("Efficient Solution 
 		Article tmpArticle = new Article();
 		String tmp[] = string.split(",");
 		
-if(string.equalsIgnoreCase("DeParle Jason, 2005, NY TIMES        0627, pA1"))
-	System.out.print("");
 		// check if the reference should be ignored
 		String normStr = StringTools.normalize(string).replace(".", "");
 		if(IGNORED_REFS.contains(normStr))
@@ -900,7 +889,7 @@ if(string.equalsIgnoreCase("DeParle Jason, 2005, NY TIMES        0627, pA1"))
 							{	tmpArticle.volume = tmp3.substring(1);
 								logger.log("Volume: "+tmpArticle.volume);
 								if(sourceType==null)
-								{	sourceType = SourceType.JOURNAL;
+								{	sourceType = SourceType.ARTICLE;
 									logger.log("Source type: "+sourceType);
 								}
 							}
@@ -908,7 +897,7 @@ if(string.equalsIgnoreCase("DeParle Jason, 2005, NY TIMES        0627, pA1"))
 							{	tmpArticle.page = tmp3.substring(1);
 								logger.log("Pages: "+tmpArticle.page);
 								if(sourceType==null)
-								{	sourceType = SourceType.CONFERENCE;
+								{	sourceType = SourceType.IN_PROCEEDINGS;
 									logger.log("Source type: "+sourceType);
 								}
 							}
@@ -924,8 +913,6 @@ if(string.equalsIgnoreCase("DeParle Jason, 2005, NY TIMES        0627, pA1"))
 					// get the source
 					String sourceName = tmp[2].trim();
 					sourceName = StringTools.normalize(sourceName).replace(".","");
-if(sourceName.equals("p 22 ieee int c tool"))
-	System.out.print("");
 					//remove a possible "P xx" start, where xx is a number
 					if(sourceName.startsWith("p ") && Character.isDigit(sourceName.charAt(2)))
 					{	int pos = sourceName.indexOf(' ', 2);
@@ -936,7 +923,7 @@ if(sourceName.equals("p 22 ieee int c tool"))
 						sourceName = sourceName.substring(pos+1);
 					}
 					// additional cleaning for conference names
-					if(sourceType==SourceType.CONFERENCE)
+					if(sourceType==SourceType.IN_PROCEEDINGS)
 					{	// remove a possible ending string between parenthesis (typically for conferences)
 						int pos = sourceName.indexOf('(');
 						if(pos!=-1)
@@ -1005,20 +992,9 @@ if(sourceName.equals("p 22 ieee int c tool"))
 			}
 			
 			// look for the paper in the current map
-if(tmpArticle.getTitle()==null)
-	System.out.print("");
-if(tmpArticle.doi!=null && tmpArticle.doi.equals("10.1145/167088.167261"))
-	System.out.print("");
-if(tmpArticle.bibtexKey!=null && tmpArticle.bibtexKey.equals("Yang2007a"))
-	System.out.print("");
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: corpus.getArticles())
-			{	
-if(article.bibtexKey.equals("Yang2007a"))
-	System.out.print("");
-if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
-	System.out.print("");
-				if(tmpArticle.doi!=null && article.doi!=null)
+			{	if(tmpArticle.doi!=null && article.doi!=null)
 				{	if(tmpArticle.doi.equalsIgnoreCase(article.doi))
 						articles.add(article);
 				}
@@ -1043,8 +1019,6 @@ if(article.doi!=null && article.doi.equals("10.1016/j.cpc.2010.06.016"))
 				while(corpus.containsKey(NEW_KEY+i))
 					i++;
 				String bibtexKey = NEW_KEY+i;
-if(bibtexKey.equals("NewKey214"))				
-	System.out.print("");
 				tmpArticle.bibtexKey = bibtexKey;
 				logger.log("Creating a new one and adding to the map, using the new bibtexkey "+bibtexKey);
 				corpus.addArticle(tmpArticle);	// adding to the existing map for later use
@@ -1156,7 +1130,7 @@ if(bibtexKey.equals("NewKey214"))
 	public static void main(String[] args) throws Exception
 	{	// first load the jabref file
 		JabrefFileHandler jfh = new JabrefFileHandler();
-		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		String path = FileNames.FI_BIBTEX_STRUCT_BAL;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 		

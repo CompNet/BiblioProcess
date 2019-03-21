@@ -73,7 +73,7 @@ public class JabrefFileHandler
 	private static final String COMMENT_PREFIX = "@Comment";
 	/** String marking the begining of the list of ignored articles */
 	private static final String IGNORED_PREFIX = "3 ExplicitGroup:Ignored\\;2\\;";
-	/** String marking the begining of the list of pureley applicative articles */
+	/** String marking the begining of the list of purely applicative articles */
 	private static final String APPLICATION_PREFIX = "3 ExplicitGroup:Applications Only\\;2\\;";
 	/** String marking the end of a JabRef group */
 	private static final String GROUP_END = ";;";
@@ -163,18 +163,22 @@ public class JabrefFileHandler
 	/////////////////////////////////////////////////////////////////
 	// BIBTEX FIELDS	/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	/** Bibtex type of entry for a journal article */
+	private static final String TYPE_ARTICLE = "Article";
 	/** Bibtex type of entry for a whole book */
 	private static final String TYPE_BOOK = "Book";
 	/** Bibtex type of entry for a book chapter */
-	private static final String TYPE_CHAPTER = "InCollection";
+	private static final String TYPE_CHAPTER = "Chapter";
+	/** Bibtex type of entry for a whole collection */
+	private static final String TYPE_COLLECTION = "Collection";
+	/** Bibtex type of entry for a collection chapter */
+	private static final String TYPE_INCOLLECTION = "InCollection";
 	/** Bibtex type of entry for a conference article */
-	private static final String TYPE_CONFERENCE = "InProceedings";
+	private static final String TYPE_INPROCEEDINGS = "InProceedings";
 	/** Bibtex type of entry for an electronic resource */
 	private static final String TYPE_ELECTRONIC = "Electronic";
-	/** Bibtex type of entry for a journal article */
-	private static final String TYPE_ARTICLE = "Article";
 	/** Bibtex type of entry for a report */
-	private static final String TYPE_REPORT = "TechReport";
+	private static final String TYPE_TECH_REPORT = "TechReport";
 	/** Bibtex type of entry for a MSc thesis */
 	private static final String TYPE_THESIS_MSC = "MastersThesis";
 	/** Bibtex type of entry for a PhD thesis */
@@ -346,8 +350,6 @@ public class JabrefFileHandler
 		end = line.length() - 1;
 		String bibtexkey = line.substring(start, end);
 		result.put(FLD_KEY, bibtexkey);
-if(bibtexkey.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
-	System.out.print("");
 		
 		// rest of the fields
 		do
@@ -404,8 +406,6 @@ if(bibtexkey.equalsIgnoreCase("10.1016/j.cpc.2010.06.016"))
 		result.bibtexKey = data.get(FLD_KEY);
 		if(corpus.containsKey(result.bibtexKey))
 			throw new IllegalArgumentException("The corpus already contains the Bibtex key "+result.bibtexKey+" ("+data+")");
-if(result.bibtexKey.equals("Klein1993"))
-	System.out.print("");		
 		
 		// init source type
 		String typeSrc = data.get(FLD_SOURCE);
@@ -423,12 +423,26 @@ if(result.bibtexKey.equals("Klein1993"))
 			else
 				result.setSource(SourceType.CHAPTER, source);
 		}
-		else if(typeSrc.equals(TYPE_CONFERENCE))
+		else if(typeSrc.equals(TYPE_COLLECTION))
+		{	String source = data.get(FLD_PUBLISHER);
+			if(source==null)
+				throw new IllegalArgumentException("Publisher name missing in ("+result.bibtexKey+") "+data);
+			else
+				result.setSource(SourceType.BOOK, source);
+		}
+		else if(typeSrc.equals(TYPE_INCOLLECTION))
+		{	String source = data.get(FLD_TITLE_BOOK);
+			if(source==null)
+				throw new IllegalArgumentException("Book title missing in ("+result.bibtexKey+") "+data);
+			else
+				result.setSource(SourceType.CHAPTER, source);
+		}
+		else if(typeSrc.equals(TYPE_INPROCEEDINGS))
 		{	String source = data.get(FLD_TITLE_BOOK);
 			if(source==null)
 				throw new IllegalArgumentException("Conference name missing in "+data);
 			else
-				result.setSource(SourceType.CONFERENCE, source);
+				result.setSource(SourceType.IN_PROCEEDINGS, source);
 		}
 		else if(typeSrc.equals(TYPE_ELECTRONIC))
 		{	String source = data.get(FLD_ORGANIZATION);
@@ -444,15 +458,15 @@ if(result.bibtexKey.equals("Klein1993"))
 			if(source==null)
 				throw new IllegalArgumentException("Journal name missing ("+result.bibtexKey+") in "+data);
 			else
-				result.setSource(SourceType.JOURNAL, source);
+				result.setSource(SourceType.ARTICLE, source);
 			
 		}
-		else if(typeSrc.equals(TYPE_REPORT))
+		else if(typeSrc.equals(TYPE_TECH_REPORT))
 		{	String source = data.get(FLD_INSTITUTION);
 			if(source==null)
 				throw new IllegalArgumentException("Institutiong name missing ("+result.bibtexKey+") in "+data);
 			else
-				result.setSource(SourceType.REPORT, source);
+				result.setSource(SourceType.TECH_REPORT, source);
 		}
 		else if(typeSrc.equals(TYPE_THESIS_MSC))
 		{	String source = data.get(FLD_INSTITUTION);
@@ -683,17 +697,23 @@ if(result.bibtexKey.equals("Klein1993"))
 			case CHAPTER:
 				pw.println("@"+TYPE_CHAPTER+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
-			case CONFERENCE:
-				pw.println("@"+TYPE_CONFERENCE+ENTRY_BEGINNING+article.bibtexKey+",");
+			case COLLECTION:
+				pw.println("@"+TYPE_COLLECTION+ENTRY_BEGINNING+article.bibtexKey+",");
+				break;
+			case IN_COLLECTION:
+				pw.println("@"+TYPE_INCOLLECTION+ENTRY_BEGINNING+article.bibtexKey+",");
+				break;
+			case IN_PROCEEDINGS:
+				pw.println("@"+TYPE_INPROCEEDINGS+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
 			case ELECTRONIC:
 				pw.println("@"+TYPE_ELECTRONIC+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
-			case JOURNAL:
+			case ARTICLE:
 				pw.println("@"+TYPE_ARTICLE+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
-			case REPORT:
-				pw.println("@"+TYPE_REPORT+ENTRY_BEGINNING+article.bibtexKey+",");
+			case TECH_REPORT:
+				pw.println("@"+TYPE_TECH_REPORT+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
 			case THESIS_MSC:
 				pw.println("@"+TYPE_THESIS_MSC+ENTRY_BEGINNING+article.bibtexKey+",");
@@ -839,7 +859,7 @@ if(result.bibtexKey.equals("Klein1993"))
 	{	JabrefFileHandler jfh = new JabrefFileHandler();
 //		String path = FileNames.FI_BIBTEX_COMPLETE;
 //		String path = FileNames.FI_BIBTEX_REVIEW;
-		String path = FileNames.FI_BIBTEX_STRUCTBAL;
+		String path = FileNames.FI_BIBTEX_STRUCT_BAL;
 		boolean updateGroups = false;
 		jfh.loadJabRefFile(path, updateGroups);
 		
