@@ -1,0 +1,3368 @@
+FN Clarivate Analytics Web of Science
+VR 1.0
+PT J
+AU Lee, OJ
+   Jung, JJ
+AF Lee, O-Joun
+   Jung, Jason J.
+TI Modeling affective character network for story analytics
+SO FUTURE GENERATION COMPUTER SYSTEMS-THE INTERNATIONAL JOURNAL OF ESCIENCE
+LA English
+DT Article
+DE Story analytics; Affective relationship; Affective fluctuation;
+   Affective event detection; Story-based recommender system
+ID MOVIE; RECOMMENDATION; SEGMENTATION
+AB Consideration of the stories included in the narrative works is important for analyzing and providing narrative works (e.g., movies, novels, and comics) to users. In this study, we analyzed the stories in a narrative work with three goals: (i) eliciting, (ii) modeling, and (iii) utilizing the stories. Based upon our previous studies regarding 'character networks' (i.e., social networks among characters in the stories), we elicited the stories with three methods: (i) composing affective character networks with affective relationships among the characters, (ii) measuring temporal changes in tension according to the flows of the stories, and (iii) detecting affective events which refer to dramatic changes in the tension. The affective relationships contain emotional changes of the characters on each segment of the stories. By aggregating the characters' emotional changes, we measured the tension of each segment. We called it 'Affective Fluctuation' and represented it as a discrete function (Affective Fluctuation Function, AFF). The AFFs enable us to detect affective events by using gradients of them and measure similarities among the stories by comparing their shapes. Also, we proposed a computational model of the stories by annotating the affective events and characters involved in those events. Finally, we demonstrated a practical application with a recommendation method which exploited the similarities between stories. Additionally, we verified the reliabilities and efficiencies of the proposed method for narrative works in the real world. (C) 2018 Elsevier B.V. All rights reserved.
+C1 [Lee, O-Joun; Jung, Jason J.] Chung Ang Univ, Dept Comp Engn, Seoul 156756, South Korea.
+RP Jung, JJ (reprint author), Chung Ang Univ, Dept Comp Engn, Seoul 156756, South Korea.
+EM concerto34@cau.ac.kr; j3ung@cau.ac.kr
+RI Jung, Jason J./B-9622-2012
+OI Jung, Jason J./0000-0003-0050-7445; Lee, O-Joun/0000-0001-8921-5443
+FU National Research Foundation of Korea (NRF) - Korea government (MSIP)
+   [NRF-2017R1A2B4010774]
+FX This work was supported by the National Research Foundation of Korea
+   (NRF) grant funded by the Korea government (MSIP)
+   (NRF-2017R1A2B4010774).
+CR Adams B, 2003, IEEE MULTIMEDIA, V10, P18, DOI 10.1109/MMUL.2003.1195158
+   Ahn S, 2009, LECT NOTES COMPUT SC, V5660, P119
+   Ahn S, 2008, PROCEEDINGS OF THE 2008 INTERNATIONAL CONFERENCE ON CYBERWORLDS, P431, DOI 10.1109/CW.2008.13
+   Benini S, 2011, IEEE T MULTIMEDIA, V13, P1356, DOI 10.1109/TMM.2011.2163058
+   Brisson A., 2007, P 2007 AAAI FALL S N, P9
+   Canini L, 2013, IEEE T CIRC SYST VID, V23, P636, DOI 10.1109/TCSVT.2012.2211935
+   Chasanis Vasileios, 2009, P ACM INT C IM VID R, DOI 10.1145/1646396.1646439
+   Chenes C., 2012, SOCIAL MEDIA RETRIEV, P217, DOI [10.1007/978-1-4471-4555-4_, DOI 10.1007/978-1-4471-4555-4_]
+   Cipresso P, 2016, FRONT PSYCHOL, V7, DOI 10.3389/fpsyg.2016.01753
+   Dieu T. Q., 2016, P 7 EAI INT C BIG DA, P48
+   Fortunato S, 2010, PHYS REP, V486, P75, DOI 10.1016/j.physrep.2009.11.002
+   FREEMAN LC, 1979, SOC NETWORKS, V1, P215, DOI 10.1016/0378-8733(78)90021-7
+   Gasca M, 2000, ADV COMPUT MATH, V12, P377, DOI 10.1023/A:1018981505752
+   Gervas P., 2006, P SAT WORKSH COMP MO, P44
+   Gervas P., 2013, ACT 1 S ESP ENTR DIG, P25
+   Gervas P, 2009, AI MAG, V30, P49, DOI 10.1609/aimag.v30i3.2250
+   Girvan M, 2002, P NATL ACAD SCI USA, V99, P7821, DOI 10.1073/pnas.122653799
+   Gomez-Uribe C. A., 2015, ACM T MANAG INF SYST, V6, P1, DOI DOI 10.1145/2843948
+   Halkidi M, 2002, SIGMOD REC, V31, P19
+   Halkidi M, 2002, SIGMOD RECORD, V31, P40
+   Hanjalic A, 1999, IEEE T CIRC SYST VID, V9, P580, DOI 10.1109/76.767124
+   Huang YB, 2009, 2009 ISECS INTERNATIONAL COLLOQUIUM ON COMPUTING, COMMUNICATION, CONTROL, AND MANAGEMENT, VOL IV, P54, DOI 10.1109/CCCM.2009.5267821
+   Ji-chen Yang, 2013, Journal of Multimedia, V8, P113, DOI 10.4304/jmm.8.2.113-120
+   Jung JE, 2017, MULTIMED TOOLS APPL, V76, P10371, DOI 10.1007/s11042-016-3626-5
+   Jung JJ, 2013, MULTIMED TOOLS APPL, V65, P29, DOI 10.1007/s11042-012-1133-x
+   Kierkels JJM, 2009, IEEE INT CON MULTI, P1436, DOI 10.1109/ICME.2009.5202772
+   Li Y, 2006, IEEE SIGNAL PROC MAG, V23, P79
+   Liang C, 2009, LECT NOTES COMPUT SC, V5879, P917, DOI 10.1007/978-3-642-10467-1_82
+   MILLER GA, 1995, COMMUN ACM, V38, P39, DOI 10.1145/219717.219748
+   Nack F., 2001, IEEE Multimedia, V8, P10, DOI 10.1109/93.959093
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.026113
+   Papadopoulos S, 2012, DATA MIN KNOWL DISC, V24, P515, DOI 10.1007/s10618-011-0224-z
+   Park SB, 2012, MULTIMED TOOLS APPL, V59, P601, DOI 10.1007/s11042-011-0725-1
+   Pilaszy I., 2009, P 3 ACM C REC SYST, P93, DOI [10.1145/1639714.1639731, DOI 10.1145/1639714.1639731]
+   Tran QD, 2017, MULTIMED TOOLS APPL, V76, P10357, DOI 10.1007/s11042-016-3633-6
+   Tran QD, 2017, J INTELL FUZZY SYST, V32, P1229, DOI 10.3233/JIFS-169122
+   Tran QD, 2015, LECT NOTES ARTIF INT, V9329, P390, DOI 10.1007/978-3-319-24069-5_37
+   Sang J., 2011, P 2011 IEEE INT C MU, P101, DOI [10.1109/icme.2011.6011837, DOI 10.1109/ICME.2011.6011837]
+   Sang J, 2010, P 18 ACM INT C MULT, P855, DOI DOI 10.1145/1873951.1874096
+   Sang JT, 2012, IEEE T MULTIMEDIA, V14, P586, DOI 10.1109/TMM.2012.2188784
+   Schafer J. B., 2007, The Adaptive Web. Methods and Strategies of Web Personalization, P291
+   Soares M, 2015, MULTIMED TOOLS APPL, V74, P7015, DOI 10.1007/s11042-014-1950-1
+   Soleymani M, 2008, IEEE INT SYM MULTIM, P228, DOI 10.1109/ISM.2008.14
+   Le TN, 2015, 2015 13TH IAPR INTERNATIONAL CONFERENCE ON DOCUMENT ANALYSIS AND RECOGNITION (ICDAR), P761, DOI 10.1109/ICDAR.2015.7333864
+   Tran QD, 2015, J UNIVERS COMPUT SCI, V21, P796
+   Tzelepis C, 2016, IMAGE VISION COMPUT, V53, P3, DOI 10.1016/j.imavis.2016.05.005
+   Wang SF, 2015, IEEE T AFFECT COMPUT, V6, P410, DOI 10.1109/TAFFC.2015.2432791
+   Wei SY, 2012, 2012 FIFTH INTERNATIONAL CONFERENCE ON BUSINESS INTELLIGENCE AND FINANCIAL ENGINEERING (BIFE), P69, DOI 10.1109/BIFE.2012.23
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Xu M, 2013, SIGNAL PROCESS, V93, P2140, DOI 10.1016/j.sigpro.2012.06.026
+   Yu J, 2012, IEEE T SYST MAN CY B, V42, P1413, DOI 10.1109/TSMCB.2012.2192108
+   Zhang YF, 2009, IEEE T MULTIMEDIA, V11, P1276, DOI 10.1109/TMM.2009.2030629
+NR 52
+TC 2
+Z9 2
+U1 9
+U2 9
+PU ELSEVIER SCIENCE BV
+PI AMSTERDAM
+PA PO BOX 211, 1000 AE AMSTERDAM, NETHERLANDS
+SN 0167-739X
+EI 1872-7115
+J9 FUTURE GENER COMP SY
+JI Futur. Gener. Comp. Syst.
+PD MAR
+PY 2019
+VL 92
+BP 458
+EP 478
+DI 10.1016/j.future.2018.01.030
+PG 21
+WC Computer Science, Theory & Methods
+SC Computer Science
+GA HF6TG
+UT WOS:000454370600041
+DA 2019-03-22
+ER
+
+PT J
+AU Muhuri, S
+   Chakraborty, S
+   Chakraborty, SN
+AF Muhuri, Samya
+   Chakraborty, Susanta
+   Chakraborty, Sabitri Nanda
+TI Extracting Social Network and Character Categorization From Bengali
+   Literature
+SO IEEE TRANSACTIONS ON COMPUTATIONAL SOCIAL SYSTEMS
+LA English
+DT Article
+DE Character categorization; community detection; edge contribution factor;
+   game theory; literature network analysis
+ID CENTRALITY; FRAMEWORK
+AB Literature network analysis is an emerging area in the computational research domain. Literature network is a type of social network with various distinct features. The analysis explores significance of human behavior and complex social relationships. The story consists of some characters and creates an interconnected social system. Each character of the literature represents a node and the edge between any two nodes offered the interaction between them. An annotation and a novel character categorization method are developed to extract interactive social network from the Bengali drama. We analyze Raktakarabi and Muktodhara, two renowned Bengali dramas of Rabindranath Tagore. Weighted degree, closeness, and betweenness centrality analyze the correlation among the characters. We propose an edge contribution-based centrality and diversity metric of a node to determine the influence of one character over others. High diverse nodes show low clustering coefficient and vice versa. We propose a novel idea to analyze the characteristics of protagonist and antagonist from the influential nodes based on the complex graph. We also present a game theory-based community detection method that clusters the actors with a high degree of relationship. Evaluation on real-world networks demonstrates the superiority of the proposed method over the other existing algorithms. Interrelationship of the actors within the drama is also shown from the detected communities, as underlying theme of the narrations is identical. The analytical results show that our method efficiently finds the protagonist and antagonist from the literature network. The method is unique, and the analytical results are more accurate and unbiased than the human perspective. Our approach establishes similar results compared with the benchmark analysis available in Tagore's Bengali literature.
+C1 [Muhuri, Samya; Chakraborty, Susanta] Indian Inst Engn Sci & Technol, Dept Comp Sci & Technol, Howrah 711103, India.
+   [Chakraborty, Sabitri Nanda] Univ Kalyani, Dept Bengali, Kalyani 741235, W Bengal, India.
+RP Chakraborty, S (reprint author), Indian Inst Engn Sci & Technol, Dept Comp Sci & Technol, Howrah 711103, India.
+EM samyamuhuri.rs2015@cs.iiests.ac.in; sc@cs.iiests.ac.in;
+   snchak.2013@gmail.com
+OI MUHURI, SAMYA/0000-0003-3426-3741
+CR Agarwal Apoorv, 2012, WORKSH COMP LING LIT, P88
+   Ahsan M., 2015, P 2015 INT C COGN CO, P1
+   Atzmueller M, 2016, PROCEEDINGS OF THE 2016 IEEE/ACM INTERNATIONAL CONFERENCE ON ADVANCES IN SOCIAL NETWORKS ANALYSIS AND MINING ASONAM 2016, P613, DOI 10.1109/ASONAM.2016.7752299
+   Basaras P, 2013, COMPUTER, V46, P24, DOI 10.1109/MC.2013.75
+   Behera RK, 2016, 2016 INTERNATIONAL CONFERENCE ON INTERNET OF THINGS AND APPLICATIONS (IOTA), P162, DOI 10.1109/IOTA.2016.7562715
+   Bishi P. N., 1958, RN PRABAHA
+   Boldi P., 2013, AXIOMS CENTRALITY
+   Brin S, 1998, COMPUT NETWORKS ISDN, V30, P107, DOI 10.1016/S0169-7552(98)00110-X
+   Celikyilmaz A., 2010, P NAACL HLT 2010 WOR, P1
+   Chaturvedi Snigdha, 2017, P 31 AAAI C ART INT, P3159
+   Chen MM, 2014, IEEE TRANS COMPUT SO, V1, P46, DOI 10.1109/TCSS.2014.2307458
+   Chen W, 2010, DATA MIN KNOWL DISC, V21, P224, DOI 10.1007/s10618-010-0186-6
+   Chopade P, 2017, IEEE TRANS BIG DATA, V3, P276, DOI 10.1109/TBDATA.2016.2628725
+   Dasgupta S, 2016, 2016 INTERNATIONAL CONFERENCE ON ELECTRICAL, ELECTRONICS, AND OPTIMIZATION TECHNIQUES (ICEEOT), P2626, DOI 10.1109/ICEEOT.2016.7755168
+   De Meo P, 2015, IEEE T CYBERNETICS, V45, P205, DOI 10.1109/TCYB.2014.2323892
+   Elson DK, 2010, PROCEEDINGS OF THE TWENTY-FOURTH AAAI CONFERENCE ON ARTIFICIAL INTELLIGENCE (AAAI-10), P1013
+   Elson DK, 2010, ACL 2010: 48TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, P138
+   Estevez P. A., 2007, ORLANDO, P2397, DOI DOI 10.1109/IJCNN.2007.4371333
+   FREEMAN LC, 1979, SOC NETWORKS, V1, P215, DOI 10.1016/0378-8733(78)90021-7
+   Fu Y, 2015, MATH PROBL ENG, DOI 10.1155/2015/540186
+   Ghosh S., 1969, KALER MATRA R NATAK
+   Huang FL, 2017, IEEE T MULTIMEDIA, V19, P1881, DOI 10.1109/TMM.2017.2692650
+   Ilyas Muhammad U., 2011, 2011 IEEE INT C COMM, P1, DOI 10.1109/icc.2011.5963147
+   Kumaran P., 2016, P INT C COMP TECHN I, P1
+   Kydros D., 2015, P 5 EUR C MOD GREEK, V4, P681
+   Lahiri N. G., 2008, RED OLEANDERS R TAGO
+   Li A, 2015, BIOMED RES INT, DOI 10.1155/2015/671950
+   Limungkura T, 2016, INT CONF KNOWL SYS, P109, DOI 10.1109/KSE.2016.7758038
+   Lu Z., 2014, COMPUTATIONAL SOCIAL, V1, P1
+   Lu LY, 2011, PLOS ONE, V6, DOI 10.1371/journal.pone.0021202
+   Malliaros FD, 2016, SCI REP-UK, V6, DOI 10.1038/srep19307
+   Moretti F, 2011, NEW LEFT REV, P80
+   Morzy M, 2016, 2016 THIRD EUROPEAN NETWORK INTELLIGENCE CONFERENCE (ENIC 2016), P40, DOI [10.1109/ENIC.2016.014, 10.1109/ENIC.2016.13]
+   Muhuri S, 2016, PROCEEDINGS OF 2016 IEEE INTERNATIONAL SYMPOSIUM ON NANOELECTRONIC AND INFORMATION SYSTEMS (INIS), P155, DOI [10.1109/iNIS.2016.044, 10.1109/iNIS.2016.39]
+   Nalisnick ET, 2013, PROC INT CONF DOC, P758, DOI 10.1109/ICDAR.2013.155
+   Narayanam R, 2012, INT C PATT RECOG, P1072
+   Narayanam R, 2011, IEEE T AUTOM SCI ENG, V8, P130, DOI 10.1109/TASE.2010.2052042
+   NASH JF, 1950, P NATL ACAD SCI USA, V36, P48, DOI 10.1073/pnas.36.1.48
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.026113
+   Niazi MUB, 2016, 2016 12TH INTERNATIONAL CONFERENCE ON SIGNAL-IMAGE TECHNOLOGY & INTERNET-BASED SYSTEMS (SITIS), P365, DOI 10.1109/SITIS.2016.65
+   Opsahl T, 2010, SOC NETWORKS, V32, P245, DOI 10.1016/j.socnet.2010.03.006
+   Pang S, 2009, 2009 ISECS INTERNATIONAL COLLOQUIUM ON COMPUTING, COMMUNICATION, CONTROL, AND MANAGEMENT, VOL IV, P147, DOI 10.1109/CCCM.2009.5267742
+   Rochat Y., 2013, DIGITAL HUMANITIES
+   Sack G. A., 2013, P WORKSH COMP MOD NA, P183
+   Srivastava S., 2016, P AAAI, P2807
+   Tagore R. N., 1926, RABINDRA RACHANABALI, V8, P357
+   Tagore R. N., 1921, RABINDRA RACHANABALI, V7, P333
+   Tang XW, 2014, IEEE ACM T COMPUT BI, V11, P407, DOI 10.1109/TCBB.2013.2295318
+   van de Wijngaert L, 2014, QUAL QUANT, V48, P623, DOI 10.1007/s11135-012-9791-3
+   Viswanath B, 2009, 2ND ACM SIGCOMM WORKSHOP ON ONLINE SOCIAL NETWORKS (WOSN 09), P37
+   Wang  Yu, 2010, P 16 ACM SIGKDD INT, P1039, DOI [DOI 10.1145/1835804.1835935, 10.1145/1835804.1835935]
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+   Wetherell C, 1998, INT REV SOC HIST, V43, P125, DOI 10.1017/S0020859000115123
+   Whang JJ, 2016, IEEE T KNOWL DATA EN, V28, P1272, DOI 10.1109/TKDE.2016.2518687
+   Zeng W, 2014, INT C CLOUD COMP BIG, P144, DOI 10.1109/CCBD.2014.34
+NR 55
+TC 0
+Z9 0
+U1 0
+U2 0
+PU IEEE-INST ELECTRICAL ELECTRONICS ENGINEERS INC
+PI PISCATAWAY
+PA 445 HOES LANE, PISCATAWAY, NJ 08855-4141 USA
+SN 2329-924X
+J9 IEEE TRANS COMPUT SO
+JI IEEE Trans. Comput. Soc. Syst.
+PD JUN
+PY 2018
+VL 5
+IS 2
+BP 371
+EP 381
+DI 10.1109/TCSS.2018.2798699
+PG 11
+WC Computer Science, Cybernetics
+SC Computer Science
+GA GH4NP
+UT WOS:000433380700007
+DA 2019-03-22
+ER
+
+PT J
+AU Yose, J
+   Kenna, R
+   MacCarron, M
+   MacCarron, P
+AF Yose, Joseph
+   Kenna, Ralph
+   MacCarron, Mairin
+   MacCarron, Padraig
+TI Network analysis of the Viking Age in Ireland as portrayed in Cogadh
+   Gaedhel re Gallaibh
+SO ROYAL SOCIETY OPEN SCIENCE
+LA English
+DT Article
+DE character networks; assortativity; epic narratives; Vikings; Ireland;
+   complexity science
+ID COMPLEX NETWORKS; SOCIAL NETWORKS; BALANCE
+AB Cogadh Gaedhel re Gallaibh ('The War of the Gaedhil with the Gaill') is a medieval Irish text, telling how an army under the leadership of Brian Boru challenged Viking invaders and their allies in Ireland, culminating with the Battle of Clontarf in 1014. Brian's victory is widely remembered for breaking Viking power in Ireland, although much modern scholarship disputes traditional perceptions. Instead of an international conflict between Irish and Viking, interpretations based on revisionist scholarship consider it a domestic feud or civil war. Counter-revisionists challenge this view and a long-standing and lively debate continues. Here, we introduce quantitative measures to the discussions. We present statistical analyses of network data embedded in the text to position its sets of interactions on a spectrum from the domestic to the international. This delivers a picture that lies between antipodal traditional and revisionist extremes; hostilities recorded in the text are mostly between Irish and Viking-but internal conflict forms a significant proportion of the negative interactions too.
+C1 [Yose, Joseph; Kenna, Ralph] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+   [MacCarron, Mairin] Univ Sheffield, Dept Hist, Sheffield S3 7RA, S Yorkshire, England.
+   [MacCarron, Padraig] Univ Oxford, Dept Expt Psychol, Social & Evolutionary Neurosci Res Grp, Oxford OX1 3UD, England.
+RP Kenna, R (reprint author), Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+EM r.kenna@coventry.ac.uk
+OI MacCarron, Padraig/0000-0002-5163-9264; Kenna, Ralph/0000-0001-9990-4277
+FU Doctoral College for the Statistical Physics of Complex Systems; EU
+   Marie Curie IRSES Network [PIRSES-GA-2013-612707]; European Commission;
+   European Research Council [295663]
+FX J.Y. was supported by the Doctoral College for the Statistical Physics
+   of Complex Systems. J.Y. and R.K. were supported by the EU Marie Curie
+   IRSES Network PIRSES-GA-2013-612707 DIONICOS-Dynamics of and in Complex
+   Systems funded by the European Commission within the
+   FP7-PEOPLE-2013-IRSES Programme (2014-2018). P.M.C. was funded by a
+   European Research Council Advanced Investigator grant to Robin Dunbar
+   (grant no. 295663).
+CR Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Antal T, 2006, PHYSICA D, V224, P130, DOI 10.1016/j.physd.2006.09.028
+   Bianconi G, 2008, EPL-EUROPHYS LETT, V81, DOI 10.1209/0295-5075/81/28005
+   Birkett T, 2014, VIKINGS MUNSTER
+   Bugge A, 1905, CAITHREIM CHELLACHAI
+   Bugge S, 1908, NORSK SAGAFORTAELLIN
+   Byrne FJ, 1973, IRISH KINGS HIGH KIN
+   CARTWRIGHT D, 1956, PSYCHOL REV, V63, P277, DOI 10.1037/h0046049
+   Casey D, 2014, HIST IRELAND, V22, P28
+   Casey D., 2010, NORTH MUNSTER ANTIQU, V50, P29
+   Casey D, 2013, P ROY IRISH ACAD C, V113, P139, DOI 10.3318/PRIAC.2013.113.03
+   Clarke HB, 2015, BATTLE CLONTARF VIKI
+   Costa LD, 2011, ADV PHYS, V60, P329, DOI 10.1080/00018732.2011.572452
+   Downham C, 2007, VIKING KINGS OF BRITAIN AND IRELAND: THE DYNASTY OF IVARR TO A.D. 1014, P1
+   Downham C, 2012, PERITIA, V24-25, P141, DOI [10.1484/J.PERIT.5.102744, DOI 10.1484/J.PERIT.5.102744]
+   Downham C., 2005, HIST IRELAND, V13, P19
+   Downham C, 2012, TRAVERSING INNER SEA, P86
+   Downham C, 2014, HIST IRELAND, V22, P22
+   Downham C, 2012, HISTORY COMPASS, V10, P1, DOI 10.1111/j.1478-0542.2011.00820.x
+   Dubois TA, 2011, ORAL TRADITION, V26, P267, DOI [10.1353/ort.2011.0029, DOI 10.1353/ORT.2011.0029]
+   Duffy S, 2017, P CLONT 1014 2014 NA
+   Duffy S, 2014, IRISH TIMES
+   Duffy Sean, 2014, BRIAN BORU BATTLE CL
+   Etchingham C, 2015, IRISH LIT SUPPL, V34, P3
+   FLOWER Robin, 1947, THE IRISH TRADITION
+   FREEMAN LC, 1977, SOCIOMETRY, V40, P35, DOI 10.2307/3033543
+   Goedheer A. J., 1938, IRISH NORSE TRADITIO
+   Harrison S, 2014, TALK PART ROYAL IRIS
+   Heider F, 1946, J PSYCHOL, V21, P107, DOI 10.1080/00223980.1946.9917275
+   Holm Poul, 1994, PERITIA, V8, P151, DOI DOI 10.1484/J.PERI.3.209
+   Johnson S, 2010, PHYS REV LETT, V104, DOI 10.1103/PhysRevLett.104.108702
+   Kenna R, 2017, UNDERST COMPLEX SYST, P1, DOI 10.1007/978-3-319-39445-9
+   Kirwan M., 2014, VIKINGS MUNSTER, P4
+   Mac Carron P, 2013, EUR PHYS J B, V86, DOI 10.1140/epjb/e2013-40583-3
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   MacCarron P., 2014, THESIS
+   McCarthy Daniel P., 2008, IRISH ANN THEIR GENE
+   McGettigan Darren, 2013, BATTLE CLONTARF GOOD, V1014
+   McPherson M, 2001, ANNU REV SOCIOL, V27, P415, DOI 10.1146/annurev.soc.27.1.415
+   Meyer K., 1910, ERIU, V4, P68
+   Mhaonaigh Maire Ni, 1996, ERIU, V47, P101
+   Moretti F, 2011, NEW LEFT REV, P80
+   Newman  M., 2010, NETWORKS INTRO
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026126
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   Ni Mhaonaigh M., 2012, Z CELT PHILOL, V59, P143
+   Ni Mhaonaigh M, 2002, ERIU, V52, P1
+   Ni Mhaonaigh M, 1992, ERIU, V43, P135
+   Ni Mhaonaigh M., 2014, CLASSICAL LIT LEARNI, P140
+   Ni Mhaonaigh M, 1997, Z CELT PHILOL, V49, P615, DOI [10.1515/zcph.1997.49-50.1.615, DOI 10.1515/ZCPH.1997.49-50.1.615]
+   Ni Mhaonaigh M., 1998, IRELAND SCANDINAVIA, P381
+   Ni Mhaonaigh Maire, 1995, PERITIA, Vix, P354, DOI DOI 10.1484/J.PERI.3.255
+   Ni Urdail M., 2011, CATH CLUANA TARBH
+   Nic Ghiollamhaith A, 1981, CAMBRIDGE MEDIEVAL S, V2, P73
+   O Corrain D, 1998, IRELAND SCANDINAVIA, P421
+   O Corrain D, 1997, OXFORD ILLUSTRATED H, P105
+   O Corrain D., 1972, IRELAND NORMANS
+   O'Connor C, 1766, DISSERTATIONS HIST I
+   O'Halloran S., 1778, GEN HIST IRELAND EAR, VIII
+   Prado SD, 2016, ADV COMPLEX SYST, V19, DOI 10.1142/S0219525916500053
+   Rhody LM, 2011, METHOD MODEL RESPOND
+   Royal Irish Academy, HUM 1014 BATTL CLONT, V2014
+   Ryan J., 1940, IR HIST STUD, V2, P93
+   Ryan John, 1938, J ROY SOC ANTIQ IRE, V68, P1
+   SAYERS W, 1991, SCAND STUD, V63, P164
+   Smyth AP, 1974, SAGA BOOK, V19, P101
+   Thurneysen Rudolf, 1921, IRISCHE HELDEN KONIG, VII
+   Todd J. H, 1867, COGADH GAEDHEL RE GA
+   Trovati Marcello, 2014, 2014 25th International Workshop on Database and Expert Systems Applications (DEXA), P246, DOI 10.1109/DEXA.2014.58
+   Yose J, 2016, ADV COMPLEX SYST, V19, DOI 10.1142/S0219525916500089
+NR 72
+TC 1
+Z9 1
+U1 0
+U2 2
+PU ROYAL SOC
+PI LONDON
+PA 6-9 CARLTON HOUSE TERRACE, LONDON SW1Y 5AG, ENGLAND
+SN 2054-5703
+J9 ROY SOC OPEN SCI
+JI R. Soc. Open Sci.
+PD JAN
+PY 2018
+VL 5
+IS 1
+AR 171024
+DI 10.1098/rsos.171024
+PG 21
+WC Multidisciplinary Sciences
+SC Science & Technology - Other Topics
+GA FU3UL
+UT WOS:000423777300027
+PM 29410814
+OA DOAJ Gold, Green Published
+DA 2019-03-22
+ER
+
+PT J
+AU Masias, VH
+   Baldwin, P
+   Laengle, S
+   Vargas, A
+   Crespo, FA
+AF Hugo Masias, Victor
+   Baldwin, Paula
+   Laengle, Sigifredo
+   Vargas, Augusto
+   Crespo, Fernando A.
+TI Exploring the prominence of Romeo and Juliet's characters using weighted
+   centrality measures
+SO DIGITAL SCHOLARSHIP IN THE HUMANITIES
+LA English
+DT Article
+ID SOCIAL NETWORKS; TURN-TAKING; INDEX
+AB Why are Romeo and Juliet prominent characters in Shakespeare's play of the same name? Contrary to what common sense might suggest, the academic literature does not provide a unique answer to this question. Indeed, there is little agreement on who the main character is and which elements of a script contribute to establishing a character's leading role. The objective of this article is to explore and compare the prominence of characters in Romeo and Juliet by using social network analysis. To this end, we calculate the centralities of several characters in Romeo and Juliet using a method based on Social Network Analysis. Comparing the scores generated by this analysis, we found that Romeo's centrality is more stable than Juliet's while hers is lower and supported by the 'strength of the bonds' she develops with other characters. Thus, the comparison of different centrality rankings and clusters provides new knowledge about the plays of Shakespeare. We show that the 'strength' of the relationships affects the prominence of the characters. This finding opens new directions for analyzing Shakespeare's scripts and determining who the main character is using weighted centrality measures. Finally, we discuss some theoretical and practical implications of the method used in this study.
+C1 [Hugo Masias, Victor; Laengle, Sigifredo] Univ Chile, Dept Management Control & Informat Syst, Santiago, Chile.
+   [Baldwin, Paula] Univ Los Andes, Inst Literature, Bogota, Colombia.
+   [Vargas, Augusto] Univ Tecn Federico Santa Maria, Dept Diseno & Manufactura DIMA, Valparaiso, Chile.
+   [Crespo, Fernando A.] Univ Bernardo OHiggins, Ctr Desarrollo & Transferencia Tecnol CEDYTEC, Direcc Invest, Santiago, Chile.
+   [Crespo, Fernando A.] Fac Ingn & Adm, Santiago, Chile.
+RP Masias, VH (reprint author), Diagonal Paraguay 257,Torre 15,Oficina 2001, Santiago, Chile.
+EM vmasias@fen.uchile.cl
+OI Vargas Schuler, Augusto Antonio/0000-0001-6023-1706
+CR Arroyo S., 1987, ENGLISH COLL FRESHME
+   Baldwin Lind P., 2015, THESIS
+   Baldwin Thomas Whitfield, 1947, SHAKSPERES 5 ACT STR
+   Ballon R., 2004, BLUEPRINT SCREENWRIT
+   BAVELAS A, 1950, J ACOUST SOC AM, V22, P723
+   BEAUCHAMP MA, 1965, BEHAV SCI, V10, P161, DOI 10.1002/bs.3830100205
+   Bloom Harold, 1998, SHAKESPEARE INVENTIO
+   Boal Augusto, 2000, THEATER OPPRESSED
+   BONACICH P, 1972, J MATH SOCIOL, V2, P113, DOI 10.1080/0022250X.1972.9989806
+   BONACICH P, 1987, AM J SOCIOL, V92, P1170, DOI 10.1086/228631
+   Burt R., 1982, STRUCTURAL THEORY AC
+   Burt R. S., 1983, APPL NETWORK ANAL ME
+   Callaghan D., 2003, W SHAKESPEARE ROMEO
+   Carroll J, 2008, STYLE, V42, P103
+   Cartwright K., 2010, SHAKESPEAREAN TRAGED
+   CSERMELY P, 2006, WEAK LINKS STABILIZE
+   De Domenico M, 2013, PHYS REV X, V3, DOI 10.1103/PhysRevX.3.041022
+   Derrida Jacques, 1992, ACTS LIT, P414
+   DIESTEL R, 2005, GRAPH THEORY
+   Dillon Janette, 2007, CAMBRIDGE INTRO SHAK
+   Dobson Michael, 2001, OXFORD COMPANION SHA
+   Draughon W. E., 2003, ADV WRITING FICTION
+   DUNBAR RIM, 1995, HUM NATURE-INT BIOS, V6, P273, DOI 10.1007/BF02734142
+   Elson DK, 2010, ACL 2010: 48TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, P138
+   Erne L., 2011, NEW CAMBRIDGE SHAKES
+   Erne L, 2013, SHAKESPEARE AND THE BOOK TRADE, P90
+   Fansler H. E., 1914, EVOLUTION TECHNIC EL
+   Freehof S. B., 1972, SPOKEN HEARD SERMONS
+   FREEMAN LC, 1977, SOCIOMETRY, V40, P35, DOI 10.2307/3033543
+   Gallaway M., 1950, CONSTRUCTING A PLAY
+   Gibbons B., 1980, ARDEN EDITION WORKS
+   Gil Harris Jonathan, 2010, SHAKESPEARE LIT THEO
+   Gleed P., 2009, BLOOMS WRITE W SHAKE
+   GOLDSTEIN M, 1996, ENGL STUD, V77, P227, DOI 10.1080/00138389608599024
+   GRANOVETTER MS, 1973, AM J SOCIOL, V78, P1360, DOI 10.1086/225469
+   Greg W. W., 1928, REV ENGL STUD, V4, P152
+   Hassan A., 2012, WORKSH P TEXTGRAPHS, P6
+   Hawes T, 2009, J AM SOC INF SCI TEC, V60, P1607, DOI 10.1002/asi.21087
+   Hazen W., 2004, RENAISSANCE EVERYDAY
+   Holland P., 2001, LECT MEMOIRS BRIT AC, V111, P127
+   Hunter G. K., 1976, ENGLISH RENAISSANCE, P15
+   Jewkes W. T., 1958, ACT DIVISION ELIZABE
+   Jones Emrys, 1985, SCENIC FORM SHAKESPE
+   Kivela M, 2014, J COMPLEX NETW, V2, P203, DOI 10.1093/comnet/cnu016
+   Kleinberg JM, 1999, J ACM, V46, P604, DOI 10.1145/324133.324140
+   Knoke D., 1982, NETWORK ANAL
+   Koch S., 2009, MODERN LIB WRITERS W
+   Koschutzki D., 2005, NETWORK ANAL, DOI [10.1007/978-3-540-31955-9_3, DOI 10.1007/978-3-540-31955-9_3]
+   Kristeva Julia, 1987, TALES LOVE, P209
+   Kudo H, 2001, ANIM BEHAV, V62, P711, DOI 10.1006/anbe.2001.1808
+   Laguna M., 2013, ENCY OPERATIONS RES, P695
+   Leggatt Alexander, 2005, SHAKESPEARES TRAGEDI
+   Lethbridge S., 2003, BASICS ENGLISH STUDI
+   Levenson J. L., 1987, ROMEO JULIET
+   Marin Alexandra, 2011, SAGE HDB SOCIAL NETW, P11
+   Masias V. H., 2015, TECHNOLOGY SOC MAGAZ, V34, P17
+   Matthews P, 2005, J CULTURAL EVOLUTION, V3, P75
+   Michael Dobson S. W., 2001, OXFORD COMPANION SHA
+   Moon IC, 2006, SIMUL-T SOC MOD SIM, V82, P703, DOI 10.1177/0037549706073689
+   Moreno J. L., 1934, WHO SHALL SURVIVE NE
+   Mutton P, 2004, IEEE INFOR VIS, P35, DOI 10.1109/IV.2004.1320122
+   Nalisnick ET, 2013, PROC INT CONF DOC, P758, DOI 10.1109/ICDAR.2013.155
+   OCONNELL DC, 1990, J PSYCHOLINGUIST RES, V19, P345, DOI 10.1007/BF01068884
+   Opsahl T, 2010, SOC NETWORKS, V32, P245, DOI 10.1016/j.socnet.2010.03.006
+   Park G.-M., 2013, INT J MACHINE LEARNI, V3, P111
+   Parker Patricia, 1987, LIT FAT LADIES RHETO
+   Partridge E., 1971, CRITICAL MEDLEY ESSA
+   Pham DT, 2005, P I MECH ENG C-J MEC, V219, P103, DOI 10.1243/095440605X8298
+   Raya M., 1994, SOCIAL NETWORK ANAL
+   Reynolds B, 2005, J EARLY MOD CULT STU, V5, P37, DOI 10.1353/jem.2005.0016
+   Rochat Y., 2014, THESIS
+   Rogers E. M, 1981, COMMUNICATION NETWOR
+   Rydberg-Cox Jeff, 2011, J CHICAGO C DIGITAL, V1, P1
+   SABIDUSSI G, 1966, PSYCHOMETRIKA, V31, P581, DOI 10.1007/BF02289527
+   Scott J., 1991, NETWORK ANAL HDB
+   Shakespeare W., 1709, WORKS W SHAKESPEARE, V6
+   Shakespeare William, 2003, ROMEO JULIET
+   Shmoop University I., 2010, ROM JUL SHMOOP LIT G
+   Stiller J, 2003, HUM NATURE-INT BIOS, V14, P397, DOI 10.1007/s12110-003-1013-1
+   Stiller J., 2005, J CULTURAL EVOLUTION, V3, P57
+   Taylor G., 1993, SHAKESPEARE RESHAPED, P1606
+   Tsai CM, 2013, IEEE T CIRC SYST VID, V23, P1927, DOI 10.1109/TCSVT.2013.2269186
+   Vives J. L., 1991, INSTRUCCION MUJER CR
+   Voloshinov A. V., 2008, INT ASS EMP AESTH 20, P19
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Wilson J. D., 1927, REV ENGL STUD, V3, P385
+   Woelfel J., 1993, PROGR COMMUNICATION, V12
+   Wu XD, 2008, KNOWL INF SYST, V14, P1, DOI 10.1007/s10115-007-0114-2
+   Xenophon, 1994, OEC SOC HIST COMM
+NR 89
+TC 1
+Z9 1
+U1 1
+U2 2
+PU OXFORD UNIV PRESS
+PI OXFORD
+PA GREAT CLARENDON ST, OXFORD OX2 6DP, ENGLAND
+SN 2055-7671
+EI 2055-768X
+J9 DIGIT SCHOLARSH HUM
+JI Digit. Scholarsh. Humanit.
+PD DEC
+PY 2017
+VL 32
+IS 4
+BP 837
+EP 858
+DI 10.1093/llc/fqw029
+PG 22
+WC Humanities, Multidisciplinary; Linguistics
+SC Arts & Humanities - Other Topics; Linguistics
+GA FP8QC
+UT WOS:000417909900010
+DA 2019-03-22
+ER
+
+PT J
+AU Tran, QD
+   Hwang, D
+   Lee, OJ
+   Jung, JE
+AF Quang Dieu Tran
+   Hwang, Dosam
+   Lee, O-Joun
+   Jung, Jai E.
+TI Exploiting character networks for movie summarization
+SO MULTIMEDIA TOOLS AND APPLICATIONS
+LA English
+DT Article
+DE Movie summarization; Movie analysis; Social network analysis; Video
+   summarization; Movie character analysis
+ID SOCIAL NETWORKS; FRAMEWORK; EXTRACTION; MODEL
+AB Movie summarization focuses on providing as much information as possible for shorter movie clips while still keeping the content of the original movie and presenting a faster way for the audience to understand the movie. In this paper, we propose a novel method to summarize a movie based on character network analysis and the appearance of protagonist and main characters in the movie. Experiments were carried out for 2 movies (Titanic (1997) and Frozen (2013)) to show that our method outperforms conventional approaches in terms of the movie summarization rate.
+C1 [Quang Dieu Tran; Hwang, Dosam] Yeungnam Univ, Dept Comp Engn, Gyongsan 712749, South Korea.
+   [Lee, O-Joun; Jung, Jai E.] Chung Ang Univ, Dept Comp Engn, Seoul 156756, South Korea.
+RP Jung, JE (reprint author), Chung Ang Univ, Dept Comp Engn, Seoul 156756, South Korea.
+EM j3ung@cau.ac.kr
+RI Lee, O-Joun/A-3607-2015; Jung, Jason J./B-9622-2012
+OI Lee, O-Joun/0000-0001-8921-5443; Jung, Jason J./0000-0003-0050-7445
+FU National Research Foundation of Korea (NRF) grant - Korea government
+   (MSIP) [NRF-2014R1A2A2A05007154]
+FX This work was supported by the National Research Foundation of Korea
+   (NRF) grant funded by the Korea government (MSIP)
+   (NRF-2014R1A2A2A05007154).
+CR Bello-Orgaz G, 2016, INFORM FUSION, V28, P45, DOI 10.1016/j.inffus.2015.08.005
+   Bordwell D, 2006, WAY HOLLYWOOD TELLS IT: STORY AND STYLE IN MODERN MOVIES, P1
+   Chen BW, 2009, IEEE T MULTIMEDIA, V11, P295, DOI 10.1109/TMM.2008.2009703
+   Cheng KY, 2009, CHI2009: PROCEEDINGS OF THE 27TH ANNUAL CHI CONFERENCE ON HUMAN FACTORS IN COMPUTING SYSTEMS, VOLS 1-4, P789
+   Del Fabro M, 2013, MULTIMEDIA SYST, V19, P427, DOI 10.1007/s00530-013-0306-4
+   Frey BJ, 2007, SCIENCE, V315, P972, DOI 10.1126/science.1136800
+   Furini M., 2006, IEEE CONS COMM NETW
+   Gianluigi C, 2006, J REAL-TIME IMAGE PR, V1, P69, DOI 10.1007/s11554-006-0001-1
+   Hong M, 2016, CYBERNET SYST, V47, P88, DOI 10.1080/01969722.2016.1128771
+   Jung JJ, 2015, MOBILE NETW APPL, V20, P533, DOI 10.1007/s11036-014-0555-2
+   Jung JJ, 2013, MULTIMED TOOLS APPL, V65, P29, DOI 10.1007/s11042-012-1133-x
+   Jung JJ, 2012, EXPERT SYST APPL, V39, P4049, DOI 10.1016/j.eswa.2011.09.096
+   Lienhart R, 1997, COMMUN ACM, V40, P54, DOI 10.1145/265563.265572
+   Ma YF, 2005, IEEE T MULTIMEDIA, V7, P907, DOI 10.1109/TMM.2005.854410
+   MONACO JAMES, 1981, READ FILM ART TECHNO
+   Money AG, 2008, J VIS COMMUN IMAGE R, V19, P121, DOI 10.1016/j.jvcir.2007.04.002
+   Ngo CW, 2005, IEEE T CIRC SYST VID, V15, P296, DOI 10.1109/TCSVT.2004.841694
+   Park SB, 2012, MULTIMED TOOLS APPL, V59, P601, DOI 10.1007/s11042-011-0725-1
+   Peng WT, 2011, IEEE T MULTIMEDIA, V13, P539, DOI 10.1109/TMM.2011.2131638
+   Phillips MA, 1996, SCREENPLAY SYSTEMS
+   Qu W., 2015, COMPUT VIS MEDIA, V1, P129
+   Salamin H, 2009, IEEE T MULTIMEDIA, V11, P1373, DOI 10.1109/TMM.2009.2030740
+   Sang J., 2010, P ACM INT C MULT, P855
+   Sharff Stefan, 1982, ELEMENTS CINEMA THEO
+   Tran QD, 2015, J UNIVERS COMPUT SCI, V21, P796
+   Tsai CM, 2013, IEEE T CIRC SYST VID, V23, P1927, DOI 10.1109/TCSVT.2013.2269186
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Zhai Y, 2006, IEEE T MULTIMEDIA, V8, P686, DOI 10.1109/TMM.2006.876299
+   Zhu XQ, 2004, MULTIMEDIA SYST, V10, P98, DOI 10.1007/s00530-004-0142-7
+NR 29
+TC 7
+Z9 7
+U1 0
+U2 2
+PU SPRINGER
+PI DORDRECHT
+PA VAN GODEWIJCKSTRAAT 30, 3311 GZ DORDRECHT, NETHERLANDS
+SN 1380-7501
+EI 1573-7721
+J9 MULTIMED TOOLS APPL
+JI Multimed. Tools Appl.
+PD APR
+PY 2017
+VL 76
+IS 8
+BP 10357
+EP 10369
+DI 10.1007/s11042-016-3633-6
+PG 13
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Computer Science, Theory & Methods; Engineering, Electrical
+   & Electronic
+SC Computer Science; Engineering
+GA ET8SE
+UT WOS:000400570400003
+DA 2019-03-22
+ER
+
+PT J
+AU Rochat, Y
+   Triclot, M
+AF Rochat, Yannick
+   Triclot, Mathieu
+TI The networks of science fiction characters: intermediate reading samples
+SO RES FUTURAE-REVUE D ETUDES SUR LA SCIENCE-FICTION
+LA French
+DT Article
+AB This paper introduces a way of studying science fiction works using mathematical methods grounded in graph theory. Our approach combines close and distant reading in order to describe the structural roles of characters, as they appear in the network built from their co-occurrences in the text. This study includes three main results. The first consists in the introduction of "middle reading", a method combining close and distant reading to analyze character systems in works of fiction. It relies on network visualization together with mathematical concepts like centrality or cluster detection. The second result consists in a typology of the works composing the corpus, based on the structure of their character networks. The third result is a reading proposal based on character qualification as scientist, technician or politician. This approach adds a dimension to these characters networks, thus allowing a richer interpretation of characters systems.
+C1 [Rochat, Yannick] Univ Lausanne UNIL, Fac Lettres, Lausanne, Switzerland.
+   [Rochat, Yannick] UNIL GameLab, Lausanne, Switzerland.
+   [Triclot, Mathieu] Univ Technol Belfort Montbeliard, Philosophie, Belfort, France.
+RP Rochat, Y (reprint author), Univ Lausanne UNIL, Fac Lettres, Lausanne, Switzerland.; Rochat, Y (reprint author), UNIL GameLab, Lausanne, Switzerland.
+CR Alain Damasio, 2007, LA ZONE DU DEHORS
+   Alejandro Jodorowsky, 1992, CASTE META BARONS, V1
+   Alex Woloch, 2003, ONE VS MANY MINOR CH
+   Andrew Niccol, 1997, BIENVENUE A GATTACA
+   Andrew Niccol, 2011, TIME OUT
+   Arcadi Strougatski, 2013, PIQUE NIQUE BORD CHE
+   Aris Xanthos, 2016, DIG HUM C 2016 CRAC, P417
+   BONACICH P, 1987, AM J SOCIOL, V92, P1170, DOI 10.1086/228631
+   Bornet C., 2017, FRONTIERS DIGITAL HU, V4, DOI [10.3389/fdigh.2017.00006, DOI 10.3389/FDIGH.2017.00006]
+   Cassou-Nogues, 2010, MON ZOMBIE MOI PHILO
+   David Lynch, 1984, DUNE
+   de Rouvroy Saint-Simon Claude-Henri, 1819, LORGANISATEUR
+   Dmitri Glukhovsky, 2005, METRO 2033
+   Drew Karpyshyn, 2010, MASS EFFECT RETORSIO
+   Drew Karpyshyn, 2007, MASS EFFECT REVELATI
+   Drew Karpyshyn, 2008, MASS EFFECT ASCENSIO
+   Duncan Jones, 2009, MOON
+   Elson DK, 2010, ACL 2010: 48TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL LINGUISTICS, P138
+   Eugene Huzar, 1855, FIN MONDE SCI
+   Franco Moretti, 2005, GRAPHS MAPS TREES AB
+   Franco Moretti, 2011, NEW LEFT REV
+   FREEMAN LC, 1979, SOC NETWORKS, V1, P215, DOI 10.1016/0378-8733(78)90021-7
+   George Orwell, 1984, 1984
+   George Wells Herbert, 1896, ILE DOCTEUR MOREAU
+   Georges-Jean Arnaud, 1988, CO GLACES, V1
+   Greg Egan, 1994, CITE PERMUTANTS
+   Guillot Sebastien, 1965, DIEU VENU CENTAURE
+   Irene Langlet, 2006, LECT PEOTIQUE GENRE
+   Isaac Asimov, 1951, FONDATION
+   Isaac Asimov, 1953, 2 FONDATION
+   Isaac Asimov, 1952, FONDATION ET EMPIRE
+   Ishiro Honda, 1954, GODZILLA
+   Jockers Matthew L, 2013, MACROANALYSIS DIGITA
+   Jules Verne, 1875, LILE MYSTERIEUSE
+   Jules Verne, 1878, 500 MILLIONS BEGUM
+   Kaminski Jermain, 2012, MOVIEGALAXIES SOCIAL
+   Kass Morgan, 2013, LES 100
+   Katsuhiro Otomo, 1991, AKIRA LES CHASSEURS, V3
+   Katsuhiro Otomo, 1991, AKIRA CYCLE WARS, V2
+   Katsuhiro Otomo, 1990, AKIRA LAUTOROUTE, V1
+   Kindred Dick Philip, 1969, UBIK
+   Kindred Dick Philip, 1965, DR BLOODMONEY
+   Kindred Dick Philip, 1968, ANDROIDES REVENT ILS
+   Kitase Yoshinori, 1997, FINAL FANTASY, VVII
+   Koschutzki D, 2005, LECT NOTES COMPUT SC, V3418, P16
+   Krug Markus, 2016, DIGITAL HUMANITIES 2, P578
+   Kurt Wimmer, 2002, EQUILIBRIUM
+   Leo, 2000, MONDES ALDEBARAN CYC, V1
+   Liu C. X., 2014, 3 BODY PROBLEM
+   Louis Stevenson Robert, 1886, ETRANGE CAS DR JEKYL
+   Luc BOLTANSKI, 1991, JUSTIFICATION EC GRA
+   Mamoru Oshii, 1995, GHOST IN THE SHELL
+   Marc Steinberg, 2012, ANIMES MEDIA MIX FRA
+   Mary Shelley, 1818, FRANKENSTEIN PROMETH
+   Matt Groening, 1999, FUTURAMA
+   Maud Ehrmann, 2008, THESIS
+   Michel JB, 2011, SCIENCE, V331, P176, DOI 10.1126/science.1199644
+   Moretti F, 2013, NEW LEFT REV, P103
+   Motohiro Katsuyuki, 2012, PSYCHO PASS
+   Neil Burger, 2014, DIVERGENTE
+   Newman Mark E. J., 2010, NETWORKS INTRO
+   Orson Scott Card, 2000, LOMBRE DE LHEGEMON
+   Orson Scott Card, 1985, LA STRATEGIE ENDER
+   Pierre Merckle, 2011, SOCIOLOGIE RESEAUX S
+   Pierre Mounier, 2014, HUMANITES NUMERIQUES
+   Poul Anderson, 1960, CROISES COSMOS
+   Ray Bradbury, 1953, FAHRENHEIT 451
+   Ray Bradbury, 1950, CHRONIQUES MARTIENNE
+   Rene Barjavel, 1944, RAVAGE
+   Rice Burroughs Edgar, 1917, UNE PRINCESSE MARS
+   Richard Saint-Gelais, 1999, LITTERATURES
+   Ridley Scott, 2015, SEUL SUR MARS
+   Simon Brean, 2012, SCI FICTION FRANCE T
+   Stanley Kubrick, 1972, ORANGE MECANIQUE
+   Steven Spielberg, 2001, A I INTELLIGENCE ART
+   Steven Spielberg, 2002, MINORITY REPORT
+   Ted Underwood, 2016, HARVARD DATAVERSE, VV1, DOI [10.7910/DVN/XKQOQM, DOI 10.7910/DVN/XKQOQM]
+   Tommaso Venturini, 2016, DATAFIED SOC SOCIAL
+   Umberto Eco, SOCIOLOGIES
+   Vincent Buntinx, 2017, FRONTIERS DIGITAL HU, V4, DOI [10.3389/fdigh.2017.00002, DOI 10.3389/FDIGH.2017.00002]
+   William Gibson, 1984, NEUROMANCIEN
+   Yannick Rochat, 2014, THESIS
+   Yukito Kishiro, 1990, GUNNM, V1
+NR 83
+TC 0
+Z9 0
+U1 0
+U2 0
+PU UNIV LIMOGES
+PI LIMOGES
+PA 33 RUE FRANCOIS MITTERAND, LIMOGES, 87032, FRANCE
+SN 2264-6949
+J9 RES FUTURAE
+JI ReS Futurae
+PY 2017
+IS 10
+DI 10.4000/resf.1183
+PG 44
+WC Literature
+SC Literature
+GA FR9OV
+UT WOS:000419403900016
+OA DOAJ Gold
+DA 2019-03-22
+ER
+
+PT J
+AU Cipresso, P
+   Riva, G
+AF Cipresso, Pietro
+   Riva, Giuseppe
+TI Computational Psychometrics Meets Hollywood: The Complexity in Emotional
+   Storytelling
+SO FRONTIERS IN PSYCHOLOGY
+LA English
+DT Article
+DE modeling; computational psychometrics; communication; psychometrics;
+   storytelling; emotions; media psychology
+ID WEIGHTED NETWORKS; CONTEXT; DISAGREEMENT; EVOLUTION; MODEL
+AB Expressions of emotions are pervasive in media, especially in movies. In this article, we focus on the emotional relationships of movie characters in narrative thought and emotional storytelling. Several studies examine emotion elicitation through movies, but there is a gap in scientific literature and in the practice to quantitatively consider emotions among the characters of a movie story, which in turn provide the basis of spectator emotion elicitation. Some might argument that the ultimate purpose of a movie is to elicit emotions in the viewers: however, we are highlighting that the path to emotional stimulation entails emotions among the characters composing a narrative and manipulating to enable the effective elicitation of viewers' emotions. Here we provided and tested an effective quantitative method for analyzing these relationships in emotional networks, which allow for a clear understanding of the effects of story changes on movie perceptions and pleasantness.
+C1 [Cipresso, Pietro; Riva, Giuseppe] Ist Auxol Italiano, Appl Technol Neuropsychol Lab, Milan, Italy.
+   [Riva, Giuseppe] Catholic Univ Milan, Dept Psychol, Milan, Italy.
+RP Cipresso, P (reprint author), Ist Auxol Italiano, Appl Technol Neuropsychol Lab, Milan, Italy.
+EM p.cipresso@auxologico.it
+RI Cipresso, Pietro/G-4676-2011; Riva, Giuseppe/C-5917-2008
+OI Cipresso, Pietro/0000-0002-0662-7678; Riva, Giuseppe/0000-0003-3657-106X
+CR Aurier P, 2015, INT J ARTS MANAG, V17, P5
+   Aviezer H, 2008, PSYCHOL SCI, V19, P724, DOI 10.1111/j.1467-9280.2008.02148.x
+   Barrat A, 2004, P NATL ACAD SCI USA, V101, P3747, DOI 10.1073/pnas.0400087101
+   Bearman PS, 2000, POETICS, V27, P69, DOI 10.1016/S0304-422X(99)00022-4
+   Bourgeois-Bougrine S, 2014, PSYCHOL AESTHET CREA, V8, P384, DOI 10.1037/a0037839
+   Bryant J, 2009, COMMUN SER, pXI
+   Buck R, 2014, STUD EMO SO, P1, DOI 10.1017/CBO9781139049825
+   Chirico A, 2015, FRONT PSYCHOL, V6, DOI 10.3389/fpsyg.2015.00906
+   Cipresso P, 2015, FRONT PSYCHOL, V6, DOI 10.3389/fpsyg.2015.01725
+   Cipresso P, 2015, COMPUT MATH METHOD M, DOI 10.1155/2015/985032
+   Cipresso P, 2015, COMPUT MATH METHOD M, DOI 10.1155/2015/418683
+   Costa-Santos C, 2010, ANN EPIDEMIOL, V20, P555, DOI 10.1016/j.annepidem.2010.02.011
+   D'Astous A., 2002, INT J ARTS MANAG, V5, P24
+   DASTOUS A, 2005, INT J ARTS MANAG, V7, P32
+   Davidson RJ, 2000, PSYCHOL BULL, V126, P890, DOI 10.1037/0033-2909.126.6.890
+   Dixon-Gordon KL, 2015, PERS INDIV DIFFER, V86, P271, DOI 10.1016/j.paid.2015.06.011
+   Field S., 2007, SCREENPLAY FDN SCREE
+   Gabert-Quillen CA, 2015, BEHAV RES METHODS, V47, P773, DOI 10.3758/s13428-014-0500-0
+   Gallafent E., 2014, QUENTIN TARANTINO
+   Guha T., 2015, 2015 IEEE INT C AC S
+   Hauge M., 2011, WRITING SCREENPLAYS
+   Henriques T, 2013, BMC MED RES METHODOL, V13, DOI 10.1186/1471-2288-13-47
+   Ijsselsteijn W, 2003, EMERG COMMUNICAT, V5, P3
+   Jackson M. O, 2008, SOCIAL EC NETWORKS, V3
+   Ledoux J, 1986, NEUROBIOLOGY EMOTION
+   LeDoux J. E., 2014, PSYCHOL CONSTRUCTION
+   LeDoux J, 2012, EMOT REV, V4, P375, DOI 10.1177/1754073912445822
+   LeDoux JE, 2012, PROG BRAIN RES, V195, P431, DOI 10.1016/B978-0-444-53860-4.00021-0
+   Liu SX, 2013, IEEE T VIS COMPUT GR, V19, P2436, DOI 10.1109/TVCG.2013.196
+   Mason B. L., 2007, P 18 C HYP HYP MANCH
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.026113
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.026118
+   Oliver M. B., 2009, SAGE HDB MEDIA PROCE
+   Opsahl T, 2010, SOC NETWORKS, V32, P245, DOI 10.1016/j.socnet.2010.03.006
+   Padgett J. F., 2011, REDES, V21, P33
+   PADGETT JF, 1993, AM J SOCIOL, V98, P1259, DOI 10.1086/230190
+   PHILIPPOT P, 1993, COGNITION EMOTION, V7, P171, DOI 10.1080/02699939308409183
+   Plutchik R., 2013, THEORIES EMOTION, V1
+   Rainville P, 2006, INT J PSYCHOPHYSIOL, V61, P5, DOI 10.1016/j.ijpsycho.2005.10.024
+   Riva G, 2002, CYBERPSYCHOL BEHAV, V5, P581, DOI 10.1089/109493102321018222
+   Schmader T, 2015, PSYCHOL INQ, V26, P116, DOI 10.1080/1047840X.2015.962445
+   Shannon CE, 1997, M D COMPUT, V14, P306
+   Simons J, 2008, NEW REV FILM TELEV S, V6, P111, DOI 10.1080/17400300802098263
+   Tarnay L, 2016, New Rev Film Telev S, V14, P289, DOI 10.1080/17400309.2015.1101228
+   TRABASSO T, 1985, J MEM LANG, V24, P612, DOI 10.1016/0749-596X(85)90049-X
+   Uhrig MK, 2016, FRONT PSYCHOL, V7, DOI 10.3389/fpsyg.2016.00180
+   WANG F., 2010, J INTERACTIVE ADVERT, V11, P50, DOI DOI 10.1080/15252019.2010.10722177
+NR 47
+TC 2
+Z9 2
+U1 0
+U2 11
+PU FRONTIERS MEDIA SA
+PI LAUSANNE
+PA AVENUE DU TRIBUNAL FEDERAL 34, LAUSANNE, CH-1015, SWITZERLAND
+SN 1664-1078
+J9 FRONT PSYCHOL
+JI Front. Psychol.
+PD NOV 8
+PY 2016
+VL 7
+AR 1753
+DI 10.3389/fpsyg.2016.01753
+PG 7
+WC Psychology, Multidisciplinary
+SC Psychology
+GA EB6SG
+UT WOS:000387514400001
+PM 27877153
+OA DOAJ Gold, Green Published
+DA 2019-03-22
+ER
+
+PT J
+AU Falk, M
+AF Falk, Michael
+TI Making Connections: Network Analysis, the Bildungsroman and the World of
+   The Absentee
+SO JOURNAL OF LANGUAGE LITERATURE AND CULTURE
+LA English
+DT Article
+DE Character network analysis; Bildungsroman; Maria Edgeworth; The Absentee
+   (1812); digital humanities; long eighteenth century
+AB In the late eighteenth century, European novelists discovered youth. Writers like Goethe, Austen and Scott developed a new genre, the Bildungsroman, in which young, enthusiastic protagonists explore the world, develop themselves and find a place to remain. This, at least, has been a popular argument in modern criticism. Recently, however, Nancy Armstrong and Leonard Tennenhouse have brought it into question. Studying a number of British and American novels, they show that an alternative genre, the network novel', arose in the period, which disrupted' the image of an organic, domestic world that lay at the heart of the domestic novel' (their term for the classical Bildungsroman). Here, I propose that the network novel' and the domestic novel' can actually be seen as two distinct but interrelated aspects of the Bildungsroman. To demonstrate this, I use Maria Edgeworth's The Absentee (1812) as a case study, utilising Franco Moretti's innovative digital technique, character network analysis', to analyse its structure.
+C1 [Falk, Michael] Univ Kent, Canterbury, Kent, England.
+RP Falk, M (reprint author), Univ Kent, Canterbury, Kent, England.
+CR Alberich R., 2002, MARVEL UNIVERSE LOOK
+   Armstrong N, 2015, BLACKWELL COMPAN LIT, P306
+   Armstrong Nancy, 1990, DESIRE DOMESTIC FICT
+   Bakhtin M. M., 1986, SPEECH GENRES OTHER, P23
+   Bastian Mathieu, 2009, 3 INT AAAI C WEBL SO
+   Buckley Jerome Hamilton, 1974, SEASON YOUTH BILDUNG, P9
+   Butler Marilyn, 1987, J AUSTEN WAR IDEAS, P143
+   Butler Marilyn, 1972, M EDGEWORTH LIT BIOG, P488
+   Butler Marilyn, 2000, EC POLITY SOC BRIT I, P172
+   Csardi Gabor, 2013, IGRAPH PACKAGE NETWO
+   Dijkstra E. W., 1959, NUMER MATH, V1, P269, DOI DOI 10.1007/BF01386390
+   Edgeworth Maria, 1809, TALES FASHIONABLE LI, V5, P391
+   Edgeworth Maria, 1834, HELEN A TALE, V1, P277
+   Ellis Lorna, 1999, APPEARING DIMINISH F, P114
+   Elson David K., 2010, 48 ANN M ASS COMP LI
+   FREEMAN LC, 1977, SOCIOMETRY, V40, P35, DOI 10.2307/3033543
+   Frow John, 2014, CHARACTER AND PERSON, P17
+   Howe Susanne, 1930, W MEISTER HIS ENGLIS, P10
+   Jeffers TL, 2005, APPRENTICESHIPS: THE BILDUNGSROMAN FROM GOETHE TO SANTAYANA, P1, DOI 10.1057/9781403979155
+   Lee John, 2012, 26 AS PAC C LANG INF
+   Lukacs Georg, 1963, THEORY NOVEL HISTORI, P132
+   Margolin U, 2007, CAMBR COMPANION LIT, P66, DOI 10.1017/CCOL0521856965.005
+   Martini Fritz, 1988, GESCH DTSCH BILDUNGS, P260
+   Marx Karl, 1990, CAPITAL CRITIQUE POL, P163
+   Maxwell R, 2008, CAMBRIDGE COMPANION TO FICTION IN THE ROMANTIC PERIOD, P1
+   McCarty W, 2005, HUMANITIES COMPUTING, P1, DOI 10.1057/9780230504219
+   McCormack W. J., 1985, ASCENDANCY TRADITION, P135
+   Moretti F, 2013, NEW LEFT REV, P103
+   Moretti F, 2011, NEW LEFT REV, P80
+   Moretti Franco, 1987, WAY WORLD BILDUNGSRO, P4
+   Morgenstern Karl, 1988, GESCH DTSCH BILDUNGS, P86
+   Myers Mitzi, 1988, STUDIES LIT 1500 180, P67
+   Myers Mitzi, 1989, LION UNICORN, V13, P21
+   R Core Team, 2013, R LANG ENV STAT COMP
+   Ryan Kara M., 2006, NEW ESSAYS M EDGEWOR, P190
+   Selbmann Rolf, 1988, GESCH DTSCH BILDUNGS, P16
+   Smith Adam, 2009, THEORY MORAL SENTIME, P157
+   Stiller J, 2003, HUM NATURE-INT BIOS, V14, P397, DOI 10.1007/s12110-003-1013-1
+   Swales Martin, 1988, GESCH DTSCH BILDUNGS, P417
+   Tompkins J. M. S., 1961, POPULAR NOVEL ENGLAN, pv
+   Wassermann S, 1994, SOCIAL NETWORK ANAL, P169, DOI 10. 1017/CBO9780511815478. 006
+   Woloch A, 2003, ONE VS THE MANY: MINOR CHARACTERS AND THE SPACE OF THE PROTAGONIST IN THE NOVEL, P1
+NR 42
+TC 0
+Z9 0
+U1 2
+U2 4
+PU ROUTLEDGE JOURNALS, TAYLOR & FRANCIS LTD
+PI ABINGDON
+PA 2-4 PARK SQUARE, MILTON PARK, ABINGDON OX14 4RN, OXON, ENGLAND
+SN 2051-2856
+EI 2051-2864
+J9 J LANG LIT CULT
+JI J. Lang. Lit. Cult.
+PD AUG-DEC
+PY 2016
+VL 63
+IS 2-3
+BP 107
+EP 122
+DI 10.1080/20512856.2016.1244909
+PG 16
+WC Language & Linguistics; Literature
+SC Linguistics; Literature
+GA EC3NJ
+UT WOS:000388032600003
+DA 2019-03-22
+ER
+
+PT J
+AU Yose, J
+   Kenna, R
+   MacCarron, P
+   Platini, T
+   Tonra, J
+AF Yose, Joseph
+   Kenna, Ralph
+   MacCarron, Padraig
+   Platini, Thierry
+   Tonra, Justin
+TI A NETWORKS-SCIENCE INVESTIGATION INTO THE EPIC POEMS OF OSSIAN
+SO ADVANCES IN COMPLEX SYSTEMS
+LA English
+DT Article
+DE Networks; Ossian; James Macpherson; literature; digital humanities
+ID SMALL-WORLD NETWORKS; COMPLEX NETWORKS; DISTRIBUTIONS; LAW
+AB In 1760 James Macpherson published the first volume of a series of epic poems which he claimed to have translated into English from ancient Scottish-Gaelic sources. The poems, which purported to have been composed by a third-century bard named Ossian, quickly achieved wide international acclaim. They invited comparisons with major works of the epic tradition, including Homer's Iliad and Odyssey, and effected a profound influence on the emergent Romantic period in literature and the arts. However, the work also provoked one of the most famous literary controversies of all time, coloring the reception of the poetry to this day. The authenticity of the poems was questioned by some scholars, while others protested that they misappropriated material from Irish mythological sources. Recent years have seen a growing critical interest in Ossian, initiated by revisionist and counter-revisionist scholarship and by the two-hundred-and-fiftieth anniversary of the first collected edition of the poems in 1765. Here, we investigate Ossian from a networks-science point of view. We compare the connectivity structures underlying the societies described in the Ossianic narratives with those of ancient Greek and Irish sources. Despite attempts, from the outset, to position Ossian alongside the Homeric epics and to distance it from Irish sources, our results indicate significant network-structural differences between Macpherson's text and those of Homer. They also show a strong similarity between Ossianic networks and those of the narratives known as Acallam na Senorach (Colloquy of the Ancients) from the Fenian Cycle of Irish mythology.
+C1 [Yose, Joseph; Kenna, Ralph; Platini, Thierry] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+   [Yose, Joseph; Kenna, Ralph; Platini, Thierry] L4 Collaborat & Doctoral Coll Stat Phys Complex S, D-04009 Leipzig, Germany.
+   [MacCarron, Padraig] Univ Oxford, Dept Expt Psychol, Social & Evolutionary Neurosci Res Grp, Oxford OX1 3UD, England.
+   [Tonra, Justin] Natl Univ Ireland, Sch Humanities, Discipline English, Galway, Ireland.
+RP Yose, J (reprint author), Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.; Yose, J (reprint author), L4 Collaborat & Doctoral Coll Stat Phys Complex S, D-04009 Leipzig, Germany.
+EM yosej@uni.coventry.ac.uk
+OI Kenna, Ralph/0000-0001-9990-4277; MacCarron, Padraig/0000-0002-5163-9264
+FU EU [269139, 295302, 612707]; Doctoral College for the Statistical
+   Physics of Complex Systems, Leipzig-Lorraine-Lviv-Coventry,
+   Franco-German University; European Research Council [295663]
+FX We would like to thank Silvano Romano for encouraging us to carry out
+   this investigation. Thanks to Robin de Regt for help with gathering data
+   in the early part of this project. This work was supported by the EU FP7
+   Projects No. 269139, "Dynamics and Cooperative Phenomena in Complex
+   Physical and Biological Media," No. 295302, "Statistical Physics in
+   Diverse Realizations" and No. 612707, "Dynamics of and in Complex
+   Systems," and by the Doctoral College for the Statistical Physics of
+   Complex Systems, Leipzig-Lorraine-Lviv-Coventry, Franco-German
+   University. PMC is supported by a European Research Council (No. 295663)
+   Advanced Investigator grant to R.I.M. Dunbar.
+CR AKAIKE H, 1974, IEEE T AUTOMAT CONTR, VAC19, P716, DOI 10.1109/TAC.1974.1100705
+   Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Amaral LAN, 2000, P NATL ACAD SCI USA, V97, P11149, DOI 10.1073/pnas.200327197
+   [Anonymous], 1775, JOURNEY W ISLANDS SC
+   Bar G., 2012, OSSIAN NATL EPIC
+   Brooke Charlotte, 1816, RELIQUES IRISH POETR
+   Burnett A., 2011, BLIND OSSIANS FINGAL
+   Burnham K. P., 2002, MODEL SELECTION MULT
+   Clauset A, 2009, SIAM REV, V51, P661, DOI 10.1137/070710111
+   Conover W. J, 1980, PRACTICAL NONPARAMET
+   CONOVER WJ, 1972, J AM STAT ASSOC, V67, P591, DOI 10.2307/2284444
+   Curley TM, 2009, SAMUEL JOHNSON, THE OSSIAN FRAUD, AND THE CELTIC REVIVAL IN GREAT BRITAIN AND IRELAND, P1, DOI 10.1017/CBO9780511576461
+   Daniel W., 1990, APPL NONPARAMETRIC S
+   Dooley Ann, 1999, TALES ELDERS IRELAND
+   Evans Evan, 1764, SOME SPECIMENS POETR
+   Fielding Penny., 1996, WRITING ORALITY NATL
+   Fronczak A, 2004, PHYS REV E, V70, DOI 10.1103/PhysRevE.70.056110
+   Gaskill H., 2007, INTERFACES, V27, P13
+   Gaskill Howard, 1996, POEMS OSSIAN RELATED
+   Gaskill Howard, 2004, RECEPTION OSSIAN EUR
+   Gaskill Howard, 1991, OSSIAN REVISITED
+   Golden James L., 2002, T JEFFERSON RHETORIC
+   Gregory A, 1904, GODS FIGHTING MEN ST
+   Heider F, 1946, J PSYCHOL, V21, P107, DOI 10.1080/00223980.1946.9917275
+   Homer, 1980, ODYSSEY
+   Homer, 2003, ILIAD
+   Ipsen M, 2002, PHYS REV E, V66, DOI 10.1103/PhysRevE.66.046109
+   Johnson A. L., 2016, STUD 18 CENT CULT, V45, P19
+   Jurman G., ARXIV11090220
+   Kidd Colin, 1993, SUBVERTING SCOTLANDS
+   Lyons Claire E., 2007, J GALWAY ARCHAELOG H, V59, P46
+   Mac Carron P, 2013, EUR PHYS J B, V86, DOI 10.1140/epjb/e2013-40583-3
+   Mac Carron P, 2014, THESIS
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   Mackenzie Henry, 1805, REPORT COMMITTEE HIG
+   MACPHERSON J, 1760, FRAGMENTS ANCIENT PO
+   Macpherson J., 1773, POEMS OSSIAN TRANSLA
+   Macpherson James, 1763, TEMORA ANCIENT EPIC
+   Macpherson James, 1765, WORKS OSSIAN SON FIN
+   Macpherson James, 1762, FINGAL ANCIENT EPIC
+   McNeil Kenneth, 2007, SCOTLAND BRITAIN EMP
+   Meek Donald E, 1991, OSSIAN REVISITED, P19
+   Mitchell S., 2012, OSSIAN NATL EPIC
+   Mitchell S, 2016, J EIGHTEENTH-CENTURY, V39, P159, DOI 10.1111/1754-0208.12395
+   Moore D, 2000, EIGHTEENTH-CENT STUD, V34, P43, DOI 10.1353/ecs.2000.0062
+   Moore Dafydd, 2004, OSSIAN AND OSSIANISM
+   Mulholland James, 2009, ORAL TRADITION, V24, P393
+   Newman  M., 2010, NETWORKS INTRO
+   Newman MEJ, 2005, CONTEMP PHYS, V46, P323, DOI 10.1080/00107510500052444
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   O'Brien J., 1764, J SCAVANS, V8, P845
+   O'Connor C, 1766, DISSERTATIONS HIST I
+   O'Halloran S., 1763, DUBLIN MAGAZINE  JAN, P21
+   OHALLORAN C, 1989, PAST PRESENT, P69
+   Percey T., 1775, RELIQUES ANCIENT ENG
+   Quint D., 1993, EPIC EMPIRE POLITICS
+   Skene W. F., 1868, 4 ANCIENT BOOKS WALE
+   Stafford F., 1996, POEMS OSSIAN RELATED
+   Stafford Fiona I., 1991, OSSIAN REVISITED, P49
+   Thomson Derick S., 1952, GAELIC SOURCES MACPH
+   Warner F., 1762, REMARKS HIST FINGAL
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+   Webb D., 1762, FINGAL RECLAIMED
+   Womack Peter, 1989, IMPROVEMENT ROMANCE
+NR 66
+TC 4
+Z9 5
+U1 0
+U2 12
+PU WORLD SCIENTIFIC PUBL CO PTE LTD
+PI SINGAPORE
+PA 5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE
+SN 0219-5259
+EI 1793-6802
+J9 ADV COMPLEX SYST
+JI Adv. Complex Syst.
+PD JUN-AUG
+PY 2016
+VL 19
+IS 4-5
+AR 1650008
+DI 10.1142/S0219525916500089
+PG 24
+WC Mathematics, Interdisciplinary Applications; Multidisciplinary Sciences
+SC Mathematics; Science & Technology - Other Topics
+GA EI1AH
+UT WOS:000392206700001
+DA 2019-03-22
+ER
+
+PT J
+AU Amancio, DR
+AF Amancio, Diego Raphael
+TI Network analysis of named entity co-occurrences in written texts
+SO EPL
+LA English
+DT Article
+ID COMPLEX NETWORKS; HUMAN LANGUAGE
+AB The use of methods borrowed from statistics and physics to analyze written texts has allowed the discovery of unprecedent patterns of human behavior and cognition by establishing links between models features and language structure. While current models have been useful to unveil patterns via analysis of syntactical and semantical networks, only a few works have probed the relevance of investigating the structure arising from the relationship between relevant entities such as characters, locations and organizations. In this study, we represent entities appearing in the same context as a co-occurrence network, where links are established according to a null model based on random, shuffled texts. Computational simulations performed in novels revealed that the proposed model displays interesting topological features, such as the small world feature, characterized by high values of clustering coefficient. The effectiveness of our model was verified in a practical pattern recognition task in real networks. When compared with traditional word adjacency networks, our model displayed optimized results in identifying unknown references in texts. Because the proposed representation plays a complementary role in characterizing unstructured documents via topological analysis of named entities, we believe that it could be useful to improve the characterization of written texts (and related systems), specially if combined with traditional approaches based on statistical and deeper paradigms. Copyright (C) EPLA, 2016
+C1 [Amancio, Diego Raphael] Univ Sao Paulo, Inst Math & Comp Sci, Sao Paulo, Brazil.
+RP Amancio, DR (reprint author), Univ Sao Paulo, Inst Math & Comp Sci, Sao Paulo, Brazil.
+RI Inst Cien Matematicas Computacao, ICMC/USP/D-8320-2017; Amancio,
+   Diego/I-1071-2012
+FU FAPESP [14/20830-0]
+FX This work was supported by FAPESP (grant no. 14/20830-0). I thank
+   VANESSA QUEIROZ MARINHO and FILIPI NASCIMENTO SILVA for a careful
+   reading of the manuscript.
+CR Amancio DR, 2015, EPL-EUROPHYS LETT, V110, DOI 10.1209/0295-5075/110/68001
+   Amancio DR, 2013, PLOS ONE, V8, DOI 10.1371/journal.pone.0067310
+   Amancio DR, 2012, EPL-EUROPHYS LETT, V100, DOI 10.1209/0295-5075/100/58002
+   Amancio DR, 2012, EPL-EUROPHYS LETT, V98, DOI 10.1209/0295-5075/98/18002
+   Amancio DR, 2015, PLOS ONE, V10, DOI 10.1371/journal.pone.0136076
+   Amancio DR, 2014, PLOS ONE, V9, DOI 10.1371/journal.pone.0094137
+   Amancio DR, 2012, NEW J PHYS, V14, DOI 10.1088/1367-2630/14/4/043029
+   Amancio DR, 2012, J INFORMETR, V6, P427, DOI 10.1016/j.joi.2012.02.005
+   Baronchelli A, 2013, TRENDS COGN SCI, V17, P348, DOI 10.1016/j.tics.2013.04.010
+   BRILL E, 1994, PROCEEDINGS OF THE TWELFTH NATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE, VOLS 1 AND 2, P722
+   Cancho RFI, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.051915
+   Cancho RFI, 2003, P NATL ACAD SCI USA, V100, P788, DOI 10.1073/pnas.0335980100
+   Carron P. M., 2012, EPL-EUROPHYS LETT, V99, P28002, DOI [DOI 10.1209/0295-5075/99/28002, 10.1209/0295-5075/99/28002]
+   Clough JR, 2016, PHYSICA A, V448, P235, DOI 10.1016/j.physa.2015.12.053
+   Cong J, 2014, PHYS LIFE REV, V11, P598, DOI 10.1016/j.plrev.2014.04.004
+   Ebrahimpour M, 2013, PLOS ONE, V8, DOI 10.1371/journal.pone.0054998
+   Fortunato S, 2010, PHYS REP, V486, P75, DOI 10.1016/j.physrep.2009.11.002
+   Goncalyes WN, 2015, NEUROCOMPUTING, V153, P211, DOI 10.1016/j.neucom.2014.11.034
+   Liu HT, 2011, EPL-EUROPHYS LETT, V93, DOI 10.1209/0295-5075/93/28005
+   Manning C. D, 1999, FDN STAT NATURAL LAN
+   Masucci AP, 2006, PHYS REV E, V74, DOI 10.1103/PhysRevE.74.026102
+   Masucci AP, 2013, PLOS ONE, V8, DOI 10.1371/journal.pone.0069469
+   Mathiesen J, 2012, SCI REP-UK, V2, DOI 10.1038/srep00814
+   MILLER GA, 1995, COMMUN ACM, V38, P39, DOI 10.1145/219717.219748
+   Mitkov R., 2013, ANAPHORA RESOLUTION
+   Newman  M., 2010, NETWORKS INTRO
+   Newman MEJ, 2006, PHYS REV E, V74, DOI 10.1103/PhysRevE.74.036104
+   Ortuno M, 2002, EUROPHYS LETT, V57, P759, DOI 10.1209/epl/i2002-00528-3
+   Partee B. H., 1972, SEMANTICS NATURAL LA
+   Romo M., 2011, PHYS REV E, V84
+   Roxas RM, 2010, INT J MOD PHYS C, V21, P503, DOI 10.1142/S0129183110015257
+   Silva TC, 2012, EPL-EUROPHYS LETT, V98, DOI 10.1209/0295-5075/98/58001
+   Travencolo BAN, 2008, PHYS LETT A, V373, P89, DOI 10.1016/j.physleta.2008.10.069
+   Zheng JP, 2011, J BIOMED INFORM, V44, P1113, DOI [10.1016/j.jpi.2011.08.006, 10.1016/j.jbi.2011.08.006]
+NR 34
+TC 1
+Z9 1
+U1 1
+U2 13
+PU EPL ASSOCIATION, EUROPEAN PHYSICAL SOCIETY
+PI MULHOUSE
+PA 6 RUE DES FRERES LUMIERE, MULHOUSE, 68200, FRANCE
+SN 0295-5075
+EI 1286-4854
+J9 EPL-EUROPHYS LETT
+JI EPL
+PD JUN
+PY 2016
+VL 114
+IS 5
+AR 58005
+DI 10.1209/0295-5075/114/58005
+PG 6
+WC Physics, Multidisciplinary
+SC Physics
+GA DQ9JE
+UT WOS:000379525400033
+DA 2019-03-22
+ER
+
+PT J
+AU Prado, SD
+   Dahmen, SR
+   Bazzan, ALC
+   Mac Carron, P
+   Kenna, R
+AF Prado, Sandra D.
+   Dahmen, Silvio R.
+   Bazzan, Ana L. C.
+   Mac Carron, Padraig
+   Kenna, Ralph
+TI TEMPORAL NETWORK ANALYSIS OF LITERARY TEXTS
+SO ADVANCES IN COMPLEX SYSTEMS
+LA English
+DT Article
+DE Structure and dynamics of complex networks; graph theory; networks and
+   literature
+ID CENTRALITY
+AB We study temporal networks of characters in literature focussing on Alice's Adventures in Wonderland (1865) by Lewis Carroll and the anonymous La Chanson de Roland (around 1100). The former, one of the most influential pieces of nonsense literature ever written, describes the adventures of Alice in a fantasy world with logic plays interspersed along the narrative. The latter, a song of heroic deeds, depicts the Battle of Roncevaux in 778 A.D. during Charlemagne's campaign on the Iberian Peninsula. We apply methods recently developed by Taylor et al. [Taylor, D., Myers, S. A., Clauset, A., Porter, M. A. and Mucha, P. J., Eigenvector-based centrality measures for temporal networks, CoRR (2015).] to find time-averaged eigenvector centralities, Freeman indices and vitalities of characters. We show that temporal networks are more appropriate than static ones for studying stories, as they capture features that the time-independent approaches fail to yield.
+C1 [Prado, Sandra D.; Dahmen, Silvio R.] Univ Fed Rio Grande do Sul, Inst Fis, BR-91501970 Porto Alegre, RS, Brazil.
+   [Bazzan, Ana L. C.] Univ Fed Rio Grande do Sul, Inst Informat, BR-91501970 Porto Alegre, RS, Brazil.
+   [Mac Carron, Padraig] Univ Oxford, Dept Expt Psychol, S Parks Rd, Oxford OX1 3UD, England.
+   [Kenna, Ralph] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+RP Dahmen, SR (reprint author), Univ Fed Rio Grande do Sul, Inst Fis, BR-91501970 Porto Alegre, RS, Brazil.
+EM sandra.prado@ufrgs.br; silvio.dahmen@ufrgs.br; bazzan@inf.ufrgs.br;
+   padraig.maccarron@psy.ox.ac.uk; r.kenna@cov.ac.uk
+RI Dahmen, Silvio Renato/G-4644-2012
+OI Dahmen, Silvio Renato/0000-0002-5589-4721; Kenna,
+   Ralph/0000-0001-9990-4277; MacCarron, Padraig/0000-0002-5163-9264
+FU IRSES [PIRSES-GA-2011-295302]; European Research Council Advanced grant
+FX A.L.C.B, S.R.D. and S.D.P. were supported by IRSES Grant Project
+   PIRSES-GA-2011-295302. The hospitality of the AMRC in Coventry is
+   gratefully acknowledged. PMC was supported by a European Research
+   Council Advanced grant to R.I.M. Dunbar.d
+CR Agarwal A., 2012, P NAACL HLT 2012 WOR, P88
+   Barrat A, 2004, P NATL ACAD SCI USA, V101, P3747, DOI 10.1073/pnas.0400087101
+   Benzi M, 2015, SIAM J MATRIX ANAL A, V36, P686, DOI 10.1137/130950550
+   CARROLL L, 1960, ANNOTATED ALICE ALIC
+   Duggan J., 2012, THE SONG OF ROLAND
+   DUring M., 2011, ENCY SOCIAL NETWORKS
+   Eagleton T, 1983, LIT THEORY INTRO
+   Elson D., 2010, P 48 ANN M ASS COMP
+   FREEMAN LC, 1979, SOC NETWORKS, V1, P215, DOI 10.1016/0378-8733(78)90021-7
+   Gramsch R., 2012, REICH ALS NETZWERK F
+   Higham D. J., ARXIV151107305V1
+   Holme P., ARXIV150801303
+   Holme P, 2012, PHYS REP, V519, P97, DOI 10.1016/j.physrep.2012.03.001
+   Kosehutzki D., 2005, NETWORK ANAL, V3418, P16
+   Kydros D, 2015, INT J HUMANIT ARTS C, V9, P115, DOI 10.3366/ijhac.2015.0141
+   Mac Carron P, 2013, EUR PHYS J B, V86, DOI 10.1140/epjb/e2013-40583-3
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   Moretti F, 2000, NEW LEFT REV, P54
+   Moretti F, 2011, NEW LEFT REV, P80
+   Moretti Franco, 2005, GRAPHS MAPS TREES AB
+   Newman  M., 2010, NETWORKS INTRO
+   Rochat Y., 2014, THESIS
+   Sack G., 2013, 2013 WORKSH COMP MOD, V32
+   Saramaki P. H. P. J., 2013, TEMPORAL NETWORKS UN
+   Sola Conde L, 2013, CHAOS, V23, DOI 10.1063/1.4818544
+   Taylor D., 2015, CORR
+   Truby John, 2007, THE ANATOMY OF STORY
+   Waerzeggers C., 2014, DOCUMENTARY SOURCES
+   Wasserman S, 1994, SOCIAL NETWORK ANAL, V8
+   Woloch A, 2003, ONE VS THE MANY: MINOR CHARACTERS AND THE SPACE OF THE PROTAGONIST IN THE NOVEL, P1
+NR 30
+TC 3
+Z9 3
+U1 4
+U2 8
+PU WORLD SCIENTIFIC PUBL CO PTE LTD
+PI SINGAPORE
+PA 5 TOH TUCK LINK, SINGAPORE 596224, SINGAPORE
+SN 0219-5259
+EI 1793-6802
+J9 ADV COMPLEX SYST
+JI Adv. Complex Syst.
+PD MAY
+PY 2016
+VL 19
+IS 3
+AR 1650005
+DI 10.1142/S0219525916500053
+PG 19
+WC Mathematics, Interdisciplinary Applications; Multidisciplinary Sciences
+SC Mathematics; Science & Technology - Other Topics
+GA DZ1HK
+UT WOS:000385589300001
+DA 2019-03-22
+ER
+
+PT J
+AU Lee, J
+   Wong, TS
+AF Lee, John
+   Wong, Tak-sum
+TI Conversational Network in the Chinese Buddhist Canon
+SO OPEN LINGUISTICS
+LA English
+DT Article
+DE treebank; direct speeech; Chinese Buddhist Canon; conversational network
+ID CORPUS; VISUALIZATION; ATTRIBUTION
+AB This article describes a method to analyze characters in a literary text by considering their verbal interactions. This method exploits techniques from computational linguistics to extract all direct speech from a treebank, and to build a conversational network that visualizes the speakers, the listeners and their degree of interaction. We apply this method to create and visualize a conversational network for the Chinese Buddhist Canon. We analyze the protagonists and their interlocutors, and report statistics on their number of utterances and types of listeners, how their speech was reported, and subcommunities in the network.
+C1 [Lee, John; Wong, Tak-sum] City Univ Hong Kong, Hong Kong, Hong Kong, Peoples R China.
+RP Lee, J (reprint author), City Univ Hong Kong, Hong Kong, Hong Kong, Peoples R China.
+EM jsylee@cityu.edu.hk
+FU Research Grants Council of the Hong Kong Special Administrative Region,
+   China [CityU 155412]
+FX The work described in this article was supported by a grant from the
+   Research Grants Council of the Hong Kong Special Administrative Region,
+   China (Project No. CityU 155412).
+CR Agarwal A., 2012, P WORKSH COMP LING L
+   Agarwal Apoorv, 2010, P ASS COMP LING ACL
+   Asli Celikyilmaz, 2010, P NIPS MACH LEARN SO
+   Baker P, 2013, APPL LINGUIST, V34, P255, DOI 10.1093/applin/ams048
+   Bingenheimer M, 2011, LIT LINGUIST COMPUT, V26, P271, DOI 10.1093/llc/fqr020
+   Bisang Walter, 2014, PARADIGM CHANGE TRAN, P23
+   Chang P.-C., 2009, P 3 WORKSH SYNT STRU
+   Crane G. R., 2006, D LIB MAGAZINE, V12
+   Csomay E, 2013, APPL LINGUIST, V34, P369, DOI 10.1093/applin/ams045
+   DDBC, 2008, BUDD STUD AUTH DAT P
+   Diesner J., 2005, Computational & Mathematical Organization Theory, V11, P201, DOI 10.1007/s10588-005-5377-0
+   Doddington George, 2004, P LANG RES EV C LREC
+   Elson David K, 2010, P ASS COMP LING ACL
+   Elson David K., 2010, P 24 AAAI C ART INT
+   Gansner ER, 2000, SOFTWARE PRACT EXPER, V30, P1203, DOI 10.1002/1097-024X(200009)30:11<1203::AID-SPE338>3.3.CO;2-E
+   HOLMES DI, 1994, COMPUT HUMANITIES, V28, P87, DOI 10.1007/BF01830689
+   Hung JJ, 2010, LIT LINGUIST COMPUT, V25, P119, DOI 10.1093/llc/fqp036
+   Kieschnick John, 2014, PRIMER CHINESE BUDDH
+   Knuth D. E., 1993, STANFORD GRAPHBASE P
+   Lafferty J., 2001, P 18 INT C MACH LEAR, P282
+   Lancaster Lewis, 2010, P DIG HUM
+   LANCASTER LR, 1979, KOREAN BUDDHIST CANO
+   Lee J., 2016, P 29 INT FLOR ART IN, P531
+   Lee J, 2016, DIGIT SCHOLARSH HUM, V31, P140, DOI 10.1093/llc/fqu048
+   Liang J., 2010, P IEEE C EV COMP, P1
+   Mahlberg M, 2012, LANG LIT, V21, P51, DOI 10.1177/0963947011432058
+   McDonald Ryan, 2006, P 10 C COMP NAT LANG
+   Moretti F., 1999, ATLAS EUROPEAN NOVEL
+   Moretti F, 2011, NEW LEFT REV, P80
+   Mutton Paul, 2004, P 8 INT C INF VIS
+   Newman  M., 2010, NETWORKS INTRO
+   Oelke D, 2013, COMPUT GRAPH FORUM, V32, P371, DOI 10.1111/cgf.12124
+   Pareti Silvia, 2013, P EMP METH NAT LANG
+   Pouliquen Bruno, 2007, P INT C REC ADV NAT, P487
+   Rydberg-Cox Jeff, 2011, J CHICAGO C DIGITAL, V1, P1
+   Sealey A, 2010, APPL LINGUIST, V31, P215, DOI 10.1093/applin/amp023
+   Stiller J, 2003, HUM NATURE-INT BIOS, V14, P397, DOI 10.1007/s12110-003-1013-1
+   Xue Naiwen, 2005, NAT LANG ENG, V11, P207, DOI DOI 10.1017/S135132490400364X
+   Zhao H. Q., 2007, P 9 INT TABL TENN FE, P162
+NR 39
+TC 0
+Z9 0
+U1 0
+U2 0
+PU DE GRUYTER OPEN LTD
+PI WARSAW
+PA BOGUMILA ZUGA 32A ST, 01-811 WARSAW, POLAND
+SN 2300-9969
+J9 OPEN LINGUIST
+JI Open Linguist.
+PD JAN
+PY 2016
+VL 2
+IS 1
+BP 427
+EP 436
+DI 10.1515/opli-2016-0022
+PG 10
+WC Linguistics
+SC Linguistics
+GA EP0UN
+UT WOS:000397102300015
+OA DOAJ Gold
+DA 2019-03-22
+ER
+
+PT B
+AU Bost, X
+   Labatut, V
+   Gueye, S
+   Linares, G
+AF Bost, Xavier
+   Labatut, Vincent
+   Gueye, Serigne
+   Linares, Georges
+BE Kumar, R
+   Caverlee, J
+   Tong, H
+TI Narrative Smoothing: Dynamic Conversational Network for the Analysis of
+   TV Series Plots
+SO PROCEEDINGS OF THE 2016 IEEE/ACM INTERNATIONAL CONFERENCE ON ADVANCES IN
+   SOCIAL NETWORKS ANALYSIS AND MINING ASONAM 2016
+LA English
+DT Proceedings Paper
+CT 8th IEEE/ACM International Conference on Advances in Social Networks
+   Analysis and Mining (ASONAM)
+CY AUG 18-21, 2016
+CL San Francisco, CA
+SP IEEE, Assoc Comp Machinery, ACM SIGMOD, IEEE Comp Soc, IEEE TCDE, Springer, VEEPIO
+AB Modern popular TV series often develop complex storylines spanning several seasons, but are usually watched in quite a discontinuous way. As a result, the viewer generally needs a comprehensive summary of the previous season plot before the new one starts. The generation of such summaries requires first to identify and characterize the dynamics of the series subplots. One way of doing so is to study the underlying social network of interactions between the characters involved in the narrative. The standard tools used in the Social Networks Analysis field to extract such a network rely on an integration of time, either over the whole considered period, or as a sequence of several time-slices. However, they turn out to be inappropriate in the case of TV series, due to the fact the scenes showed onscreen alternatively focus on parallel storylines, and do not necessarily respect a traditional chronology. In this article, we introduce narrative smoothing, a novel, still exploratory, network extraction method. It smooths the relationship dynamics based on the plot properties, aiming at solving some of the limitations present in the standard approaches. In order to assess our method, we apply it to a new corpus of 3 popular TV series, and compare it to both standard approaches. Our results are promising, showing narrative smoothing leads to more relevant observations when it comes to the characterization of the protagonists and their relationships. It could be used as a basis for further modeling the intertwined storylines constituting TV series plots.
+C1 [Bost, Xavier; Labatut, Vincent; Gueye, Serigne; Linares, Georges] Univ Avignon, Lab Informat Avignon, EA 4128, Avignon, France.
+RP Bost, X (reprint author), Univ Avignon, Lab Informat Avignon, EA 4128, Avignon, France.
+EM xavier.bost@univ-avignon.fr; vincent.labatut@univ-avignon.fr;
+   serigne.gueye@univ-avignon.fr; georges.linares@univ-avignon.fr
+CR Agarwal A., 2012, NAACL CLL WORKSH
+   Clauset A., 2012, ARXIV12117343
+   Ercolessi P., 2012, IEEE CBMI WORKSH, P1
+   Guha T, 2015, INT CONF ACOUST SPEE, P2264, DOI 10.1109/ICASSP.2015.7178374
+   Holme P, 2012, PHYS REP, V519, P97, DOI 10.1016/j.physrep.2012.03.001
+   Moretti F, 2011, NETWORK THEORY PLOT, V2
+   Weng C.-Y., 2007, IEEE INT JOINT C MUL, P1403
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+NR 8
+TC 1
+Z9 1
+U1 0
+U2 0
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+BN 978-1-5090-2846-7
+PY 2016
+BP 1111
+EP 1118
+PG 8
+WC Computer Science, Information Systems; Communication; Computer Science,
+   Interdisciplinary Applications; Social Sciences, Interdisciplinary
+SC Computer Science; Communication; Social Sciences - Other Topics
+GA BG6PQ
+UT WOS:000390760100174
+DA 2019-03-22
+ER
+
+PT S
+AU Kenna, R
+   Mac Carron, P
+AF Kenna, Ralph
+   Mac Carron, Padraig
+GP IOP
+TI Maths Meets Myths: Network Investigations of Ancient Narratives
+SO INTERNATIONAL CONFERENCE ON COMPUTER SIMULATION IN PHYSICS AND BEYOND
+   2015
+SE Journal of Physics Conference Series
+LA English
+DT Proceedings Paper
+CT International Conference on Computer Simulation in Physics and Beyond
+CY SEP 06-10, 2015
+CL Natl Res Univ Higher Sch Econ, Moscow Inst Elect & Math, Moscow, RUSSIA
+SP Russian Fdn Basic Res, Fed Agcy Sci Org, Higher Sch Econ
+HO Natl Res Univ Higher Sch Econ, Moscow Inst Elect & Math
+ID SMALL-WORLD NETWORKS
+AB Three years ago, we initiated a programme of research in which ideas and tools from statistical physics and network theory were applied to the field of comparative mythology. The eclecticism of the work, together with the perspectives it delivered, led to widespread media coverage and academic discussion. Here we review some aspects of the project, contextualised with a brief history of the long relationship between science and the humanities. We focus in particular on an Irish epic, summarising some of the outcomes of our quantitative investigation. We also describe the emergence of a new sub-discipline and our hopes for its future.
+C1 [Kenna, Ralph] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+   [Mac Carron, Padraig] Univ Oxford, Dept Expt Psychol, Social & Evolutionary Neurosci Res Grp, S Parks Rd, Oxford OX1 3UD, England.
+   [Kenna, Ralph] Doctoral Coll Stat Phys Complex Syst, Leipzig, Germany.
+RP Kenna, R (reprint author), Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.; Mac Carron, P (reprint author), Univ Oxford, Dept Expt Psychol, Social & Evolutionary Neurosci Res Grp, S Parks Rd, Oxford OX1 3UD, England.; Kenna, R (reprint author), Doctoral Coll Stat Phys Complex Syst, Leipzig, Germany.
+EM r.kenna@coventry.ac.uk; padraig.maccarron@psy.ox.ac.uk
+OI MacCarron, Padraig/0000-0002-5163-9264; Kenna, Ralph/0000-0001-9990-4277
+CR ALBERICH R, 2002, CONDMAT0202174
+   Amaral LAN, 2000, P NATL ACAD SCI USA, V97, P11149, DOI 10.1073/pnas.200327197
+   Anderson C E, 1999, THESIS U CAMBRIDGE
+   Berezkin Y. E., 2010, ANTHR PAPERS U ALASK, V5, P257
+   Berresford Ellis P, 1998, ANCIENT WORLD CELTS
+   Byrne FJ, 1973, IRISH KINGS HIGH KIN
+   Campbell Joseph, 1949, HERO 1000 FACES
+   Carson Ciaran, 2007, TAIN NEW TRANSLATION
+   Chambers R. W., 1959, BEOWULF INTRO
+   Cosentino D J, 1998, TEACHING ORAL TRADIT
+   Cunningham B., 2000, WORLD GEOFFREY KEATI
+   d'Huy J, 2013, ROCK ART RES, V30
+   Davis G. F., 2003, Strategic Organization, V1, P301, DOI 10.1177/14761270030013002
+   Dillon M, 1967, THE CELTIC REALMS
+   DILLON Myles, 1948, EARLY IRISH LIT
+   Dunn J., 1914, ANCIENT IRISH EPIC T
+   Edel D, 2001, CELTIC W EUROPE STUD
+   Finley M. I., 1954, WORLD ODYSSEUS
+   Fortunato S, 2013, J STAT PHYS, V151, P1, DOI 10.1007/s10955-013-0703-2
+   Gantz Jeffrey, 1981, EARLY IRISH MYTHS SA
+   Gleiser PM, 2007, J STAT MECH-THEORY E, DOI 10.1088/1742-5468/2007/09/P09020
+   Gleiser PM, 2003, ADV COMPLEX SYST, V6, P565, DOI 10.1142/S0219525903001067
+   Green M., 1992, DICT CELTIC MYTH LEG
+   Jackson K., 1964, OLDEST IRISH TRADITI
+   Kenna R, 2016, MATH MEETS IN PRESS
+   Kinsella Thoas, 1969, THE TAIN
+   Klaeber F., 1950, BEOWULF FIGHT FINNSB
+   Korfmann M, 2004, ARCHAEOLOGY, V57, P36
+   Kraft JC, 2003, GEOLOGY, V31, P163, DOI 10.1130/0091-7613(2003)031<0163:HAAATS>2.0.CO;2
+   Kujawski B, 2011, EUR PHYS J B, V83, P525, DOI 10.1140/epjb/e2011-20478-1
+   Lynn C., 2003, NAVAN FORT ARCHAEOLO
+   Mac Carron P, 2013, EUR PHYS J B, V86, DOI 10.1140/epjb/e2013-40583-3
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   Morning Final, 2000, SAN JOSE MERCUR 0123
+   Mryglod O, 2014, PHYSICA A, V419, P681
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   Northup Lesley, 2006, RELIG STUDIES REV, V32.1, P5
+   Nutt A, 1900, CUCHULAINN IRISH ACH
+   O'Rahilly T F, 1946, KARLY IRISH HIST MYT
+   Papamarinopoulos S, 2012, MEDITERR ARCHAEOL AR, V12, P117
+   Snow Charles Percy, 1959, 2 CULTURES
+   Stiller J, 2003, HUM NATURE-INT BIOS, V14, P397, DOI 10.1007/s12110-003-1013-1
+   Tangherlini TR, 2013, WESTERN FOLKLORE, V72, P7
+   Tehrani JJ, 2013, PLOS ONE, V8, DOI 10.1371/journal.pone.0078871
+   The Positive Philosopy of Auguste Compte, 1853, POSITIVE PHILOS AUGU, VI
+   Waddell J, 2009, RATHCROGHAN CO ROSCO
+   Waddell J., 2005, FDN MYTHS BEGINNINGS
+   Waddell J, 1983, J IRISH ARCHAEOLOGY, V1, P21
+   Waddell J, 2012, RATHCR ARCH C TULSK
+   Wallace B, 2011, THESIS U EDINBURGH
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+   Wood M., 1998, SEARCH TROJAN WAR
+NR 54
+TC 4
+Z9 4
+U1 0
+U2 2
+PU IOP PUBLISHING LTD
+PI BRISTOL
+PA DIRAC HOUSE, TEMPLE BACK, BRISTOL BS1 6BE, ENGLAND
+SN 1742-6588
+J9 J PHYS CONF SER
+PY 2016
+VL 681
+AR 012002
+DI 10.1088/1742-6596/681/1/012002
+PG 12
+WC Operations Research & Management Science; Mathematics, Applied; Physics,
+   Multidisciplinary
+SC Operations Research & Management Science; Mathematics; Physics
+GA BE7YS
+UT WOS:000376042800002
+OA Other Gold
+DA 2019-03-22
+ER
+
+PT J
+AU Waumans, MC
+   Nicodeme, T
+   Bersini, H
+AF Waumans, Michael C.
+   Nicodeme, Thibaut
+   Bersini, Hugues
+TI Topology Analysis of Social Networks Extracted from Literature
+SO PLOS ONE
+LA English
+DT Article
+AB In a world where complex networks are an increasingly important part of science, it is interesting to question how the new reading of social realities they provide applies to our cultural background and in particular, popular culture. Are authors of successful novels able to reproduce social networks faithful to the ones found in reality? Is there any common trend connecting an author's oeuvre, or a genre of fiction? Such an analysis could provide new insight on how we, as a culture, perceive human interactions and consume media. The purpose of the work presented in this paper is to define the signature of a novel's story based on the topological analysis of its social network of characters. For this purpose, an automated tool was built that analyses the dialogs in novels, identifies characters and computes their relationships in a time-dependent manner in order to assess the network's evolution over the course of the story.
+C1 [Waumans, Michael C.; Nicodeme, Thibaut; Bersini, Hugues] ULB, Ecole Polytech Bruxelles CoDE IRIDIA, Brussels, Belgium.
+RP Waumans, MC (reprint author), ULB, Ecole Polytech Bruxelles CoDE IRIDIA, Brussels, Belgium.
+EM mwaumans@ulb.ac.be
+CR Argamon S, 2007, J AM SOC INF SCI TEC, V58, P802, DOI 10.1002/asi.20553
+   Baccianella S., 2010, SENTIWORDNET 3 0 ENH
+   Barabasi AL, 2002, PHYSICA A, V311, P590, DOI 10.1016/S0378-4371(02)00736-7
+   Barabasi AL, 1999, SCIENCE, V286, P509, DOI 10.1126/science.286.5439.509
+   Bird Steven, 2004, P ACL DEM SESS BARC, P214
+   Broder A, 2000, COMPUT NETW, V33, P309, DOI 10.1016/S1389-1286(00)00083-9
+   Clare Cassandra, 2012, CITY OF LOST SOULS
+   Clare Cassandra, 2008, CITY OF ASHES
+   Clare Cassandra, 2014, CITY HEAVENLY FIRE
+   Clare Cassandra, 2009, CITY OF GLASS
+   Clare Cassandra, 2011, CITY FALLEN ANGELS
+   Clare Cassandra, 2007, CITY OF BONES
+   Fellbaum C., 1998, WORDNET ELECT LEXICA
+   Francis W. Nelson, 1964, STANDARD CORPUS PRES
+   Hobb R., 2000, SHIP OF DESTINY
+   Hobb R., 1998, SHIP OF MAGIC
+   Hobb R, 1999, THE MAD SHIP
+   Hobb Robin, 2009, THE DRAGON KEEPER
+   Hobb Robin, 2012, CITY OF DRAGONS
+   Hobb Robin, 2013, BLOOD OF DRAGONS
+   Hobb Robin, 2010, DRAGON HAVEN
+   Hugo Victor, 2008, MISERABLES
+   Jordan R., 1993, THE FIRES OF HEAVEN
+   Jordan R., 2004, NEW SPRING
+   Jordan R., 1992, THE SHADOW RISING
+   Jordan R., 1998, THE PATH OF DAGGERS
+   Jordan R., 2000, WINTERS HEART
+   Jordan R, 1994, LORD OF CHAOS
+   Jordan R., 1990, THE GREAT HUNT
+   Jordan R, 2013, A MEMORY OF LIGHT
+   Jordan R., 2010, TOWERS OF MIDNIGHT
+   Jordan R, 1996, A CROWN OF SWORDS
+   Jordan R., 1991, THE DRAGIN REBORN
+   Jordan R., 2003, CROSSROADS TWILIGHT
+   Jordan R., 2005, KNIFE OF DREAMS
+   Jordan R., 1990, THE EYE OF THE WORLD
+   Jordan R., 2009, THE GATHERING STORM
+   Kossinets G, 2006, SCIENCE, V311, P88, DOI 10.1126/science.1116869
+   Martin G. R. R., 1996, GAME THRONES
+   Martin George R. R., 2011, A DANCE WITH DRAGONS
+   Martin George.R.R, 1998, A CLASH OF KINGS
+   Martin George.R.R, 2005, A FEAST FOR CROWS
+   Martin GRR, 1999, A STORM OF SWORDS
+   Meyer M., 2013, SCARLET
+   Meyer M., 2014, CRESS
+   MEYER Marissa, 2012, CINDER
+   MILLER GA, 1995, COMMUN ACM, V38, P39, DOI 10.1145/219717.219748
+   Mislove A, 2007, P 7 ACM SIGCOMM C IN
+   Mosteller F, 1963, AM STAT ASS J
+   Muchnik L, 2013, SCI REP-UK, V3, DOI 10.1038/srep01783
+   Pullman P., 1995, NO LIGHTS
+   Pullman P., 1996, THE SUBTLE KNIFE
+   Pullman P., 1999, THE AMBER SPYGLASS
+   Rowling J. K, 2007, HARRY POTTER DEATHLY
+   Rowling J. K, 2003, HARRY POTTER ORDER P
+   Rowling J. K., 1998, HARRY POTTER CHAMBER
+   Rowling J. K, 1999, HARRY POTTER PRISONE
+   Rowling J. K., 2000, HARRY POTTER GOBLET
+   Rowling J. K., 1997, HARRY POTTER PHILOS
+   Rowling J. K., 2005, HARRY POTTER HALF BL
+   Stephen AT, 2009, SOC NETWORKS, V31, P262, DOI 10.1016/j.socnet.2009.07.002
+   van Halteren H, 2005, J QUANT LINGUIST, V12, P65, DOI [DOI 10.1080/09296170500055350, 10.1080/09296170500055350]
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+NR 63
+TC 5
+Z9 5
+U1 0
+U2 6
+PU PUBLIC LIBRARY SCIENCE
+PI SAN FRANCISCO
+PA 1160 BATTERY STREET, STE 100, SAN FRANCISCO, CA 94111 USA
+SN 1932-6203
+J9 PLOS ONE
+JI PLoS One
+PD JUN 3
+PY 2015
+VL 10
+IS 6
+AR e0126470
+DI 10.1371/journal.pone.0126470
+PG 30
+WC Multidisciplinary Sciences
+SC Science & Technology - Other Topics
+GA CJ7ST
+UT WOS:000355700700030
+PM 26039072
+OA DOAJ Gold, Green Published
+DA 2019-03-22
+ER
+
+PT J
+AU Kydros, D
+   Notopoulos, P
+   Exarchos, G
+AF Kydros, Dimitrios
+   Notopoulos, Panagiotis
+   Exarchos, Georgios
+TI HOMER'S ILIAD - A SOCIAL NETWORK ANALYTIC APPROACH
+SO INTERNATIONAL JOURNAL OF HUMANITIES AND ARTS COMPUTING
+LA English
+DT Article
+DE Homer; Iliad; social network analysis; small world; network science;
+   centrality; epic literature
+AB In this paper we provide some insights in Homer's Iliad from the perspective of social network analysis. We use the original text and other public available data to create a social network (i.e. a graph) that comprises of all actors in the Iliad together with their interactions. We present some visualizations of these data and discuss concepts like connectivity, connected components and groupings. Furthermore, we calculate some well-established metrics, coming from social network analysis in this social network and discuss the numerical results. These results indicate that the Iliadic network is a small-world network, rather dissasortative and relatively easy to disconnect.
+C1 [Kydros, Dimitrios; Notopoulos, Panagiotis; Exarchos, Georgios] TEI Serres, Dept Accounting, Sch Business Adm & Econ, Serres, Greece.
+RP Kydros, D (reprint author), TEI Serres, Dept Accounting, Sch Business Adm & Econ, Serres, Greece.
+EM dkydros@teiser.gr; notisp@teiser.gr; gesex@otenet.gr
+CR Chung F. R. K., 1997, C BOARD MATH SCI, V92, P113
+   Chung F. R. K., SPECTRAL GRAPH THEOR, V118
+   CSARDI G, 2006, INT J COMPLEX SYST, V1695, P1695, DOI DOI 10.1080/01621459.1951.10500769
+   De Nooy W., 2011, EXPLORATORY SOCIAL A
+   Hagberg A., 2008, P 7 PYTH SCI C SCIPY, P11
+   Harary F., 1969, GRAPH THEORY
+   Kenna R., 2003, ILIAD
+   Knuth, STANFORD GRAPHBASE P, V14
+   Knuth D., 1993, STANFORD GRAPHBASE P, V12-14, P45
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   Riddle M., 2005, INTRO SOCIAL NETWORK, V58
+   Scott J., 2000, SOCIAL NETWORK ANAL, P7
+   Wasserman, SOCIAL NETWORK ANAL, P92
+   Wasserman, SOCIAL NETWORK ANAL, P17
+   Wasserman S. F., 1994, SOCIAL NETWORK ANAL, P1
+   Watts D. J., 1999, SMALL WORLDS DYNAMIC
+   Watts D. J., 2003, 6 DEGREES SCI CONNEC, P30
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+NR 20
+TC 2
+Z9 2
+U1 0
+U2 1
+PU EDINBURGH UNIV PRESS
+PI EDINBURGH
+PA THE TUN-HOLYROOD RD, 12 2F JACKSONS ENTRY, EDINBURGH EH8 8PJ, SCOTLAND
+SN 1753-8548
+EI 1755-1706
+J9 INT J HUMANIT ARTS C
+JI Int. J. Humanit. Arts Comput.
+PD MAR
+PY 2015
+VL 9
+IS 1
+BP 115
+EP 132
+DI 10.3366/ijhac.2015.0141
+PG 18
+WC Humanities, Multidisciplinary; Computer Science, Interdisciplinary
+   Applications
+SC Arts & Humanities - Other Topics; Computer Science
+GA DM7UP
+UT WOS:000376565800008
+DA 2019-03-22
+ER
+
+PT S
+AU Hettinger, L
+   Becker, M
+   Reger, I
+   Jannidis, F
+   Hotho, A
+AF Hettinger, Lena
+   Becker, Martin
+   Reger, Isabella
+   Jannidis, Fotis
+   Hotho, Andreas
+BE Spies, M
+   Wagner, RR
+   Tjoa, AM
+TI Genre classification on German novels
+SO 2015 26TH INTERNATIONAL WORKSHOP ON DATABASE AND EXPERT SYSTEMS
+   APPLICATIONS (DEXA)
+SE International Workshop on Database and Expert Systems Applications-DEXA
+LA English
+DT Proceedings Paper
+CT 26th International Workshop on Database and Expert Systems Applications
+   (DEXA)
+CY SEP 01-04, 2015
+CL Valencia, SPAIN
+AB The study of German literature is mostly based on literary canons, i.e., small sets of specifically chosen documents. In particular, the history of novels has been characterized using a set of only 100 to 250 works. In this paper we address the issue of genre classification in the context of a large set of novels using machine learning methods in order to achieve a better understanding of the genre of novels. To this end, we explore how different types of features affect the performance of different classification algorithms. We employ commonly used stylometric features, and evaluate two types of features not yet applied to genre classification, namely topic based features and features based on social network graphs and character interaction. We build features on a data set of close to 1700 novels either written in or translated into German. Even though topics are often considered orthogonal to genres, we find that topic based features in combination with support vector machines achieve the best results. Overall, we successfully apply new feature types for genre classification in the context of novels and give directions for further research in this area.
+C1 [Hettinger, Lena; Becker, Martin; Hotho, Andreas] Univ Wurzburg, Data Min & Informat Retrieval Grp, Wurzburg, Germany.
+   [Reger, Isabella; Jannidis, Fotis] Univ Wurzburg, Inst Deutsch Philol, Wurzburg, Germany.
+   [Hotho, Andreas] Leibniz Univ Hannover, Res Ctr L3S, Hannover, Germany.
+RP Hettinger, L (reprint author), Univ Wurzburg, Data Min & Informat Retrieval Grp, Wurzburg, Germany.
+EM hettinger@informatik.uni-wuerzburg.de;
+   becker@informatik.uni-wuerzburg.de; isabella.reger@uni-wuerzburg.de;
+   fotis.jannidis@uni-wuerzburg.de; hotho@informatik.uni-wuerzburg.de
+CR [Anonymous], HIGH PERFORMANCE COM
+   BIBER D, 1992, COMPUT HUMANITIES, V26, P331
+   Blei DM, 2003, J MACH LEARN RES, V3, P993, DOI 10.1162/jmlr.2003.3.4-5.993
+   Burrows J. F., 1987, Literary & Linguistic Computing, V2, P61, DOI 10.1093/llc/2.2.61
+   DEVITT AJ, 1993, COLL COMPOS COMMUN, V44, P573, DOI 10.2307/358391
+   Eissen SMZ, 2004, LECT NOTES COMPUT SC, V3238, P256
+   Elson K., 2010, P 48 ANN M ASS COMP, P138
+   Finn A, 2006, J AM SOC INF SCI TEC, V57, P1506, DOI 10.1002/asi.20427
+   Francis WN, 1979, BROWN CORPUS MANUAL
+   HIRSCH M, 1979, GENRE, V12, P293
+   Ikonomakis M., 2005, IEEE T COMPUT, V4, P966
+   Jannidis F., 2015, DHD 2015
+   Jappe L., 2012, FIGURENWISSEN FUNKTI, V8
+   Jockers ML, 2013, TOP DIGIT HUM, P1
+   Joerdens C. -H., 1810, LEXIKON DTSCH DICHTE, V5
+   Karlgren J., 1994, COMPUTATIONAL LINGUI, V2, P1071
+   Kessler B., 1997, P 35 ANN M ASS COMP, P32, DOI DOI 10.3115/976909.979622
+   Lee D., 2001, LANGUAGE LEARNING TE, V5, P37
+   LEE YB, 2002, P 25 ANN INT ACM SIG, P145
+   Rasheed Z, 2002, INT C PATT RECOG, P1086, DOI 10.1109/ICPR.2002.1048494
+   Rosen-Zvi M., 2004, P 20 C UNC ART INT, P487
+   Rosenberg R., 2000, REALLEXIKON DTSCH LI, VII, P224
+   STAMATATOS E, 2000, P 18 C COMP LING, V2, P808
+   Tzanetakis G., 2002, SPEECH AUDIO PROCESS, V10, P293
+   Underwood T., 2013, BIG DAT 2013 IEEE IN, P95
+NR 25
+TC 2
+Z9 2
+U1 0
+U2 0
+PU IEEE COMPUTER SOC
+PI LOS ALAMITOS
+PA 10662 LOS VAQUEROS CIRCLE, PO BOX 3014, LOS ALAMITOS, CA 90720-1264 USA
+SN 1529-4188
+BN 978-1-4673-7581-8
+J9 INT WORKSHOP DATABAS
+PY 2015
+BP 249
+EP 253
+DI 10.1109/DEXA.2015.62
+PG 5
+WC Computer Science, Information Systems
+SC Computer Science
+GA BF2ET
+UT WOS:000380461300041
+DA 2019-03-22
+ER
+
+PT B
+AU Nan, CJ
+   Kim, KM
+   Zhang, BT
+AF Nan, Chang-Jun
+   Kim, Kyung-Min
+   Zhang, Byoung-Tak
+BE Pei, J
+   Silvestri, F
+   Tang, J
+TI Social Network Analysis of TV Drama Characters via Deep Concept
+   Hierarchies
+SO PROCEEDINGS OF THE 2015 IEEE/ACM INTERNATIONAL CONFERENCE ON ADVANCES IN
+   SOCIAL NETWORKS ANALYSIS AND MINING (ASONAM 2015)
+LA English
+DT Proceedings Paper
+CT IEEE/ACM International Conference on Advances in Social Networks
+   Analysis and Mining (ASONAM)
+CY AUG 25-28, 2015
+CL Paris, FRANCE
+SP IEEE, Assoc Comp Machinery, ACM SIGKDD, IEEE Comp Soc, IEEE TCDE, Springer, Cisco, Telecom ParisTech
+DE social network analysis; concept learning; deep model; concept drift
+AB TV drama is a kind of big data, containing enormous knowledge of modern human society. As the character-centered stories unfold, diverse knowledge, such as economics, politics and the culture, is displayed. However, unless we have efficient dynamic multi-modal data processing and picture processing methods, we cannot analyze drama data effectively. Here, we adopt the recently proposed deep concept hierarchies (DCH) and convolutional-recursive neural network (C-RNN) models to analyze the social network between the drama characters. DCH uses multi hierarchies structure to translate the vision-language concepts of drama characters into diversified abstract concepts, and utilizes Markov Chain Monte Carlo algorithm to improve the retrieval efficiency of organizing conceptual spaces. Adopting approximately 4400-minute data of TV drama - Friends, we process face recognition on the characters by using convolutional-recursive deep learning model. Then we establish the social network between the characters by deep concept hierarchies model and analyze their affinity and the change of social network while the stories unfold.
+C1 [Nan, Chang-Jun; Kim, Kyung-Min; Zhang, Byoung-Tak] Seoul Natl Univ, Sch Comp Sci & Engn, Seoul 151744, South Korea.
+RP Nan, CJ (reprint author), Seoul Natl Univ, Sch Comp Sci & Engn, Seoul 151744, South Korea.
+EM cjnan@bi.snu.ac.kr; kmkim@bi.snu.ac.kr; btzhang@bi.snu.ac.kr
+CR BIDDLE BJ, 1986, ANNU REV SOCIOL, V12, P67, DOI 10.1146/annurev.so.12.080186.000435
+   Chen H.-W., 2004, 6 ACM SIGMM INT WORK, P251
+   Ding L, 2011, IEEE I CONF COMP VIS, P699, DOI 10.1109/ICCV.2011.6126306
+   Ding L, 2010, LECT NOTES COMPUT SC, V6314, P410, DOI 10.1007/978-3-642-15561-1_30
+   Girshick R., 2014, P INT C PATT REC
+   Ha J.-W., 2015, P 29 AAAI C ART INT, P522
+   Jhuo IH, 2014, INT C PATT RECOG, P666, DOI 10.1109/ICPR.2014.125
+   Karpathy A, 2014, PROC CVPR IEEE, P1725, DOI 10.1109/CVPR.2014.223
+   Kiefer M, 2008, J NEUROSCI, V28, P12224, DOI 10.1523/JNEUROSCI.3579-08.2008
+   Lan T, 2012, PROC CVPR IEEE, P1354, DOI 10.1109/CVPR.2012.6247821
+   MELTZOFF AN, 1990, ANN NY ACAD SCI, V608, P1
+   Mikolov T., 2013, P ADV NEUR INF PROC
+   Ramanathan V, 2013, PROC CVPR IEEE, P2475, DOI 10.1109/CVPR.2013.320
+   Socher R., 2012, ADV NEURAL INFORM PR, V3, P665, DOI DOI 10.1002/2014GB005021
+   Tran D., 2014, IEEE C COMP VIS PATT
+   Wang CW, 2007, LECT NOTES COMPUT SC, V4351, P606
+   Wang G, 2010, LECT NOTES COMPUT SC, V6315, P169, DOI 10.1007/978-3-642-15555-0_13
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Yu T, 2009, PROC CVPR IEEE, P1462, DOI 10.1109/CVPRW.2009.5206526
+   Zhang B.-T., 2012, P ANN M COGN SCI SOC, P1221
+   Zhang YF, 2009, IEEE T MULTIMEDIA, V11, P1276, DOI 10.1109/TMM.2009.2030629
+NR 21
+TC 1
+Z9 1
+U1 0
+U2 2
+PU ASSOC COMPUTING MACHINERY
+PI NEW YORK
+PA 1515 BROADWAY, NEW YORK, NY 10036-9998 USA
+BN 978-1-4503-3854-7
+PY 2015
+BP 831
+EP 836
+DI 10.1145/2808797.2809306
+PG 6
+WC Computer Science, Artificial Intelligence; Computer Science, Information
+   Systems
+SC Computer Science
+GA BE4JN
+UT WOS:000371793500126
+DA 2019-03-22
+ER
+
+PT J
+AU Yeh, MC
+   Wu, WP
+AF Yeh, Mei-Chen
+   Wu, Wen-Po
+TI Clustering Faces in Movies Using an Automatically Constructed Social
+   Network
+SO IEEE MULTIMEDIA
+LA English
+DT Article
+DE Social network services; Motion pictures; Face recognition; Clustering;
+   Computer vision; Feature extraction; movie content analysis; multimedia;
+   face clustering; social network
+ID RECOGNITION
+C1 [Yeh, Mei-Chen] Natl Taiwan Normal Univ, Dept Comp Sci & Informat Engn, Taipei, Taiwan.
+   [Wu, Wen-Po] Reallus Corp, Taipei, Taiwan.
+RP Yeh, MC (reprint author), Natl Taiwan Normal Univ, Dept Comp Sci & Informat Engn, Taipei, Taiwan.
+EM myeh@csie.ntnu.edu.tw; robertWu@reallusion.com.tw
+OI Yeh, Mei-Chen/0000-0001-8665-7860
+CR AHONEN T, 2006, IEEE T PATTERN ANAL, V28
+   Arandjelovic O, 2005, PROC CVPR IEEE, P860
+   Cinbis RG, 2011, IEEE I CONF COMP VIS, P1559, DOI 10.1109/ICCV.2011.6126415
+   Frey BJ, 2007, SCIENCE, V315, P972, DOI 10.1126/science.1136800
+   Gross R., 2008, P IEEE INT C AUT FAC
+   Qi YX, 2011, CONGRES INT FROID, V23, P497, DOI 10.1109/CVPR.2011.5995494
+   Sivic J, 2009, PROC CVPR IEEE, P1145
+   Stone Z., 2008, P IEEE C COMP VIS PA, P1
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Wu P., 2009, P 17 ACM INT C MULT, P709
+   Wu P., 2010, P ACM MULT MM, P907
+   Yeh MC, 2012, IEEE INT CONF MULTI, P242, DOI 10.1109/ICMEW.2012.48
+   Zhao W, 2003, ACM COMPUT SURV, V35, P399, DOI 10.1145/954339.954342
+NR 13
+TC 3
+Z9 3
+U1 0
+U2 2
+PU IEEE COMPUTER SOC
+PI LOS ALAMITOS
+PA 10662 LOS VAQUEROS CIRCLE, PO BOX 3014, LOS ALAMITOS, CA 90720-1314 USA
+SN 1070-986X
+EI 1941-0166
+J9 IEEE MULTIMEDIA
+JI IEEE Multimedia
+PD APR-JUN
+PY 2014
+VL 21
+IS 2
+BP 22
+EP 31
+DI 10.1109/MMUL.2014.24
+PG 10
+WC Computer Science, Hardware & Architecture; Computer Science, Information
+   Systems; Computer Science, Software Engineering; Computer Science,
+   Theory & Methods
+SC Computer Science
+GA AI8LZ
+UT WOS:000337168900003
+DA 2019-03-22
+ER
+
+PT S
+AU Tan, MSA
+   Ujum, EA
+   Ratnavelu, K
+AF Tan, M. S. A.
+   Ujum, E. A.
+   Ratnavelu, K.
+BE Ratnavelu, K
+   Chia, SP
+   Wong, CS
+   Ooi, RCH
+TI A Character Network Study of Two Sci-Fi TV Series
+SO FRONTIERS IN PHYSICS
+SE AIP Conference Proceedings
+LA English
+DT Proceedings Paper
+CT 4th International Meeting on Frontiers of Physics (IMFP)
+CY AUG 27-30, 2013
+CL Kuala Lumpur, MALAYSIA
+SP Univ Malaya, Acad Sci Malaysia, Abdul Salam Int Ctr Theoret Phys, Asia Pacific Ctr Theoret Phys, Malaysian Profess Sci Assoc Grp, Malaysian Inst Phys
+DE Science Fiction Television Series; Stargate; Star Trek; Fictional Social
+   Networks; Network Analysis; Social Networks; Character Networks
+ID SOCIAL NETWORKS
+AB This work is an analysis of the character networks in two science fiction television series: Stargate and Star Trek. These networks are constructed on the basis of scene co-occurrence between characters to indicate the presence of a connection. Global network structure measures such as the average path length, graph density, network diameter, average degree, median degree, maximum degree, and average clustering coefficient are computed as well as individual node centrality scores. The two fictional networks constructed are found to be quite similar in structure which is astonishing given that Stargate only ran for 18 years in comparison to the 48 years for Star Trek.
+C1 [Tan, M. S. A.; Ujum, E. A.; Ratnavelu, K.] Univ Malaya, Inst Math Sci, Kuala Lumpur 50603, Malaysia.
+RP Tan, MSA (reprint author), Univ Malaya, Inst Math Sci, Kuala Lumpur 50603, Malaysia.
+RI Ratnavelu, Kurunathan/A-5463-2009; Ujum, Ephrance/L-3941-2014
+OI Ratnavelu, Kurunathan/0000-0002-0774-5086; Ujum,
+   Ephrance/0000-0003-3150-4423
+CR Agarwal A., 2012, NAACL HLT 2012, P88
+   Alberich R., 2002, ARXIVCONDMAT0202174
+   Barabasi AL, 2002, PHYSICA A, V311, P590, DOI 10.1016/S0378-4371(02)00736-7
+   Bastian M., 2009, ICWSM09 CAL US 2009
+   Choi YM, 2007, PHYSICA A, V382, P665, DOI 10.1016/j.physa.2007.04.035
+   FREEMAN LC, 1979, SOC NETWORKS, V1, P215, DOI 10.1016/0378-8733(78)90021-7
+   Freytag G., 1863, TECHNIQUE DRAMA EXPO
+   Gil S., 2011, CS224W FIN PROJ REP
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.016132
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.016132
+   Park SB, 2012, MULTIMED TOOLS APPL, V59, P601, DOI 10.1007/s11042-011-0725-1
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+NR 13
+TC 0
+Z9 0
+U1 0
+U2 4
+PU AMER INST PHYSICS
+PI MELVILLE
+PA 2 HUNTINGTON QUADRANGLE, STE 1NO1, MELVILLE, NY 11747-4501 USA
+SN 0094-243X
+BN 978-0-7354-1220-0
+J9 AIP CONF PROC
+PY 2014
+VL 1588
+BP 246
+EP 251
+DI 10.1063/1.4866954
+PG 6
+WC Physics, Applied
+SC Physics
+GA BA8IE
+UT WOS:000338131900037
+DA 2019-03-22
+ER
+
+PT J
+AU Tsai, CM
+   Kang, LW
+   Lin, CW
+   Lin, WS
+AF Tsai, Chia-Ming
+   Kang, Li-Wei
+   Lin, Chia-Wen
+   Lin, Weisi
+TI Scene-Based Movie Summarization Via Role-Community Networks
+SO IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS FOR VIDEO TECHNOLOGY
+LA English
+DT Article
+DE Movie analysis; movie summarization; social network analysis; video
+   adaptation; video summarization
+ID FEATURE-LENGTH FILMS; FACE DETECTION; VIDEO; REPRESENTATION;
+   CLASSIFICATION; RECOGNITION; EXTRACTION; FRAMEWORK
+AB Video summarization techniques aim at condensing a full-length video to a significantly shortened version that still preserves the major semantic content of the original video. Movie summarization, being a special class of video summarization, is particularly challenging since a large variety of movie scenarios and film styles complicate the problem. In this paper, we propose a two-stage scene-based movie summarization method based on mining the relationship between role-communities since the role-communities in earlier scenes are usually used to develop the role relationship in later scenes. In the analysis stage, we construct a social network to characterize the interactions between role-communities. As a result, the social power of each role-community is evaluated by the community's centrality value and the role communities are clustered into relevant groups based on the centrality values. In the summarization stage, a set of feasible summary combinations of scenes is identified and an information-rich summary is selected from these candidates based on social power preservation. Our evaluation results show that in at most test cases the proposed method achieves better subjective performance than attention-based and role-based summarization methods in terms of semantic content preservation for a movie summary.
+C1 [Tsai, Chia-Ming] Natl Chung Cheng Univ, Dept Comp Sci & Informat Engn, Chiayi 62102, Taiwan.
+   [Kang, Li-Wei] Natl Yunlin Univ Sci & Technol, Grad Sch Engn Sci & Technol Doctoral Program, Yunlin 64002, Taiwan.
+   [Kang, Li-Wei] Natl Yunlin Univ Sci & Technol, Dept Comp Sci & Informat Engn, Yunlin 64002, Taiwan.
+   [Lin, Chia-Wen] Natl Tsing Hua Univ, Dept Elect Engn, Hsinchu 30013, Taiwan.
+   [Lin, Chia-Wen] Natl Tsing Hua Univ, Inst Commun Engn, Hsinchu 30013, Taiwan.
+   [Lin, Weisi] Nanyang Technol Univ, Div Comp Commun, Sch Comp Engn, Singapore 639798, Singapore.
+RP Tsai, CM (reprint author), Natl Chung Cheng Univ, Dept Comp Sci & Informat Engn, Chiayi 62102, Taiwan.
+EM cwlin@ee.nthu.edu.tw
+RI Lin, Weisi/A-3696-2011; Lin, Chia-Wen/M-4571-2013
+OI Lin, Weisi/0000-0001-9866-1947; Lin, Chia-Wen/0000-0002-9097-2318
+FU National Science Council, Taiwan [NSC101-2221-E-007-121-MY3, NSC
+   100-2218-E-224-017-MY3]
+FX Manuscript received August 23, 2012; revised January 23, 2013 and March
+   31, 2013; accepted April 5, 2013. Date of publication June 18, 2013;
+   date of current version November 1, 2013. This work was supported by the
+   National Science Council, Taiwan, under Grant NSC101-2221-E-007-121-MY3
+   and Grant NSC 100-2218-E-224-017-MY3. This paper was recommended by
+   Associate Editor T. Zhang.
+CR Arandjelovic O, 2005, PROC CVPR IEEE, P860
+   Arthur G. M., 2010, ACM T MULTIMEDIA COM, V6
+   Bordwell D, 1993, FILM ART INTRO
+   Chen BW, 2009, IEEE T MULTIMEDIA, V11, P295, DOI 10.1109/TMM.2008.2009703
+   Cheng KY, 2009, CHI2009: PROCEEDINGS OF THE 27TH ANNUAL CHI CONFERENCE ON HUMAN FACTORS IN COMPUTING SYSTEMS, VOLS 1-4, P789
+   DEERWESTER S, 1990, J AM SOC INFORM SCI, V41, P391, DOI 10.1002/(SICI)1097-4571(199009)41:6<391::AID-ASI1>3.0.CO;2-9
+   Ekin A, 2003, IEEE T IMAGE PROCESS, V12, P796, DOI 10.1109/TIP.2003.812758
+   Ellouze M, 2010, J VIS COMMUN IMAGE R, V21, P283, DOI 10.1016/j.jvcir.2010.01.007
+   Frey BJ, 2007, SCIENCE, V315, P972, DOI 10.1126/science.1136800
+   Fu YW, 2010, IEEE T MULTIMEDIA, V12, P717, DOI 10.1109/TMM.2010.2052025
+   Hanjalic A, 2005, IEEE T MULTIMEDIA, V7, P143, DOI 10.1109/TMM.2004.840618
+   Herranz L, 2010, IEEE T CIRC SYST VID, V20, P1265, DOI 10.1109/TCSVT.2010.2057020
+   Ho YH, 2004, IEEE IMAGE PROC, P613
+   Irie G, 2010, IEEE T MULTIMEDIA, V12, P523, DOI 10.1109/TMM.2010.2051871
+   Li Y, 2006, IEEE SIGNAL PROC MAG, V23, P79
+   Money AG, 2008, J VIS COMMUN IMAGE R, V19, P121, DOI 10.1016/j.jvcir.2007.04.002
+   Ngo CW, 2005, IEEE T CIRC SYST VID, V15, P296, DOI 10.1109/TCSVT.2004.841694
+   Ojala T, 1996, PATTERN RECOGN, V29, P51, DOI 10.1016/0031-3203(95)00067-4
+   Peng WT, 2011, IEEE T MULTIMEDIA, V13, P539, DOI 10.1109/TMM.2011.2131638
+   Rasheed Z, 2005, IEEE T MULTIMEDIA, V7, P1097, DOI 10.1109/TMM.2005.858392
+   Rowley HA, 1998, IEEE T PATTERN ANAL, V20, P23, DOI 10.1109/34.655647
+   Salamin H, 2009, IEEE T MULTIMEDIA, V11, P1373, DOI 10.1109/TMM.2009.2030740
+   Sang J., 2010, P ACM INT C MULT, P855
+   Sharff Stefan, 1982, ELEMENTS CINEMA THEO
+   Shroff N, 2010, IEEE T MULTIMEDIA, V12, P853, DOI 10.1109/TMM.2010.2058795
+   Suber H., 2006, POWER FILM
+   SWAIN MJ, 1991, INT J COMPUT VISION, V7, P11, DOI 10.1007/BF00130487
+   Tang L., 2009, P 17 ACM INT C MULT, P351
+   Taskiran C. M., 2006, P SPIE C MULT CONT A, V6073, P178
+   Viola P, 2004, INT J COMPUT VISION, V57, P137, DOI 10.1023/B:VISI.0000013087.49260.fb
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Yeh MC, 2012, IEEE INT CONF MULTI, P242, DOI 10.1109/ICMEW.2012.48
+   Zhang YF, 2009, IEEE T MULTIMEDIA, V11, P1276, DOI 10.1109/TMM.2009.2030629
+NR 33
+TC 22
+Z9 22
+U1 0
+U2 8
+PU IEEE-INST ELECTRICAL ELECTRONICS ENGINEERS INC
+PI PISCATAWAY
+PA 445 HOES LANE, PISCATAWAY, NJ 08855-4141 USA
+SN 1051-8215
+EI 1558-2205
+J9 IEEE T CIRC SYST VID
+JI IEEE Trans. Circuits Syst. Video Technol.
+PD NOV
+PY 2013
+VL 23
+IS 11
+BP 1927
+EP 1940
+DI 10.1109/TCSVT.2013.2269186
+PG 14
+WC Engineering, Electrical & Electronic
+SC Engineering
+GA 248YG
+UT WOS:000326741600009
+DA 2019-03-22
+ER
+
+PT J
+AU Mac Carron, P
+   Kenna, R
+AF Mac Carron, P.
+   Kenna, R.
+TI Network analysis of the Islendinga sogur - the Sagas of Icelanders
+SO EUROPEAN PHYSICAL JOURNAL B
+LA English
+DT Article
+ID SMALL-WORLD NETWORKS; COMMUNITY STRUCTURE; COMPLEX NETWORKS;
+   ORGANIZATION; DYNAMICS; BALANCE
+AB The Islendinga sogur - or Sagas of Icelanders - constitute a collection of medieval literature set in Iceland around the late 9th to early 11th centuries, the so-called Saga Age. They purport to describe events during the period around the settlement of Iceland and the generations immediately following and constitute an important element of world literature thanks to their unique narrative style. Although their historicity is a matter of scholarly debate, the narratives contain interwoven and overlapping plots involving thousands of characters and interactions between them. Here we perform a network analysis of the Islendinga sogur in an attempt to gather quantitative information on interrelationships between characters and to compare saga society to other social networks.
+C1 [Mac Carron, P.; Kenna, R.] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+RP Mac Carron, P (reprint author), Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+EM maccarrp@coventry.ac.uk
+OI MacCarron, Padraig/0000-0002-5163-9264; Kenna, Ralph/0000-0001-9990-4277
+FU The Leverhulme Trust [F/00732/I]; Marie Curie IRSES grant within 7th
+   European Community Framework Programme
+FX We wish to thank Thierry Platini and Heather O'Donoghue for helpful
+   discussions and feedback. We also thank Joseph Yose and Robin de Regt
+   for help gathering data. This work is supported by The Leverhulme Trust
+   under Grant No. F/00732/I and in part by a Marie Curie IRSES grant
+   within the 7th European Community Framework Programme.
+CR Alberich R., 2002, ARXIVCONDMAT0202174
+   Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Amaral LAN, 2000, P NATL ACAD SCI USA, V97, P11149, DOI 10.1073/pnas.200327197
+   Antal T, 2006, PHYSICA D, V224, P130, DOI 10.1016/j.physd.2006.09.028
+   Bayerschmidt C. F., 1998, NJALS SAGA
+   CARTWRIGHT D, 1956, PSYCHOL REV, V63, P277, DOI 10.1037/h0046049
+   da L., 2011, ADV PHYS, V60, P329
+   DUNBAR RIM, 1995, ETHOL SOCIOBIOL, V16, P233, DOI 10.1016/0162-3095(95)00022-D
+   EFRON B, 1979, SIAM REV, V21, P460, DOI 10.1137/1021092
+   Fortunato S, 2010, PHYS REP, V486, P75, DOI 10.1016/j.physrep.2009.11.002
+   FREEMAN LC, 1977, SOCIOMETRY, V40, P35, DOI 10.2307/3033543
+   FRUCHTERMAN TMJ, 1991, SOFTWARE PRACT EXPER, V21, P1129, DOI 10.1002/spe.4380211102
+   Girvan M, 2002, P NATL ACAD SCI USA, V99, P7821, DOI 10.1073/pnas.122653799
+   Gleiser P. M., 2007, J STAT MECH-THEORY E, V2007, DOI DOI 10.1088/1742-5468/2007/09/P09020
+   Hamer A.J., 2008, THESIS RIJKSUNIVERSI
+   Heider F, 1946, J PSYCHOL, V21, P107, DOI 10.1080/00223980.1946.9917275
+   Humphries MD, 2008, PLOS ONE, V3, DOI 10.1371/journal.pone.0002051
+   Luduena G.A., 2012, ARXIV12120749
+   Mac Carron P, 2012, EPL-EUROPHYS LETT, V99, DOI 10.1209/0295-5075/99/28002
+   Magnusson Magnus, 1960, NJALS SAGA
+   Miller William Ian, 1990, BLOODTAKING PEACEMAK
+   Mislove A, 2007, IMC'07: PROCEEDINGS OF THE 2007 ACM SIGCOMM INTERNET MEASUREMENT CONFERENCE, P29
+   Newman MEJ, 2005, CONTEMP PHYS, V46, P323, DOI 10.1080/00107510500052444
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.026113
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   Newman MEJ, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026126
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   O'Donoghue Heather, 2004, OLD NORSE ICELANDIC
+   Ravasz E, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026112
+   Smiley Jane, 2000, SAGAS ICELANDERS SEL
+   Subelj L., ARXIV12023188
+   Szell M, 2010, P NATL ACAD SCI USA, V107, P13636, DOI 10.1073/pnas.1004008107
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+NR 35
+TC 12
+Z9 12
+U1 0
+U2 6
+PU SPRINGER
+PI NEW YORK
+PA 233 SPRING ST, NEW YORK, NY 10013 USA
+SN 1434-6028
+EI 1434-6036
+J9 EUR PHYS J B
+JI Eur. Phys. J. B
+PD OCT 1
+PY 2013
+VL 86
+IS 10
+AR 407
+DI 10.1140/epjb/e2013-40583-3
+PG 9
+WC Physics, Condensed Matter
+SC Physics
+GA 226FJ
+UT WOS:000325019700004
+DA 2019-03-22
+ER
+
+PT J
+AU Jung, JJ
+   You, E
+   Park, SB
+AF Jung, Jason J.
+   You, Eunsoon
+   Park, Seung-Bo
+TI Emotion-based character clustering for managing story-based contents: a
+   cinemetric analysis
+SO MULTIMEDIA TOOLS AND APPLICATIONS
+LA English
+DT Article
+DE Character clustering; Relationship; Emotion; Character-net; Social
+   network
+ID VIDEO
+AB Stories in digital content (e.g., movies) are usually developed using many kinds of relationships among the characters. In order to efficiently manage such contents, we want to exploit a social network (called Character-net) extracted from the stories. Since scripts are composed of several elements (i.e., scene headings, character names, dialogs, actions, etc.), we focus on analyzing interactions (e.g., dialog) among the characters to build such a social network. Most importantly, these relationships between minor and major characters can be abstracted and clustered into similar scenes. Thereby, in this paper, we propose a novel method that can cluster characters using their emotional similarity. If a minor character has a similar emotion vector tothe main character, then the minor character can be classified as a tritagonist who helps the main character. Conversely, this minor character may be clustered into another group and denoted as an antagonist. Additionally, we show the efficiency of our proposed method by experiment in this paper.
+C1 [Jung, Jason J.] Yeungnam Univ, Gyongsan, South Korea.
+   [You, Eunsoon] Dankook Univ, Storytelling Res Ctr, Gyeonggi Do, South Korea.
+   [Park, Seung-Bo] Kyung Hee Univ, Seoul, South Korea.
+RP Park, SB (reprint author), Kyung Hee Univ, Seoul, South Korea.
+EM j2jung@gmail.com; eunsoony@hotmail.com; molaal@naver.com
+RI Jung, Jason J./B-9622-2012
+OI Jung, Jason J./0000-0003-0050-7445; You, Eun-Soon/0000-0001-8827-1232
+FU Basic Science Research Program through the National Research Foundation
+   of Korea(NRF); Ministry of Education, Science and Technology
+   [2012R1A1A2002839]
+FX This research was supported by Basic Science Research Program through
+   the National Research Foundation of Korea(NRF) funded by the Ministry of
+   Education, Science and Technology (No. 2012R1A1A2002839).
+CR AJMERA J, 2003, P IEEE WORKSH AUT SP, P411
+   Cour T, 2008, LECT NOTES COMPUT SC, V5305, P158, DOI 10.1007/978-3-540-88693-8_12
+   Danisman T, 2008, COMMUN INTERACTSOC I, V2, P53
+   ELLIOT CD, 1992, THESIS NW U
+   Esuli A., 2006, P 5 INT C LANG RES E, V6, P417, DOI DOI 10.1155/2015/715730
+   Everingham M, 2009, IMAGE VISION COMPUT, V27, P545, DOI 10.1016/j.imavis.2008.04.018
+   GARG N, 2008, P ACM INT C MULT, P693
+   HUNG H, 2007, P ACM MULT C, P835
+   Jung JJ, 2012, EXPERT SYST APPL, V39, P9002, DOI 10.1016/j.eswa.2012.02.035
+   Jung JJ, 2012, EXPERT SYST APPL, V39, P8066, DOI 10.1016/j.eswa.2012.01.136
+   Jung JJ, 2012, COMPUT J, V55, P337, DOI 10.1093/comjnl/bxr102
+   Jung JJ, 2012, EXPERT SYST APPL, V39, P4049, DOI 10.1016/j.eswa.2011.09.096
+   Liu Hugo, 2003, P 8 INT C INT US INT, P125
+   Ma CL, 2005, LECT NOTES COMPUT SC, V3784, P622
+   Neti  C., 2000, AUDIO VISUAL SPEECH
+   Nothelfer C.E., 2009, INDIANA UNDERGRADUAT, V4, P103
+   Park S.-B., 2011, MULTIMEDIA TOOLS APP
+   Park S.-B., 2011, P 3 INT C INT INF DA, P130
+   Park S-B, 2011, LECT NOTES ELECT ENG, P507
+   Quan C., 2010, P 7 C INT LANG RES E, P1146
+   RICHARDSON R, 1994, P AICS C
+   RIENKS R, 2006, P INT C MULT INT, P257
+   Ronfard R, 2003, P 2003 INT C MULT EX, V2, P21
+   Salway A., 2003, P 11 ACM INT C MULT, P299
+   Strapparava C., 2004, P 4 INT C LANG RES E, V4, P1083
+   Tsivian Y, 2009, DIGITAL TOOLS MEDIA, P93
+   Turetsky R, 2004, P IEEE INT C MULT EX, P1659
+   Vinciarelli A, 2006, P IEEE INT C MULT EX, P779
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Willegen I.V., 2009, P TSD, P234
+   Wu Cai, 2005, AMIA Annu Symp Proc, P1158
+   Yassine M, 2010, INT C DAT MIN WORKSH, P1136
+NR 32
+TC 9
+Z9 9
+U1 0
+U2 15
+PU SPRINGER
+PI DORDRECHT
+PA VAN GODEWIJCKSTRAAT 30, 3311 GZ DORDRECHT, NETHERLANDS
+SN 1380-7501
+J9 MULTIMED TOOLS APPL
+JI Multimed. Tools Appl.
+PD JUL
+PY 2013
+VL 65
+IS 1
+BP 29
+EP 45
+DI 10.1007/s11042-012-1133-x
+PG 17
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Computer Science, Theory & Methods; Engineering, Electrical
+   & Electronic
+SC Computer Science; Engineering
+GA 126OI
+UT WOS:000317626800003
+DA 2019-03-22
+ER
+
+PT J
+AU Oelke, D
+   Kokkinakis, D
+   Keim, DA
+AF Oelke, D.
+   Kokkinakis, D.
+   Keim, D. A.
+TI Fingerprint Matrices: Uncovering the dynamics of social networks in
+   prose literature
+SO COMPUTER GRAPHICS FORUM
+LA English
+DT Article
+DE Document and Text Processing [I; 7; 5]: Document CaptureDocument
+   Analysis
+ID GRAPH LAYOUT; VISUALIZATIONS
+AB In prose literature often complex dynamics of interpersonal relationships can be observed between the different characters. Traditionally, node-link diagrams are used to depict the social network of a novel. However, static graphs can only visualize the overall social network structure but not the development of the networks over the course of the story, while dynamic graphs have the serious problem that there are many sudden changes between different portions of the overall social network. In this paper we explore means to show the relationships between the characters of a plot and at the same time their development over the course of a novel. Based on a careful exploration of the design space, we suggest a new visualization technique called Fingerprint Matrices. A case study exemplifies the usage of Fingerprint Matrices and shows that they are an effective means to analyze prose literature with respect to the development of relationships between the different characters.
+C1 [Oelke, D.] DIPF, Ubiquitous Knowledge Proc Lab UKP, Frankfurt, Germany.
+   [Kokkinakis, D.] Univ Gothenburg, Dept Swedish, Sprakbanken Grp, Gothenburg, Sweden.
+   [Keim, D. A.] Univ Konstanz, Data Anal & Visualizat Grp, Constance, Germany.
+RP Oelke, D (reprint author), DIPF, Ubiquitous Knowledge Proc Lab UKP, Frankfurt, Germany.
+CR Abbasi A, 2007, PROCEEDINGS OF THE 7TH ACM/IEE JOINT CONFERENCE ON DIGITAL LIBRARIES, P11, DOI 10.1145/1255175.1255178
+   BALL T, 1996, IEEE COMPUT, V29, P33
+   Borin L., 2010, LIT ED DIGITAL LEARN, p[53, 3]
+   Brandes U., 1997, P S GRAPH DRAW GD 97, P236, DOI DOI 10.1007/3-540-63938-1_66
+   Brandes U., 2002, P IEEE S INF VIS, P2
+   Brandes U, 2011, IEEE T VIS COMPUT GR, V17, P2283, DOI 10.1109/TVCG.2011.169
+   Burch M, 2011, IEEE T VIS COMPUT GR, V17, P2344, DOI 10.1109/TVCG.2011.226
+   Collins C., 2009, P IEEE S VIS AN SCI, P91
+   Cui WW, 2011, IEEE T VIS COMPUT GR, V17, P2412, DOI 10.1109/TVCG.2011.239
+   Don A, 2007, P 16 ACM C INF KNOWL, P213, DOI DOI 10.1145/1321440.1321473
+   FANG S., 2006, P 2006 ACM S APPL CO, P240
+   Farrugia M, 2011, INFORM VISUAL, V10, P47, DOI 10.1057/ivs.2010.10
+   FEKETE JD, 2000, P 5 ACM C DIG LIB SA, P47
+   Hache B., 2009, THESIS U EDINBURGH, P2
+   HEARST MA, 1995, P C HUM FACT COMP SY
+   Keim DA, 2007, IEEE CONF VIS ANAL, P115, DOI 10.1109/VAST.2007.4389004
+   Keim DA, 2008, LECT NOTES COMPUT SC, V5255, P2, DOI 10.1007/978-3-540-88411-8_2
+   Kim Kwang Young, 2011, Algae, V26, P1, DOI 10.4490/algae.2011.26.1.001
+   Moody J, 2005, AM J SOCIOL, V110, P1206, DOI 10.1086/421509
+   Moretti Franco, 2005, GRAPHS MAPS TREES AB
+   Oelke D., 2011, COMPUT GRAPH FORUM, V30, P4
+   Oelke D., 2012, LANGUAGE TECHNOLOGY, P2
+   Plaisant C., 2006, P 6 ACM IEEE CS JOIN, P141
+   Purchase HC, 2007, LECT NOTES COMPUT SC, V4372, P184
+   Reda K, 2011, COMPUT GRAPH FORUM, V30, P1061, DOI 10.1111/j.1467-8659.2011.01955.x
+   Ribler R. L., 2000, P IEEE S INF VIZ 200
+   Rohrer RM, 1998, IEEE SYMPOSIUM ON INFORMATION VISUALIZATION - PROCEEDINGS, P121, DOI 10.1109/INFVIS.1998.729568
+   Rydberg-Cox Jeff, 2011, J CHICAGO C DIGITAL, V1, P1
+   Stein K, 2010, 2010 INTERNATIONAL CONFERENCE ON ADVANCES IN SOCIAL NETWORKS ANALYSIS AND MINING (ASONAM 2010), P233, DOI 10.1109/ASONAM.2010.18
+   Tanahashi Y, 2012, IEEE T VIS COMPUT GR, V18, P2679, DOI 10.1109/TVCG.2012.212
+   Vuillemot Romain, 2009, Proceedings of the 2009 IEEE Symposium on Visual Analytics Science and Technology. VAST 2009. Held co-jointly with VisWeek 2009, P107, DOI 10.1109/VAST.2009.5333248
+   Wei  F., 2010, P 16 ACM SIGKDD INT, P153, DOI DOI 10.1145/1835804.1835827
+   WOODRUFF A, 2001, P SIGCHI C HUM FACT, P198
+   Xu S, 2007, P 2007 C COMP HUM IN, P61
+   Yi JS, 2010, INT J HUM-COMPUT INT, V26, P1031, DOI 10.1080/10447318.2010.516722
+NR 35
+TC 8
+Z9 8
+U1 0
+U2 7
+PU WILEY-BLACKWELL
+PI HOBOKEN
+PA 111 RIVER ST, HOBOKEN 07030-5774, NJ USA
+SN 0167-7055
+EI 1467-8659
+J9 COMPUT GRAPH FORUM
+JI Comput. Graph. Forum
+PD JUN
+PY 2013
+VL 32
+IS 3
+BP 371
+EP 380
+DI 10.1111/cgf.12124
+PN 4
+PG 10
+WC Computer Science, Software Engineering
+SC Computer Science
+GA 173VT
+UT WOS:000321110500001
+DA 2019-03-22
+ER
+
+PT S
+AU Nalisnick, ET
+   Baird, HS
+AF Nalisnick, Eric T.
+   Baird, Henry S.
+GP IEEE
+TI Extracting Sentiment Networks from Shakespeare's Plays
+SO 2013 12TH INTERNATIONAL CONFERENCE ON DOCUMENT ANALYSIS AND RECOGNITION
+   (ICDAR)
+SE Proceedings of the International Conference on Document Analysis and
+   Recognition
+LA English
+DT Proceedings Paper
+CT 12th International Conference on Document Analysis and Recognition
+   (ICDAR)
+CY AUG 25-28, 2013
+CL Washington, DC
+SP Raytheon BBN Technologies, IAPR, ABBYY, VisionObjects, Google, HITACHI, iTESOFT, ebay, Univ Buffalo, LEHIGH Univ, Univ Maryland
+AB Automatic methods for analyzing sentiment and its movement through a play's social network are investigated. From structured dialogue we can algorithmically determine who is speaking and guess at who is listening or being directly addressed. Knowing who is speaking to whom allows the flow of sentiment to be tracked between characters and, within plays with clear time-lines, permits tracking the development of emotional relationships. We hypothesize that changing polarities between characters can be modeled as edge weights in a dynamic social network-a "sentiment network"-which can be used to distinguish a document's genre (tragedies versus comedies), detect a given character's enemies and allies, and model the overall emotional development of a play. Experiments on Shakespeare's plays are presented along with discussion of improvements and further applications.
+C1 [Nalisnick, Eric T.; Baird, Henry S.] Lehigh Univ, Dept Comp Sci & Engn, Bethlehem, PA 18015 USA.
+RP Nalisnick, ET (reprint author), Lehigh Univ, Dept Comp Sci & Engn, Bethlehem, PA 18015 USA.
+EM etn212@lehigh.edu; hsb2@lehigh.edu
+CR Agarwal A., 2012, NAACL HLT 2012, P88
+   Elson D. K., 2010, P AAAI
+   ELSON DK, 2010, P 48 ANN M ASS COMP, P138
+   Groh G, 2011, P 5 INT AAAI C WEBL
+   Kim S., 2004, COLING 04
+   Krauss J., 2008, ECIS EUR C INF SYST
+   Maranzato R., 2010, SIGAPP APPL COMPUT R, V11, P14, DOI DOI 10.1145/1869687.1869689
+   Marvel SA, 2011, P NATL ACAD SCI USA, V108, P1771, DOI 10.1073/pnas.1013213108
+   Mohammad S., 2011, P 5 ACL HLT WORKSH L, P105
+   Mutton P, 2004, IEEE INFOR VIS, P35, DOI 10.1109/IV.2004.1320122
+   Nalisnick E.T., 2013, P 51 ANN M ASS COMP
+   Newman ML, 2003, PERS SOC PSYCHOL B, V29, P665, DOI 10.1177/0146167203251529
+   Nielsen F. A., 2011, AFINN
+   Penas A., 2010, COLING 10, P979
+   Poblete  Barbara, 2011, CIKM 11, P1025, DOI DOI 10.1145/2063576.2063724
+   Rommel T., 1994, Literary & Linguistic Computing, V9, P7, DOI 10.1093/llc/9.1.7
+   Smith A., 2003, P 2003 C N AM CHAPT, V4, P23, DOI DOI 10.3115/1073427.1073439
+   Strapparava C., 2004, P 4 INT C LANG RES E, V4, P1083
+   Thet T. T., 2009, TSA 09 HONG KONG CHI, P81
+   Titov I., 2008, WWW 08, P111
+   Toutanova K., 2000, P 2000 JOINT SIGDAT, V13, P63, DOI DOI 10.3115/1117794.1117802
+   Williams G., 1964, REV ENGLISH LIT, V5, P63
+   Zhao Y., 2007, P 30 AUSTR C COMP SC, V62, P59
+NR 23
+TC 5
+Z9 5
+U1 0
+U2 3
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+SN 1520-5363
+J9 PROC INT CONF DOC
+PY 2013
+BP 758
+EP 762
+DI 10.1109/ICDAR.2013.155
+PG 5
+WC Computer Science, Artificial Intelligence; Engineering, Electrical &
+   Electronic
+SC Computer Science; Engineering
+GA BB4XX
+UT WOS:000343489100146
+DA 2019-03-22
+ER
+
+PT B
+AU Seo, J
+   Park, GM
+   Kim, SH
+   Cho, HG
+AF Seo, Jongkyu
+   Park, Gyoung-Mi
+   Kim, Sung-Hwan
+   Cho, Hwan-Gue
+BE Mao, X
+   Hong, L
+TI Characteristic Analysis of Social Network Constructed from Literary
+   Fiction
+SO 2013 INTERNATIONAL CONFERENCE ON CYBERWORLDS (CW)
+LA English
+DT Proceedings Paper
+CT International Conference on Cyberworlds (CW)
+CY OCT 21-23, 2013
+CL Keio Univ, Yokohama, JAPAN
+SP Keio Univ, Fac Sci & Technol, Soc Art & Sci, ACM, ACM SIGGRAPH, EUROGRAPHICS, IEICE Type 2 Tech Grp Cyberworlds
+HO Keio Univ
+DE Social Network; Virtual characters; Graph theory; Minimum spanning tree;
+   Literature analysis
+AB A Social network is a useful model to identify hidden structures and meaningful knowledge among social atoms, which have complicated interactions. Until recently, most studies have focused on the real data of social space, including emails, tweets, and human communities. In this paper, we construct a social network from a fictional space by mapping characters to vertices and their relationship strengths to edges between characters. It is very interesting that the topological structure of SNF is remarkably similar to the common social network based on real people in terms of the power-law distribution of node degree and path distance. The main contribution of this paper is that our SNF model can be exploited to reveal the deep structure of fiction novels by using a graph topology rather than by using traditional categories such as short or long novels.
+C1 [Seo, Jongkyu; Park, Gyoung-Mi; Kim, Sung-Hwan; Cho, Hwan-Gue] Pusan Natl Univ, Dept Comp Engn, Pusan, South Korea.
+RP Seo, J (reprint author), Pusan Natl Univ, Dept Comp Engn, Pusan, South Korea.
+EM maniasjk@pusan.ac.kr; miya11@pusan.ac.kr; sunghwan@pusan.ac.kr;
+   hgcho@pusan.ac.kr
+CR Burrows J., 2004, TEXTUAL ANAL
+   Elson D. K., 2012, P ASS COMP LING, P141
+   Freeman C., 2004, DEV SOCIAL NETWORK A
+   Fujii Y., 2011, P COLL EL MESS ANT S, P64
+   Kim DH, 2005, PHYSICA A, V351, P671, DOI 10.1016/j.physa.2004.12.026
+   Krestel R., 2008, P ECML PKDD DISC CHA, P38
+   Park S. K. G.M., 2013, IJMLC, V3, P107
+   Rydberg-Cox Jeff, 2011, J CHICAGO C DIGITAL, V1, P1
+NR 8
+TC 1
+Z9 1
+U1 2
+U2 7
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+BN 978-1-4799-2245-1
+PY 2013
+BP 147
+EP 150
+DI 10.1109/CW.2013.72
+PG 4
+WC Computer Science, Theory & Methods; Engineering, Electrical & Electronic
+SC Computer Science; Engineering
+GA BB7PC
+UT WOS:000345862900026
+DA 2019-03-22
+ER
+
+PT J
+AU Mac Carron, P
+   Kenna, R
+AF Mac Carron, Padraig
+   Kenna, Ralph
+TI Universal properties of mythological networks
+SO EPL
+LA English
+DT Article
+ID COMPLEX NETWORKS; ORGANIZATION; BALANCE; WORLD
+AB As in statistical physics, the concept of universality plays an important, albeit qualitative, role in the field of comparative mythology. Here we apply statistical mechanical tools to analyse the networks underlying three iconic mythological narratives with a view to identifying common and distinguishing quantitative features. Of the three narratives, an Anglo-Saxon and a Greek text are mostly believed by antiquarians to be partly historically based while the third, an Irish epic, is often considered to be fictional. Here we use network analysis in an attempt to discriminate real from imaginary social networks and place mythological narratives on the spectrum between them. This suggests that the perceived artificiality of the Irish narrative can be traced back to anomalous features associated with six characters. Speculating that these are amalgams of several entities or proxies, renders the plausibility of the Irish text comparable to the others from a network-theoretic point of view. editor's choice Copyright (C) EPLA, 2012
+C1 [Mac Carron, Padraig; Kenna, Ralph] Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+RP Mac Carron, P (reprint author), Coventry Univ, Appl Math Res Ctr, Coventry CV1 5FB, W Midlands, England.
+EM maccarrp@uni.coventry.ac.uk
+OI Kenna, Ralph/0000-0001-9990-4277; MacCarron, Padraig/0000-0002-5163-9264
+FU Leverhulme Trust [F/00 732/I]
+FX The authors thank CHRISTIAN VON FERBER, COLM CONNAUGHTON and MARTIN
+   WEIGEL for helpful comments and discussions, HEATHER O'DONOGHUE for help
+   with the mythological epics, ANEESA AYUB, RACHEL FINDLAY and SIMON
+   RAWLINGS for help with the data for the fictional narratives. This work
+   is supported by The Leverhulme Trust under grant No. F/00 732/I.
+CR Alberich R., CONDMAT0202174
+   Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Albert R, 2000, NATURE, V406, P378, DOI 10.1038/35019019
+   Amaral LAN, 2000, P NATL ACAD SCI USA, V97, P11149, DOI 10.1073/pnas.200327197
+   Antal T, 2006, PHYSICA D, V224, P130, DOI 10.1016/j.physd.2006.09.028
+   Backstrom L, ARXIV11114570
+   Barabasi AL, 2002, PHYSICA A, V311, P590, DOI 10.1016/S0378-4371(02)00736-7
+   Barabasi AL, 1999, SCIENCE, V286, P509, DOI 10.1126/science.286.5439.509
+   Benson L. D., 1970, INTERPRETATION NARRA, P1
+   Campbell Joseph, 1949, HERO 1000 FACES
+   CARTWRIGHT D, 1956, PSYCHOL REV, V63, P277, DOI 10.1037/h0046049
+   Chambers R. W., 1959, BEOWULF INTRO
+   COSTA LD, ARXIV07113199
+   Crossley-Holland K, 1999, BEOWULF
+   Davis G. F., 2003, Strategic Organization, V1, P301, DOI 10.1177/14761270030013002
+   Dorogovtsev SN, 2002, PHYS REV E, V65, DOI 10.1103/PhysRevE.65.066122
+   FREEMAN LC, 1977, SOCIOMETRY, V40, P35, DOI 10.2307/3033543
+   Gleiser PM, 2007, J STAT MECH-THEORY E, DOI 10.1088/1742-5468/2007/09/P09020
+   Gleiser PM, 2003, ADV COMPLEX SYST, V6, P565, DOI 10.1142/S0219525903001067
+   Heaney S., 1999, BEOWULF
+   Heider F, 1946, J PSYCHOL, V21, P107, DOI 10.1080/00223980.1946.9917275
+   Holovatch Y, 2006, J PHYS STUD, V10, P247
+   Holovatch Yu., ARXIV07051298
+   Jackson K., 1964, OLDEST IRISH TRADITI
+   Kinsella Thomas, 1969, TAIN
+   Klaeber F., 1950, BEOWULF FIGHT FINNSB
+   Korfmann M, 2004, ARCHAEOLOGY, V57, P36
+   Kraft JC, 2003, GEOLOGY, V31, P163, DOI 10.1130/0091-7613(2003)031<0163:HAAATS>2.0.CO;2
+   Leskovec J, 2009, INTERNET MATH, V6, P29, DOI 10.1080/15427951.2009.10129177
+   Liljeros F, 2001, NATURE, V411, P907, DOI 10.1038/35082140
+   Lynn C., 2003, NAVAN FORT ARCHAEOLO
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.016132
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.016132
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   O'Rahilly T.F, 1964, EARLY IRISH HIST MYT
+   Onnela J.-P, ARXIV10065731
+   Ravasz E, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026112
+   Rieu E. V, 1950, ILIAD
+   Stauffer D, ARXIV11092475
+   Szell M, 2010, P NATL ACAD SCI USA, V107, P13636, DOI 10.1073/pnas.1004008107
+   Wassermann F., 1994, SOCIAL NETWORK ANAL
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+NR 45
+TC 28
+Z9 28
+U1 0
+U2 6
+PU EPL ASSOCIATION, EUROPEAN PHYSICAL SOCIETY
+PI MULHOUSE
+PA 6 RUE DES FRERES LUMIERE, MULHOUSE, 68200, FRANCE
+SN 0295-5075
+EI 1286-4854
+J9 EPL-EUROPHYS LETT
+JI EPL
+PD JUL
+PY 2012
+VL 99
+IS 2
+AR 28002
+DI 10.1209/0295-5075/99/28002
+PG 6
+WC Physics, Multidisciplinary
+SC Physics
+GA 992WQ
+UT WOS:000307811300021
+OA Bronze
+DA 2019-03-22
+ER
+
+PT J
+AU Park, SB
+   Oh, KJ
+   Jo, GS
+AF Park, Seung-Bo
+   Oh, Kyeong-Jin
+   Jo, Geun-Sik
+TI Social network analysis in a movie using character-net
+SO MULTIMEDIA TOOLS AND APPLICATIONS
+LA English
+DT Article
+DE Character-net; Character; Movie; Community clustering; Story-based;
+   Social network
+ID DIGITAL VIDEO; SYSTEM; RETRIEVAL
+AB There have been various approaches to analyzing movie stories using social networks. Social network analysis is an effective means to extract semantic information from movies. Movie analysis through social relationships among characters can support various types of information retrieval better than audio-visual feature analysis. The relationships among characters form the main structure of the story. Therefore, through social network analysis among characters, movie story information such as the major roles and the corresponding communities can be determined. Progression of most movie stories is done by characters, and the scriptwriter or director narrates the story and relationships among characters using character dialogs. A dialog has a direction and time that supplies information. Therefore, the dialog is better for constructing social networks of characters than the co-appearance. Additionally, through social networks using the dialog, we can extract accurate movie stories such as classification of major, minor or extra roles, community clustering, and sequence detection. To achieve this, we propose a Character-net that can represent the relationships between characters using dialogs, and a method that can extract the sequences via clustering communities composed of characters. Our experiments show that our proposed method can efficiently detect sequences.
+C1 [Park, Seung-Bo; Oh, Kyeong-Jin] Inha Univ, Dept Informat Engn, Inchon, South Korea.
+   [Jo, Geun-Sik] Inha Univ, Sch Comp & Informat Engn, Inchon, South Korea.
+RP Park, SB (reprint author), Inha Univ, Dept Informat Engn, 253 Yonghyun Nam, Inchon, South Korea.
+EM molaal@eslab.inha.ac.kr; okjkillo@eslab.inha.ac.kr; gsjo@inha.ac.kr
+CR AJMERA J, 2003, P IEEE WORKSH AUT SP, P411
+   Cour T., 2008, P 10 EUR C COMP VIS, P158
+   Everingham M, 2008, IMAGE VISIO IN PRESS
+   Garg NP, 2008, CED ACM MULT C, P693
+   Guimera R, 2003, PHYS REV, V68
+   HUNG H, 2007, P ACM MULT C, P835
+   JUNG B, 2004, P 12 ANN ACM INT C M
+   Khatoonabadi SH, 2009, IMAGE VISION COMPUT, V27, P469, DOI 10.1016/j.imavis.2008.06.015
+   Kwon OB, 2003, EXPERT SYST APPL, V25, P387, DOI 10.1016/S0957-4174(03)00063-0
+   LIENHART R, 1997, J ACM, V40, P55
+   Lin L, 2009, PATTERN RECOGN LETT, V30, P180, DOI 10.1016/j.patrec.2008.02.023
+   Money AG, 2008, J VIS COMMUN IMAGE R, V19, P121, DOI 10.1016/j.jvcir.2007.04.002
+   Neti  C., 2000, AUDIO VISUAL SPEECH
+   Otsuka I, 2005, IEEE T CONSUM ELECTR, V51, P112, DOI 10.1109/TCE.2005.1405707
+   PARK SB, 2009, IEEE WIC ACM INT JOI, V1, P305
+   Poppe C, 2009, J VIS COMMUN IMAGE R, V20, P131, DOI 10.1016/j.jvcir.2008.12.002
+   RIENKS R, 2006, P INT C MULT INT, P257
+   Ronfard R, 2003, P IEEE INT C MULT EX, P21
+   Roth V, 1999, IMAGE VISION COMPUT, V17, P531, DOI 10.1016/S0262-8856(98)00144-9
+   Rui Y, 1999, ACM MUL IN PRESS SEP
+   Smeaton AF, 2007, INFORM SYST, V32, P545, DOI 10.1016/j.is.2006.09.001
+   Smoliar S. W., 1994, IEEE Multimedia, V1, P62, DOI 10.1109/93.311653
+   TURETSKY R, 2004, P IEEE INT C MULT EX, V3, P1659
+   Vinciarelli A, 2006, P IEEE INT C MULT EX, P779
+   Wasserman S., 1994, SOCIAL NETWORK ANAL
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Yeung M, 1996, P IEEE MULT COMP SYS, P296
+   ZABIH R, 1995, ACM MULTIMEDIA, P189
+NR 28
+TC 9
+Z9 9
+U1 0
+U2 13
+PU SPRINGER
+PI DORDRECHT
+PA VAN GODEWIJCKSTRAAT 30, 3311 GZ DORDRECHT, NETHERLANDS
+SN 1380-7501
+EI 1573-7721
+J9 MULTIMED TOOLS APPL
+JI Multimed. Tools Appl.
+PD JUL
+PY 2012
+VL 59
+IS 2
+BP 601
+EP 627
+DI 10.1007/s11042-011-0725-1
+PG 27
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Computer Science, Theory & Methods; Engineering, Electrical
+   & Electronic
+SC Computer Science; Engineering
+GA 943OP
+UT WOS:000304134000010
+DA 2019-03-22
+ER
+
+PT J
+AU Sang, JT
+   Xu, CS
+AF Sang, Jitao
+   Xu, Changsheng
+TI Robust Face-Name Graph Matching for Movie Character Identification
+SO IEEE TRANSACTIONS ON MULTIMEDIA
+LA English
+DT Article; Proceedings Paper
+CT IEEE International Conference on Multimedia and Expo (ICME)
+CY JUL 11-15, 2011
+CL Univ Ramon Llull, La Salle, Barcelona, SPAIN
+SP IEEE, IEEE Signal Proc Soc, IEEE Circuits & Syst Soc, IEEE Comp Soc, IEEE Commun Soc
+HO Univ Ramon Llull, La Salle
+DE Character identification; graph edit; graph matching; graph partition;
+   sensitivity analysis
+ID SENSITIVITY-ANALYSIS; VIDEO; MODELS
+AB Automatic face identification of characters in movies has drawn significant research interests and led to many interesting applications. It is a challenging problem due to the huge variation in the appearance of each character. Although existing methods demonstrate promising results in clean environment, the performances are limited in complex movie scenes due to the noises generated during the face tracking and face clustering process. In this paper we present two schemes of global face-name matching based framework for robust character identification. The contributions of this work include the following. 1) A noise insensitive character relationship representation is incorporated. 2) We introduce an edit operation based graph matching algorithm. 3) Complex character changes are handled by simultaneously graph partition and graph matching. 4) Beyond existing character identification approaches, we further perform an in-depth sensitivity analysis by introducing two types of simulated noises. The proposed schemes demonstrate state-of-the-art performance on movie character identification in various genres of movies.
+C1 [Sang, Jitao; Xu, Changsheng] Chinese Acad Sci, Inst Automat, Natl Lab Pattern Recognit, Beijing 100190, Peoples R China.
+   [Sang, Jitao; Xu, Changsheng] China Singapore Inst Digital Media, Singapore 119613, Singapore.
+RP Sang, JT (reprint author), Chinese Acad Sci, Inst Automat, Natl Lab Pattern Recognit, Beijing 100190, Peoples R China.
+EM jtsang@nlpr.ia.ac.cn; csxu@nlpr.ia.ac.cn
+CR Arandjelovic O., 2006, P IEEE INT C COMP VI, V2, P1513
+   Bengoetxea E, 2003, THESIS ECOLE NATL SU
+   Berg TL, 2004, PROC CVPR IEEE, P848
+   Bini E, 2008, REAL-TIME SYST, V39, P5, DOI 10.1007/s11241-006-9010-1
+   Bunke H, 1997, PATTERN RECOGN LETT, V18, P689, DOI 10.1016/S0167-8655(97)00060-3
+   Chui HL, 2003, COMPUT VIS IMAGE UND, V89, P114, DOI 10.1016/S1077-3142(03)00009-2
+   CINBIS RG, 2011, P INT C COMP VIS, P1559
+   Cour T., 2008, P 10 EUR C COMP VIS, P158
+   Cour T, 2010, PROC CVPR IEEE, P1014, DOI 10.1109/CVPR.2010.5540106
+   Cour T, 2009, PROC CVPR IEEE, P919, DOI 10.1109/CVPRW.2009.5206667
+   Everingham M, 2005, IEEE I CONF COMP VIS, P1103
+   Everingham M., 2009, J IMAGE VISION COMPU, P545
+   Everingham M., 2006, P 17 BRIT MACH VIS C, P889
+   Fitzgibbon Andrew, 2002, P ECCV, P304
+   Frey BJ, 2007, SCIENCE, V315, P972, DOI 10.1126/science.1136800
+   Hanneman R. E, 2000, ONLINE TXB SUPPORTIN, V157
+   Hong R, 2010, ACM MULTIMEDIA, P421
+   LI Y, 2006, P HCI ECCV, P29
+   Liang C., 2011, P COMP VIS PATT REC, P3377
+   Lin LA, 2010, IEEE T PATTERN ANAL, V32, P1426, DOI 10.1109/TPAMI.2009.150
+   Ramanan D., 2007, P IEEE INT C COMP VI, P1
+   Rubner Y., 1998, P IEEE INT C COMP VI, P59
+   Saltelli A, 2005, CHEM REV, V105, P2811, DOI 10.1021/cr040659d
+   Sanfeliu A., 1983, IEEE T SYST MAN CYBE, V13
+   Sang J., 2010, P ACM INT C MULT, P855
+   Sangiamwong J., 2011, P EUR WIR C SUST WIR, P1
+   Satoh S, 1997, PROC CVPR IEEE, P368, DOI 10.1109/CVPR.1997.609351
+   Sivic J, 2009, PROC CVPR IEEE, P1145
+   Stallkamp  J., 2007, P INT C COMP VIS, P1, DOI DOI 10.1109/ICCV.2007.4408868
+   Xu M., 2010, ACM MULTIMEDIA, P831
+   Yang J., 2005, P 13 ANN ACM INT C M, P31
+   Zhang Y., 2009, P ICME, P278
+   Zhang YF, 2009, IEEE T MULTIMEDIA, V11, P1276, DOI 10.1109/TMM.2009.2030629
+NR 33
+TC 14
+Z9 14
+U1 0
+U2 6
+PU IEEE-INST ELECTRICAL ELECTRONICS ENGINEERS INC
+PI PISCATAWAY
+PA 445 HOES LANE, PISCATAWAY, NJ 08855-4141 USA
+SN 1520-9210
+J9 IEEE T MULTIMEDIA
+JI IEEE Trans. Multimedia
+PD JUN
+PY 2012
+VL 14
+IS 3
+BP 586
+EP 596
+DI 10.1109/TMM.2012.2188784
+PN 1
+PG 11
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Telecommunications
+SC Computer Science; Telecommunications
+GA 943ZG
+UT WOS:000304166300010
+DA 2019-03-22
+ER
+
+PT S
+AU Yeh, MC
+   Tseng, MC
+   Wu, WP
+AF Yeh, Mei-Chen
+   Tseng, Ming-Chi
+   Wu, Wen-Po
+GP IEEE
+TI AUTOMATIC SOCIAL NETWORK CONSTRUCTION FROM MOVIES USING FILM-EDITING
+   CUES
+SO 2012 IEEE INTERNATIONAL CONFERENCE ON MULTIMEDIA AND EXPO WORKSHOPS
+   (ICMEW)
+SE IEEE International Conference on Multimedia and Expo Workshops
+LA English
+DT Proceedings Paper
+CT IEEE International Conference on Multimedia and Expo Workshops (ICMEW)
+CY JUL 09-13, 2012
+CL Melbourne, AUSTRALIA
+SP IEEE, IEEE Signal Proc Soc, IEEE Circuits & Syst Soc (CAS), IEEE Comp Soc, IEEE Commun Soc, Nokia, RMIT Univ
+DE Social network; face clustering; social cluster discovery
+AB In this paper, we investigate the problem of automatically constructing characters' social network from movies. Unlike existing approaches that use co-appearance information to measure the relationship between two characters, we argue that a method that describes the characters' interaction, rather than the co-appearance, makes more sense. We propose a new scheme that quantifies the interaction of characters by the use of film-editing cues, based on which we construct the characters' social network. Experiments on real-world data validate the effectiveness of the proposed method. In addition, we show an application of discovering characters' social clusters enabled by the automatically constructed social network.
+C1 [Yeh, Mei-Chen; Tseng, Ming-Chi; Wu, Wen-Po] Natl Taiwan Normal Univ, Dept Comp Sci & Informat Engn, Taipei, Taiwan.
+RP Yeh, MC (reprint author), Natl Taiwan Normal Univ, Dept Comp Sci & Informat Engn, Taipei, Taiwan.
+EM myeh@csie.ntnu.edu.tw
+OI Yeh, Mei-Chen/0000-0001-8665-7860
+CR Ahonen T, 2006, IEEE T PATTERN ANAL, V28, P2037, DOI 10.1109/TPAMI.2006.244
+   Coen B., 1973, COMMUN ACM, V16, P575
+   Cour T., 2010, P IEEE INT C COMP VI
+   Frey BJ, 2007, SCIENCE, V315, P972, DOI 10.1126/science.1136800
+   Liang C, 2009, LECT NOTES COMPUT SC, V5879, P917, DOI 10.1007/978-3-642-10467-1_82
+   Plantie M., 2010, P ACM INT C MULT
+   Smith Tim J., 2005, THESIS U EDINBURGH
+   Stone Z., 2008, IEEE WORKSH INT VIS
+   Vinciarelli A., 2007, P ACM INT C MULT
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Wu P., 2010, P ACM INT C MULT
+   Wu P., 2009, P ACM INT C MULT
+   Yuan K., 2010, P IEEE INT C AC SPEE
+NR 13
+TC 3
+Z9 3
+U1 0
+U2 1
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+SN 2330-7927
+BN 978-0-7695-4729-9
+J9 IEEE INT CONF MULTI
+PY 2012
+BP 242
+EP 247
+DI 10.1109/ICMEW.2012.48
+PG 6
+WC Imaging Science & Photographic Technology; Telecommunications
+SC Imaging Science & Photographic Technology; Telecommunications
+GA BCA86
+UT WOS:000309512100041
+DA 2019-03-22
+ER
+
+PT J
+AU Moretti, F
+AF Moretti, Franco
+TI NETWORK THEORY, PLOT ANALYSIS
+SO NEW LEFT REVIEW
+LA English
+DT Article
+CR Alberich R., 2002, MARVEL UNIVERSE LOOK
+   GOLD T, 2002, SOCIAL CONNECTIONS C, P3, DOI DOI 10.1017/CB09780511499579.002
+   Granovetter M., 1973, AM J SOCIOLOGY, V78
+   KIPNIS A, SOCIAL CONNECTIONS C
+   MICHEL JB, 2010, SCIENCE          DEC
+   NEWMAN, 2003, SIAM REV, V45, P183
+   PLAKS A, 2006, NOVEL, V1, P189
+   Sack Alexander G., 2006, THESIS COLUMBIA U
+   STILLER J, 2003, HUMAN NATURE, V14, P399
+   YANG MMH, 1994, GIFTS FAVORS BANQUET, P6
+NR 10
+TC 37
+Z9 37
+U1 2
+U2 10
+PU NEW LEFT REV LTD
+PI LONDON
+PA 6 MEARD ST, LONDON W1V 3HR, ENGLAND
+SN 0028-6060
+J9 NEW LEFT REV
+JI New Left Rev.
+PD MAR-APR
+PY 2011
+IS 68
+BP 80
+EP 102
+PG 23
+WC Political Science; Social Sciences, Interdisciplinary
+SC Government & Law; Social Sciences - Other Topics
+GA 758VX
+UT WOS:000290196400005
+DA 2019-03-22
+ER
+
+PT S
+AU Ding, L
+   Yilmaz, A
+AF Ding, Lei
+   Yilmaz, Alper
+GP IEEE
+TI Inferring Social Relations from Visual Concepts
+SO 2011 IEEE INTERNATIONAL CONFERENCE ON COMPUTER VISION (ICCV)
+SE IEEE International Conference on Computer Vision
+LA English
+DT Proceedings Paper
+CT IEEE International Conference on Computer Vision (ICCV)
+CY NOV 06-13, 2011
+CL Barcelona, SPAIN
+SP IEEE, Toyota, Google, Microsoft Res, Siemens, Technicolor, Adobe, Alcatel Lucent, Gentex Corp, Kooaba Image Recognit, Mitsubishi Elect, Mobileye, Object Video (OV), Toshiba, Xerox, Zeiss, 2d3, SATURNUS
+AB In this paper, we study the problem of social relational inference using visual concepts which serve as indicators of actors' social interactions. While social network analysis from videos has started to gain attention in the recent years, the existing work either uses proximity or co-occurrence statistics, or exploit a holistic model of the scene content where the relations are assumed to stay constant throughout the video. This work permits changing relations and argues that there exists a relationship between the visual concepts and the social relations among actors, which is a fundamentally new concept in computer vision. Specifically, we leverage the existing large-scale concept detectors to generate concept score vectors to represent the video content, and we further map them to grouping cues that are used to detect the social structure. In our framework, a probabilistic graphical model with temporal smoothing provides a means to analyze social relations among actors and detect communities. Experiments on Youtube videos and theatrical movies validate the proposed framework.
+C1 [Ding, Lei; Yilmaz, Alper] Ohio State Univ, Photogrammetr Comp Vis Lab, Columbus, OH 43210 USA.
+RP Ding, L (reprint author), Ohio State Univ, Photogrammetr Comp Vis Lab, Columbus, OH 43210 USA.
+EM leiding326@gmail.com; yilmaz.15@osu.edu
+RI Yilmaz, Alper/B-5609-2013
+OI Yilmaz, Alper/0000-0003-0755-2628
+CR Chaudhry R., 2009, CVPR
+   Chi Y., 2007, KDD, P6
+   Consolvo S., 2005, CHI, P1
+   Ding L., 2010, IEEE COMM SOC C SENS, P1
+   Ding L., 2006, ECCV, p[1, 2, 3, 5, 6]
+   Duan LX, 2010, PROC CVPR IEEE, P1959, DOI 10.1109/CVPR.2010.5539870
+   Eagle N, 2009, P NATL ACAD SCI USA, V106, P15274, DOI 10.1073/pnas.0900282106
+   Fisher RA, 1936, ANN EUGENIC, V7, P179, DOI 10.1111/j.1469-1809.1936.tb02137.x
+   Ge W., 2009, WACV, P2
+   He X., 2003, NIPS
+   Lynch SM, 2007, STAT SOC BEHAV SC, P1, DOI 10.1007/978-0-387-71265-9
+   Naphade M, 2006, IEEE MULTIMEDIA, V13, P86, DOI 10.1109/MMUL.2006.63
+   Newman MEJ, 2006, P NATL ACAD SCI USA, V103, P8577, DOI 10.1073/pnas.0601602103
+   Pentland A., 2008, HONEST SIGNALS THEY
+   Rasheed Z., 2003, CVPR, P3
+   Smola AJ, 2004, STAT COMPUT, V14, P199, DOI 10.1023/B:STCO.0000035301.49549.88
+   Sugiyama M, 2007, J MACH LEARN RES, V8, P1027
+   Wang G., 2010, ECCV
+   Wang P., 2009, ICCV
+   Wasserman S., 1994, SOCIAL NETWORK ANAL
+   Weng CY, 2009, IEEE T MULTIMEDIA, V11, P256, DOI 10.1109/TMM.2008.2009684
+   Xu D., 2007, CVPR, p[1, 3]
+   Yanagawa A., COLUMBIA U BASELINE, P2
+   Yang T., 2009, SDM, p[2, 4]
+   Yu T, 2009, CVPR
+   Zhou X., 2008, MM, P1
+NR 26
+TC 7
+Z9 7
+U1 0
+U2 1
+PU IEEE
+PI NEW YORK
+PA 345 E 47TH ST, NEW YORK, NY 10017 USA
+SN 1550-5499
+BN 978-1-4577-1102-2
+J9 IEEE I CONF COMP VIS
+PY 2011
+BP 699
+EP 706
+PG 8
+WC Computer Science, Artificial Intelligence; Engineering, Electrical &
+   Electronic
+SC Computer Science; Engineering
+GA BYS97
+UT WOS:000300061900089
+DA 2019-03-22
+ER
+
+PT B
+AU Elson, DK
+   Dames, N
+   McKeown, KR
+AF Elson, David K.
+   Dames, Nicholas
+   McKeown, Kathleen R.
+GP Assoc Computat Linguist
+TI Extracting Social Networks from Literary Fiction
+SO ACL 2010: 48TH ANNUAL MEETING OF THE ASSOCIATION FOR COMPUTATIONAL
+   LINGUISTICS
+LA English
+DT Proceedings Paper
+CT 48th Annual Meeting of the Association-for-Computational-Linguistics
+   (ACL)
+CY JUL 11-16, 2010
+CL Uppsala, SWEDEN
+SP Assoc Computat Linguist, Uppsala Univ
+AB We present a method for extracting social networks from literature, namely, nineteenth-century British novels and serials. We derive the networks from dialogue interactions, and thus our method depends on the ability to determine when two characters are in conversation. Our approach involves character name chunking, quoted speech attribution and conversation detection given the set of quotes. We extract features from the social networks and examine their correlation with one another, as well as with metadata such as the novel's setting. Our results provide evidence that the majority of novels in this time period do not fit two characterizations provided by literacy scholars. Instead, our results suggest an alternative explanation for differences in social networks.
+C1 [Elson, David K.; McKeown, Kathleen R.] Columbia Univ, Dept Comp Sci, New York, NY 10027 USA.
+   [Dames, Nicholas] Columbia Univ, Dept English, New York, NY 10027 USA.
+RP Elson, DK (reprint author), Columbia Univ, Dept Comp Sci, New York, NY 10027 USA.
+EM delson@cs.columbia.edu; nd122@columbia.edu; kathy@cs.columbia.edu
+CR Bakhtin Mikhail, 1981, DIALOGIC IMAGINATION, P84
+   Burrows J., 2004, COMPANION DIGITAL HU
+   Chambers N., 2008, P 46 ANN M ASS COMP, P789
+   Cho WKT, 2010, J POLIT, V72, P124, DOI 10.1017/S002238160999051X
+   COHEN J, 1960, EDUC PSYCHOL MEAS, V20, P37, DOI 10.1177/001316446002000104
+   Davis P. T., 2003, P 3 ACM IEEE JOINT C
+   DODDINGTON G, 2004, P 4 INT C LANG RES E, P837
+   Eagleton Terry, 2005, ENGLISH NOVEL INTRO
+   Elson David K., 2010, P 24 AAAI C ART INT
+   Finkel J. R., 2005, P 43 ANN M ASS COMP, P363, DOI DOI 10.3115/1219840.1219885
+   Gruzd A., 2008, INT NETW SOC NETW AN
+   Halpin Harry, 2004, P C EMP METH NAT LAN
+   Lee J., 2007, P 45 ANN M ASS COMP, P472
+   McCallum A, 2007, J ARTIF INTELL RES, V30, P249, DOI 10.1613/jair.2229
+   Moretti F., 1999, ATLAS EUROPEAN NOVEL
+   Moretti Franco, 2005, GRAPHS MAPS TREES AB
+   Mostellar Frederick, 1984, APPL BAYESIAN CLASSI
+   Williams R., 1975, COUNTRY CITY
+NR 18
+TC 21
+Z9 21
+U1 2
+U2 4
+PU ASSOC COMPUTATIONAL LINGUISTICS
+PI SOMERSET
+PA PO BOX 6090, SOMERSET, NJ 08875 USA
+BN 978-1-932432-66-4
+PY 2010
+BP 138
+EP 147
+PG 10
+WC Computer Science, Artificial Intelligence; Computer Science,
+   Interdisciplinary Applications; Linguistics; Language & Linguistics
+SC Computer Science; Linguistics
+GA BG7BY
+UT WOS:000391195300015
+DA 2019-03-22
+ER
+
+PT B
+AU Elson, DK
+   McKeown, KR
+AF Elson, David K.
+   McKeown, Kathleen R.
+GP AAAI
+TI Automatic Attribution of Quoted Speech in Literary Narrative
+SO PROCEEDINGS OF THE TWENTY-FOURTH AAAI CONFERENCE ON ARTIFICIAL
+   INTELLIGENCE (AAAI-10)
+LA English
+DT Proceedings Paper
+CT 24th AAAI Conference on Artificial Intelligence (AAAI)
+CY JUL 11-15, 2010
+CL Atlanta, GA
+SP Assoc Advancement Artificial Intelligence
+AB We describe a method for identifying the speakers of quoted speech in natural-language textual stories. We have assembled a corpus of more than 3,000 quotations, whose speakers (if any) are manually identified, from a collection of 19th and 20th century literature by six authors. Using rule-based and statistical learning, our method identifies candidate characters, determines their genders, and attributes each quote to the most likely speaker. We divide the quotes into syntactic classes in order to leverage common discourse patterns, which enable rapid attribution for many quotes. We apply learning algorithms to the remainder and achieve an overall accuracy of 83%.
+C1 [Elson, David K.; McKeown, Kathleen R.] Columbia Univ, New York, NY 10027 USA.
+RP Elson, DK (reprint author), Columbia Univ, New York, NY 10027 USA.
+EM delson@cs.columbia.edu; kathy@cs.columbia.edu
+FU U.S. National Science Foundation (NSF) [IIS-0935360]
+FX We thank Fadi Biadsy, Nicholas Dames and Kapil Thadani for their
+   comments on an earlier version of this paper. This material is based on
+   research supported in part by the U.S. National Science Foundation (NSF)
+   under IIS-0935360. Any opinions, findings and conclusions or
+   recommendations expressed in this material are those of the authors and
+   do not necessarily reflect the views of the NSF.
+CR Balahur A., 2009, P 2009 IEEE WIC ACM
+   Banfield A., 1982, UNSPEAKABLE SENTENCE
+   BIRD C, 2006, P 3 INT WORKSH MIN S
+   Davis P. T., 2003, P 3 ACM IEEE JOINT C
+   Fellbaum C., 1998, WORDNET ELECT LEXICA
+   Finkel J. R., 2005, P 43 ANN M ASS COMP, P363, DOI DOI 10.3115/1219840.1219885
+   Glass K., 2007, P 18 ANN S PATT REC, P1
+   Grishman R., 2005, ACE 05 EV WORKSH
+   Hall M., 2009, SIGKDD EXPLORATIONS, V11
+   Kittler J, 1998, IEEE T PATTERN ANAL, V20, P226, DOI 10.1109/34.667881
+   Mamede N., 2004, LNCS, P82
+   Pouliquen B., 2007, P REC ADV NAT LANG P
+   RATNAPARKHI A, 1996, P EMP METH NAT LANG
+   Redeker G., 2006, P CONSTR DISC
+   Salesin D. K. T. S. D., 1996, P SIGGRAPH 96
+   Sarmento L., 2009, 4 DOCT S INF ENG
+   Volosinov V.N., 1971, READINGS RUSSIAN POE, P149
+   Wiebe JM, 1990, P 13 INT C COMP LING, P401
+   Zhang J., 2003, P EUROSPEECH 2003
+NR 19
+TC 5
+Z9 5
+U1 0
+U2 0
+PU ASSOC ADVANCEMENT ARTIFICIAL INTELLIGENCE
+PI PALO ALTO
+PA 2275 E BAYSHORE RD, STE 160, PALO ALTO, CA 94303 USA
+BN 978-1-57735-463-5
+PY 2010
+BP 1013
+EP 1019
+PG 7
+WC Computer Science, Artificial Intelligence
+SC Computer Science
+GA BG7ZA
+UT WOS:000392059700162
+DA 2019-03-22
+ER
+
+PT J
+AU Zhang, YF
+   Xu, CS
+   Lu, HQ
+   Huang, YM
+AF Zhang, Yi-Fan
+   Xu, Changsheng
+   Lu, Hanqing
+   Huang, Yeh-Min
+TI Character Identification in Feature-Length Films Using Global Face-Name
+   Matching
+SO IEEE TRANSACTIONS ON MULTIMEDIA
+LA English
+DT Article
+DE Face identification; movie analysis; social network analysis; video
+   browsing
+ID RECOGNITION
+AB Identification of characters in films, although very intuitive to humans, still poses a significant challenge to computer methods. In this paper, we investigate the problem of identifying characters in feature-length films using video and film script. Different from the state-of-the-art methods on naming faces in the videos, most of which used the local matching between a visible face and one of the names extracted from the temporally local video transcript, we attempt to do a global matching between names and clustered face tracks under the circumstances that there are not enough local name cues that can be found. The contributions of our work include: 1) A graph matching method is utilized to build face-name association between a face affinity network and a name affinity network which are, respectively, derived from their own domains (video and script). 2) An effective measure of face track distance is presented for face track clustering. 3) As an application, the relationship between characters is mined using social network analysis. The proposed framework is able to create a new experience on character-centered film browsing. Experiments are conducted on ten feature-length films and give encouraging results.
+C1 [Zhang, Yi-Fan; Xu, Changsheng; Lu, Hanqing] Chinese Acad Sci, Inst Automat, Natl Lab Pattern Recognit, Beijing 100190, Peoples R China.
+   [Zhang, Yi-Fan; Xu, Changsheng; Lu, Hanqing] China Singapore Inst Digital Media, Singapore 119615, Singapore.
+   [Huang, Yeh-Min] Natl Cheng Kung Univ, Tainan 70101, Taiwan.
+RP Zhang, YF (reprint author), Chinese Acad Sci, Inst Automat, Natl Lab Pattern Recognit, Beijing 100190, Peoples R China.
+EM yfzhang@nlpr.ia.ac.cn; csxu@nlpr.ia.ac.cn; luhq@nlpr.ia.ac.cn;
+   huang@mail.ncku.edu.tw
+FU National Natural Science Foundation of China [60833006]; Beijing
+   Municipal Laboratory of Multimedia and Intelligent Software Technology
+FX Manuscript received August 04, 2008; revised April 12, 2009. First
+   published August 18, 2009; current version published October 16, 2009.
+   This work was supported in part by the National Natural Science
+   Foundation of China ( Grant No. 60833006) and in part by the Beijing
+   Municipal Laboratory of Multimedia and Intelligent Software Technology.
+   The associate editor coordinating the review of this manuscript and
+   approving it for publication was Dr. Jie Yang.
+CR Arandjelovic O, 2005, PROC CVPR IEEE, P860
+   Arandjelovic O., 2006, P IEEE INT C COMP VI, V2, P1513
+   BERG TL, 2004, P IEEE C COMP VIS PA, V2, P848
+   Cour T., 2008, P 10 EUR C COMP VIS, P158
+   Duda R. O., 2000, PATTERN CLASSIFICATI
+   Everingham M., 2006, P 17 BRIT MACH VIS C, P889
+   Fitzgibbon Andrew, 2002, P ECCV, P304
+   Gao Yong, 2007, P ACM C IM VID RETR, P441, DOI 10.1145/1282280.1282345
+   GUILLAUMIN M, 2008, P IEEE INT C COMP VI
+   Houghton R, 1999, IEEE INTELL SYST APP, V14, P45, DOI 10.1109/5254.796089
+   Jain V, 2007, P IEEE INT C COMP VI
+   Laptev I., 2008, P IEEE INT C COMP VI
+   Leordeanu M, 2005, IEEE I CONF COMP VIS, P1482
+   Li Y, 2004, IEEE T CIRC SYST VID, V14, P1073, DOI 10.1109/TCSVT.2004.831968
+   Li Y, 2006, LECT NOTES COMPUT SC, V3979, P29
+   Liu RR, 2007, METAB ENG, V9, P1, DOI 10.1016/j.ymben.2006.08.003
+   Mei  Tao, 2007, P ACM INT C MULT, P1075
+   MYERS CS, 1981, AT&T TECH J, V60, P1389, DOI 10.1002/j.1538-7305.1981.tb00272.x
+   Ng AY, 2002, ADV NEUR IN, V14, P849
+   OZKAN D, 2006, P INT C IM VID RETR, P173
+   Roweis ST, 2000, SCIENCE, V290, P2323, DOI 10.1126/science.290.5500.2323
+   Rubner Y., 1998, P IEEE INT C COMP VI, P59
+   Satoh S, 1997, PROC CVPR IEEE, P368, DOI 10.1109/CVPR.1997.609351
+   Scott J, 1991, SOCIAL NETWORK ANAL
+   Sivic J., 2005, P INT C IM VID RETR, P226
+   SNOEK CGM, 2005, P 13 ANN ACM INT C M, P399
+   WENG CY, 2007, P INT WORKSH MULT IN, P51
+   WU Y, 2007, P PAC RIM C MULT, P665
+   Yang J., 2005, P 13 ANN ACM INT C M, P31
+   Yang J., 2004, P 12 ANN ACM INT C M, P580
+   YANG J, 2004, P INT C IM VID RETR, P270
+   Zhao W, 2003, ACM COMPUT SURV, V35, P399, DOI 10.1145/954339.954342
+NR 32
+TC 42
+Z9 42
+U1 0
+U2 3
+PU IEEE-INST ELECTRICAL ELECTRONICS ENGINEERS INC
+PI PISCATAWAY
+PA 445 HOES LANE, PISCATAWAY, NJ 08855-4141 USA
+SN 1520-9210
+EI 1941-0077
+J9 IEEE T MULTIMEDIA
+JI IEEE Trans. Multimedia
+PD NOV
+PY 2009
+VL 11
+IS 7
+BP 1276
+EP 1288
+DI 10.1109/TMM.2009.2030629
+PG 13
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Telecommunications
+SC Computer Science; Telecommunications
+GA 506GB
+UT WOS:000270761300006
+DA 2019-03-22
+ER
+
+PT J
+AU Weng, CY
+   Chu, WT
+   Wu, JL
+AF Weng, Chung-Yi
+   Chu, Wei-Ta
+   Wu, Ja-Ling
+TI RoleNet: Movie Analysis from the Perspective of Social Networks
+SO IEEE TRANSACTIONS ON MULTIMEDIA
+LA English
+DT Article
+DE Community analysis; movie understanding; social network analysis; story
+   segmentation
+ID VIDEO; SEGMENTATION; MULTIMEDIA; RETRIEVAL; FILM
+AB With the idea of social network analysis, we propose a novel way to analyze movie videos from the perspective of social relationships rather than audiovisual features. To appropriately describe role's relationships in movies, we devise a method to quantify relations and construct role's social networks, called RoleNet. Based on RoleNet, we are able to perform semantic analysis that goes beyond conventional feature-based approaches. In this work, social relations between roles are used to be the context information of video scenes, and leading roles and the corresponding communities can be automatically determined. The results of community identification provide new alternatives in media management and browsing. Moreover, by describing video scenes with role's context, social-relation-based story segmentation method is developed to pave a new way for this widely-studied topic. Experimental results show the effectiveness of leading role determination and community identification. We also demonstrate that the social-based story segmentation approach works much better than the conventional tempo-based method. Finally, we give extensive discussions and state that the proposed ideas provide insights into context-based video analysis.
+C1 [Weng, Chung-Yi; Wu, Ja-Ling] Natl Taiwan Univ, Grad Inst Networking & Multimedia, Deartment Comp Sci & Informat Engn, Taipei 106, Taiwan.
+   [Chu, Wei-Ta] Natl Chung Cheng Univ, Dept Comp Sci & Informat Engn, Chiayi 621, Taiwan.
+RP Weng, CY (reprint author), Natl Taiwan Univ, Grad Inst Networking & Multimedia, Deartment Comp Sci & Informat Engn, Taipei 106, Taiwan.
+EM chunye@cmlab.csie.ntu.edu.tw; wjl@cmlab.csie.ntu.edu.tw;
+   wtchu@cs.ccu.edu.tw
+OI WU, JA-LING/0000-0002-3631-1551
+CR Adams B, 2002, IEEE T MULTIMEDIA, V4, P472, DOI 10.1109/TMM.2002.802016
+   ALBRECHT K., 2005, SOCIAL INTELLIGENCE
+   Bordwell David, 1985, NARRATION FICTION FI
+   Boykov Y, 2004, IEEE T PATTERN ANAL, V26, P1124, DOI 10.1109/TPAMI.2004.60
+   CHEN HW, 2004, P ACM SIGMM INT WORK, P251
+   Chu WT, 2005, MULTIMEDIA SYST, V10, P570, DOI 10.1007/s00530-005-0183-6
+   DORAI C, 2001, IEEE MULTIMEDIA, V8, P10
+   GARG N, 2008, P ACM INT C MULT, P693
+   Giannetti L., 1999, UNDERSTANDING MOVIES
+   GUIMERA R, 2003, PHYS REV, V68
+   Hanjalic A, 2005, IEEE T MULTIMEDIA, V7, P143, DOI 10.1109/TMM.2004.840618
+   HSU WHM, 2003, P 2003 IEEE INT C MU, V2, P413
+   HUNG H, 2007, P ACM MULT C, P835
+   JUNG B, 2004, P ACM MULT C, P828
+   Krause AE, 2003, NATURE, V426, P282, DOI 10.1038/nature02115
+   Li Y, 2006, IEEE SIGNAL PROC MAG, V23, P79
+   Li Y, 2004, IEEE T CIRC SYST VID, V14, P1073, DOI 10.1109/TCSVT.2004.831968
+   Lienhart R., 1999, P SOC PHOTO-OPT INS, P290
+   Naphade M, 2006, IEEE MULTIMEDIA, V13, P86, DOI 10.1109/MMUL.2006.63
+   NEFIAN AV, 1999, P IEEE INT C AC SPEE, V6, P3553
+   Pentland A, 2007, IEEE SIGNAL PROC MAG, V24, P108, DOI 10.1109/MSP.2007.4286569
+   Rasheed Z, 2005, IEEE T CIRC SYST VID, V15, P52, DOI 10.1109/TCSVT.2004.839993
+   RASHEED Z, 2003, P IEEE COMP SOC C CO, V2, P343
+   RIENKS R, 2006, P INT C MULT INT, P257
+   Scott J, 1991, SOCIAL NETWORK ANAL
+   SMEATON AF, 2006, P ACM INT WORKSH MUL, P231
+   Snoek CGM, 2006, IEEE T PATTERN ANAL, V28, P1678, DOI 10.1109/TPAMI.2006.212
+   Truong BT, 2007, ACM T MULTIM COMPUT, V3, DOI 10.1145/1198302.1198305
+   Vendrig J, 2002, IEEE T MULTIMEDIA, V4, P492, DOI 10.1109/TMM.2002.802021
+   Vinciarelli A, 2006, P IEEE INT C MULT EX, P779
+   VINCIARELLI A, 2008, P 16 ACM INT C MULT, P1061, DOI DOI 10.1145/1459359.1459573
+   VINCIARELLI A, 2007, P ACM MULT, P261
+   Wang HL, 2006, IEEE T CIRC SYST VID, V16, P689, DOI 10.1109/TCSVT.2006.873781
+   WENG CY, 2007, P INT WORKSH MULT IN, P51
+   WENG CY, 2006, P IEEE INT C MULT EX, P1403
+   Yeung M, 1998, COMPUT VIS IMAGE UND, V71, P94, DOI 10.1006/cviu.1997.0628
+   ZHANG HJ, 1995, P ACM MULT 95 SAN FR, P15
+   Zhu XQ, 2005, IEEE T MULTIMEDIA, V7, P648, DOI 10.1109/TMM.2005.850977
+   OPEN SOURCE COMPUTER
+NR 39
+TC 60
+Z9 60
+U1 0
+U2 14
+PU IEEE-INST ELECTRICAL ELECTRONICS ENGINEERS INC
+PI PISCATAWAY
+PA 445 HOES LANE, PISCATAWAY, NJ 08855-4141 USA
+SN 1520-9210
+EI 1941-0077
+J9 IEEE T MULTIMEDIA
+JI IEEE Trans. Multimedia
+PD FEB
+PY 2009
+VL 11
+IS 2
+SI SI
+BP 256
+EP 271
+DI 10.1109/TMM.2008.2009684
+PG 16
+WC Computer Science, Information Systems; Computer Science, Software
+   Engineering; Telecommunications
+SC Computer Science; Telecommunications
+GA 398EG
+UT WOS:000262714800007
+OA Green Published
+DA 2019-03-22
+ER
+
+PT J
+AU Gleiser, PM
+AF Gleiser, Pablo M.
+TI How to become a superhero
+SO JOURNAL OF STATISTICAL MECHANICS-THEORY AND EXPERIMENT
+LA English
+DT Article
+DE network dynamics; random graphs; networks; scaling in socio-economic
+   systems; socio-economic networks
+ID SMALL-WORLD NETWORKS; COMMUNITY STRUCTURE; COMPLEX NETWORKS; EVOLUTION
+AB We analyze a collaboration network based on the Marvel Universe comic books. First, we consider the system as a binary network, where two characters are connected if they appear in the same publication. The analysis of degree correlations reveals that, in contrast to most real social networks, the Marvel Universe presents a disassortative mixing on the degree. Then, we use a weight measure to study the system as a weighted network. This allows us to find and characterize well defined communities. Through the analysis of the community structure and the clustering as a function of the degree we show that the network presents a hierarchical structure. Finally, we comment on possible mechanisms responsible for the particular motifs observed.
+C1 Ctr Atom Bariloche, RA-8400 San Carlos De Bariloche, Rio Negro, Argentina.
+   Inst Balseiro, RA-8400 San Carlos De Bariloche, Rio Negro, Argentina.
+RP Gleiser, PM (reprint author), Ctr Atom Bariloche, RA-8400 San Carlos De Bariloche, Rio Negro, Argentina.
+EM gleiser@cab.cnea.gov.ar
+CR ALBERICH R, 2002, CONDMAT0202174
+   Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Amaral LAN, 2000, P NATL ACAD SCI USA, V97, P11149, DOI 10.1073/pnas.200327197
+   Arenas A, 2004, EUR PHYS J B, V38, P373, DOI 10.1140/epjb/e2004-00130-1
+   Barabasi AL, 2002, PHYSICA A, V311, P590, DOI 10.1016/S0378-4371(02)00736-7
+   Barabasi AL, 1999, SCIENCE, V286, P509, DOI 10.1126/science.286.5439.509
+   Boguna M, 2004, PHYS REV E, V70, DOI 10.1103/PhysRevE.70.056122
+   Callaway DS, 2000, PHYS REV LETT, V85, P5468, DOI 10.1103/PhysRevLett.85.5468
+   Danon L, 2005, J STAT MECH-THEORY E, DOI 10.1088/1742-5468/2005/09/P09008
+   Dorogovtsev SN, 2002, ADV PHYS, V51, P1079, DOI 10.1080/00018730110112519
+   Girvan M, 2002, P NATL ACAD SCI USA, V99, P7821, DOI 10.1073/pnas.122653799
+   Gleiser PM, 2003, ADV COMPLEX SYST, V6, P565, DOI 10.1142/S0219525903001067
+   Guimera R, 2003, PHYS REV E, V68, DOI 10.1103/PhysRevE.68.065103
+   Li WY, 2007, PHYSICA A, V376, P708, DOI 10.1016/j.physa.2006.10.015
+   Motter AE, 2003, PHYS REV E, V68, DOI 10.1103/PhysRevE.68.036105
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.066133
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.026113
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.026118
+   Newman MEJ, 2002, PHYS REV LETT, V89, DOI 10.1103/PhysRevLett.89.208701
+   Newman MEJ, 2006, STRUCTURE DYNAMICS N
+   Noh JD, 2005, PHYS REV E, V71, DOI 10.1103/PhysRevE.71.036131
+   Pastor-Satorras R, 2001, PHYS REV LETT, V87, DOI 10.1103/PhysRevLett.87.258701
+   Ravasz E, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026112
+   Ravasz E, 2002, SCIENCE, V297, P1551, DOI 10.1126/science.1073374
+   Smith RD, 2006, J STAT MECH-THEORY E, DOI 10.1088/1742-5468/2006/02/P02006
+   Watts DJ, 1998, NATURE, V393, P440, DOI 10.1038/30918
+   Zhou S, 2004, IEEE COMMUN LETT, V8, P180, DOI 10.1109/LCOMM.2004.823426
+NR 30
+TC 8
+Z9 8
+U1 2
+U2 10
+PU IOP PUBLISHING LTD
+PI BRISTOL
+PA TEMPLE CIRCUS, TEMPLE WAY, BRISTOL BS1 6BE, ENGLAND
+SN 1742-5468
+J9 J STAT MECH-THEORY E
+JI J. Stat. Mech.-Theory Exp.
+PD SEP
+PY 2007
+AR P09020
+DI 10.1088/1742-5468/2007/09/P09020
+PG 11
+WC Mechanics; Physics, Mathematical
+SC Mechanics; Physics
+GA 217YC
+UT WOS:000249982200022
+DA 2019-03-22
+ER
+
+PT J
+AU Choi, YM
+   Kim, HJ
+AF Choi, Yeon-Mu
+   Kim, Hyun-Joo
+TI A directed network of Greek and Roman mythology
+SO PHYSICA A-STATISTICAL MECHANICS AND ITS APPLICATIONS
+LA English
+DT Article
+DE complex system; scale-free network; small-world; mythology
+ID SMALL-WORLD; COMPLEX NETWORKS; COMMUNITY; LAW
+AB We construct a directed network using a dictionary of Greek and Roman mythology in which the nodes represent the entries listed in the dictionary and we make directional links from an entry to other entries that appear in its explanatory part. We find that this network is clearly not a random network but a directed scale-free network in which the distributions of out-degree and in-degree follow a power-law with exponents gamma(out) approximate to 3.0 and gamma(in) approximate to 2.5, respectively. Also we measure several quantities which describe the topological properties of the network and compare it to that of other real networks. (C) 2007 Elsevier B.V. All rights reserved.
+C1 Myongji Univ, Bangmok Coll Basic Studies, Kyongido, South Korea.
+   Korea Natl Univ Educ, Dept Phys Educ, Chungbuk 363791, South Korea.
+RP Kim, HJ (reprint author), Myongji Univ, Bangmok Coll Basic Studies, Kyongido, South Korea.
+EM hjkim21@knue.ac.kr
+CR Abe S, 2004, EUROPHYS LETT, V65, P581, DOI 10.1209/epl/i2003-10108-1
+   Abe S, 2004, PHYSICA A, V337, P357, DOI 10.1016/j.physa.2004.01.059
+   Alberich R., CONDMAT0202174
+   Albert R, 2002, REV MOD PHYS, V74, P47, DOI 10.1103/RevModPhys.74.47
+   Baiesi M, 2006, PHYSICA A, V360, P534, DOI 10.1016/j.physa.2005.05.094
+   Baiesi M, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.066106
+   Barabasi AL, 1999, SCIENCE, V286, P509, DOI 10.1126/science.286.5439.509
+   Barabasi Albert-Laszlo, 2002, LINKED NEW SCI NETWO
+   Buchanan M, 2002, NEXUS SMALL WORLDS G
+   BULFINCH T, 2000, BULFINCHS GREEK ROMA
+   Cancho RFI, 2001, P ROY SOC B-BIOL SCI, V268, P2261, DOI 10.1098/rspb.2001.1800
+   Costa LD, 2004, PHYS REV E, V70, DOI 10.1103/PhysRevE.70.056106
+   Costa LD, 2004, PHYS REV LETT, V93, DOI 10.1103/PhysRevLett.93.098702
+   COSTA LD, NC0508007 QBIO
+   COSTA LD, CONDMAT0505185
+   De Castro R, 1999, MATH INTELL, V21, P51, DOI 10.1007/BF03025416
+   Dorogovtsev S.N., 2003, EVOLUTION NETWORKS B
+   Dorogovtsev SN, 2002, PHYS REV E, V65, DOI 10.1103/PhysRevE.65.066122
+   Gleiser PM, 2003, ADV COMPLEX SYST, V6, P565, DOI 10.1142/S0219525903001067
+   Goldstein ML, 2004, EUR PHYS J B, V41, P255, DOI 10.1140/epjb/e2004-00316-5
+   GRANT M, 1985, GODS MORTALS CLASSIC
+   Herrmann C, 2003, PHYS REV E, V68, DOI 10.1103/PhysRevE.68.026128
+   Holanda AD, 2004, PHYSICA A, V344, P530, DOI 10.1016/j.physa.2004.06.025
+   Holme P, 2004, SOC NETWORKS, V26, P155, DOI 10.1016/j.socnet.2004.01.077
+   Kim HJ, 2005, PHYS REV E, V72, DOI 10.1103/PhysRevE.72.036109
+   Klemm K, 2002, PHYS REV E, V65, DOI 10.1103/PhysRevE.65.036123
+   Knuth D. E., 1993, STANFORD GRAPHBASE P
+   KUTTLER C, CONDMAT0308455
+   Latora V, 2002, PHYSICA A, V314, P109, DOI 10.1016/S0378-4371(02)01089-0
+   Li W, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.046106
+   LUSSEAU D, 2003, R SOC LONDON, V270, pS186
+   Lusseau D., 2004, R SOC LONDON B, V271, ps447
+   Newman MEJ, 2005, CONTEMP PHYS, V46, P323, DOI 10.1080/00107510500052444
+   Newman MEJ, 2003, PHYS REV E, V68, DOI [10.1103/PhysRevE.68.036122, 10.1103/PhysRevE.68.026121]
+   Newman MEJ, 2003, SIAM REV, V45, P167, DOI 10.1137/S003614450342480
+   Newman MEJ, 2001, PHYS REV E, V64, DOI 10.1103/PhysRevE.64.026118
+   PASTORSATORRAS R, 2004, STRUCTURE EVOLUTION
+   Petermann T, 2004, PHYS REV E, V69, DOI 10.1103/PhysRevE.69.066116
+   Ravasz E, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.026112
+   Rozenfeld HD, 2005, J PHYS A-MATH GEN, V38, P4589, DOI 10.1088/0305-4470/38/21/005
+   Seaton KA, 2004, PHYSICA A, V339, P635, DOI 10.1016/j.physa.2004.03.019
+   Szabo G, 2003, PHYS REV E, V67, DOI 10.1103/PhysRevE.67.056102
+   Vazquez A, 2002, PHYS REV E, V65, DOI 10.1103/PhysRevE.65.066130
+   WATTS DJ, 2003, 6 DEGREES SCI CONECT
+   Williams R, 2006, BIOL LETTERS, V2, P497, DOI 10.1098/rsbl.2006.0510
+NR 45
+TC 12
+Z9 14
+U1 0
+U2 8
+PU ELSEVIER SCIENCE BV
+PI AMSTERDAM
+PA PO BOX 211, 1000 AE AMSTERDAM, NETHERLANDS
+SN 0378-4371
+EI 1873-2119
+J9 PHYSICA A
+JI Physica A
+PD AUG 15
+PY 2007
+VL 382
+IS 2
+BP 665
+EP 671
+DI 10.1016/j.physa.2007.04.035
+PG 7
+WC Physics, Multidisciplinary
+SC Physics
+GA 192JW
+UT WOS:000248198800029
+DA 2019-03-22
+ER
+
+PT S
+AU Mutton, P
+AF Mutton, P
+BE Banissi, E
+   Borner, K
+   Chen, C
+   Dastbaz, M
+   Clapworthy, G
+   Faiola, A
+   Izquierdo, E
+   Maple, C
+   Roberts, J
+   Moore, C
+   Ursyn, A
+   Zhang, JJ
+TI Inferring and visualizing social networks on Internet relay chat
+SO EIGHTH INTERNATIONAL CONFERENCE ON INFORMATION VISUALISATION,
+   PROCEEDINGS
+SE IEEE CONFERENCE ON INFORMATION VISUALIZATION - PROCEEDINGS
+LA English
+DT Proceedings Paper
+CT 8th International Conference on Information Visualisation
+CY JUL 14-16, 2004
+CL London, ENGLAND
+DE inferring social networks; visualization; animation; irc bot;
+   heuristics; internet relay chat; spring embedder; Shakespeare
+ID GRAPHS
+AB Internet Relay Chat is a system that allows groups of people to collaborate and chat from anywhere in the world. Clearly defined by several RFC documents, it is arguably the most standard real-time chat system currently in use. This paper describes a method of inferring the social network of a group of IRC users in a channel. An IRC bot is used to monitor a channel and perform a heuristic analysis of events to create a mathematical approximation of the social network. From this, the bot can produce a visualization of the inferred social network on demand. These visualizations reveal the structure of the social network, highlighting connectivity, clustering and strengths of relationships between users. Animated output allows viewers to see the evolution of the social network over time. Some novel ideas for future work are discussed, showing other useful applications of this system.
+C1 Univ Kent, Comp Lab, Canterbury CT2 7NF, Kent, England.
+RP Mutton, P (reprint author), Univ Kent, Comp Lab, Canterbury CT2 7NF, Kent, England.
+EM pjm2@kent.ac.uk
+CR BOSAK J, 1998, SHAKESPEARE XML
+   DUMBILL E, FOAFBOT IRC COMMUNIT
+   Eades P., 2001, LNCS, V1984, P197, DOI [http://dx.doi.org/10.1007/3-540-44541-2_19, DOI 10.1007/3-540-44541-2_19]
+   Eades P., 1984, C NUMERANTIUM, V42, P149
+   FRUCHTERMAN TMJ, 1991, SOFTWARE PRACT EXPER, V21, P1129, DOI 10.1002/spe.4380211102
+   GELHAUSEN A, SUMMARY IRC NETWORKS
+   GOLBECK J, 2003, P 7 INT WORKSH COOP, P238
+   Harel D., 2001, LNCS, V1984, P183
+   KREBS V, INTRO SOCIAL NETWORK
+   MUNZNER T, 1995, ACM SIGGRAPH, P33
+   Mutton P, 2003, IEEE INFOR VIS, P300, DOI 10.1109/IV.2003.1217994
+   Mutton P, 2002, SIXTH INTERNATIONAL CONFERENCE ON INFORMATION VISUALISATION, PROCEEDINGS, P744, DOI 10.1109/IV.2002.1028861
+   MUTTON P, PIE SPY SOCIAL NETWO
+   MUTTON P, PIRCBOT JAVA IRC BOT
+   MUTTON P, SHAKESPEARE SOCIAL N
+   Oikarinen J, 1459 RFC
+   Parker G, 1998, J VISUAL LANG COMPUT, V9, P299, DOI 10.1006/jvlc.1998.0086
+   PURCHASE HC, 2001, P AUSTR S INF VIS SY, P113
+   Tunkelang D, 1998, LECT NOTES COMPUT SC, V1547, P413
+   Viegas F., 1999, CHI 99 C P, P9
+   WALSHAW C, 2001, LNCS, V1984, P171
+   Wellman B., 1997, CULTURE INTERNET, P179
+   Wills GJ, 1999, J COMPUT GRAPH STAT, V8, P190, DOI 10.2307/1390633
+NR 23
+TC 22
+Z9 25
+U1 0
+U2 1
+PU IEEE COMPUTER SOC
+PI LOS ALAMITOS
+PA 10662 LOS VAQUEROS CIRCLE, PO BOX 3014, LOS ALAMITOS, CA 90720-1264 USA
+SN 1093-9547
+BN 0-7695-2177-0
+J9 IEEE INFOR VIS
+PY 2004
+BP 35
+EP 43
+DI 10.1109/IV.2004.1320122
+PG 9
+WC Computer Science, Information Systems; Computer Science,
+   Interdisciplinary Applications; Computer Science, Software Engineering
+SC Computer Science
+GA BAQ15
+UT WOS:000223198000006
+DA 2019-03-22
+ER
+
+PT J
+AU Stiller, J
+   Nettle, D
+   Dunbar, RIM
+AF Stiller, J
+   Nettle, D
+   Dunbar, RIM
+TI The small world of Shakespeare's plays
+SO HUMAN NATURE-AN INTERDISCIPLINARY BIOSOCIAL PERSPECTIVE
+LA English
+DT Article
+DE drama; group size; humans; Shakespeare; small world networks; social
+   networks
+ID FOOD WEBS; SIZE; NETWORKS; HUMANS
+AB Drama, at least according to the Aristotelian view, is effective inasmuch as it successfully mirrors real aspects of human behavior. This leads to the hypothesis that successful dramas will portray fictional social networks that have the same properties as those typical of human beings across ages and cultures. We outline a methodology for investigating this hypothesis and use it to examine ten of Shakespeare's plays. The cliques and groups portrayed in the plays correspond closely to those which have been observed in spontaneous human interaction, including in hunter-gatherer societies, and the networks of the plays exhibit "small world" properties of the type which have been observed in many human-made and natural systems.
+C1 Open Univ, Milton Keynes MK7 6AA, Bucks, England.
+   Univ Liverpool, Liverpool L69 3BX, Merseyside, England.
+   Univ Gloucestershire, Cheltenham, Glos, England.
+RP Nettle, D (reprint author), Open Univ, Walton Hall, Milton Keynes MK7 6AA, Bucks, England.
+RI Nettle, Daniel/B-2259-2008
+OI Nettle, Daniel/0000-0001-9089-2599
+CR Barabasi AL, 2000, PHYSICA A, V281, P69, DOI 10.1016/S0378-4371(00)00018-2
+   Bate Jonathan, 1997, GENIUS SHAKESPEARE
+   BERNARD HR, 1988, ETHNOLOGY, V27, P155, DOI 10.2307/3773626
+   Birdsell J.B., 1968, MAN HUNTER, P229
+   Broder A, 2000, COMPUT NETW, V33, P309, DOI 10.1016/S1389-1286(00)00083-9
+   Carroll J, 1999, EVOL HUM BEHAV, V20, P159, DOI 10.1016/S1090-5138(99)00004-5
+   Carroll Joseph, 1995, EVOLUTION LIT THEORY
+   DISSENYAKE E, 1992, ART COMES WHY
+   DUNBAR RIM, 1995, HUM NATURE-INT BIOS, V6, P67, DOI 10.1007/BF02734136
+   DUNBAR RIM, 1993, BEHAV BRAIN SCI, V16, P681, DOI 10.1017/S0140525X00032325
+   Dunne JA, 2002, P NATL ACAD SCI USA, V99, P12917, DOI 10.1073/pnas.192407699
+   Graesser AC, 1999, POETICS, V26, P143, DOI 10.1016/S0304-422X(98)00016-3
+   Hill RA, 2003, HUM NATURE-INT BIOS, V14, P53, DOI 10.1007/s12110-003-1016-y
+   Hutton James, 1982, ARISTOTLES POETICS
+   Kott Jan, 1974, SHAKESPEARE OUR CONT
+   LAYTON R, 1986, MAN, V21, P18, DOI 10.2307/2802644
+   Liljeros F, 2001, NATURE, V411, P907, DOI 10.1038/35082140
+   Montoya JM, 2002, J THEOR BIOL, V214, P405, DOI 10.1006/jtbi.2001.2460
+   Newman MEJ, 2001, P NATL ACAD SCI USA, V98, P404, DOI 10.1073/pnas.021544898
+   RICHES D, 1995, J ROYAL ANTHR I, V4, P679
+   STOREY R, 1995, MIMESIS HUMAN ANIMAL
+   Strogatz SH, 2001, NATURE, V410, P268, DOI 10.1038/35065725
+   Watts DJ, 1999, SMALL WORLDS
+   Williams RJ, 2002, P NATL ACAD SCI USA, V99, P12913, DOI 10.1073/pnas.192448799
+NR 24
+TC 31
+Z9 32
+U1 0
+U2 6
+PU ALDINE DE GRUYTER DIVISION WALTER DE GRUYTER INC
+PI HAWTHORNE
+PA 200 SAW MILL RIVER, HAWTHORNE, NY 10532 USA
+SN 1045-6767
+J9 HUM NATURE-INT BIOS
+JI Hum. Nat.-Interdiscip. Biosoc. Perspect.
+PY 2003
+VL 14
+IS 4
+BP 397
+EP 408
+DI 10.1007/s12110-003-1013-1
+PG 12
+WC Anthropology; Social Sciences, Biomedical
+SC Anthropology; Biomedical Social Sciences
+GA 758YL
+UT WOS:000187703700005
+PM 26190273
+DA 2019-03-22
+ER
+
+EF
