@@ -49,6 +49,7 @@ balance power theory	alance of Power: Theory and Practice in the 21st Century
 behav sci	Behavioral Science
 bell system technical journal	Bell System Technical Journal	the bell system technical journal
 berk s math stat	Berkeley Symposium on Mathematical Statistics and Probability
+bioresources	BioResources
 biosystems	Biosystems
 brit j math stat psy	British Journal of Mathematical and Statistical Psychology
 brit j polit sci	British Journal of Political Science
@@ -65,6 +66,7 @@ communities and technologies	Communities and Technologies
 comp comm r	Computer Communication Review
 comp comm worksh	Computer communications workshops
 complexity	Complexity
+comput graph forum	computer graphics forum
 comput intell-us	Computational Intelligence
 comput j	Computer Journal
 comput oper res	Computers \& Operations Research
@@ -78,6 +80,7 @@ dac	International Design Automation Conference
 data min knowl disc	Data Mining and Knowledge Discovery
 dev stat methodol	Developments in Statistics and Methodology
 dev stat methodology	Developments in Statistics and Methodology
+digit scholarsh hum	digital scholarship in the humanities
 dimacs impl cha	DIMACS Implementation Challenge Graph Partitioning and Graph Clustering
 discrete appl math	Discrete Applied Mathematics
 dnis02 p 2 int works	International Workshop on Databases in Networked Information Systems
@@ -87,6 +90,7 @@ elect notes discrete	Electronic Notes in Discrete Mathematics
 electron j comb	Electronic Journal of Combinatorics	the electronic journal of combinatorics
 elem math	Elemente der Mathematik
 ency parallel comput	Encyclopedia of Parallel Computing
+epl-europhys lett	epl
 eur c ev comp c	European Conference on Evolutionary Computation in Combinatorial Optimisation
 eur j oper res	european journal of operational research
 eur phys j b	European Physical Journal B	the european physical journal b
@@ -97,11 +101,14 @@ fourth international conference on computer and information technology	Internati
 freedom control mode	Freedom and Control in Modern Society
 front neuroinformati	Frontiers in Neuroinformatics
 front neurosci	Frontiers in Neurosciences
+front psychol	frontiers in psychology
 fundamentals stat si	Fundamentals of Statistical Signal Processing
+future gener comp sy	future generation computer systems-the international journal of escience
 gecco-2011: proceedings of the 13th annual genetic and evolutionary computation conference	Annual Genetic and Evolutionary Computation Conference
 graduate texts math	Graduate Texts in Mathematics
 hbk diff equat ordin	Handbook of Differential Equations, Ordinary Differential Equations
 hdb metaheuristics	Handbook of metaheuristics
+hum nature-int bios	human nature-an interdisciplinary biosocial perspective
 hum relat	Human Relations
 iam j optim	SIAM Journal on Optimization
 iccea09 man	International Conference on Computer Engineering and Applications
@@ -113,18 +120,25 @@ ieee comp soc	IEEE Conference on Computer Vision and Pattern Recognition
 ieee comput	IEEE Computer
 ieee data mining	IEEE International Conference on Data Mining
 ieee globecom	IEEE Global Communications Conference
+ieee i conf comp vis	ieee international conference on computer vision
 ieee icdm siasp	IEEE International Conference on Data Mining - Workshop on Social Interactions Analysis and Services Providers
+ieee infor vis	international conference on information visualisation
 ieee int c tool	IEEE International Conference on Tools With Artificial Intelligence
+ieee int conf multi	ieee international conference on multimedia and expo workshops
+ieee multimedia	ieee multimedia
 ieee t automat contr	IEEE Transactions on Automatic Control
+ieee t circ syst vid	ieee transactions on circuits and systems for video technology
 ieee t control netw	Transactions on Control of Network Systems
 ieee t cybernetics	IEEE Transactions on Cybernetics
 ieee t evolut comput	IEEE Transactions on Evolutionary Computation
 ieee t ind inform	IEEE Transactions on Industrial Informatics
 ieee t inform theory	IEEE Transaction of Information Theory
 ieee t knowl data en	IEEE Transactions on Knowledge and Data Engineering
+ieee t multimedia	IEEE Transactions on Multimedia
 ieee t syst man cy a	IEEE Transactions on Systems, Man, and Cybernetics - Part A
 ieee t syst man cy b	IEEE Transactions on Systems, Man, and Cybernetics - Part B
 ieee t syst man cy c	IEEE Transactions on Systems, Man, and Cybernetics - Part C
+ieee trans comput so	ieee transactions on computational social systems
 iet syst biol	IET Systems Biology
 ilp 09 p worksh int	Workshop on Integer Linear Programming for Natural Language Processing
 ima j manag math	IMA Journal of Management Mathematics
@@ -146,7 +160,9 @@ int coll aut la	International Colloquium on Automata, Languages and Programming
 int j artif intell t	International Journal on Artificial Intelligence Tools
 int j bio-inspir com	International Journal of Bio-Inspired Computation
 int j commun-us	International Journal of Communication
+int j computer sci n	International Journal of Computer Science and Network Security
 int j digital conten	International Journal of Digital Content Technology and its Applications
+int j humanit arts c	international journal of humanities and arts computing
 int j hybrid intell	International Journal of Hybrid Intelligent Systems
 int j intell syst	International Journal of Intelligent Systems
 int j pattern recogn	International Journal of Pattern Recognition and Artificial Intelligence
@@ -158,6 +174,7 @@ int s mod opt mo	International Symposium on Modeling and Optimization in Mobile,
 int ser oper res man	International Series in Operations Research \& Management Science
 int sym comput intel	International Symposium on Computational Intelligence and Design
 int worksh appr	International Workshop on Approximation Algorithms for Combinatorial Optimization Problems
+int workshop databas	international workshop on database and expert systems applications
 int world wid web	International World Wide Web Conference
 int world wid web c	International World Wide Web Conference
 intelligence securit	IEEE Intelligence and Security Informatics
@@ -172,8 +189,11 @@ j complex networks	Journal of Complex Networks
 j comput sci technol	Journal of Computer Science and Technology
 j graph theor	Journal of Graph Theory
 j ind manag optim	Journal of Industrial and Management Optimization
+j lang lit cult	journal of language literature and culture
 j mach learn res	Journal of Machine Learning Research
+j math psychol	Journal of Mathematical Psychology
 j math sociol	Journal of Mathematical Sociology
+j phys conf ser	international conference on computer simulation in physics and beyond
 j polit	Journal of Politics
 j psychol	Journal of Psychology	the journal of psychology
 j risk	Journal of Risk
@@ -198,14 +218,17 @@ metodoloski zvezki	Metodološki Zvezki / Advances in Methodology and Statistics	
 mich math j	Michigan Mathematical Journal
 mmwr-morbid mortal w	Morbidity and Mortality Weekly Report
 mol syst biol	Molecular Systems Biology
+multimed tools appl	multimedia tools and applications
 nat c art int aaai	AAAI Conference on Artificial Intelligence
 nat phys	Nature Physics
 nato asi ser c-math	Nato Science Series C	nato science series c: mathematical and physical sciences
 nature	Nature
 neural networks	Neural Networks
 neuroimage	Neuroimage
+new left rev	new left review
 nonlinear anal-real	Nonlinear Analysis	nonlinear analysis: real world applications
 on the move	OTM Confederated International Conferences - On the Move to Meaningful Internet Systems
+open linguist	open linguistics
 oper res lett	Operations Research Letters
 operations res compu	Operations Research/Computer Science Interfaces Series
 p amer contr conf	American Control Conference
@@ -229,6 +252,7 @@ physica a	Physica A	physica a-statistical mechanics and its applications
 plos one	PLoS ONE
 pnas	Proceedings of the National Academy of Sciences
 proc dev data anal	Metodološki Zvezki / Advances in Methodology and Statistics
+proc int conf doc	international conference on document analysis and recognition
 psychol methods	Psychological Methods
 psychol rev	Psychological Review
 psychol today	Psychology Today
@@ -238,7 +262,9 @@ ptcomputer	Computer
 real data anal	Real Data Analysis
 rec res psy	Recent Research in Psychology
 regional c series ma	Regional Conference Series in Mathematics
+res futurae	res futurae-revue d etudes sur la science-fiction
 rev mod phys	Reviews of Modern Physics
+roy soc open sci	royal society open science
 s appl comp	Symposium on Applied Computing
 sci rep-uk	Scientific Reports
 science	Science
@@ -271,6 +297,49 @@ worksh graph th	Workshop on Graph Theory
 worksh int lin progr	Workshop on Integer Linear Programming for Natural Language Processing
 world wide web	International World Wide Web Conference
 www	International Conference on World Wide Web
-bioresources	BioResources
-j math psychol	Journal of Mathematical Psychology
-int j computer sci n	International Journal of Computer Science and Network Security
+ieee cbmi worksh	IEEE CBMI Workshop
+network theory plot	Network Theory, Plot Analysis
+ieee int joint c mul	IEEE International Joint Conference on Multimedia
+kdd	ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+chi	SIGCHI Conference on Human Factors in Computing Systems
+ieee comm soc c sens	IEEE International Conference on Acoustics, Speech and Signal Processing
+eccv	European Conference on Computer Vision
+wacv	Workshop on Applications of Computer Vision
+nips	Advances in Neural Information Processing Systems
+cvpr	IEEE Conference on Computer Vision and Pattern Recognition
+mm	ACM international conference on Multimedia
+p acl dem sess barc	ACL demonstration session
+j quant linguist	Journal of Quantitative Linguistics
+ieee t pattern anal	IEEE Transactions on Pattern Analysis and Machine Intelligence
+proc cvpr ieee	IEEE Conference on Computer Vision and Pattern Recognition
+p ieee c comp vis pa	IEEE Conference on Computer Vision and Pattern Recognition
+acm int c mult	ACM International Conference on Multimedia
+p acm mult mm	ACM International Conference on Multimedia
+c numerantium	Congressus Numerantium
+int worksh coop	International Workshop on Cooperative Information Agents
+lncs	Lecture Notes in Computer Science
+p austr s inf vis sy	Asia-Pacific symposium on Information visualisation
+p ieee worksh aut sp	IEEE Workshop on Automatic Speech Recognition Understanding
+commun interactsoc i	AISB Convention
+p acm int c mult	ACM international conference on Multimedia
+p acm mult c	ACM international conference on Multimedia
+int c int us int	International conference on Intelligent user interfaces
+lect notes elect eng	Lecture Notes in Electrical Engineering
+c int lang res e	Conference on International Language Resources and Evaluation
+p int c mult int	international conference on Multimodal interfaces
+int c mult ex	IEEE International Conference on Multimedia and Expo
+int c lang res e	International Conference on Language Resources and Evaluation
+p ieee int c mult ex	IEEE International Conference on Multimedia and Expo
+p tsd	International Conference on Text, Speech and Dialogue
+AMIA Annu Symp Proc	AMIA Annual Symposium
+int c dat min worksh	IEEE International Conference on Data Mining Workshops
+lit ed digital learn	Literary Education and Digital Learning: Methods and Technologies for Humanities Studies
+p ieee s inf vis	IEEE Symposium on Information Visualization
+p ieee s vis an sci	IEEE Symposium on Visual Analytics Science and Technology
+acm s appl co	ACM Symposium on Applied Computing
+acm c dig lib sa	ACM Conference on Digital libraries
+acm ieee cs join	ACM/IEEE CS joint conference on Digital libraries
+p sigchi c hum fact	SIGCHI Conference on Human factors in computing systems
+proceedings of the 27th annual chi conference on human factors in computing systems	SIGCHI conference on human factors in computing systems
+acm sigcomm workshop on online social networks	ACM SIGCOMM Workshop on Social Networks
+SIAM REV	SIAM Review

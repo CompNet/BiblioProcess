@@ -137,7 +137,7 @@ public class Launcher
 		
 		// then the ISI file
 		IsiFileHandler ifh = new IsiFileHandler(jfh.corpus);
-		path = FileNames.FI_ISI_ALL_SIGNETS;
+		path = FileNames.FI_ISI_ALL_CHARNETS;
 		ifh.loadIsiFile(path);
 		Corpus corpus = ifh.corpus;
 		

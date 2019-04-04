@@ -83,7 +83,8 @@ public class IsiFileHandler
 	/** List of series of proceedings ignored during certain processing steps */
 	private final static List<String> IGNORED_SERIES = Arrays.asList(
 		"lecture notes in computer science",
-		"lecture notes in artificial intelligence"
+		"lecture notes in artificial intelligence",
+		"aip conference proceedings"
 	);
 	
 	/////////////////////////////////////////////////////////////////
@@ -265,8 +266,8 @@ public class IsiFileHandler
 		logger.increaseOffset();
 		
 		// open the ISI file
-		logger.log("Open the file " + FileNames.FI_ISI_ALL_SIGNETS);
-		Scanner scanner = FileTools.openTextFileRead(FileNames.FI_ISI_ALL_SIGNETS,null);
+		logger.log("Open the file " + path);
+		Scanner scanner = FileTools.openTextFileRead(path,null);
 		
 		// parse the ISI file
 		Map<Article,List<String>> tempRef = new HashMap<Article, List<String>>();
@@ -991,10 +992,15 @@ public class IsiFileHandler
 				}
 			}
 			
+if(string.equals("Vinciarelli A, 2006, P IEEE INT C MULT EX, P779"))			
+	System.out.print("");
 			// look for the paper in the current map
 			List<Article> articles = new ArrayList<Article>();
 			for(Article article: corpus.getArticles())
-			{	if(tmpArticle.doi!=null && article.doi!=null)
+			{	
+if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
+	System.out.print("");
+				if(tmpArticle.doi!=null && article.doi!=null)
 				{	if(tmpArticle.doi.equalsIgnoreCase(article.doi))
 						articles.add(article);
 				}
@@ -1003,7 +1009,8 @@ public class IsiFileHandler
 						articles.add(article);
 				}
 				else if(tmpArticle.isCompatible(article))
-					articles.add(article);
+				{	articles.add(article);				
+				}
 			}
 			logger.log("Compatible articles found: "+articles.size());
 			logger.increaseOffset();
@@ -1023,7 +1030,7 @@ public class IsiFileHandler
 				logger.log("Creating a new one and adding to the map, using the new bibtexkey "+bibtexKey);
 				corpus.addArticle(tmpArticle);	// adding to the existing map for later use
 				result = tmpArticle;
-				throw new IllegalArgumentException("Could not find the article for "+tmpArticle);
+				throw new IllegalArgumentException("Could not find the article ("+string+") for "+tmpArticle);
 			}
 			else if(articles.size()==1)
 			{	Article article = articles.get(0);

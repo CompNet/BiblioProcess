@@ -21,6 +21,7 @@ package fr.univavignon.biblioproc.data.biblio;
  */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -204,6 +205,7 @@ public class Article implements Comparable<Article>
 	 */
 	public void setSource(SourceType sourceType, String sourceName)
 	{	this.sourceType = sourceType;
+		sourceName = sourceName.trim();
 		this.sourceName = sourceName;
 		switch(sourceType)
 		{	case BOOK:
@@ -231,8 +233,7 @@ public class Article implements Comparable<Article>
 		}
 		
 		normSourceName = StringTools.normalize(sourceName);
-		normSourceName = normSourceName.replaceAll("[^a-zA-Z0-9]", "");
-		if(sourceType==SourceType.IN_PROCEEDINGS)
+//		if(sourceType==SourceType.IN_PROCEEDINGS)
 		{	// remove a possible ending string between parenthesis (typically for conferences)
 			int pos = normSourceName.indexOf('(');
 			if(pos!=-1)
@@ -240,8 +241,24 @@ public class Article implements Comparable<Article>
 			// remove a possible year at the end 
 			while(Character.isDigit(sourceName.charAt(sourceName.length()-1)))
 				sourceName = sourceName.substring(0,sourceName.length()-1);
-			sourceName = sourceName.trim();
+			// remove a possible number at the begining
+			if(normSourceName.substring(0,1).matches("[0-9]"))
+			{	pos = normSourceName.indexOf(" ");
+				if(pos<0)
+					throw new IllegalArgumentException("Problem with conference name "+sourceName+" ("+normSourceName+")");
+				else
+					normSourceName = normSourceName.substring(pos+1);
+			}
+			// remove possible association acronym at the beginning
+			for(String acro: Arrays.asList("ieee","wic","acm","siam"))
+			{	if(normSourceName.startsWith(acro))
+					normSourceName = normSourceName.substring(acro.length()+1);
+			}
 		}
+		normSourceName = normSourceName.replaceAll("[^a-zA-Z0-9]", "");
+		normSourceName = normSourceName.trim();
+if(normSourceName.equals("ieeeinternationalconferenceonmultimediaandexpo"))
+	System.out.print("");
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -452,7 +469,8 @@ public class Article implements Comparable<Article>
 	/**
 	 * Checks if two articles (this one and the specified
 	 * one) are likely to be the same one under two different 
-	 * forms.
+	 * forms. The idea is to compare only fields existing in
+	 * both articles.
 	 * 
 	 * @param article
 	 * 		Article to which to compare this article.

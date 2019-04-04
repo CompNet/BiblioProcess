@@ -72,9 +72,9 @@ public class FileNames
 	public static final String FI_BIBTEX_COMPLETE = FO_BIBTEX + File.separator + "network analysis" + EX_BIBTEX;
 	/** JabRef structural balance file */
 	public static final String FI_BIBTEX_STRUCT_BAL = FO_BIBTEX + File.separator + "biblio" + EX_BIBTEX;
-	/** ISI merged file */
-	public static final String FI_ISI_ALL_CARNETS = FO_ISI + File.separator + "charnets_savedrecs" + EX_ISI;
-	/** ISI merged file */
+	/** ISI merged file for character networks */
+	public static final String FI_ISI_ALL_CHARNETS = FO_ISI + File.separator + "charnets_savedrecs" + EX_ISI;
+	/** ISI merged file for signed networks */
 	public static final String FI_ISI_ALL_SIGNETS = FO_ISI + File.separator + "signets_savedrecs" + EX_ISI;
 	/** Journal/conference short names */
 	public static final String FI_ISI_NAMES = FO_ISI + File.separator + "short_names" + EX_TXT;
