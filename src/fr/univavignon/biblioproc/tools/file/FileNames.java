@@ -52,6 +52,8 @@ public class FileNames
 		public final static String FO_BIBTEX = FO_INPUT + File.separator + "bibtex";
 		/** Thomson ISI input folder */
 		public final static String FO_ISI = FO_INPUT + File.separator + "isi";
+		/** LaTeX input folder */
+		public final static String FO_LATEX = FO_INPUT + File.separator + "latex";
 	/** Output folder */
 	public final static String FO_OUTPUT = "out";
 	/** Log folder */

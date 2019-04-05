@@ -40,83 +40,8 @@ import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
  */
 public class Launcher
 {	
-	/////////////////////////////////////////////////////////////////
-	// LOGGER		/////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** Common object used for logging */
-	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
-	
 	/**
-	 * Builds a fake corpus, for testing purposes.
-	 * 
-	 * @return
-	 * 		A fake corpus.
-	 */
-	public static Corpus buildFakeCorpus()
-	{	Corpus result = new Corpus();
-		
-		// build a few fake authors
-		Author author1 = new Author("Lastname1","A. B.");
-		author1 = result.retrieveAuthor(author1);
-		Author author2 = new Author("Lastname2","A. B.");
-		author2 = result.retrieveAuthor(author2);
-		Author author3 = new Author("Lastname3","A. B.");
-		author3 = result.retrieveAuthor(author3);
-		Author author4 = new Author("Lastname4","A. B.");
-		author4 = result.retrieveAuthor(author4);
-		Author author5 = new Author("Lastname5","A. B.");
-		author5 = result.retrieveAuthor(author5);
-		
-		// build a few fake articles
-		Article article1 = new Article();
-		article1.bibtexKey = "Art1";
-		article1.setSource(SourceType.ARTICLE, "Journal1");
-		article1.setTitle("Article 1");
-		article1.addAuthor(author1);
-		article1.addAuthor(author2);
-		result.addArticle(article1);
-		Article article2 = new Article();
-		article2.bibtexKey = "Art2";
-		article2.setSource(SourceType.ARTICLE, "Journal1");
-		article2.setTitle("Article 2");
-		article2.addAuthor(author1);
-		result.addArticle(article2);
-		Article article3 = new Article();
-		article3.bibtexKey = "Art3";
-		article3.setSource(SourceType.ARTICLE, "Journal2");
-		article3.setTitle("Article 3");
-		article3.addAuthor(author2);
-		article3.addAuthor(author3);
-		article3.addAuthor(author4);
-		result.addArticle(article3);
-		Article article4 = new Article();
-		article4.bibtexKey = "Art4";
-		article4.setSource(SourceType.ARTICLE, "Journal3");
-		article4.setTitle("Article 4");
-		article4.addAuthor(author1);
-		article4.addAuthor(author2);
-		article4.addAuthor(author4);
-		article4.addAuthor(author5);
-		result.addArticle(article4);
-		
-		// connect the articles
-		{	article2.citedArticles.add(article1);
-			article1.citingArticles.add(article2);
-		}
-		{	article3.citedArticles.add(article1);
-			article1.citingArticles.add(article3);
-		}
-		{	article4.citedArticles.add(article1);
-			article1.citingArticles.add(article4);
-			article4.citedArticles.add(article2);
-			article2.citingArticles.add(article4);
-		}
-		
-		return result;
-	}
-	
-	/**
-	 * xxx
+	 * Main method, used to test the rest of the software.
 	 * 
 	 * @param args
 	 * 		Not used.
@@ -189,6 +114,84 @@ public class Launcher
 		
 		logger.decreaseOffset();
 		logger.log("All done");
+	}
+	
+	/////////////////////////////////////////////////////////////////
+	// LOGGER		/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/** Common object used for logging */
+	private static HierarchicalLogger logger = HierarchicalLoggerManager.getHierarchicalLogger();
+	
+	/////////////////////////////////////////////////////////////////
+	// FAKE CORPUS	/////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////
+	/**
+	 * Builds a fake corpus, for testing purposes.
+	 * 
+	 * @return
+	 * 		A fake corpus.
+	 */
+	public static Corpus buildFakeCorpus()
+	{	Corpus result = new Corpus();
+		
+		// build a few fake authors
+		Author author1 = new Author("Lastname1","A. B.");
+		author1 = result.retrieveAuthor(author1);
+		Author author2 = new Author("Lastname2","A. B.");
+		author2 = result.retrieveAuthor(author2);
+		Author author3 = new Author("Lastname3","A. B.");
+		author3 = result.retrieveAuthor(author3);
+		Author author4 = new Author("Lastname4","A. B.");
+		author4 = result.retrieveAuthor(author4);
+		Author author5 = new Author("Lastname5","A. B.");
+		author5 = result.retrieveAuthor(author5);
+		
+		// build a few fake articles
+		Article article1 = new Article();
+		article1.bibtexKey = "Art1";
+		article1.setSource(SourceType.ARTICLE, "Journal1");
+		article1.setTitle("Article 1");
+		article1.addAuthor(author1);
+		article1.addAuthor(author2);
+		result.addArticle(article1);
+		Article article2 = new Article();
+		article2.bibtexKey = "Art2";
+		article2.setSource(SourceType.ARTICLE, "Journal1");
+		article2.setTitle("Article 2");
+		article2.addAuthor(author1);
+		result.addArticle(article2);
+		Article article3 = new Article();
+		article3.bibtexKey = "Art3";
+		article3.setSource(SourceType.ARTICLE, "Journal2");
+		article3.setTitle("Article 3");
+		article3.addAuthor(author2);
+		article3.addAuthor(author3);
+		article3.addAuthor(author4);
+		result.addArticle(article3);
+		Article article4 = new Article();
+		article4.bibtexKey = "Art4";
+		article4.setSource(SourceType.ARTICLE, "Journal3");
+		article4.setTitle("Article 4");
+		article4.addAuthor(author1);
+		article4.addAuthor(author2);
+		article4.addAuthor(author4);
+		article4.addAuthor(author5);
+		result.addArticle(article4);
+		
+		// connect the articles
+		{	article2.citedArticles.add(article1);
+			article1.citingArticles.add(article2);
+		}
+		{	article3.citedArticles.add(article1);
+			article1.citingArticles.add(article3);
+		}
+		{	article4.citedArticles.add(article1);
+			article1.citingArticles.add(article4);
+			article4.citedArticles.add(article2);
+			article2.citingArticles.add(article4);
+		}
+		
+		return result;
 	}
 }
 
