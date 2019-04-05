@@ -54,7 +54,11 @@ public class CountCitations
 	 * 		Whatever exception.
 	 */
 	public static void main(String[] args) throws Exception
-	{	countCitations("test.tex");
+	{	
+//		String texFile = "test.tex";
+		String texFile = "article.tex";
+		
+		countCitations(texFile);
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -128,6 +132,17 @@ public class CountCitations
 			pw.println(key+"\t"+count);
 		}
 		pw.close();
+		
+		// displaying single-occurrence keys
+    	logger.log("Keys appearing only once:");
+		logger.increaseOffset();
+		for(Entry<String,Integer> entry: counts.entrySet())
+		{	String key = entry.getKey();
+			Integer count = entry.getValue();
+			if(count==1)
+				logger.log(key);
+		}
+		logger.decreaseOffset();
 		
 		logger.decreaseOffset();
 	}
