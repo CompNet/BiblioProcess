@@ -160,14 +160,16 @@ public class IsiFileHandler
 		{	Scanner sc = FileTools.openTextFileRead(FileNames.FI_ISI_FIXES, "UTF-8");
 			while(sc.hasNextLine())
 			{	String line = sc.nextLine();
-				String tmp[] = line.split("\t");
-				String title = StringTools.normalize(tmp[0]).replace(".", "");
-				List<String> list = new ArrayList<String>();
-				for(int i=1;i<tmp.length;i++)
-				{	String field = tmp[i].trim();
-					list.add(field);
+				if(!line.isEmpty())
+				{	String tmp[] = line.split("\t");
+					String title = StringTools.normalize(tmp[0]).replace(".", "");
+					List<String> list = new ArrayList<String>();
+					for(int i=1;i<tmp.length;i++)
+					{	String field = tmp[i].trim();
+						list.add(field);
+					}
+					ERROR_FIXES.put(title, list);
 				}
-				ERROR_FIXES.put(title, list);
 			}
 			sc.close();
 		}

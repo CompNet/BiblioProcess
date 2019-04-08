@@ -238,6 +238,8 @@ public class JabrefFileHandler
 			if(!line.isEmpty() && !line.startsWith(COMMENT_PREFIX))
 			{	count++;
 				logger.log("Process article #"+count);
+if(count==1054)
+	System.out.print("");
 				// parse the BibTex entry
 				Map<String,String> data = retrieveArticleMap(line, jrScanner);
 				// build the article object (automatic insertion in the maps)
