@@ -1066,6 +1066,7 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 		if(file.exists())
 		{	logger.log("Found a file containing manual annotations: adding them to the corpus");
 			logger.increaseOffset();
+			int i = 1;
 			Scanner scanner = FileTools.openTextFileRead(file, "UTF-8");
 			while(scanner.hasNextLine())
 			{	Article article = null;
@@ -1082,7 +1083,8 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 								throw new IllegalArgumentException("Could not find the article for DOI "+doi);
 							if(!first && current)
 								logger.decreaseOffset();
-							logger.log("Completing article "+article);
+							logger.log("Completing article ("+i+") "+article);
+							i++;
 							logger.increaseOffset();
 						}
 						else
@@ -1101,7 +1103,8 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 								throw new IllegalArgumentException("Could not find the article for bibtex key "+bibkey);
 							if(!first && current)
 								logger.decreaseOffset();
-							logger.log("Completing article "+article);
+							logger.log("Completing article ("+i+") "+article);
+							i++;
 							logger.increaseOffset();
 						}
 						else
