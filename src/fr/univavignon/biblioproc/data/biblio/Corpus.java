@@ -191,6 +191,8 @@ public class Corpus
 	/////////////////////////////////////////////////////////////////
 	// GRAPH			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
+	/** Property name for the labels of the core nodes */
+	public static final String PROP_CORE_LABEL = "core_label";
 	/** Name of the link weight property */
 	private final static String PROP_WEIGHT = "weight";
 	/** Name of the alt link weight property */
@@ -227,16 +229,22 @@ public class Corpus
 		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addNodeProperty(PROP_CORE_LABEL, "string");
 
 		// add the nodes
 		for(Article article: getArticles())
 		{	Node node = article.buildNode(result);
 			node.setProperty(PROP_TYPE, "Article");
+			if(article.core)
+				node.setProperty(Corpus.PROP_CORE_LABEL, article.bibtexKey);
+			else
+				node.setProperty(Corpus.PROP_CORE_LABEL, "");
 		}
 		Map<Author,Node> nodeMap = new HashMap<Author,Node>();
 		for(Author author: getAuthors())
 		{	Node node = author.buildNode(result);
 			node.setProperty(PROP_TYPE, "Author");
+			node.setProperty(Corpus.PROP_CORE_LABEL, "");
 			nodeMap.put(author, node);
 		}
 		
@@ -280,11 +288,17 @@ public class Corpus
 		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addNodeProperty(PROP_CORE_LABEL, "string");
 		result.addLinkProperty(PROP_WEIGHT, "int");
 
 		// add the nodes
 		for(Article article: getArticles())
-			article.buildNode(result);
+		{	Node node = article.buildNode(result);
+			if(article.core)
+				node.setProperty(Corpus.PROP_CORE_LABEL, article.bibtexKey);
+			else
+				node.setProperty(Corpus.PROP_CORE_LABEL, "");
+		}
 		
 		// add the links
 		for(Article artSrc: getArticles())
@@ -371,12 +385,18 @@ public class Corpus
 		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addNodeProperty(PROP_CORE_LABEL, "string");
 		result.addLinkProperty(PROP_WEIGHT, "float");
 		result.addLinkProperty(PROP_COUNT, "int");
 
 		// add the nodes
 		for(Article article: getArticles())
-			article.buildNode(result);
+		{	Node node = article.buildNode(result);
+			if(article.core)
+				node.setProperty(Corpus.PROP_CORE_LABEL, article.bibtexKey);
+			else
+				node.setProperty(Corpus.PROP_CORE_LABEL, "");
+		}
 		
 		// add the links
 		List<Article> articles = new ArrayList<Article>(getArticles());
@@ -476,12 +496,18 @@ public class Corpus
 		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addNodeProperty(PROP_CORE_LABEL, "string");
 		result.addLinkProperty(PROP_WEIGHT, "float");
 		result.addLinkProperty(PROP_COUNT, "int");
 
 		// add the nodes
 		for(Article article: getArticles())
-			article.buildNode(result);
+		{	Node node = article.buildNode(result);
+			if(article.core)
+				node.setProperty(Corpus.PROP_CORE_LABEL, article.bibtexKey);
+			else
+				node.setProperty(Corpus.PROP_CORE_LABEL, "");
+		}
 		
 		// add the links
 		List<Article> articles = new ArrayList<Article>(getArticles());
@@ -538,12 +564,18 @@ public class Corpus
 		result.addNodeProperty(JabrefFileHandler.FLD_URL, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_VOLUME, "string");
 		result.addNodeProperty(JabrefFileHandler.FLD_YEAR, "string");
+		result.addNodeProperty(PROP_CORE_LABEL, "string");
 		result.addLinkProperty(PROP_WEIGHT, "float");
 		result.addLinkProperty(PROP_COUNT, "int");
 
 		// add the nodes
 		for(Article article: getArticles())
-			article.buildNode(result);
+		{	Node node = article.buildNode(result);
+			if(article.core)
+				node.setProperty(Corpus.PROP_CORE_LABEL, article.bibtexKey);
+			else
+				node.setProperty(Corpus.PROP_CORE_LABEL, "");
+		}
 		
 		// add the links
 		List<Article> articles = new ArrayList<Article>(getArticles());
