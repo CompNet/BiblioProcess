@@ -367,7 +367,7 @@ public class IsiFileHandler
 	/**
 	 * Parses one article from the ISI file, matches it with
 	 * one of the previously loaded Jabref articles, and merge
-	 * them.
+	 * them. It becomes a <i>core</i> article.
 	 * 
 	 * @param scanner
 	 * 		Scanner giving access to the text.
@@ -1054,7 +1054,8 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 	
 	/**
 	 * Uses the manual annotations contained in a text file to complete
-	 * the information previously extracted from the ISI file.
+	 * the information previously extracted from the ISI file. The completed
+	 * articles become <i>core</i> articles.
 	 * 
 	 * @throws FileNotFoundException
 	 * 		Problem while accessing the text file.
@@ -1085,6 +1086,7 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 								logger.decreaseOffset();
 							logger.log("Completing article ("+i+") "+article);
 							i++;
+							article.core = true;
 							logger.increaseOffset();
 						}
 						else
@@ -1105,6 +1107,7 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 								logger.decreaseOffset();
 							logger.log("Completing article ("+i+") "+article);
 							i++;
+							article.core = true;
 							logger.increaseOffset();
 						}
 						else

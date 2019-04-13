@@ -13,9 +13,8 @@ BiblioProcess is free software: you can redistribute it and/or modify it under t
 -----------------------------------------------------------------------
 
 ## Description
-This software aims at extracting networks from bibliographic corpora. It can open Bibtex files, to get the details of a collection of articles,
-as well as Thomson ISI files, in order to get the bibliographic references contained in these articles. It matches both files and exports several
-networks:
+This software aims at extracting networks from bibliographic corpora. It can open Bibtex files, to get the detail of a collection of articles,
+as well as Thomson ISI files, in order to get the bibliographic references contained in these articles. It matches both files and exports several networks:
 * Citation networks
   * Article citation networks: nodes are articles, links are directed from the cited to the citing articles.
   * Author citation networks: nodes are authors, links are directed from the cited to the citing authors, weights are the numbers of citations.
@@ -29,16 +28,22 @@ networks:
 **This software is currently in development. Don't use it (yet)!**
 
 ## Organization
+* Package `data` contains classes related to article and network representation.
+* Package `inout` contains classes to read BibTeX and ISI files.
+* Package `tex` contains classes related to the processing of LaTeX files.
+* Package `tools` contains helper classes.
 
 ## Installation
+* Nothing to install, besides the Java Runtime Environment (JRE).
 
 ## Use
+
 
 ## Extension
 
 ## Dependencies
 Here are the dependencies for BiblioProcess:
-* ...
+* [JDOM](http://www.jdom.org) v2.06 is used to access XML files.
 
 ## Todo
 * Other types of networks could be extracted, see [Sci²](http://wiki.cns.iu.edu/pages/viewpage.action?pageId=1245863#id-4.9NetworkAnalysis(WithWhom?)-4.9.1NetworkExtraction).
