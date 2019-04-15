@@ -10,6 +10,8 @@ BiblioProcess is free software: you can redistribute it and/or modify it under t
 * GitHub repo: https://github.com/CompNet/BiblioProcess
 * Contact: vincent.labatut@univ-avignon.fr
 
+**This software is not user-friendly, and mainly intended for internal use!**
+
 -----------------------------------------------------------------------
 
 ## Description
@@ -25,8 +27,6 @@ as well as Thomson ISI files, in order to get the bibliographic references conta
 * *Cocitation* networks
   * Article co-citing networks: nodes are articles, undirected links connect articles citing the same reference, weights are the numbers of co-citations.
   * Article co-cited networks: nodes are articles, undirected links connect articles cited by the same reference, weights are the numbers of co-citations.
-
-**This software is currently in development. Don't use it (yet)!**
 
 ## Organization
 The source code is organized as follows:
