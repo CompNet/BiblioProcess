@@ -196,23 +196,6 @@ public class Launcher
 }
 
 /**TODO
- * - check graph extraction methods on a simple (programmatic) example
- * - extract the full authorship bipartite network
- * 
- * 
  * - generate a folder containing all the PDF files of the articles listed in the bibtex file
  * - generate the list of articles present as PDF files but missing from the bibtex file
- */
-
-/**
- * Update procedure when adding a field:
- * 
- * - JabrefFileHandler
- *   - Field
- *   - ALL_FIELDS
- *   - buildArticle
- *   - writeArticle
- * - Article
- *   - Field
- *   - completeWith
  */
