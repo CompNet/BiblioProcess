@@ -1164,10 +1164,6 @@ BK=Do2018
 	DI=10.3233/JIFS-169122
 	DI=10.1007/s00530-004-0142-7
 	
-BK=Trilcke2015
-	BK=Moretti2011a
-	BK=Wasserman1994
-	
 BK=Beveridge2016
 	BK=Barabasi2015
 	BK=Easley2010
@@ -1474,7 +1470,7 @@ BK=Venturini2016
 BK=Xanthos2016
 	DI=10.1109/tvcg.2011.185
 	BK=Moretti2011a
-	BK=Trilcke2015
+	BK=Fischer2015a
 	BK=Wittgenstein1953
 	BK=Xanthos2014
 	
@@ -1830,3 +1826,43 @@ BK=Dekker2019
 	BK=Dalen-Oskam2014
 	BK=Wasserman1994
 	DI=10.1038/30918
+
+BK=Fischer2015a
+	BK=Moretti2011a
+	BK=Wasserman1994
+
+BK=Trilcke2016
+	DI=10.1103/RevModPhys.74.47
+	BK=Agarwal2012
+	BK=Nooy2005a
+	BK=Elson2010
+	BK=Fischer2015a
+	BK=Moretti2011a
+	BK=Park2013a
+	BK=Rydberg2011
+	DI=10.1007/s12110-003-1013-1
+	DI=10.1556/JCEP.3.2005.1.4
+
+BK=Fischer2017
+	BK=Moretti2011a
+	BK=Trilcke2016
+
+BK=Fischer2017a
+	BK=Agarwal2012
+	BK=Carley2003
+	BK=Dannenberg2005
+	BK=Elson2010
+	DI=10.1145/2024288.2024344
+	BK=Fischer2015a
+	BK=Jannidis2016
+	BK=Kukkonen2013
+	BK=Moretti2011a
+	BK=Park2013a
+	DI=10.1145/1385569.1385636
+	DI=10.1142/S0219525916500053
+	BK=Rochat2014a
+	DI=10.1007/s12110-003-1013-1
+	DI=10.1556/JCEP.3.2005.1.4
+	BK=Trilcke2016
+	DI=10.1371/journal.pone.0126470
+	BK=Xanthos2016
