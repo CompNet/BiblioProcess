@@ -17,37 +17,19 @@
 # You should have received a copy of the GNU General Public License
 # along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 ######################################################################################
 # Post processing of the extracted networks.
 ######################################################################################
-
 library("igraph")
 
 
 # load network
-folder <- "C:/Users/Vincent/Documents/Travail/Ecrits/Network Extraction/ComDet Biblio/data/2012.07.13 - individual/_"
+folder <- "out/v3/"
 #prefix <- "citations"
 #prefix <- "cociting"
 prefix <- "cocited"
 net.file <- paste(folder,prefix,".xml",sep="")
 g <- read.graph(file=net.file,format="graphml")
-
-
-# clusters
-no.clusters(graph=g, mode="weak") # components: 4 303 10353
-
-
-# remove hubs
-print(rev(sort(degree(g,mode="in")))[1:15])
-print(vcount(g))
-for(i in 1:10)
-{	d <- degree(g,mode="in")
-	index <- which.max(d) - 1
-	g <- delete.vertices(g,v=index)
-}
-print(vcount(g))
-print(max(degree(g,mode="in")))
 
 
 # remove isolates
@@ -64,7 +46,7 @@ membership <- communities$membership
 com.nbr <- length(unique(membership))
 colors <- rainbow(com.nbr,v=0.8)
 clrs <- colors[membership]
-modularity(g,membership) #modularity: 0.5481472 0.4594513 0.02327592
+modularity(g,membership)
 
 # layout
 lay.file <- paste(folder,prefix,".layout",sep="")
@@ -78,8 +60,8 @@ write(file=lay.file,lay)
 plot.file <- paste(folder,prefix,".pdf",sep="")
 pdf(file=plot.file,bg="white")
 plot.igraph(x=g,
-	vertex.size=3, vertex.label.cex=0.2, vertex.color=clrs,
-	edge.arrow.size=0.5, edge.arrow.width=0.5,
-	vertex.label=NA,
-	layout=lay)
+		vertex.size=3, vertex.label.cex=0.2, vertex.color=clrs,
+		edge.arrow.size=0.5, edge.arrow.width=0.5,
+		vertex.label=NA,
+		layout=lay)
 dev.off()
