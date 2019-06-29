@@ -195,7 +195,7 @@ public class XmlTools
 	/**
 	 * Creates a new xml file using the specified element
 	 * as a root. The schema path is used to bound the
-	 * resulting document to a specific, local schema.
+	 * resulting document to a specific, <b>local</b> schema.
 	 * 
 	 * @param dataFile
 	 * 		The xml file to be created.
@@ -222,10 +222,55 @@ public class XmlTools
 		{	tempFile = tempFile.getParentFile();
 			schemaPath = ".."+File.separator+schemaPath;
 		}
-		// Namespace sch = Namespace.getNamespace("xsi","http://www.w3.org/2001/XMLSchema-instance");
 	    Namespace sch = Namespace.getNamespace("xsi",XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 		root.addNamespaceDeclaration(sch);
 		root.setAttribute("noNamespaceSchemaLocation",schemaPath,sch);
+		// define output format
+		Format format = Format.getPrettyFormat();
+		format.setIndent("\t");
+		format.setEncoding("UTF-8");
+		
+		// create outputter
+		XMLOutputter outputter = new XMLOutputter(format);
+		
+		// write in the stream
+	    outputter.output(document,outBuf);
+	    
+	    // close the stream
+	    outBuf.close();
+	}
+	
+	/**
+	 * Creates a new xml file using the specified element
+	 * as a root. The schema path is used to bound the
+	 * resulting document to a specific, <b>online</b> schema.
+	 * 
+	 * @param dataFile
+	 * 		The xml file to be created.
+	 * @param namespaceLocation
+	 * 		The xml schema to be mentioned.
+	 * @param schemaLocation
+	 * 		The xml schema to be mentioned.
+	 * @param root
+	 * 		The root element of the document.
+	 * 
+	 * @throws IOException
+	 * 		Problem when recording the new xml document.
+	 */
+	public static void makeFileFromRoot(File dataFile, String namespaceLocation, String schemaLocation, Element root) throws IOException
+	{	// open file stream
+		FileOutputStream out = new FileOutputStream(dataFile);
+		BufferedOutputStream outBuf = new BufferedOutputStream(out);
+		
+		// create document
+		Document document = new Document(root);
+		
+		// schema
+//	    Namespace def = Namespace.getNamespace(namespaceLocation);
+//		root.addNamespaceDeclaration(def);
+	    Namespace sch = Namespace.getNamespace("xsi",XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+		root.addNamespaceDeclaration(sch);
+		root.setAttribute("schemaLocation",namespaceLocation+" "+schemaLocation,sch);
 		// define output format
 		Format format = Format.getPrettyFormat();
 		format.setIndent("\t");

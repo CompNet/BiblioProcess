@@ -178,7 +178,7 @@ public class Graph
 	{	for(Entry<String,String> entry: propertyTypes.entrySet())
 		{	String property = entry.getKey();
 			String type = entry.getValue();
-			Element keyElt = new Element(GraphmlTools.ELT_KEY);
+			Element keyElt = new Element(GraphmlTools.ELT_KEY, GraphmlTools.NAMESPACE);
 			
 			String idStr = mode.subSequence(0,1) + "_" + property;
 			keyElt.setAttribute(GraphmlTools.ATT_ID,idStr);
@@ -417,7 +417,7 @@ public class Graph
 	 */
 	private Element exportGraph()
 	{	// init the root element
-		Element result = new Element(GraphmlTools.ELT_GRAPHML);
+	    Element result = new Element(GraphmlTools.ELT_GRAPHML, GraphmlTools.NAMESPACE);
 		
 		// add the property types
 		exportPropertyTypes(propertyTypes, "graph", result);
@@ -429,7 +429,7 @@ public class Graph
 		result.addContent(comment);
 		
 		// add graph element
-		Element graphElt = new Element(GraphmlTools.ELT_GRAPH);
+		Element graphElt = new Element(GraphmlTools.ELT_GRAPH, GraphmlTools.NAMESPACE);
 		graphElt.setAttribute(GraphmlTools.ATT_ID,name);
 		String edgedefaultStr = GraphmlTools.VAL_DIRECTED;
 		if(!directed)
@@ -468,14 +468,28 @@ public class Graph
 	 * 		Problem while accessing a file. 
 	 */
 	public void writeToXml(File dataFile) throws IOException
-	{	// schema file
-		String schemaPath = FileNames.FO_SCHEMA + File.separator + FileNames.FI_GRAPHML_SCHEMA;
-		File schemaFile = new File(schemaPath);
+	{	boolean local = false;
+	
+		// local schema version
+		if(local)
+		{	// schema file
+			String schemaPath = FileNames.FO_SCHEMA + File.separator + FileNames.FI_GRAPHML_SCHEMA;
+			File schemaFile = new File(schemaPath);
+			
+			// build xml document
+			Element element = exportGraph();
+			
+			// record file
+			XmlTools.makeFileFromRoot(dataFile,schemaFile,element);
+		}
 		
-		// build xml document
-		Element element = exportGraph();
-		
-		// record file
-		XmlTools.makeFileFromRoot(dataFile,schemaFile,element);
+		// online schema version
+		else
+		{	// build xml document
+			Element element = exportGraph();
+			
+			// record file
+			XmlTools.makeFileFromRoot(dataFile,GraphmlTools.NAMESPACE_URL, GraphmlTools.SCHEMA_URL, element);
+		}
 	}
 }

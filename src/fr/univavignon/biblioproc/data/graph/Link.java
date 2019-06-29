@@ -180,7 +180,7 @@ public class Link implements Comparable<Link>
 	 */
 	public Element exportLink()
 	{	// create element
-		Element result = new Element(GraphmlTools.ELT_EDGE);
+		Element result = new Element(GraphmlTools.ELT_EDGE, GraphmlTools.NAMESPACE);
 		// add source and target
 		String sourceName = source.getName();
 		result.setAttribute(GraphmlTools.ATT_SOURCE,sourceName);

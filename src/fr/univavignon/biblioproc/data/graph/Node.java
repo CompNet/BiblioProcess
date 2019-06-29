@@ -159,7 +159,7 @@ public class Node implements Comparable<Node>
 	 */
 	public Element exportNode()
 	{	// create element
-		Element result = new Element(GraphmlTools.ELT_NODE);
+		Element result = new Element(GraphmlTools.ELT_NODE, GraphmlTools.NAMESPACE);
 		// add unique name
 		result.setAttribute(GraphmlTools.ATT_ID,name);
 		// add other properties

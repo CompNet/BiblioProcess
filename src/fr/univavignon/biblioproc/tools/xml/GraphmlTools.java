@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.jdom2.Element;
+import org.jdom2.Namespace;
 
 /**
  * This class contains Graphml-related names
@@ -36,10 +37,13 @@ public class GraphmlTools
 	/////////////////////////////////////////////////////////////////
 	// GENERAL			/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Graphml namespace */
+	/** Graphml namespace URL */
 	public static final String NAMESPACE_URL = "http://graphml.graphdrawing.org/xmlns";
+	/** Graphml namespace object */
+	public static final Namespace NAMESPACE = Namespace.getNamespace(GraphmlTools.NAMESPACE_URL);
 	/** Graphml schema */
-	public static final String SCHEMA_URL = "http://graphml.graphdrawing.org/xmlns/1.0/graphml-structure.xsd";
+//	public static final String SCHEMA_URL = "http://graphml.graphdrawing.org/xmlns/1.0/graphml-structure.xsd";
+	public static final String SCHEMA_URL = "http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd";
 	
 	/////////////////////////////////////////////////////////////////
 	// ATTRIBUTES			/////////////////////////////////////////
@@ -102,7 +106,7 @@ public class GraphmlTools
 	{	for(Entry<String,String> entry: properties.entrySet())
 		{	String property = entry.getKey();
 			String value = entry.getValue();
-			Element dataElt = new Element(GraphmlTools.ELT_DATA);
+			Element dataElt = new Element(GraphmlTools.ELT_DATA, GraphmlTools.NAMESPACE);
 			
 			String keyStr = mode.subSequence(0,1) + "_" + property;
 			dataElt.setAttribute(GraphmlTools.ATT_KEY,keyStr);
