@@ -62,7 +62,7 @@ for(net.file in net.files)
 	cat("..Filtering graph\n")
 	g2 <- delete_vertices(g, V(g)$core=="NA")
 	g2 <- delete_vertices(g2, !as.logical(V(g2)$core))
-	g2 <- delete_vertices(g2, degree(g2)<=1)
+	#g2 <- delete_vertices(g2, degree(g2)<=1)	# not necessary
 		
 	# process node measures
 	cat("..Processing node measures (again)\n")
