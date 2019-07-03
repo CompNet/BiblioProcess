@@ -20,7 +20,10 @@
 # setwd("D:/Users/Vincent/eclipse/workspaces/Extraction/BiblioProcess")
 # source("res/scripts/compute_centrality.R")
 ######################################################################################
-# Post processing of the extracted networks.
+# Loads each generated graph, computes several centrality measures on the whole graphs,
+# then retains only the code nodes (i.e. seeds from the bibliographic search), computes
+# the same centrality measures again, as well as detects communities using a selection
+# of standard algorithms. All results are recorded as attributes in the Graphml files.
 ######################################################################################
 library("igraph")
 
