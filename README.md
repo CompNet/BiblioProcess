@@ -76,4 +76,4 @@ Here are the dependencies for BiblioProcess:
 * Other types of networks could be extracted, see [Sci²](http://wiki.cns.iu.edu/pages/viewpage.action?pageId=1245863#id-4.9NetworkAnalysis(WithWhom?)-4.9.1NetworkExtraction).
 
 ## References
-[xxx'YY] xxxxx.
+ * **[XX'19]** X. Yyyyyy & A. Bbbbbb, *My title*, My journal, X(X)/XX-XX, 201X. [doi: XXXXXXXXXX](https://doi.org/XXXXXXXXXX) - [⟨hal-XXXXXXXX⟩](https://hal.archives-ouvertes.fr/hal-XXXXXXXX)
