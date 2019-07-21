@@ -20,39 +20,13 @@ package fr.univavignon.biblioproc.tools.string;
  * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import java.text.Normalizer;
-import java.text.Normalizer.Form;
 import java.util.Locale;
 
 /**
  * Common methods used to process strings. 
  */
-public class StringTools
+public class StringTools extends fr.univavignon.tools.string.StringTools
 {
-	/**
-	 * Removes diacritics from the specified text.
-	 * <br/>
-	 * Retrieved from the <a href="http://www.drillio.com/en/software-development/java/removing-accents-diacritics-in-any-language/">Drillio<a> website.
-	 * 
-	 * @author István Soós
-	 * 
-	 * @param text
-	 * 		Original text.
-	 * @return
-	 * 		Cleaned text.
-	 */
-	public static String removeDiacritics(String text)
-	{	String result = 
-//	        Normalizer.normalize(text, Form.NFD)
-	        Normalizer.normalize(text, Form.NFKD)	// supposedly catch more diacritics
-	            .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-	
-		// for some reason, certain characters are missed by the above instruction
-		result = result.replace('ł','l');		
-		result = result.replace('Ł','L');		
-		return result;
-	}
-	
 	/**
 	 * Normalizes the specified text by removing
 	 * diacritics, switching to lowercase, and replacing

@@ -1,23 +1,21 @@
-package fr.univavignon.biblioproc.tools.file;
+package fr.univavignon.tools.file;
 
 /*
- * Biblio Process
- * Copyright 2011-19 Vincent Labatut 
+ * CommonTools
+ * Copyright 2010-19 Vincent Labatut
  * 
- * This file is part of Biblio Process.
+ * This file is part of CommonTools.
  * 
- * Biblio Process is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * CommonTools is free software: you can redistribute it and/or modify it under 
+ * the terms of the GNU General Public License as published by the Free Software 
+ * Foundation, either version 2 of the License, or (at your option) any later version.
  * 
- * Biblio Process is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * CommonTools is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
+ * along with CommonTools. If not, see <http://www.gnu.org/licenses/>.
  */
 
 import java.io.File;
@@ -43,6 +41,7 @@ import java.util.Scanner;
  * This class contains various methods
  * related to file management.
  *  
+ * @version 2
  * @author Vincent Labatut
  */
 public class FileTools
@@ -59,9 +58,24 @@ public class FileTools
 		}
 	};
 	
+//	/** Filter focusing on raw.txt files */
+//	public final static FilenameFilter FILTER_RAW_TEXT = createFilenameFilter(FileNames.FI_RAW_TEXT);
+//	/** Filter able to retain only directories containing a raw.txt file */
+//	public final static FileFilter FILTER_ARTICLES = new FileFilter()
+//	{	@Override
+//		public boolean accept(File file)
+//		{	boolean result = false;
+//			if(file.isDirectory())
+//			{	String rf[] = file.list(FILTER_RAW_TEXT);
+//				result = rf!=null && rf.length>0;
+//			}
+//			return result;
+//		}
+//	};
+	
 	/**
 	 * Creates a filter able to retain only files
-	 * with the same name than the specified parameter.
+	 * with the same name as the specified parameter.
 	 * 
 	 * @param fileName
 	 * 		Targeted filename.
@@ -81,7 +95,7 @@ public class FileTools
 	
 	/**
 	 * Creates a filter able to retain only files
-	 * with the same name than the specified parameter.
+	 * with the same name as the specified parameter.
 	 * 
 	 * @param extension
 	 * 		Targeted extension.
@@ -105,8 +119,7 @@ public class FileTools
 	// READ				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
-	 * Open the file at the specified path,
-	 * for reading.
+	 * Open the file at the specified path, for reading.
 	 * 
 	 * @param filePath 
 	 * 		File to open.
@@ -329,8 +342,7 @@ public class FileTools
 	// MOVE				/////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
 	/**
-	 * Moves a file or directory, even
-	 * if the directory is not empty.
+	 * Moves a file or directory, even if the directory is not empty.
 	 * 
 	 * @param oldFile
 	 * 		File or directory to delete.
@@ -408,7 +420,8 @@ public class FileTools
 	
 	/**
 	 * Copy a single file. Source code adapted from
-	 * http://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java
+	 * <a href="http://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java">
+	 * StackOverflow</a>
 	 * <br/>
 	 * Note folders are not created by this function.
 	 * 

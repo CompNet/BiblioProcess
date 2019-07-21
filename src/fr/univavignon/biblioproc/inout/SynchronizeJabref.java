@@ -27,8 +27,9 @@ import java.util.Collection;
 import fr.univavignon.biblioproc.data.biblio.Article;
 import fr.univavignon.biblioproc.data.biblio.Corpus;
 import fr.univavignon.biblioproc.tools.file.FileNames;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
+
+import fr.univavignon.tools.log.HierarchicalLogger;
+import fr.univavignon.tools.log.HierarchicalLoggerManager;
 
 /**
  * Used to synchronize BibTex keys in the two

@@ -27,41 +27,27 @@ import java.io.File;
  *  
  * @author Vincent Labatut
  */
-public class FileNames
+public class FileNames extends fr.univavignon.tools.file.FileNames
 {	
-	/////////////////////////////////////////////////////////////////
-	// EXTENSIONS	/////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////////////
-	/** Bash file extension */
-	public final static String EX_BIBTEX = ".bib";
-	/** Thomson ISI file extension */
-	public final static String EX_ISI = ".ciw";
-	/** PDF file extension */
-	public static final String EX_PDF = ".pdf";
-	/** Text file extension */
-	public static final String EX_TXT = ".txt";
-	/** XML Schema file extension */
-	public final static String EX_SCHEMA = ".xsd";
-
 	/////////////////////////////////////////////////////////////////
 	// FOLDERS		/////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////
-	/** Input folder */
-	public final static String FO_INPUT = "in";
+//	/** Input folder */
+//	public final static String FO_INPUT = "in";
 		/** Bibtex input folder */
 		public final static String FO_BIBTEX = FO_INPUT + File.separator + "bibtex";
 		/** Thomson ISI input folder */
 		public final static String FO_ISI = FO_INPUT + File.separator + "isi";
 		/** LaTeX input folder */
 		public final static String FO_LATEX = FO_INPUT + File.separator + "latex";
-	/** Output folder */
-	public final static String FO_OUTPUT = "out";
-	/** Log folder */
-	public final static String FO_LOG = "log";
-	/** Resources folder */
-	public final static String FO_RESOURCES = "res";
-		/** Folder containing the XML schemas */
-		public final static String FO_SCHEMA = FO_RESOURCES + File.separator + "schemas";
+//	/** Output folder */
+//	public final static String FO_OUTPUT = "out";
+//	/** Log folder */
+//	public final static String FO_LOG = "log";
+//	/** Resources folder */
+//	public final static String FO_RESOURCES = "res";
+//		/** Folder containing the XML schemas */
+//		public final static String FO_SCHEMA = FO_RESOURCES + File.separator + "schemas";
 
 	/////////////////////////////////////////////////////////////////
 	// FILES		/////////////////////////////////////////////////
@@ -79,13 +65,11 @@ public class FileNames
 	/** ISI merged file for signed networks */
 	public static final String FI_ISI_ALL_SIGNETS = FO_ISI + File.separator + "signets_savedrecs" + EX_ISI;
 	/** Journal/conference short names */
-	public static final String FI_ISI_NAMES = FO_ISI + File.separator + "short_names" + EX_TXT;
+	public static final String FI_ISI_NAMES = FO_ISI + File.separator + "short_names" + EX_TEXT;
 	/** Error fixes */
-	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TXT;
+	public static final String FI_ISI_FIXES = FO_ISI + File.separator + "error_fixes" + EX_TEXT;
 	/** Ignored references */
-	public static final String FI_ISI_IGNORED = FO_ISI + File.separator + "ignored_refs" + EX_TXT;
+	public static final String FI_ISI_IGNORED = FO_ISI + File.separator + "ignored_refs" + EX_TEXT;
 	/** Manually completed references */
-	public static final String FI_ISI_COMPLETED = FO_ISI + File.separator + "additional_refs" + EX_TXT;
-	/** XML schema file used for graphml  */
-	public final static String FI_GRAPHML_SCHEMA = "graphml" + FileNames.EX_SCHEMA;
+	public static final String FI_ISI_COMPLETED = FO_ISI + File.separator + "additional_refs" + EX_TEXT;
 }

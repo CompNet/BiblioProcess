@@ -25,7 +25,7 @@ import java.util.Map;
 
 import org.jdom2.Element;
 
-import fr.univavignon.biblioproc.tools.xml.GraphmlTools;
+import fr.univavignon.tools.xml.GraphmlTools;
 
 /**
  * This class represents a graph node.

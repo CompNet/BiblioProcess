@@ -1,37 +1,34 @@
-package fr.univavignon.biblioproc.tools.log;
+package fr.univavignon.tools.log;
 
 /*
- * Biblio Process
- * Copyright 2011-19 Vincent Labatut 
+ * CommonTools
+ * Copyright 2010-19 Vincent Labatut
  * 
- * This file is part of Biblio Process.
+ * This file is part of CommonTools.
  * 
- * Biblio Process is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * CommonTools is free software: you can redistribute it and/or modify it under 
+ * the terms of the GNU General Public License as published by the Free Software 
+ * Foundation, either version 2 of the License, or (at your option) any later version.
  * 
- * Biblio Process is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * CommonTools is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
+ * along with CommonTools. If not, see <http://www.gnu.org/licenses/>.
  */
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.univavignon.biblioproc.tools.file.FileNames;
+import fr.univavignon.tools.file.FileNames;
 
 /**
  * General manager to handle all
  * the created {@link HierarchicalLogger} objects.
  * 
- * @version 1.3
- * 
+ * @version 1.3 
  * @author Vincent Labatut
  */
 public class HierarchicalLoggerManager

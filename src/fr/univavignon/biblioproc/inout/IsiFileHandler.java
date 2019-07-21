@@ -42,10 +42,11 @@ import fr.univavignon.biblioproc.data.biblio.Author;
 import fr.univavignon.biblioproc.data.biblio.Corpus;
 import fr.univavignon.biblioproc.data.biblio.SourceType;
 import fr.univavignon.biblioproc.tools.file.FileNames;
-import fr.univavignon.biblioproc.tools.file.FileTools;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
 import fr.univavignon.biblioproc.tools.string.StringTools;
+
+import fr.univavignon.tools.file.FileTools;
+import fr.univavignon.tools.log.HierarchicalLogger;
+import fr.univavignon.tools.log.HierarchicalLoggerManager;
 
 /**
  * Class dedicated to reading ISI files.

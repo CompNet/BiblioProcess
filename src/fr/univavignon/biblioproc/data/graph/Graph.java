@@ -34,9 +34,10 @@ import org.jdom2.Comment;
 import org.jdom2.Element;
 
 import fr.univavignon.biblioproc.tools.file.FileNames;
-import fr.univavignon.biblioproc.tools.time.TimeFormatting;
-import fr.univavignon.biblioproc.tools.xml.GraphmlTools;
-import fr.univavignon.biblioproc.tools.xml.XmlTools;
+
+import fr.univavignon.tools.time.TimeFormatting;
+import fr.univavignon.tools.xml.GraphmlTools;
+import fr.univavignon.tools.xml.XmlTools;
 
 /**
  * This class represents a graph, i.e.

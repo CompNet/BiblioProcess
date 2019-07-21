@@ -30,8 +30,9 @@ import fr.univavignon.biblioproc.data.graph.Graph;
 import fr.univavignon.biblioproc.inout.IsiFileHandler;
 import fr.univavignon.biblioproc.inout.JabrefFileHandler;
 import fr.univavignon.biblioproc.tools.file.FileNames;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLogger;
-import fr.univavignon.biblioproc.tools.log.HierarchicalLoggerManager;
+
+import fr.univavignon.tools.log.HierarchicalLogger;
+import fr.univavignon.tools.log.HierarchicalLoggerManager;
 
 /**
  * Main class, allowing to launch the whole process.

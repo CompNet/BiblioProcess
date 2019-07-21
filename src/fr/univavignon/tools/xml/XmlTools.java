@@ -1,23 +1,21 @@
-package fr.univavignon.biblioproc.tools.xml;
+package fr.univavignon.tools.xml;
 
 /*
- * Biblio Process
- * Copyright 2011-19 Vincent Labatut 
+ * CommonTools
+ * Copyright 2010-19 Vincent Labatut
  * 
- * This file is part of Biblio Process.
+ * This file is part of CommonTools.
  * 
- * Biblio Process is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * CommonTools is free software: you can redistribute it and/or modify it under 
+ * the terms of the GNU General Public License as published by the Free Software 
+ * Foundation, either version 2 of the License, or (at your option) any later version.
  * 
- * Biblio Process is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * CommonTools is distributed in the hope that it will be useful, but WITHOUT ANY 
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+ * PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with Biblio Process.  If not, see <http://www.gnu.org/licenses/>.
+ * along with CommonTools. If not, see <http://www.gnu.org/licenses/>.
  */
 
 import java.io.BufferedInputStream;
@@ -48,12 +46,13 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import fr.univavignon.biblioproc.tools.file.FileNames;
+import fr.univavignon.tools.file.FileNames;
 
 /**
  * This class contains a set of methods related to XML managment.
  * 
  * @author Vincent Labatut
+ * @version 2
  */
 public class XmlTools
 {	
@@ -111,8 +110,7 @@ public class XmlTools
 		for(int i=0;i<files.length;i++)
 		{	if(files[i].isFile())
 			{	String name = files[i].getName();
-//if(!name.equals("graphml.xsd")) // URL doesn't respond, at the time of testing			
-{				Schema schema = schemaFactory.newSchema(files[i]);
+				Schema schema = schemaFactory.newSchema(files[i]);
 				// DOM parser
 				DocumentBuilderFactory documentBuilderfactory = DocumentBuilderFactory.newInstance();
 		        documentBuilderfactory.setNamespaceAware(true);
@@ -134,8 +132,7 @@ public class XmlTools
 			        }
 				});
 				DOCUMENT_BUILDERS.put(name,builder);
-}
-			}
+	        }
 		}
 	}
 	
