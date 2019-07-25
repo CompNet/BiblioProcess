@@ -43,7 +43,7 @@ import fr.univavignon.tools.xml.XmlTools;
  * This class represents a graph, i.e.
  * a set of nodes and the links between them.
  * The goal is just to store some data, not
- * to process complicated calculations.
+ * to handle complicated calculations.
  * 
  * @author Vincent Labatut
  */
