@@ -6774,3 +6774,18 @@ BK=Kumar2022i
 	DI=10.1109/laweb.2014.10
 	DI=10.1109/ICME.2007.4284922
 	DI=10.3390/e21090859
+
+BK=Botond2023
+	xxxx
+
+BK=Fischer2019
+	xxxx
+
+BK=Liu2023a
+	xxxx
+
+BK=Pang2023
+	xxxx
+
+BK=Paepcke2021
+	xxxx
