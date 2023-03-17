@@ -6852,13 +6852,7 @@ BK=Liu2023a
 	DI=10.1145/1873951.1874068
 
 BK=Fischer2019
-	xxxx
-
-BK=Pang2023
-	xxxx
-
-BK=Paepcke2021
-	xxxx
-
-BK=Sugishita2023
-	xxxx
+	BK=Bleier2018
+	BK=Fischer2017
+	DI=10.1007/978-3-319-46224-0_7
+	BK=Schoech2018
