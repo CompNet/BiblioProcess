@@ -7388,3 +7388,10 @@ BK=Tenen2022
 	DI=10.3115/980451.980860
 	BK=Levine2009
 	BK=Levine2015
+
+BK=Fischer2018b
+	DI=10.1353/nlh.2017.0038
+	BK=Jannidis2016
+	BK=Moretti2011a
+	BK=Moretti2013
+	BK=Trilcke2016
