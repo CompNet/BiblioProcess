@@ -7457,3 +7457,17 @@ BK=Paul2017b
 	DI=10.1007/978-3-540-30228-5_8
 	BK=Calix2013
 	BK=Duncan2006
+
+BK=Reiter2018a
+	DI=10.1353/nlh.2017.0038
+	BK=Chang2009a
+	BK=Declerck2012
+	DI=10.1093/llc/fqv067
+	BK=Fischer2015
+	BK=Fischer2018b
+	BK=Jannidis2016
+	DI=10.18637/jss.v028.i05
+	BK=Moretti2011a
+	BK=Moretti2013
+	DI=10.1017/cbo9780511553998
+	BK=Vladimir1968
