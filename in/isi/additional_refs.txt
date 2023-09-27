@@ -7502,3 +7502,6 @@ BK=Silva2023a
 	DI=10.5753/wit.2022.222939
 	DI=10.5753/dsw.2021.17416
 	DI=10.1093/llc/fqaa051
+
+BK=Alexandre2016
+	BK=Menand-Doumazane1996
