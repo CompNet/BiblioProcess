@@ -7906,3 +7906,9 @@ BK=Galleron2017
 	BK=Muller1979
 	BK=KastbergSjoeblom2004
 	BK=Pennebaker2011
+
+BK=Fischer2017b
+	BK=Moretti2011a
+	DI=10.6084/m9.figshare.3101203
+	BK=Grandjean2015a
+	BK=Trilcke2016
