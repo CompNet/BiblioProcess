@@ -7885,3 +7885,8 @@ BK=Houston2024
 	BK=Weingart2011
 	DI=10.1002/jgt.3190100305
 	DI=10.1086/jar.33.4.3629752
+
+BK=Glorieux2017
+	BK=Douguet2017
+	BK=Alexandre2016
+	BK=Scherer1968
