@@ -1,5 +1,8 @@
 package fr.univavignon.tools.string;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /*
  * CommonTools
  * Copyright 2010-19 Vincent Labatut
@@ -31,6 +34,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.text.similarity.LevenshteinDistance;
 
+import fr.univavignon.tools.file.FileTools;
 import fr.univavignon.tools.log.HierarchicalLogger;
 import fr.univavignon.tools.log.HierarchicalLoggerManager;
 
@@ -127,9 +131,15 @@ public class StringTools
 //		System.out.println(res);
 		
 		// test clean text
-		String text = "zeriou fke ? R dfikalnfsd po ! SZ : dsqd 4485. Fio 89% dezidj, defsoui ; ezrofd 98% fdskds !!";
-		String cleaned = cleanText(text,Locale.FRENCH);
-		System.out.println(cleaned);
+//		String text = "zeriou fke ? R dfikalnfsd po ! SZ : dsqd 4485. Fio 89% dezidj, defsoui ; ezrofd 98% fdskds !!";
+//		String cleaned = cleanText(text,Locale.FRENCH);
+//		System.out.println(cleaned);
+		
+		// look for invisible unicode character
+		String file = "in/biblio.bib";
+//		String code = "\u0041";	// "A" (test)
+		String code = "\u0308";	// 
+		loadAndSearch(file, code);
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -1028,5 +1038,33 @@ public class StringTools
 		result = result + "^";
 		
 		return result;
+	}
+	
+	/**
+	 * Loads the specified file and look for the specified unicode code.
+	 * 
+	 * @param file
+	 * 		File to read and search.
+	 * @param code
+	 * 		Code of the targeted unicode character.
+	 * 
+	 * @throws UnsupportedEncodingException
+	 * 		Problem while reading the file.
+	 * @throws FileNotFoundException 
+	 * 		Problem while opening the file.
+	 */
+	public static void loadAndSearch(String file, String code) throws FileNotFoundException, UnsupportedEncodingException
+	{	String content = FileTools.readTextFile(file, "UTF-8");
+		String regex = "["+code+"]";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(content);
+		if(matcher.find()) 
+		{	int startPos = matcher.start();
+			int endPos = matcher.end();
+			System.out.println("Character \""+code+"\" found at position "+startPos+"--"+endPos);
+			System.out.println(content.substring(Math.max(0, startPos-20), Math.min(content.length(), endPos+20)));
+		}
+		else
+			System.out.println("Character \""+code+"\" not found");
 	}
 }
