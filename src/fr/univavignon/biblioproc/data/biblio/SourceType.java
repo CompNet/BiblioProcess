@@ -31,7 +31,7 @@ public enum SourceType
 	BOOK,
 	
 	/** Book chapter */
-	CHAPTER,
+	IN_BOOK,
 	
 	/** Full collection */
 	COLLECTION,

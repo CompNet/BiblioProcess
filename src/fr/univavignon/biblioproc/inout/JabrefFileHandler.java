@@ -173,7 +173,7 @@ public class JabrefFileHandler
 	/** Bibtex type of entry for a whole book */
 	private static final String TYPE_BOOK = "Book";
 	/** Bibtex type of entry for a book chapter */
-	private static final String TYPE_CHAPTER = "Chapter";
+	private static final String TYPE_INBOOK = "InBook";
 	/** Bibtex type of entry for a whole collection */
 	private static final String TYPE_COLLECTION = "Collection";
 	/** Bibtex type of entry for a collection chapter */
@@ -425,12 +425,12 @@ if(count==1054)
 			else
 				result.setSource(SourceType.BOOK, source);
 		}
-		else if(typeSrc.equals(TYPE_CHAPTER))
+		else if(typeSrc.equals(TYPE_INBOOK))
 		{	String source = data.get(FLD_TITLE_BOOK);
 			if(source==null)
 				throw new IllegalArgumentException("Book title missing in ("+result.bibtexKey+") "+data);
 			else
-				result.setSource(SourceType.CHAPTER, source);
+				result.setSource(SourceType.IN_BOOK, source);
 		}
 		else if(typeSrc.equals(TYPE_COLLECTION))
 		{	String source = data.get(FLD_PUBLISHER);
@@ -444,7 +444,7 @@ if(count==1054)
 			if(source==null)
 				throw new IllegalArgumentException("Book title missing in ("+result.bibtexKey+") "+data);
 			else
-				result.setSource(SourceType.CHAPTER, source);
+				result.setSource(SourceType.IN_BOOK, source);
 		}
 		else if(typeSrc.equals(TYPE_INPROCEEDINGS))
 		{	String source = data.get(FLD_TITLE_BOOK);
@@ -709,8 +709,8 @@ if(count==1054)
 		{	case BOOK:
 				pw.println("@"+TYPE_BOOK+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
-			case CHAPTER:
-				pw.println("@"+TYPE_CHAPTER+ENTRY_BEGINNING+article.bibtexKey+",");
+			case IN_BOOK:
+				pw.println("@"+TYPE_INBOOK+ENTRY_BEGINNING+article.bibtexKey+",");
 				break;
 			case COLLECTION:
 				pw.println("@"+TYPE_COLLECTION+ENTRY_BEGINNING+article.bibtexKey+",");

@@ -212,7 +212,7 @@ public class Article implements Comparable<Article>
 			case COLLECTION:
 				publisher = sourceName;
 				break;
-			case CHAPTER:
+			case IN_BOOK:
 			case IN_COLLECTION:
 			case IN_PROCEEDINGS:
 				booktitle = sourceName;
