@@ -8609,3 +8609,14 @@ BK=Amalvy2023a
 	DI=10.18653/v1/2020.emnlp-demos.6
 	DI=10.18653/v1/2020.emnlp-main.523
 	BK=Zhang2022a
+
+BK=Amalvy2024a
+	BK=Hagberg2008
+	DI=10.1145/3344548
+	BK=Park2013a
+	DI=10.7763/IJMLC.2013.V3.282
+	BK=Rochat2014a
+	BK=Rochat2015
+	BK=Rochat2017
+	BK=Sparavigna2015
+	DI=10.18653/v1/D15-1088
