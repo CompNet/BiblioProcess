@@ -1851,6 +1851,8 @@ BK=Trilcke2016
 BK=Fischer2017
 	BK=Moretti2011a
 	BK=Trilcke2016
+	DI=10.6084/m9.figshare.3101203
+	BK=Grandjean2015a
 
 BK=Fischer2017a
 	BK=Agarwal2012
@@ -7907,12 +7909,6 @@ BK=Galleron2017
 	BK=KastbergSjoeblom2004
 	BK=Pennebaker2011
 
-BK=Fischer2017b
-	BK=Moretti2011a
-	DI=10.6084/m9.figshare.3101203
-	BK=Grandjean2015a
-	BK=Trilcke2016
-
 BK=Bavaud2022
 	DI=10.1007/s10109-013-0179-2
 	DI=10.2307/2347233
@@ -8765,4 +8761,3 @@ BK=Rodda2024
 	DI=10.1088/1742-5468/2008/10/P10008
 	DI=10.1007/978-1-4614-7163-9_383-1
 	DI=10.1038/srep30750
-
