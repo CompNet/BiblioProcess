@@ -7907,7 +7907,7 @@ BK=Galleron2017
 	BK=KastbergSjoeblom2004
 	BK=Pennebaker2011
 
-BK=Fischer2017b
+BK=Fischer2016
 	BK=Moretti2011a
 	DI=10.6084/m9.figshare.3101203
 	BK=Grandjean2015a
@@ -8451,3 +8451,15 @@ BK=Silva2024b
 	BK=Souza2019
 	DI=10.1007/978-3-030-61377-8_28
 	DI=10.1109/jproc.2020.3004555
+
+BK=Amalvy2024b
+	DI=10.18653/v1/n19-1423
+	DI=10.18653/v1/2020.emnlp-main.523
+	DI=10.18653/v1/2023.acl-short.62
+	BK=Amalvy2023a
+	BK=Taori2024
+	DI=10.7717/peerj-cs.189
+	DI=10.1007/978-1-4471-2099-5_24
+	BK=Nogueira2019
+	DI=10.18653/v1/2020.findings-emnlp.63
+	BK=Bajaj2018
