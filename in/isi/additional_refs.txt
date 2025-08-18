@@ -9981,4 +9981,7 @@ BK=Beine2025
 	DI=10.21105/joss.01686
 	BK=Qiao2021a
 	BK=Pedersen2025
-	
+
+BK=Fischer2017b
+	BK=Fischer2015a
+	BK=Moretti2011a
