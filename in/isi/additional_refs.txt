@@ -9985,3 +9985,16 @@ BK=Beine2025
 BK=Fischer2017b
 	BK=Fischer2015a
 	BK=Moretti2011a
+	
+
+BK=Beine2024
+	BK=Bourdieu1986
+	DI=10.1080/0022250X.2001.9990249
+	BK=Csardi2006
+	BK=Fischer2019
+	BK=Fischer2018b
+	BK=Hagberg2008
+	BK=Pedersen2025
+	BK=RDevelopmentCoreTeam2009a
+	DI=10.1515/9783111071824-002
+	DI10.21105/joss.01686
