@@ -9961,3 +9961,24 @@ BK=Canario2025
 	DI=10.18653/v1/2020.emnlp-main.523
 	DI=10.1109/passat/socialcom.2011.203
 	DI=10.2196/jmir.2426
+
+BK=Beine2025
+	DI=10.48694/JCLS.3670
+	BK=Bastian2009
+	BK=Fischer2017b
+	BK=Bourdieu1986
+	DI=10.1080/0022250X.2001.9990249
+	BK=Dunlop1827
+	DI=10.1017/9780511740466.022
+	BK=Greene1977
+	BK=Jeffery1967
+	BK=Radcliff-Umstead1969
+	BK=Hardin2018
+	BK=Smith2015
+	BK=Kelsall2012
+	BK=Fischer2019
+	BK=RDevelopmentCoreTeam2009a
+	DI=10.21105/joss.01686
+	BK=Qiao2021a
+	BK=Pedersen2025
+	
