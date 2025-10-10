@@ -10102,6 +10102,22 @@ BK=Yamanishi2021
 	BK=Yamanishi2017
 	BK=Zhu2020
 
+BK=Maurel2025
+	BK=Alrahabi2024
+	DI=10.18653/v1/2023.acl-short.62
+	DI=10.18653/v1/n19-1220
+	DI=10.7717/peerj-cs.189
+	DI=10.18653/v1/n19-1423
+	BK=Frontini2020
+	BK=Kababgi2024
+	DI=10.1145/3344548
+	BK=Le2020
+	DI=10.18653/v1/2020.acl-main.645
+	DI=10.18653/v1/2024.naacl-long.243
+	BK=Ramshaw1995
+	DI=10.18653/v1/2020.emnlp-main.47
+	BK=Tay2020a
+
 BK=Maurel2025a
 	BK=Alrahabi2024
 	DI=10.1007/s13278-024-01365-z
