@@ -10926,3 +10926,9 @@ BK=Lin2026a
 	DI=10.1609/aaai.v34i02.5536
 	BK=Yao2019
 	DI=10.18653/v1/2021.acl-short.107
+
+BK=Lingampalle2026
+	DI=10.4324/9780203820551
+	BK=Jockers2013
+	BK=Moretti2013a
+	DI=10.18653/v1/2020.emnlp-demos.6
