@@ -1092,7 +1092,7 @@ if(article.bibtexKey!=null && article.bibtexKey.equals("Vinciarelli2007"))
 						}
 						else
 						{	Article ref = corpus.getArticleByDoi(doi);
-							logger.log("Adding article "+ref);
+							logger.log("Adding article "+ref+" ("+doi+")");
 							article.citedArticles.add(ref);
 							ref.citingArticles.add(article);
 						}
